@@ -21,11 +21,6 @@
                 padding: 0;
             }
 
-            body {
-                background: var(--bg-deep);
-                font-family: 'Inter', sans-serif;
-                color: #fff;
-            }
 
             .royalty-section {
                 position: relative;
@@ -805,4 +800,4 @@
             .royalty-section {
                 background: transparent !important;
             }
-        }
+        

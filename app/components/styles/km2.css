@@ -24,15 +24,6 @@
                 padding: 0;
             }
 
-            body {
-                background: var(--navy);
-                font-family: 'Poppins', sans-serif;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-                overflow-x: hidden;
-            }
 
             .km2-wrap {
                 width: 100%;
@@ -671,4 +662,4 @@
             .comet-svg {
                 display: none !important;
             }
-        }
+        

@@ -28,13 +28,6 @@
                 padding: 0;
             }
 
-            html,
-            body {
-                background: var(--bg);
-                color: var(--text);
-                font-family: 'Inter', sans-serif;
-                overflow-x: hidden;
-            }
 
             ::selection {
                 background: var(--purple);
@@ -51,17 +44,6 @@
                 border-radius: 10px;
             }
 
-            body::before {
-                content: "";
-                position: fixed;
-                inset: 0;
-                pointer-events: none;
-                z-index: 0;
-                background:
-                    radial-gradient(600px 400px at 15% 0%, rgba(139, 92, 246, .10), transparent 60%),
-                    radial-gradient(700px 450px at 90% 10%, rgba(59, 130, 246, .09), transparent 60%),
-                    radial-gradient(600px 400px at 60% 100%, rgba(236, 72, 153, .06), transparent 60%);
-            }
 
             .wrap {
                 position: relative;
@@ -1007,4 +989,4 @@
             }
 
 
-        }
+        

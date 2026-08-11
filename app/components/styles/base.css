@@ -1,4 +1,9 @@
 /* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */
+/* Global design system (the ONLY global stylesheet): :root tokens, reset, navbar, hero, all-platforms.
+   Section styles live in km*.css as native @scope blocks; they are NOT CSS Modules because the
+   legacy scripts query these class names directly (200+ selectors) and @scope already isolates
+   per-section styles. Dead body/html/:root rules inside @scope blocks were removed via
+   tools/remove-dead-rules.js. */
 /* ============================================
    DESIGN SYSTEM
    ============================================ */

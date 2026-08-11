@@ -5,13 +5,6 @@
                 box-sizing: border-box;
             }
 
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                background: #000;
-                font-family: 'Inter', sans-serif;
-            }
 
             .cid-wrapper {
                 display: grid;
@@ -1355,4 +1348,4 @@
             .cid-wrapper {
                 background: transparent !important;
             }
-        }
+        

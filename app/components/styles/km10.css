@@ -36,17 +36,7 @@
                 padding: 0;
             }
 
-            html {
-                background: var(--bg-0);
-            }
 
-            body {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                background: var(--bg-0);
-                color: var(--text-0);
-                -webkit-font-smoothing: antialiased;
-                text-rendering: optimizeLegibility;
-            }
 
             h1,
             h2,
@@ -1028,4 +1018,4 @@
             .hero-backdrop {
                 display: none !important;
             }
-        }
+        

@@ -438,7 +438,14 @@ function rewriteCssUrls(cssText) {
 }
 
 // base css (design system + nav/hero/all-platforms)
-write('app/components/styles/base.css', '/* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */\n' + rewriteCssUrls(baseCss.trim()) + '\n');
+const baseHeader =
+  '/* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */\n' +
+  '/* Global design system (the ONLY global stylesheet): :root tokens, reset, navbar, hero, all-platforms.\n' +
+  '   Section styles live in km*.css as native @scope blocks; they are NOT CSS Modules because the\n' +
+  '   legacy scripts query these class names directly (200+ selectors) and @scope already isolates\n' +
+  '   per-section styles. Dead body/html/:root rules inside @scope blocks were removed via\n' +
+  '   tools/remove-dead-rules.js. */\n';
+write('app/components/styles/base.css', baseHeader + rewriteCssUrls(baseCss.trim()) + '\n');
 for (const s of scopes) {
   const name = s.name.replace('-section', '');
   write('app/components/styles/' + name + '.css', '/* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */\n' + rewriteCssUrls(s.css) + '\n');

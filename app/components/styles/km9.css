@@ -20,12 +20,6 @@
                 --text-dim: rgba(255, 255, 255, 0.65);
             }
 
-            body {
-                font-family: 'Inter', sans-serif;
-                background: var(--bg-dark);
-                color: #fff;
-                overflow-x: hidden;
-            }
 
             /* ============ HERO WRAPPER ============ */
             .km9-hero {
@@ -924,4 +918,4 @@
             .bg-glow-2 {
                 display: none !important;
             }
-        }
+        
