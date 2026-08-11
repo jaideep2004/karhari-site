@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Karhari Media — Content ID Details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #060612;
+        --red-1: #ff2338;
+        --red-2: #ff5a6c;
+        --red-dim: #c4101f;
+        --accent-light: #ffd9dc;
+        --green: #3ecf5a;
+        --green-dim: #1c7a35;
+        --blue: #3aa0ff;
+        --blue-dim: #1a5fb4;
+        --purple: #a25cff;
+        --purple-dim: #6a2fc9;
+        --gold: #ffb020;
+        --gold-dim: #b9780a;
+        --muted: #a7abb4;
+        --muted-dim: #7d8189;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(255, 255, 255, 0.08);
+        font-size: 15px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); }
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; margin: 0; }
+
+    /* ================= SECTION WRAP ================= */
+    .details-section {
+        position: relative;
+        width: 100%;
+        padding: 40px 50px 60px;
+        background:
+            radial-gradient(ellipse 700px 400px at 15% 10%, rgba(180, 10, 25, .16), transparent 60%),
+            radial-gradient(ellipse 600px 400px at 85% 90%, rgba(120, 5, 20, .14), transparent 60%),
+            radial-gradient(ellipse at top, #0d0808 0%, #050303 80%);
+        overflow: hidden;
+    }
+    .details-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, .015) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, .015) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+        pointer-events: none;
+    }
+    .details-wrap {
+        position: relative;
+        z-index: 2;
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    /* ================= TOP ROW (3 cards) ================= */
+    .top-row {
+        display: grid;
+        grid-template-columns: 1fr 1.12fr 1.08fr;
+        gap: 22px;
+        margin-bottom: 22px;
+        align-items: stretch;
+    }
+
+    .pcard {
+        background: linear-gradient(180deg, rgba(20,12,13,.9), rgba(9,5,6,.95));
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 18px 42px rgba(0,0,0,.45);
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pcard-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 20px;
+        background: linear-gradient(90deg, rgba(255,35,56,.28), rgba(120,10,20,.12));
+        border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .pcard-header .ph-icon {
+        width: 22px; height: 22px;
+        flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .pcard-header .ph-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; }
+
+    .pcard-header span {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .6px;
+        color: #fff;
+        text-transform: uppercase;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .pcard-body {
+        padding: 22px 20px 18px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ---- note strip at bottom of card ---- */
+    .note-strip {
+        margin: 16px 20px 20px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        background: rgba(255, 35, 56, .06);
+        border: 1px solid rgba(255, 35, 56, .25);
+        border-radius: 9px;
+        padding: 11px 14px;
+    }
+    .note-strip .ns-icon {
+        flex-shrink: 0;
+        width: 26px; height: 26px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, var(--red-1), var(--red-dim));
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0 12px rgba(255,35,56,.5);
+    }
+    .note-strip .ns-icon svg { width: 13px; height: 13px; stroke: #fff; fill: none; }
+    .note-strip p {
+        font-size: 11.5px;
+        line-height: 1.55;
+        color: var(--muted);
+        font-weight: 500;
+        margin: 0;
+    }
+    .note-strip p strong { color: #fff; font-weight: 700; }
+
+    /* ================= CARD 1 : HOW CONTENT ID WORKS ================= */
+    .steps-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 4px;
+    }
+    .step {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+    .step-icon-wrap {
+        position: relative;
+        width: 52px; height: 52px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 10px;
+    }
+    .step-icon-glow {
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,35,56,.45), transparent 70%);
+        filter: blur(4px);
+    }
+    .step-icon {
+        position: relative;
+        width: 52px; height: 52px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #ff3c4d, #8f0f1a);
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0 18px rgba(255,35,56,.5), inset 0 0 10px rgba(255,255,255,.12);
+        z-index: 1;
+    }
+    .step-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; }
+    .step-num {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .5px;
+        color: var(--red-2);
+        margin-bottom: 4px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .step-title {
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 5px;
+        letter-spacing: .3px;
+    }
+    .step-desc {
+        font-size: 10px;
+        line-height: 1.5;
+        color: var(--muted-dim);
+        font-weight: 500;
+        padding: 0 4px;
+    }
+    .step-arrow {
+        flex-shrink: 0;
+        width: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 24px;
+        position: relative;
+    }
+    .step-arrow svg { width: 16px; height: 16px; stroke: var(--red-2); fill: none; opacity: .8; }
+    .arrow-flow-dot {
+        position: absolute;
+        top: 26px;
+        left: 0;
+        width: 4px; height: 4px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 6px 2px rgba(255,90,108,.9);
+        opacity: 0;
+    }
+
+    /* ================= CARD 2 : TYPES OF CONTENT ================= */
+    .types-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        flex: 1;
+    }
+    .type-col-title {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 10px;
+    }
+    .type-col-title .tc-icon {
+        width: 22px; height: 22px;
+        border-radius: 6px;
+        background: linear-gradient(145deg, rgba(255,35,56,.35), rgba(255,35,56,.1));
+        border: 1px solid rgba(255,35,56,.3);
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+    .type-col-title .tc-icon svg { width: 12px; height: 12px; stroke: var(--red-2); fill: none; }
+    .type-col-title span {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: .3px;
+        text-transform: uppercase;
+    }
+    .type-list {
+        list-style: none;
+        margin: 0 0 12px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .type-list li {
+        font-size: 10.5px;
+        color: var(--muted);
+        font-weight: 500;
+        position: relative;
+        padding-left: 12px;
+    }
+    .type-list li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 6px;
+        width: 4px; height: 4px;
+        border-radius: 50%;
+        background: var(--red-1);
+        box-shadow: 0 0 4px rgba(255,35,56,.7);
+    }
+
+    .mini-waveform {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 24px;
+        margin-top: auto;
+    }
+    .mini-waveform span {
+        width: 3px;
+        border-radius: 1px;
+        background: linear-gradient(180deg, var(--red-2), var(--red-dim));
+    }
+
+    .thumb-row {
+        display: flex;
+        gap: 5px;
+        margin-top: auto;
+    }
+    .thumb-row .thumb {
+        flex: 1;
+        aspect-ratio: 1.1;
+        border-radius: 5px;
+        background: linear-gradient(150deg, #2a1416, #100708);
+        border: 1px solid rgba(255,255,255,.08);
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .thumb .tri-mini {
+        width: 0; height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 8px solid var(--red-2);
+        margin-left: 2px;
+        opacity: .9;
+    }
+
+    .av-preview {
+        margin-top: auto;
+        border-radius: 8px;
+        height: 58px;
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at 30% 20%, rgba(255,90,108,.35), transparent 55%),
+            radial-gradient(circle at 70% 70%, rgba(140,20,180,.28), transparent 55%),
+            linear-gradient(160deg, #1c0f12, #0a0506);
+        border: 1px solid rgba(255,255,255,.08);
+        display: flex; align-items: center; justify-content: center;
+    }
+    .av-preview .av-play {
+        width: 26px; height: 26px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, var(--red-1), var(--red-dim));
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0 14px rgba(255,35,56,.6);
+        z-index: 2;
+    }
+    .av-preview .av-play .tri-mini {
+        border-left: 7px solid #fff;
+        border-top-width: 4.5px;
+        border-bottom-width: 4.5px;
+    }
+    .av-light-beam {
+        position: absolute;
+        top: -20%;
+        width: 30px;
+        height: 140%;
+        background: linear-gradient(180deg, rgba(255,255,255,.16), transparent);
+        transform: skewX(-18deg);
+        opacity: .5;
+    }
+
+    /* ================= CARD 3 : STRICT POLICIES ================= */
+    .warn-box {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 18px;
+    }
+    .warn-icon {
+        flex-shrink: 0;
+        width: 28px; height: 28px;
+        border-radius: 50%;
+        background: rgba(255,35,56,.15);
+        border: 1px solid rgba(255,35,56,.4);
+        display: flex; align-items: center; justify-content: center;
+    }
+    .warn-icon svg { width: 14px; height: 14px; stroke: var(--red-2); fill: none; }
+    .warn-box p {
+        font-size: 11.5px;
+        line-height: 1.55;
+        color: var(--muted);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .policy-icons-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: auto;
+    }
+    .policy-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+    }
+    .policy-item .pi-icon {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: rgba(255,35,56,.12);
+        border: 1.5px solid rgba(255,35,56,.4);
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0 14px rgba(255,35,56,.25);
+    }
+    .policy-item .pi-icon svg { width: 19px; height: 19px; stroke: var(--red-2); fill: none; }
+    .policy-item span {
+        font-size: 9.5px;
+        line-height: 1.4;
+        color: var(--muted-dim);
+        font-weight: 600;
+    }
+
+    /* ================= BOTTOM ROW (4 mini cards) ================= */
+    .bottom-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+    }
+
+    .mini-card {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--card-border);
+        box-shadow: 0 18px 40px rgba(0,0,0,.4);
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(180deg, rgba(18,18,20,.85), rgba(8,8,9,.92));
+    }
+
+    .mini-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .mini-header .mh-icon {
+        width: 24px; height: 24px;
+        border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+    .mini-header .mh-icon svg { width: 13px; height: 13px; stroke: #fff; fill: none; }
+    .mini-header span {
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: .5px;
+        color: #fff;
+        text-transform: uppercase;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .mini-body {
+        padding: 16px 18px 18px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .mini-body p {
+        font-size: 11.5px;
+        line-height: 1.6;
+        color: var(--muted);
+        font-weight: 500;
+        margin: 0 0 10px;
+    }
+    .mini-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+    .mini-list li {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 500;
+        position: relative;
+        padding-left: 15px;
+        line-height: 1.45;
+    }
+
+    /* theme variants */
+    .mini-card.green .mini-header { background: rgba(62,207,90,.08); }
+    .mini-card.green .mh-icon { background: linear-gradient(145deg, var(--green), var(--green-dim)); box-shadow: 0 0 14px rgba(62,207,90,.45); }
+    .mini-card.green .mini-list li::before {
+        content: "✓"; position: absolute; left: 0; top: 0;
+        color: var(--green); font-size: 10px; font-weight: 800;
+    }
+
+    .mini-card.blue .mini-header { background: rgba(58,160,255,.08); }
+    .mini-card.blue .mh-icon { background: linear-gradient(145deg, var(--blue), var(--blue-dim)); box-shadow: 0 0 14px rgba(58,160,255,.45); }
+    .mini-tagline {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--blue);
+        margin-top: auto;
+        letter-spacing: .2px;
+    }
+
+    .mini-card.purple .mini-header { background: rgba(162,92,255,.08); }
+    .mini-card.purple .mh-icon { background: linear-gradient(145deg, var(--purple), var(--purple-dim)); box-shadow: 0 0 14px rgba(162,92,255,.45); }
+    .mini-btn.purple-btn {
+        margin-top: auto;
+        align-self: flex-start;
+        background: linear-gradient(145deg, var(--purple), var(--purple-dim));
+        box-shadow: 0 0 16px rgba(162,92,255,.4);
+    }
+
+    .mini-card.gold .mini-header { background: rgba(255,176,32,.08); }
+    .mini-card.gold .mh-icon { background: linear-gradient(145deg, var(--gold), var(--gold-dim)); box-shadow: 0 0 14px rgba(255,176,32,.45); }
+    .mini-btn.gold-btn {
+        margin-top: auto;
+        align-self: flex-start;
+        background: linear-gradient(145deg, var(--gold), var(--gold-dim));
+        box-shadow: 0 0 16px rgba(255,176,32,.4);
+        color: #1a1200;
+    }
+
+    .mini-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: none;
+        border-radius: 8px;
+        padding: 9px 16px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        cursor: pointer;
+        letter-spacing: .2px;
+        transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .mini-btn:hover { transform: translateY(-2px); }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1150px) {
+        .top-row { grid-template-columns: 1fr; }
+        .bottom-row { grid-template-columns: 1fr 1fr; }
+        .types-cols { grid-template-columns: 1fr; }
+        .policy-icons-row { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 620px) {
+        .bottom-row { grid-template-columns: 1fr; }
+        .steps-row { flex-direction: column; gap: 18px; }
+        .step-arrow { transform: rotate(90deg); padding-top: 0; }
+    }
+</style>
+</head>
+<body>
+
+<section class="details-section">
+    <div class="details-wrap">
+
+        <!-- ============ TOP ROW ============ -->
+        <div class="top-row">
+
+            <!-- CARD 1: HOW CONTENT ID WORKS -->
+            <div class="pcard" id="card1">
+                <div class="pcard-header">
+                    <div class="ph-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <span>How Content ID Works</span>
+                </div>
+                <div class="pcard-body">
+                    <div class="steps-row" id="stepsRow">
+                        <div class="step">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon-glow"></div>
+                                <div class="step-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 16V4M6 10l6-6 6 6" />
+                                        <path d="M4 20h16" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="step-num">1.</div>
+                            <div class="step-title">Upload</div>
+                            <div class="step-desc">A creator uploads a video to YouTube.</div>
+                        </div>
+                        <div class="step-arrow">
+                            <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                            <div class="arrow-flow-dot"></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon-glow"></div>
+                                <div class="step-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="7" />
+                                        <line x1="21" y1="21" x2="16.6" y2="16.6" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="step-num">2.</div>
+                            <div class="step-title">Scan</div>
+                            <div class="step-desc">YouTube scans the video against our Content ID database.</div>
+                        </div>
+                        <div class="step-arrow">
+                            <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                            <div class="arrow-flow-dot"></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon-glow"></div>
+                                <div class="step-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="8" />
+                                        <circle cx="12" cy="12" r="3.2" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="step-num">3.</div>
+                            <div class="step-title">Match Found</div>
+                            <div class="step-desc">If a match is found, the claimant can choose an action.</div>
+                        </div>
+                        <div class="step-arrow">
+                            <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                            <div class="arrow-flow-dot"></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon-glow"></div>
+                                <div class="step-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                        <polyline points="9 12 11.5 14.5 16 9" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="step-num">4.</div>
+                            <div class="step-title">Action Taken</div>
+                            <div class="step-desc">Options: Allow, Block, Monetize, or Track (View Analytics).</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="note-strip">
+                    <div class="ns-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="10" width="16" height="10" rx="2" />
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                        </svg>
+                    </div>
+                    <p>Karhari Media uses <strong>advanced fingerprinting technology</strong> to protect audio, video &amp; audiovisual content across YouTube.</p>
+                </div>
+            </div>
+
+            <!-- CARD 2: TYPES OF CONTENT PROTECTED -->
+            <div class="pcard" id="card2">
+                <div class="pcard-header">
+                    <div class="ph-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="14" rx="2" />
+                            <path d="M8 21h8M12 18v3" />
+                        </svg>
+                    </div>
+                    <span>Types of Content Protected</span>
+                </div>
+                <div class="pcard-body">
+                    <div class="types-cols">
+                        <div class="type-col">
+                            <div class="type-col-title">
+                                <div class="tc-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
+                                    </svg>
+                                </div>
+                                <span>Audio Content</span>
+                            </div>
+                            <ul class="type-list">
+                                <li>Songs</li>
+                                <li>Instrumentals</li>
+                                <li>Background Music</li>
+                                <li>Podcasts</li>
+                            </ul>
+                            <div class="mini-waveform" id="miniWave"></div>
+                        </div>
+                        <div class="type-col">
+                            <div class="type-col-title">
+                                <div class="tc-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="6" width="15" height="12" rx="2" /><path d="M17 10l5-3v10l-5-3" />
+                                    </svg>
+                                </div>
+                                <span>Video Content</span>
+                            </div>
+                            <ul class="type-list">
+                                <li>Movies</li>
+                                <li>TV Shows</li>
+                                <li>Short Films</li>
+                                <li>Music Videos</li>
+                            </ul>
+                            <div class="thumb-row">
+                                <div class="thumb"><span class="tri-mini"></span></div>
+                                <div class="thumb"><span class="tri-mini"></span></div>
+                                <div class="thumb"><span class="tri-mini"></span></div>
+                                <div class="thumb"><span class="tri-mini"></span></div>
+                            </div>
+                        </div>
+                        <div class="type-col">
+                            <div class="type-col-title">
+                                <div class="tc-icon">
+                                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 19V6l11-3v13" /><circle cx="6" cy="19" r="3" /><circle cx="18" cy="16" r="3" />
+                                    </svg>
+                                </div>
+                                <span>Audiovisual</span>
+                            </div>
+                            <ul class="type-list">
+                                <li>Concerts</li>
+                                <li>Live Performances</li>
+                                <li>Events</li>
+                                <li>Documentaries</li>
+                            </ul>
+                            <div class="av-preview">
+                                <div class="av-light-beam" style="left:20%;"></div>
+                                <div class="av-light-beam" style="left:55%;"></div>
+                                <div class="av-play"><span class="tri-mini"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="note-strip">
+                    <div class="ns-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <p><strong>Note:</strong> Content must be original or fully licensed. Unauthorized use may result in copyright claims or strikes.</p>
+                </div>
+            </div>
+
+            <!-- CARD 3: STRICT POLICIES -->
+            <div class="pcard" id="card3">
+                <div class="pcard-header">
+                    <div class="ph-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <span>Strict Policies by YouTube &amp; Google</span>
+                </div>
+                <div class="pcard-body">
+                    <div class="warn-box">
+                        <div class="warn-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                                <line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <p>YouTube has strict policies to protect copyright owners and maintain a safe platform for all users.</p>
+                    </div>
+                    <div class="policy-icons-row">
+                        <div class="policy-item">
+                            <div class="pi-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" /><line x1="8" y1="8" x2="16" y2="16" /><line x1="16" y1="8" x2="8" y2="16" />
+                                </svg>
+                            </div>
+                            <span>3 Copyright Strikes = Account Termination</span>
+                        </div>
+                        <div class="policy-item">
+                            <div class="pi-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 4l6 6M4 14l6 6M6.5 11.5l6-6M17.5 17.5l-6-6M2 22l7-7" />
+                                </svg>
+                            </div>
+                            <span>Repeated Violations May Lead to Legal Action</span>
+                        </div>
+                        <div class="policy-item">
+                            <div class="pi-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" /><path d="M12 6v12M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.5 1.3 2 3 2.5 3 1.1 3 2.5-1.3 2.5-3 2.5-3-1.1-3-2.5" />
+                                </svg>
+                            </div>
+                            <span>Monetization May Be Limited or Removed</span>
+                        </div>
+                        <div class="policy-item">
+                            <div class="pi-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="4" /><path d="M4 21v-1a6 6 0 0 1 6-6h1" />
+                                    <circle cx="18" cy="18" r="4" /><line x1="16" y1="16" x2="20" y2="20" />
+                                </svg>
+                            </div>
+                            <span>Content ID Misuse Can Lead to Loss of Access</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============ BOTTOM ROW ============ -->
+        <div class="bottom-row">
+
+            <div class="mini-card green" id="mc1">
+                <div class="mini-header">
+                    <div class="mh-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <span>Best Practices for Creators</span>
+                </div>
+                <div class="mini-body">
+                    <ul class="mini-list">
+                        <li>Use only original or licensed material.</li>
+                        <li>Always give credit when required.</li>
+                        <li>Keep your content within YouTube's policies.</li>
+                        <li>If you receive a claim, review it carefully and take action.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mini-card blue" id="mc2">
+                <div class="mini-header">
+                    <div class="mh-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <polyline points="9 12 11.5 14.5 16 9" />
+                        </svg>
+                    </div>
+                    <span>Our Commitment</span>
+                </div>
+                <div class="mini-body">
+                    <p>At Karhari Media, we are committed to protecting creativity, respecting rights, and building a fair ecosystem for all creators and partners.</p>
+                    <div class="mini-tagline">Create. Protect. Respect.</div>
+                </div>
+            </div>
+
+            <div class="mini-card purple" id="mc3">
+                <div class="mini-header">
+                    <div class="mh-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                        </svg>
+                    </div>
+                    <span>Need Help?</span>
+                </div>
+                <div class="mini-body">
+                    <p>If you have any questions about Content ID, claims, or policies, our support team is here to help.</p>
+                    <button class="mini-btn purple-btn">Contact Support</button>
+                </div>
+            </div>
+
+            <div class="mini-card gold" id="mc4">
+                <div class="mini-header">
+                    <div class="mh-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                    </div>
+                    <span>Stay Informed</span>
+                </div>
+                <div class="mini-body">
+                    <p>Policies may change, so stay updated with the latest YouTube &amp; Google guidelines.</p>
+                    <button class="mini-btn gold-btn">Visit: support.google.com/youtube</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* Build mini waveform bars */
+    const miniWave = document.getElementById('miniWave');
+    const mHeights = [8, 14, 20, 11, 22, 15, 9, 17];
+    const miniBars = mHeights.map(h => {
+        const s = document.createElement('span');
+        s.style.height = h + 'px';
+        miniWave.appendChild(s);
+        return s;
+    });
+    miniBars.forEach((bar, i) => animateMiniWave(bar, mHeights[i]));
+    function animateMiniWave(bar, base) {
+        const target = gsap.utils.random(base * 0.4, base * 1.5, 1);
+        gsap.to(bar, {
+            height: target + 'px',
+            duration: gsap.utils.random(.4, .9),
+            ease: 'sine.inOut',
+            onComplete: () => animateMiniWave(bar, base)
+        });
+    }
+
+    /* ---------- ENTRANCE ANIMATIONS ---------- */
+    /* Play immediately: a scroll-triggered entrance freezes under
+       content-visibility layout shifts in the merged page (km6 stays
+       invisible). A small delay lets the section render first. */
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.25 });
+
+    tl.fromTo('#card1', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .7 })
+      .fromTo('#card2', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .7 }, '-=.5')
+      .fromTo('#card3', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .7 }, '-=.5')
+      .fromTo('#mc1', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6 }, '-=.3')
+      .fromTo('#mc2', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6 }, '-=.45')
+      .fromTo('#mc3', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6 }, '-=.45')
+      .fromTo('#mc4', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6 }, '-=.45');
+
+    /* Fallback: make sure content is never stuck invisible (e.g. if GSAP
+       or the entrance timeline failed to run). */
+    setTimeout(() => {
+        gsap.set(['#card1','#card2','#card3','#mc1','#mc2','#mc3','#mc4'], { opacity: 1, y: 0 });
+    }, 2500);
+
+    /* ---------- AMBIENT LOOPS ---------- */
+
+    // step icon glow pulse, staggered
+    gsap.to('.step-icon', {
+        boxShadow: '0 0 28px rgba(255,35,56,.75), inset 0 0 10px rgba(255,255,255,.15)',
+        duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: .3
+    });
+
+    // flowing dots along connector arrows
+    gsap.utils.toArray('.step-arrow').forEach((arrow, i) => {
+        const dot = arrow.querySelector('.arrow-flow-dot');
+        gsap.timeline({ repeat: -1, delay: i * .4 })
+            .set(dot, { x: 0, opacity: 0 })
+            .to(dot, { opacity: 1, duration: .15 })
+            .to(dot, { x: 20, duration: .8, ease: 'power1.in' })
+            .to(dot, { opacity: 0, duration: .15 }, '-=.15');
+    });
+
+    // policy icon glow breathing
+    gsap.to('.policy-item .pi-icon', {
+        boxShadow: '0 0 20px rgba(255,35,56,.5)', duration: 1.8, repeat: -1, yoyo: true,
+        ease: 'sine.inOut', stagger: .2
+    });
+
+    // thumb play triangles subtle pulse
+    gsap.to('.thumb .tri-mini', {
+        opacity: .5, duration: 1.2, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: .15
+    });
+
+    // av preview light beams sweeping
+    gsap.utils.toArray('.av-light-beam').forEach((beam, i) => {
+        gsap.fromTo(beam, { x: -40, opacity: 0 }, {
+            x: 100, opacity: .6, duration: 2.2, repeat: -1, delay: i * .8, ease: 'sine.inOut'
+        });
+    });
+    gsap.to('.av-play', {
+        boxShadow: '0 0 22px rgba(255,35,56,.85)', duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut'
+    });
+
+    // mini card header icon glow
+    gsap.to('.mini-card.green .mh-icon', { boxShadow: '0 0 22px rgba(62,207,90,.7)', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('.mini-card.blue .mh-icon', { boxShadow: '0 0 22px rgba(58,160,255,.7)', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('.mini-card.purple .mh-icon', { boxShadow: '0 0 22px rgba(162,92,255,.7)', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('.mini-card.gold .mh-icon', { boxShadow: '0 0 22px rgba(255,176,32,.7)', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    // note strip icon glow
+    gsap.to('.note-strip .ns-icon', { boxShadow: '0 0 18px rgba(255,35,56,.7)', duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('.warn-icon', { boxShadow: '0 0 16px rgba(255,35,56,.55)', duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    // button hover glow lift (mouse-driven, not looping)
+    document.querySelectorAll('.mini-btn').forEach(btn => {
+        btn.addEventListener('mouseenter', () => gsap.to(btn, { scale: 1.04, duration: .25, ease: 'power2.out' }));
+        btn.addEventListener('mouseleave', () => gsap.to(btn, { scale: 1, duration: .25, ease: 'power2.out' }));
+    });
+
+});
+</script>
+</body>
+</html>

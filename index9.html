@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karhari Media — Manage, Protect & Maximize Your Music Rights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        /* ============ RESET & BASE ============ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple: #a855f7;
+            --blue: #3b82f6;
+            --pink: #ec4899;
+            --orange: #f97316;
+            --green: #22c55e;
+            --bg-dark: #060612;
+            --panel-bg: rgba(255, 255, 255, 0.04);
+            --panel-border: rgba(255, 255, 255, 0.09);
+            --text-dim: rgba(255, 255, 255, 0.65);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ============ HERO WRAPPER ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 50px 40px 30px;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(88, 28, 135, 0.35), transparent 60%),
+                radial-gradient(ellipse at 10% 90%, rgba(30, 64, 175, 0.25), transparent 60%),
+                var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .bg-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+        }
+
+        .bg-glow-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(168, 85, 247, 0.25);
+            top: -100px;
+            left: 20%;
+        }
+
+        .bg-glow-2 {
+            width: 450px;
+            height: 450px;
+            background: rgba(59, 130, 246, 0.2);
+            bottom: -100px;
+            right: 10%;
+        }
+
+        .bg-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .bg-particles .p {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.3;
+        }
+
+        /* ============ GRADIENT TEXT HELPERS ============ */
+        .grad-orange {
+            background: linear-gradient(90deg, #f97316, #facc15);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .grad-blue {
+            background: linear-gradient(90deg, #3b82f6, #22d3ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .grad-pink {
+            background: linear-gradient(90deg, #ec4899, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ============ CONTAINER GRID ============ */
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr 1fr;
+            gap: 35px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ============ LEFT COLUMN ============ */
+        .logo-text {
+            font-size: 2.4rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--pink);
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .headline {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin: 22px 0 16px;
+        }
+
+        .desc {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--text-dim);
+            margin-bottom: 26px;
+        }
+
+        .desc b {
+            color: #facc15;
+            font-weight: 600;
+        }
+
+        .feature-icons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .feature-item {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            padding: 18px 14px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: border-color .3s, box-shadow .3s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .icon-circle {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            border: 2px solid var(--purple);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .feature-item[data-color="blue"] .icon-circle {
+            border-color: var(--blue);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .feature-item[data-color="green"] .icon-circle {
+            border-color: var(--green);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+
+        .feature-item[data-color="orange"] .icon-circle {
+            border-color: var(--orange);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+        }
+
+        .feature-item h4 {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .feature-item p {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        /* ============ CENTER COLUMN ============ */
+        .center-label {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .center-label h3 {
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .center-label p {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
+        .shield-stage {
+            position: relative;
+            width: 100%;
+            height: 580px;
+        }
+
+        .connections {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .conn-path {
+            fill: none;
+            stroke: url(#lineGrad);
+            stroke-width: 0.35;
+            opacity: 0.55;
+            vector-effect: non-scaling-stroke;
+            filter: drop-shadow(0 0 3px rgba(168, 85, 247, 0.6));
+        }
+
+        .pulse-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 10px 3px currentColor;
+        }
+
+        .note {
+            position: absolute;
+            font-size: 1.3rem;
+            opacity: 0.6;
+            color: #c084fc;
+            filter: drop-shadow(0 0 6px #a855f7);
+        }
+
+        .note-1 {
+            top: 2%;
+            left: 38%;
+        }
+
+        .note-2 {
+            top: 2%;
+            right: 32%;
+        }
+
+        .note-3 {
+            bottom: 20%;
+            left: 6%;
+        }
+
+        /* Platform Nodes */
+        .platform-node {
+            position: absolute;
+            width: 150px;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .node-youtube {
+            left: 14%;
+            top: 12%;
+        }
+
+        .node-facebook {
+            left: 86%;
+            top: 12%;
+        }
+
+        .node-tiktok {
+            left: 14%;
+            top: 62%;
+        }
+
+        .node-soundcloud {
+            left: 86%;
+            top: 62%;
+        }
+
+        .node-circle {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid;
+            backdrop-filter: blur(6px);
+        }
+
+        .node-circle.yt {
+            border-color: #ff0000;
+            color: #ff0000;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+        }
+
+        .node-circle.fb {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+
+        .node-circle.tt {
+            border-color: #e5e5e5;
+            color: #fff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .node-circle.sc {
+            border-color: #f97316;
+            color: #f97316;
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.5);
+        }
+
+        .node-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .node-label small {
+            font-weight: 500;
+            opacity: 0.7;
+            font-size: 0.6rem;
+        }
+
+        .node-desc {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        /* Central Shield */
+        .shield-wrap {
+            position: absolute;
+            left: 50%;
+            top: 38%;
+            transform: translate(-50%, -50%);
+            width: 240px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid rgba(168, 85, 247, 0.4);
+        }
+
+        .ring-1 {
+            width: 100%;
+            height: 100%;
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+
+        .ring-2 {
+            width: 116%;
+            height: 116%;
+            border-color: rgba(59, 130, 246, 0.35);
+            border-style: dashed;
+        }
+
+        .ring-3 {
+            width: 132%;
+            height: 132%;
+            border-color: rgba(236, 72, 153, 0.25);
+        }
+
+        /* Lock badge above shield */
+        .lock-badge {
+            position: absolute;
+            top: -2%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(168, 85, 247, 0.12);
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7), inset 0 0 10px rgba(168, 85, 247, 0.4);
+            z-index: 6;
+        }
+
+        .lock-badge span {
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 6px #c084fc);
+        }
+
+        /* ---- Shield core: real shield silhouette (flat-ish top, NOT heart), closer to pedestal ---- */
+        .shield-core {
+            position: relative;
+            width: 196px;
+            height: 220px;
+            z-index: 4;
+        }
+
+        .shield-glow {
+            position: absolute;
+            inset: -16px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5), rgba(59, 130, 246, 0.2) 45%, transparent 72%);
+            filter: blur(16px);
+        }
+
+        .shield-svg {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 24px rgba(59, 130, 246, 0.45)) drop-shadow(0 0 14px rgba(139, 92, 246, 0.3));
+        }
+
+        .particles-float {
+            position: absolute;
+            inset: -60px;
+            pointer-events: none;
+        }
+
+        .particles-float .particle {
+            position: absolute;
+            background: #c084fc;
+            border-radius: 50%;
+            box-shadow: 0 0 6px 2px #a855f7;
+        }
+
+        /* Short light beam bridging shield bottom tip to pedestal top */
+        .light-beam {
+            position: absolute;
+            left: 50%;
+            bottom: -26px;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 40px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(196, 132, 252, 0.5) 45%, transparent 95%);
+            clip-path: polygon(38% 100%, 62% 100%, 100% 0%, 0% 0%);
+            filter: blur(3px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ============ PEDESTAL — fully rounded 3-tier disc stack (top cap + wall + bottom cap) ============ */
+        .pedestal {
+            position: absolute;
+            left: 50%;
+            bottom: 11%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 132px;
+            z-index: 1;
+        }
+
+        .ped-part {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ped-cap {
+            border-radius: 50%;
+        }
+
+        /* ---- Tier 1 : bottom, largest, pink ---- */
+        .ped-bottom.t1 {
+            width: 320px;
+            height: 40px;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.12) 0%, rgba(190, 40, 108, 0.55) 42%, rgba(50, 8, 30, 0.92) 100%);
+            border: 2px solid rgba(236, 72, 153, 0.45);
+            box-shadow: 0 12px 26px rgba(236, 72, 153, 0.35);
+        }
+
+        .ped-wall.t1 {
+            width: 320px;
+            height: 18px;
+            bottom: 14px;
+            background: linear-gradient(90deg, rgba(35, 6, 22, 0.95) 0%, rgba(236, 72, 153, 0.55) 18%, rgba(255, 210, 235, 0.5) 50%, rgba(236, 72, 153, 0.55) 82%, rgba(35, 6, 22, 0.95) 100%);
+            border-left: 2px solid rgba(236, 72, 153, 0.7);
+            border-right: 2px solid rgba(236, 72, 153, 0.7);
+        }
+
+        .ped-top.t1 {
+            width: 320px;
+            height: 40px;
+            bottom: 26px;
+            background: radial-gradient(ellipse at 50% 30%, #ffffff 0%, rgba(255, 255, 255, 0.6) 8%, rgba(236, 72, 153, 0.95) 40%, rgba(150, 20, 90, 0.8) 75%, rgba(70, 10, 45, 0.6) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 40px rgba(236, 72, 153, 0.6);
+        }
+
+        /* ---- Tier 2 : middle, purple ---- */
+        .ped-bottom.t2 {
+            width: 232px;
+            height: 30px;
+            bottom: 40px;
+            background: radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.12) 0%, rgba(120, 30, 180, 0.55) 42%, rgba(30, 6, 45, 0.92) 100%);
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            box-shadow: 0 10px 22px rgba(168, 85, 247, 0.4);
+        }
+
+        .ped-wall.t2 {
+            width: 232px;
+            height: 14px;
+            bottom: 54px;
+            background: linear-gradient(90deg, rgba(22, 6, 38, 0.95) 0%, rgba(168, 85, 247, 0.6) 18%, rgba(230, 205, 255, 0.55) 50%, rgba(168, 85, 247, 0.6) 82%, rgba(22, 6, 38, 0.95) 100%);
+            border-left: 2px solid rgba(168, 85, 247, 0.8);
+            border-right: 2px solid rgba(168, 85, 247, 0.8);
+        }
+
+        .ped-top.t2 {
+            width: 232px;
+            height: 30px;
+            bottom: 64px;
+            background: radial-gradient(ellipse at 50% 30%, #ffffff 0%, rgba(255, 255, 255, 0.65) 8%, rgba(168, 85, 247, 0.95) 40%, rgba(110, 20, 170, 0.8) 75%, rgba(60, 10, 90, 0.6) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 38px rgba(168, 85, 247, 0.65);
+        }
+
+        /* ---- Tier 3 : top, smallest, blue (closest to shield) ---- */
+        .ped-bottom.t3 {
+            width: 150px;
+            height: 22px;
+            bottom: 74px;
+            background: radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.15) 0%, rgba(30, 90, 200, 0.55) 42%, rgba(6, 14, 45, 0.92) 100%);
+            border: 2px solid rgba(96, 165, 250, 0.55);
+            box-shadow: 0 8px 18px rgba(59, 130, 246, 0.45);
+        }
+
+        .ped-wall.t3 {
+            width: 150px;
+            height: 11px;
+            bottom: 85px;
+            background: linear-gradient(90deg, rgba(6, 12, 40, 0.95) 0%, rgba(96, 165, 250, 0.65) 18%, rgba(222, 240, 255, 0.6) 50%, rgba(96, 165, 250, 0.65) 82%, rgba(6, 12, 40, 0.95) 100%);
+            border-left: 2px solid rgba(96, 165, 250, 0.9);
+            border-right: 2px solid rgba(96, 165, 250, 0.9);
+        }
+
+        .ped-top.t3 {
+            width: 150px;
+            height: 22px;
+            bottom: 93px;
+            background: radial-gradient(ellipse at 50% 28%, #ffffff 0%, rgba(255, 255, 255, 0.8) 8%, rgba(96, 165, 250, 1) 40%, rgba(59, 130, 246, 0.85) 75%, rgba(30, 60, 150, 0.65) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.65);
+            box-shadow: 0 0 42px rgba(96, 165, 250, 0.8);
+        }
+
+        /* Glossy vertical reflection running through the whole stack */
+        .ped-reflection {
+            position: absolute;
+            left: 50%;
+            bottom: 4px;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 100px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15) 45%, transparent 85%);
+            filter: blur(5px);
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .ped-glow {
+            position: absolute;
+            left: 50%;
+            bottom: 96px;
+            transform: translateX(-50%);
+            width: 54px;
+            height: 15px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.95), rgba(168, 85, 247, 0.55) 60%, transparent 82%);
+            filter: blur(3px);
+            z-index: 10;
+        }
+
+        .global-coverage {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .global-coverage span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #22d3ee;
+            letter-spacing: 1px;
+        }
+
+        .global-coverage p {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
+        /* ============ RIGHT COLUMN ============ */
+        .right-heading {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .platform-logos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .logo-item {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 14px;
+            padding: 14px 6px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            transition: box-shadow .3s;
+        }
+
+        .logo-item:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 6px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo-circle.spotify {
+            background: #1DB954;
+        }
+
+        .logo-circle.apple {
+            background: linear-gradient(135deg, #fa233b, #fb5c74);
+        }
+
+        .logo-circle.amazon {
+            background: #25D1DA;
+            color: #111;
+        }
+
+        .logo-circle.ytmusic {
+            background: #ff0000;
+        }
+
+        .logo-item span {
+            font-size: 0.68rem;
+            color: var(--text-dim);
+        }
+
+        .more-platforms {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 22px;
+        }
+
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 22px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .why-choose h4 {
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+
+        .why-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-icon {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .why-item h5 {
+            font-size: 0.82rem;
+            color: #93c5fd;
+            margin-bottom: 3px;
+        }
+
+        .why-item p {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        /* ============ BOTTOM PANELS ============ */
+        .bottom-panels {
+            position: relative;
+            z-index: 2;
+            max-width: 1500px;
+            margin: 45px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .bottom-panels .glass-panel h4 {
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 18px;
+            color: #e9d5ff;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .who-item {
+            text-align: center;
+        }
+
+        .who-icon {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .who-item p {
+            font-size: 0.62rem;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+        }
+
+        .panel-footer {
+            font-size: 0.68rem;
+            color: var(--text-dim);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .how-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .how-step {
+            flex: 1;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .how-icon {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+        }
+
+        .how-step h6 {
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            color: #93c5fd;
+            margin-bottom: 4px;
+        }
+
+        .how-step p {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            line-height: 1.3;
+        }
+
+        .how-arrow {
+            font-size: 1.1rem;
+            color: var(--purple);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-icon {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .impact-item p {
+            font-size: 0.62rem;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
+        /* ============ FINAL BAR ============ */
+        .bottom-bar {
+            position: relative;
+            z-index: 2;
+            max-width: 1500px;
+            margin: 35px auto 0;
+            background: linear-gradient(90deg, rgba(168, 85, 247, 0.15), rgba(59, 130, 246, 0.15));
+            border: 1px solid var(--panel-border);
+            border-radius: 14px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+        }
+
+        .bottom-bar b {
+            color: #facc15;
+        }
+
+        .divider {
+            opacity: 0.4;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1100px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-panels {
+                grid-template-columns: 1fr;
+            }
+
+            .shield-stage {
+                height: 620px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+        <div class="bg-particles" id="bgParticles"></div>
+
+        <div class="hero-container">
+
+            <!-- ============ LEFT COLUMN ============ -->
+            <div class="col col-left">
+                <div class="brand">
+                    <h1 class="logo-text">KARHARI <span>MEDIA</span></h1>
+                    <p class="tagline">YOUR MUSIC. YOUR RIGHTS. OUR PROTECTION.</p>
+                </div>
+
+                <h2 class="headline">
+                    <span class="grad-orange">MANAGE, PROTECT</span> &amp;
+                    <span class="grad-blue">MAXIMIZE</span> YOUR MUSIC RIGHTS
+                </h2>
+
+                <p class="desc">
+                    Karhari Media empowers <b>Artists</b>, <b>Song Writers</b>,
+                    <b>Singers</b>, <b>Music Composers</b>, <b>Record Labels</b> and
+                    <b>Rights Owners</b> to manage, protect, and monetize their music
+                    and music videos worldwide.
+                </p>
+
+                <div class="feature-icons">
+                    <div class="feature-item" data-color="purple">
+                        <div class="icon-circle">🛡️</div>
+                        <h4>PROTECT</h4>
+                        <p>Protect your copyrights worldwide</p>
+                    </div>
+                    <div class="feature-item" data-color="blue">
+                        <div class="icon-circle">🔍</div>
+                        <h4>MONITOR</h4>
+                        <p>Real-time monitoring across platforms</p>
+                    </div>
+                    <div class="feature-item" data-color="green">
+                        <div class="icon-circle">📈</div>
+                        <h4>MONETIZE</h4>
+                        <p>Collect every royalty you deserve</p>
+                    </div>
+                    <div class="feature-item" data-color="orange">
+                        <div class="icon-circle">👤</div>
+                        <h4>MANAGE</h4>
+                        <p>Full control of your music rights</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ CENTER COLUMN ============ -->
+            <div class="col col-center">
+                <div class="center-label">
+                    <h3>COPYRIGHT PROTECTION</h3>
+                    <p>We protect your rights through</p>
+                </div>
+
+                <div class="shield-stage" id="shieldStage">
+
+                    <svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#3b82f6" />
+                            </linearGradient>
+                        </defs>
+                        <path id="path1" class="conn-path" d="M12,10 Q30,30 50,46" />
+                        <path id="path2" class="conn-path" d="M88,10 Q70,30 50,46" />
+                        <path id="path3" class="conn-path" d="M12,62 Q30,55 50,46" />
+                        <path id="path4" class="conn-path" d="M88,62 Q70,55 50,46" />
+                    </svg>
+
+                    <div class="pulse-dot" style="background:#ff0000"></div>
+                    <div class="pulse-dot" style="background:#3b82f6"></div>
+                    <div class="pulse-dot" style="background:#ec4899"></div>
+                    <div class="pulse-dot" style="background:#f97316"></div>
+
+                    <div class="note note-1">🎵</div>
+                    <div class="note note-2">🎵</div>
+                    <div class="note note-3">🎵</div>
+
+                    <!-- Platform Nodes -->
+                    <div class="platform-node node-youtube">
+                        <div class="node-circle yt">▶</div>
+                        <span class="node-label">YOUTUBE<br><small>CONTENT ID</small></span>
+                        <p class="node-desc">We protect your music with YouTube Content ID</p>
+                    </div>
+
+                    <div class="platform-node node-facebook">
+                        <div class="node-circle fb">f</div>
+                        <span class="node-label">FACEBOOK<br><small>RIGHTS MANAGER</small></span>
+                        <p class="node-desc">We protect your content across Facebook platforms</p>
+                    </div>
+
+                    <div class="platform-node node-tiktok">
+                        <div class="node-circle tt">♪</div>
+                        <span class="node-label">TIKTOK<br><small>RIGHTS PROTECTION</small></span>
+                        <p class="node-desc">We protect your music on TikTok UGC platform</p>
+                    </div>
+
+                    <div class="platform-node node-soundcloud">
+                        <div class="node-circle sc">☁</div>
+                        <span class="node-label">SOUNDCLOUD<br><small>CONTENT ID</small></span>
+                        <p class="node-desc">We protect your music on SoundCloud UGC platform</p>
+                    </div>
+
+                    <!-- Central Shield -->
+                    <div class="shield-wrap">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="ring ring-3"></div>
+                        <div class="particles-float" id="shieldParticles"></div>
+
+                        <div class="lock-badge"><span>🔒</span></div>
+
+                        <div class="shield-core">
+                            <div class="shield-glow"></div>
+                            <div class="light-beam"></div>
+                            <svg class="shield-svg" viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <!-- Horizontal gradient: thin pink sliver (edge) -> purple -> indigo -> blue -->
+                                    <linearGradient id="shieldGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+                                        <stop offset="0%" stop-color="#ec4899" />
+                                        <stop offset="14%" stop-color="#c026d3" />
+                                        <stop offset="34%" stop-color="#9333ea" />
+                                        <stop offset="58%" stop-color="#6d5bf5" />
+                                        <stop offset="80%" stop-color="#4f6cf7" />
+                                        <stop offset="100%" stop-color="#3b82f6" />
+                                    </linearGradient>
+
+                                    <!-- Narrower, crisper bright shine streak -->
+                                    <linearGradient id="shieldShine" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+                                        <stop offset="20%" stop-color="#ffffff" stop-opacity="0" />
+                                        <stop offset="30%" stop-color="#ffffff" stop-opacity="0.15" />
+                                        <stop offset="37%" stop-color="#ffffff" stop-opacity="0.75" />
+                                        <stop offset="44%" stop-color="#ffffff" stop-opacity="0.15" />
+                                        <stop offset="55%" stop-color="#ffffff" stop-opacity="0" />
+                                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                                    </linearGradient>
+
+                                    <!-- Soft glossy top highlight -->
+                                    <linearGradient id="topGloss" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5" />
+                                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                                    </linearGradient>
+
+                                    <radialGradient id="emblemGlow" cx="50%" cy="45%" r="60%">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+                                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                                    </radialGradient>
+
+                                    <!-- Real shield silhouette: flat-ish top with subtle convex bulge (NOT a concave heart notch), rounded shoulders, tapered point -->
+                                    <clipPath id="shieldClip">
+                                        <path d="M20,8
+                                                 Q50,3 80,8
+                                                 C89,11 92,17 92,26
+                                                 L92,42
+                                                 C92,72 75,91 50,108
+                                                 C25,91 8,72 8,42
+                                                 L8,26
+                                                 C8,17 11,11 20,8 Z" />
+                                    </clipPath>
+                                </defs>
+
+                                <!-- Base shield fill -->
+                                <path id="shieldPath" d="M20,8
+                                       Q50,3 80,8
+                                       C89,11 92,17 92,26
+                                       L92,42
+                                       C92,72 75,91 50,108
+                                       C25,91 8,72 8,42
+                                       L8,26
+                                       C8,17 11,11 20,8 Z" fill="url(#shieldGrad)" stroke="#141034" stroke-width="2.4"
+                                    stroke-linejoin="round" />
+
+                                <!-- Bright shine streak -->
+                                <rect x="8" y="3" width="84" height="105" fill="url(#shieldShine)"
+                                    clip-path="url(#shieldClip)" />
+
+                                <!-- Glossy top highlight -->
+                                <path
+                                    d="M20,8 Q50,3 80,8 C89,11 92,17 92,26 L92,34 C74,25 26,25 8,34 L8,26 C8,17 11,11 20,8 Z"
+                                    fill="url(#topGloss)" clip-path="url(#shieldClip)" opacity="0.85" />
+
+                                <!-- Inner bevel outline (slightly inset, light) -->
+                                <path d="M26,15
+                                         Q50,11 74,15
+                                         C81,17.5 84,22 84,29
+                                         L84,42
+                                         C84,64 71,80 50,95
+                                         C29,80 16,64 16,42
+                                         L16,29
+                                         C16,22 19,17.5 26,15 Z" fill="none" stroke="#ffffff" stroke-opacity="0.35"
+                                    stroke-width="1" />
+
+                                <!-- Crisp outer edge line -->
+                                <path d="M20,8
+                                         Q50,3 80,8
+                                         C89,11 92,17 92,26
+                                         L92,42
+                                         C92,72 75,91 50,108
+                                         C25,91 8,72 8,42
+                                         L8,26
+                                         C8,17 11,11 20,8 Z" fill="none" stroke="#ffffff" stroke-opacity="0.5"
+                                    stroke-width="1" />
+
+                                <!-- Copyright emblem -->
+                                <circle cx="50" cy="54" r="23" fill="url(#emblemGlow)" opacity="0.5" />
+                                <circle cx="50" cy="54" r="21.5" fill="rgba(8,8,22,0.15)" stroke="#ffffff"
+                                    stroke-width="4.2" />
+                                <text x="50" y="65" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+                                    font-size="28" font-weight="900" fill="#ffffff">C</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Pedestal: fully rounded 3-tier disc stack -->
+                    <div class="pedestal">
+                        <!-- Tier 1 (bottom, biggest, pink) -->
+                        <div class="ped-part ped-cap ped-bottom t1"></div>
+                        <div class="ped-part ped-wall t1"></div>
+                        <div class="ped-part ped-cap ped-top t1"></div>
+
+                        <!-- Tier 2 (middle, purple) -->
+                        <div class="ped-part ped-cap ped-bottom t2"></div>
+                        <div class="ped-part ped-wall t2"></div>
+                        <div class="ped-part ped-cap ped-top t2"></div>
+
+                        <!-- Tier 3 (top, smallest, blue) -->
+                        <div class="ped-part ped-cap ped-bottom t3"></div>
+                        <div class="ped-part ped-wall t3"></div>
+                        <div class="ped-part ped-cap ped-top t3"></div>
+
+                        <div class="ped-reflection"></div>
+                        <div class="ped-glow"></div>
+                    </div>
+                </div>
+
+                <div class="global-coverage">
+                    <span>🌐 GLOBAL COVERAGE</span>
+                    <p>One Partner. All Platforms. Worldwide Protection.</p>
+                </div>
+            </div>
+
+            <!-- ============ RIGHT COLUMN ============ -->
+            <div class="col col-right">
+                <h3 class="right-heading">
+                    DISTRIBUTE &amp; MANAGE RIGHTS ON<br>
+                    <span class="grad-pink">GLOBAL MUSIC PLATFORMS</span>
+                </h3>
+
+                <div class="platform-logos">
+                    <div class="logo-item">
+                        <div class="logo-circle spotify">🎧</div>
+                        <span>Spotify</span>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-circle apple">🎵</div>
+                        <span>Apple Music</span>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-circle amazon">🎶</div>
+                        <span>Amazon Music</span>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-circle ytmusic">▶</div>
+                        <span>YouTube Music</span>
+                    </div>
+                </div>
+
+                <p class="more-platforms">&amp; Many More Platforms Worldwide 🌐</p>
+
+                <div class="glass-panel why-choose">
+                    <h4>WHY CHOOSE <span class="grad-blue">KARHARI MEDIA?</span></h4>
+
+                    <div class="why-item">
+                        <div class="why-icon">🛡️</div>
+                        <div>
+                            <h5>Copyright Protection</h5>
+                            <p>Advanced technology to detect &amp; protect your content globally.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">📊</div>
+                        <div>
+                            <h5>Real-Time Monitoring</h5>
+                            <p>Track usage, performance &amp; revenue in real-time.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">💲</div>
+                        <div>
+                            <h5>Fair &amp; Transparent</h5>
+                            <p>100% transparent royalty tracking &amp; fair revenue distribution.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">🎧</div>
+                        <div>
+                            <h5>Dedicated Support</h5>
+                            <p>Our expert team is always here to support you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============ BOTTOM PANELS ============ -->
+        <div class="bottom-panels">
+
+            <div class="glass-panel who-panel">
+                <h4>WHO CAN USE KARHARI MEDIA?</h4>
+                <div class="who-grid">
+                    <div class="who-item"><span class="who-icon">🎤</span>
+                        <p>SINGERS</p>
+                    </div>
+                    <div class="who-item"><span class="who-icon">✍️</span>
+                        <p>SONG WRITERS</p>
+                    </div>
+                    <div class="who-item"><span class="who-icon">🎼</span>
+                        <p>MUSIC COMPOSERS</p>
+                    </div>
+                    <div class="who-item"><span class="who-icon">🎙️</span>
+                        <p>ARTISTS</p>
+                    </div>
+                    <div class="who-item"><span class="who-icon">💿</span>
+                        <p>RECORD LABELS</p>
+                    </div>
+                    <div class="who-item"><span class="who-icon">🎬</span>
+                        <p>MUSIC VIDEO CREATORS</p>
+                    </div>
+                </div>
+                <p class="panel-footer">Anyone who owns or creates music or music videos can manage their rights with
+                    Karhari Media.</p>
+            </div>
+
+            <div class="glass-panel how-panel">
+                <h4>HOW IT WORKS</h4>
+                <div class="how-flow">
+                    <div class="how-step">
+                        <div class="how-icon">☁️</div>
+                        <h6>UPLOAD</h6>
+                        <p>Upload your music or music videos</p>
+                    </div>
+                    <div class="how-arrow">→</div>
+                    <div class="how-step">
+                        <div class="how-icon">©️</div>
+                        <h6>WE PROTECT</h6>
+                        <p>We protect through Content ID &amp; UGC platforms</p>
+                    </div>
+                    <div class="how-arrow">→</div>
+                    <div class="how-step">
+                        <div class="how-icon">📶</div>
+                        <h6>WE MONITOR</h6>
+                        <p>We monitor usage across global platforms</p>
+                    </div>
+                    <div class="how-arrow">→</div>
+                    <div class="how-step">
+                        <div class="how-icon">💰</div>
+                        <h6>YOU EARN</h6>
+                        <p>You earn royalties &amp; we maximize your revenue</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel impact-panel">
+                <h4>OUR GLOBAL IMPACT</h4>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-icon">🌍</div>
+                        <h3 class="stat-number" data-count="150" data-suffix="+">0</h3>
+                        <p>Countries Covered</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">👥</div>
+                        <h3 class="stat-number" data-count="10" data-suffix="K+">0</h3>
+                        <p>Artists &amp; Rights Owners Trusted</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">🎵</div>
+                        <h3 class="stat-number" data-count="1" data-suffix="M+">0</h3>
+                        <p>Songs &amp; Videos Protected</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">🛡️</div>
+                        <h3 class="stat-number" data-count="100" data-suffix="%">0</h3>
+                        <p>Safe, Secure &amp; Reliable Platform</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============ FINAL BAR ============ -->
+        <div class="bottom-bar">
+            <span>🔒 YOUR CREATION. YOUR RIGHTS. YOUR REVENUE.</span>
+            <span class="divider">|</span>
+            <span>ALL MANAGED BY <b>KARHARI MEDIA</b></span>
+            <span class="divider">|</span>
+            <span>🌐 www.karharimedia.com</span>
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+    <script>
+        gsap.registerPlugin(MotionPathPlugin);
+
+        /* =========================================================
+           0. BACKGROUND PARTICLES (ambient drifting dust)
+        ========================================================= */
+        function createBgParticles(container, count) {
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'p';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                container.appendChild(p);
+                gsap.to(p, {
+                    y: (Math.random() - 0.5) * 200,
+                    x: (Math.random() - 0.5) * 200,
+                    opacity: Math.random() * 0.5 + 0.1,
+                    duration: 6 + Math.random() * 6,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+        }
+        createBgParticles(document.getElementById('bgParticles'), 40);
+
+        /* =========================================================
+           1. SHIELD INTERNAL GLOW PARTICLES (rising sparks)
+        ========================================================= */
+        function createShieldParticles(container, count) {
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 3 + 1.5;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = 60 + Math.random() * 40 + '%';
+                container.appendChild(p);
+                gsap.to(p, {
+                    y: -140 - Math.random() * 100,
+                    x: (Math.random() - 0.5) * 70,
+                    opacity: 0,
+                    duration: 3 + Math.random() * 3,
+                    repeat: -1,
+                    delay: Math.random() * 4,
+                    ease: 'sine.out',
+                    onRepeat() { gsap.set(p, { opacity: 1, y: 0, left: Math.random() * 100 + '%' }); }
+                });
+            }
+        }
+        createShieldParticles(document.getElementById('shieldParticles'), 22);
+
+        /* =========================================================
+           2. INTRO TIMELINE
+        ========================================================= */
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.from('.brand', { y: -30, opacity: 0, duration: 0.7 })
+            .from('.headline', { y: 30, opacity: 0, duration: 0.7 }, '-=0.35')
+            .from('.desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4')
+            .from('.feature-item', { y: 20, opacity: 0, stagger: 0.12, duration: 0.5 }, '-=0.3')
+            .from('.center-label', { opacity: 0, y: -15, duration: 0.5 }, '-=0.6')
+            .from('.shield-stage', { opacity: 0, scale: 0.85, duration: 0.9 }, '-=0.35')
+            .from('.platform-node', { opacity: 0, scale: 0.3, stagger: 0.12, duration: 0.5 }, '-=0.5')
+            .from('.global-coverage', { opacity: 0, y: 15, duration: 0.5 }, '-=0.2')
+            .from('.right-heading', { opacity: 0, x: 30, duration: 0.6 }, '-=1.1')
+            .from('.logo-item', { opacity: 0, y: 20, stagger: 0.1, duration: 0.5 }, '-=0.5')
+            .from('.why-choose', { opacity: 0, y: 25, duration: 0.6 }, '-=0.3')
+            .from('.bottom-panels .glass-panel', { opacity: 0, y: 35, stagger: 0.15, duration: 0.7 }, '-=0.2')
+            .from('.bottom-bar', { opacity: 0, duration: 0.5 }, '-=0.2');
+
+        /* =========================================================
+           3. FLOATING FEATURE ICONS
+        ========================================================= */
+        gsap.to('.feature-item .icon-circle', {
+            y: -8, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut',
+            stagger: { each: 0.3, from: 'random' }
+        });
+
+        /* =========================================================
+           4. SHIELD BREATHING GLOW + FLOAT
+        ========================================================= */
+        gsap.to('.shield-glow', {
+            scale: 1.12, opacity: 0.55, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut'
+        });
+        gsap.to('.shield-core', {
+            y: -8, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+        });
+        gsap.to('.lock-badge', {
+            y: -6, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut'
+        });
+        gsap.to('.light-beam', {
+            opacity: 0.55, scaleY: 1.05, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut'
+        });
+
+        /* =========================================================
+           5. ROTATING HALO RINGS
+        ========================================================= */
+        gsap.to('.ring-1', { rotate: 360, duration: 22, repeat: -1, ease: 'none' });
+        gsap.to('.ring-2', { rotate: -360, duration: 16, repeat: -1, ease: 'none' });
+        gsap.to('.ring-3', { rotate: 360, duration: 28, repeat: -1, ease: 'none' });
+
+        /* =========================================================
+           5b. PEDESTAL — gentle 3D breathing glow on each tier
+        ========================================================= */
+        gsap.to('.ped-top.t1', { filter: 'brightness(1.15)', duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.ped-top.t2', { filter: 'brightness(1.15)', duration: 2.1, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.2 });
+        gsap.to('.ped-top.t3', { filter: 'brightness(1.2)', duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.4 });
+        gsap.to('.ped-glow', { scale: 1.3, opacity: 0.7, duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.ped-reflection', { opacity: 0.85, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+        /* =========================================================
+           6. FLOATING NODES + MUSIC NOTES
+        ========================================================= */
+        gsap.utils.toArray('.platform-node').forEach((node, i) => {
+            gsap.to(node, {
+                y: '+=10', duration: 2 + i * 0.3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+            });
+        });
+        gsap.utils.toArray('.note').forEach((n, i) => {
+            gsap.to(n, {
+                y: -20, opacity: 0.15, duration: 2.5 + i * 0.4, repeat: -1, yoyo: true, ease: 'sine.inOut'
+            });
+        });
+
+        /* =========================================================
+           7. ANIMATED DATA FLOW — TRAVELING PULSES ON PATHS
+        ========================================================= */
+        document.querySelectorAll('.pulse-dot').forEach((dot, i) => {
+            const pathEl = document.querySelector('#path' + (i + 1));
+            gsap.to(dot, {
+                motionPath: {
+                    path: pathEl,
+                    align: pathEl,
+                    alignOrigin: [0.5, 0.5]
+                },
+                duration: 2.2,
+                repeat: -1,
+                ease: 'power1.inOut',
+                delay: i * 0.5
+            });
+        });
+
+        /* =========================================================
+           8. COUNTING STATISTICS (on scroll into view)
+        ========================================================= */
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const counted = new Set();
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counted.has(entry.target)) {
+                    counted.add(entry.target);
+                    const target = parseFloat(entry.target.dataset.count);
+                    const suffix = entry.target.dataset.suffix || '';
+                    const obj = { val: 0 };
+                    gsap.to(obj, {
+                        val: target,
+                        duration: 2,
+                        ease: 'power2.out',
+                        onUpdate: () => {
+                            entry.target.textContent = Math.floor(obj.val) + suffix;
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        statNumbers.forEach(el => statObserver.observe(el));
+
+        /* =========================================================
+           9. HOVER INTERACTIONS
+        ========================================================= */
+        document.querySelectorAll('.glass-panel, .platform-node, .logo-item, .feature-item, .who-item, .how-step')
+            .forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    gsap.to(el, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+                });
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(el, { scale: 1, duration: 0.3, ease: 'power2.out' });
+                });
+            });
+
+        /* =========================================================
+           10. SOFT PARALLAX ON MOUSE MOVE
+        ========================================================= */
+        const heroSection = document.querySelector('.hero');
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+            gsap.to('.shield-core', {
+                x: x * 6,
+                y: y * 6,
+                duration: 1,
+                ease: 'power2.out'
+            });
+            gsap.to('.col-left', { x: x * 8, duration: 1, ease: 'power2.out' });
+            gsap.to('.col-right', { x: x * -8, duration: 1, ease: 'power2.out' });
+            gsap.to('.bg-glow-1', { x: x * 20, y: y * 20, duration: 1.2, ease: 'power2.out' });
+            gsap.to('.bg-glow-2', { x: x * -20, y: y * -20, duration: 1.2, ease: 'power2.out' });
+        });
+    </script>
+</body>
+
+</html>
