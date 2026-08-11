@@ -10,10 +10,12 @@ import SectionKm7 from "./components/SectionKm7";
 import SectionKm8 from "./components/SectionKm8";
 import SectionKm9 from "./components/SectionKm9";
 import SectionKm10 from "./components/SectionKm10";
+import ScrollTriggerInit from "./components/ScrollTriggerInit";
 
 export default function Home() {
   return (
     <>
+      <ScrollTriggerInit />
       <Navbar />
       <Hero />
       <AllPlatforms />
