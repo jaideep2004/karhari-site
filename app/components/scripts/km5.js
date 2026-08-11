@@ -175,7 +175,7 @@ export function runKm5(gsap, ScrollTrigger, MotionPathPlugin) {
 
                 /* ============================================================ INTRO TIMELINE ============================================================ */
                 ((__kmF) => {
-  if (document.readyState === 'complete') { window.addEventListener('load', __kmF); } else { __kmF(); }
+  if (document.readyState !== 'complete') { window.addEventListener('load', __kmF); } else { __kmF(); }
 })(() => {
                     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
                     tl.from(".km5-section .sidebar", { x: -40, opacity: 0, duration: .7 })

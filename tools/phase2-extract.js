@@ -392,13 +392,15 @@ function writeScript(name, body) {
 function guardDeferredEvents(code) {
   const rules = [
     {
+      // register while the page is still parsing; run immediately once DCL has fired
       event: 'DOMContentLoaded',
       readyCheck: "document.readyState === 'loading'",
       register: "document.addEventListener('DOMContentLoaded', __kmF)",
     },
     {
+      // register until the page is fully loaded; run immediately once 'load' has fired
       event: 'load',
-      readyCheck: "document.readyState === 'complete'",
+      readyCheck: "document.readyState !== 'complete'",
       register: "window.addEventListener('load', __kmF)",
     },
   ];
