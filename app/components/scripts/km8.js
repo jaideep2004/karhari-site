@@ -324,7 +324,9 @@ export function runKm8(gsap, ScrollTrigger, MotionPathPlugin) {
                 }
 
                 /* ============ RUN INIT ON ALL NODES ============ */
-                window.addEventListener('load', () => {
+                ((__kmF) => {
+  if (document.readyState === 'complete') { window.addEventListener('load', __kmF); } else { __kmF(); }
+})(() => {
                     document.querySelectorAll('.km8-section .step-card').forEach(initCard);
                     document.querySelectorAll('.km8-section .flow-link').forEach(initArrow);
 

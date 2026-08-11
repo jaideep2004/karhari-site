@@ -375,9 +375,114 @@ function writeScript(name, body) {
   const wrapped =
     '/* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */\n' +
     'export function ' + fn + '(gsap, ScrollTrigger, MotionPathPlugin) {\n' +
-    body + '\n' +
+    guardDeferredEvents(body) + '\n' +
     '}\n';
   write('app/components/scripts/' + name + '.js', wrapped);
+}
+
+// ------------------------------------------------------------------ event guard
+// Legacy scripts register their entrance animations on `DOMContentLoaded` /
+// `window load`. In the migrated app they run inside React effects — i.e.
+// AFTER DOMContentLoaded (and often after `load`) has already fired — so the
+// callbacks would never execute (sections would stay stuck at opacity 0).
+// Rewrite `document.addEventListener('DOMContentLoaded', () => {BODY});` into
+// `((f) => { if (READY) f(); else document.addEventListener('DOMContentLoaded', f); })(() => {BODY});`
+// so the body runs immediately when the event already fired, and registers
+// normally otherwise (preserving original timing when it has not).
+function guardDeferredEvents(code) {
+  const rules = [
+    {
+      event: 'DOMContentLoaded',
+      readyCheck: "document.readyState === 'loading'",
+      register: "document.addEventListener('DOMContentLoaded', __kmF)",
+    },
+    {
+      event: 'load',
+      readyCheck: "document.readyState === 'complete'",
+      register: "window.addEventListener('load', __kmF)",
+    },
+  ];
+  let out = code;
+  for (const rule of rules) out = rewriteRegistrations(out, rule);
+  return out;
+}
+
+// Match a JS block whose braces may contain strings ('..', ".."), template
+// literals (`..` incl. ${} interpolations), and comments. Returns the index of
+// the brace matching the one at openIdx.
+function matchBrace(code, openIdx) {
+  let i = openIdx, depth = 0, state = 'code', quote = '';
+  const stack = [];
+  while (i < code.length) {
+    const ch = code[i];
+    if (state === 'line') {
+      if (ch === '\n') state = 'code';
+    } else if (state === 'block') {
+      if (ch === '*' && code[i + 1] === '/') { state = 'code'; i++; }
+    } else if (state === 'str') {
+      if (ch === '\\') i++;
+      else if (ch === quote) state = 'code';
+    } else if (state === 'tpl') {
+      if (ch === '\\') i++;
+      else if (ch === '`') state = stack.pop() || 'code';
+      else if (ch === '$' && code[i + 1] === '{') { stack.push('tpl'); state = 'code'; i++; }
+    } else {
+      if (ch === '/' && code[i + 1] === '/') state = 'line';
+      else if (ch === '/' && code[i + 1] === '*') state = 'block';
+      else if (ch === '"' || ch === "'") { quote = ch; state = 'str'; }
+      else if (ch === '`') state = 'tpl';
+      else if (ch === '{') depth++;
+      else if (ch === '}') {
+        if (stack.length) state = stack.pop();
+        else { depth--; if (depth === 0) return i; }
+      }
+    }
+    i++;
+  }
+  throw new Error('unbalanced braces in script segment');
+}
+
+function rewriteRegistrations(code, rule) {
+  const n1 = "addEventListener('" + rule.event + "'";
+  const n2 = 'addEventListener("' + rule.event + '"';
+  let out = '';
+  let cursor = 0;
+  for (;;) {
+    const i1 = code.indexOf(n1, cursor);
+    const i2 = code.indexOf(n2, cursor);
+    let idx = -1, consumed = 0;
+    if (i1 === -1 && i2 === -1) { out += code.slice(cursor); return out; }
+    if (i1 === -1) { idx = i2; consumed = n2.length; }
+    else if (i2 === -1) { idx = i1; consumed = n1.length; }
+    else if (i1 < i2) { idx = i1; consumed = n1.length; }
+    else { idx = i2; consumed = n2.length; }
+    out += code.slice(cursor, idx);
+    const pre = code.slice(0, idx);
+    const host = /(document|window)\.$/.exec(pre.trim());
+    if (!host) { out += code.slice(idx, idx + 1); cursor = idx + 1; continue; }
+    out = out.slice(0, out.length - (host[1].length + 1)); // drop the "document."/"window." prefix
+    const rest = code.slice(idx + consumed);
+    const m = /^\s*,\s*((?:\(\s*\)\s*=>)|(?:function\s*\(\s*\)))\s*\{/.exec(rest);
+    if (!m) {
+      const ref = /^\s*,\s*[A-Za-z_$][\w$]*\s*\)/.exec(rest);
+      if (ref) { out += host[1] + '.' + code.slice(idx, idx + consumed) + ref[0]; cursor = idx + consumed + ref[0].length; continue; }
+      out += code.slice(idx, idx + 1); cursor = idx + 1; continue;
+    }
+    const sig = m[1];
+    const openIdx = idx + consumed + m[0].indexOf('{');
+    const closeIdx = matchBrace(code, openIdx);
+    let k = closeIdx + 1;
+    while (k < code.length && /\s/.test(code[k])) k++;
+    const semi = code[k] === ';' ? 1 : 0;
+    if (code[k] !== ')') throw new Error('expected ")" after callback for ' + rule.event);
+    const body = code.slice(openIdx + 1, closeIdx);
+    const replacement =
+      '((__kmF) => {\n' +
+      '  if (' + rule.readyCheck + ') { ' + rule.register + '; } else { __kmF(); }\n' +
+      '})(' + sig + ' {' + body + '})';
+    out += replacement;
+    cursor = closeIdx + 2 + semi; // skip the original ")" (and optional ";")
+  }
 }
 
 // ------------------------------------------------------------------ write

@@ -3,7 +3,9 @@ export function runKm6(gsap, ScrollTrigger, MotionPathPlugin) {
 (function () {
             try {
 
-                document.addEventListener('DOMContentLoaded', () => {
+                ((__kmF) => {
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', __kmF); } else { __kmF(); }
+})(() => {
 
                     /* Build mini waveform bars */
                     const miniWave = document.getElementById('km6-miniWave');

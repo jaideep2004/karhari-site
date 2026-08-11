@@ -174,7 +174,9 @@ export function runKm5(gsap, ScrollTrigger, MotionPathPlugin) {
                 })();
 
                 /* ============================================================ INTRO TIMELINE ============================================================ */
-                window.addEventListener("load", () => {
+                ((__kmF) => {
+  if (document.readyState === 'complete') { window.addEventListener('load', __kmF); } else { __kmF(); }
+})(() => {
                     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
                     tl.from(".km5-section .sidebar", { x: -40, opacity: 0, duration: .7 })
                         .to(["#km5-workflowCard", "#km5-overviewCard", "#km5-releasesCard"], { opacity: 1, duration: .6, stagger: .15 }, "-=.4")

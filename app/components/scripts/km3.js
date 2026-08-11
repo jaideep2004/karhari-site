@@ -3,7 +3,9 @@ export function runKm3(gsap, ScrollTrigger, MotionPathPlugin) {
 (function () {
             try {
 
-                document.addEventListener('DOMContentLoaded', () => {
+                ((__kmF) => {
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', __kmF); } else { __kmF(); }
+})(() => {
 
                     /* ---------- Build bar chart bars ---------- */
                     const barChart = document.getElementById('km3-barChart');

@@ -3,7 +3,9 @@ export function runKm4(gsap, ScrollTrigger, MotionPathPlugin) {
 (function () {
             try {
 
-                document.addEventListener('DOMContentLoaded', () => {
+                ((__kmF) => {
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', __kmF); } else { __kmF(); }
+})(() => {
 
                     /* Build waveform bars */
                     const waveEl = document.getElementById('km4-waveformEl');
