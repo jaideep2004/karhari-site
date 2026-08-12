@@ -9,7 +9,8 @@ import SectionKm5 from "./components/SectionKm5";
 import SectionKm7 from "./components/SectionKm7";
 import SectionKm8 from "./components/SectionKm8";
 import SectionKm9 from "./components/SectionKm9";
-import SectionKm10 from "./components/SectionKm10";
+import SectionKm10Music from "./components/SectionKm10Music";
+import SectionKm10Ent from "./components/SectionKm10Ent";
 import ScrollTriggerInit from "./components/ScrollTriggerInit";
 
 export default function Home() {
@@ -27,7 +28,8 @@ export default function Home() {
       <SectionKm7 />
       <SectionKm8 />
       <SectionKm9 />
-      <SectionKm10 />
+      <SectionKm10Music />
+      <SectionKm10Ent />
     </>
   );
 }
