@@ -32,7 +32,7 @@ export default function SectionKm10() {
 								<div>
 									<span className='c-white'>ENTERTAINMENT &amp;</span>{" "}
 									<span className='g-gold'>MUSIC</span>
-									<span className='g-blue'>CMS</span>
+									<span className='g-blue'>CMS.</span>
 								</div>
 								<div>
 									<span className='c-white'>MULTI CHANNEL</span>{" "}
