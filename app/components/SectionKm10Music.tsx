@@ -35,9 +35,11 @@ export default function SectionKm10Music() {
               <div className="solutions-grid" id="km10m-solutionsGrid"></div>
             </div>
           </div>
+
           <div className="main-grid">
             <div className="features-col" id="km10m-featuresCol"></div>
-            <div className="orbit-col">
+
+            <div className="center-col">
               <div className="orbit-wrap" id="km10m-orbitWrap">
                 <svg className="orbit-svg" id="km10m-orbitSvg"></svg>
                 <div className="orbit-center">
@@ -46,7 +48,13 @@ export default function SectionKm10Music() {
                   </div>
                 </div>
               </div>
+
+              <div className="how-section reveal">
+                <div className="how-pill-header">HOW IT WORKS</div>
+                <div className="steps-row" id="km10m-stepsRow"></div>
+              </div>
             </div>
+
             <div className="network-col">
               <div className="net-card reveal">
                 <h3>OUR NETWORK. <span className="g-gold">THEIR SUCCESS.</span></h3>
@@ -76,13 +84,6 @@ export default function SectionKm10Music() {
                 <div className="logo-tagline">YOUR CONTENT. OUR TECHNOLOGY. LIMITLESS GROWTH.</div>
               </div>
             </div>
-          </div>
-          <div className="how-section reveal">
-            <h2>HOW IT WORKS</h2>
-            <div className="steps-row" id="km10m-stepsRow"></div>
-          </div>
-          <div className="footer-bar reveal">
-            <div className="footer-icons" id="km10m-footerIcons"></div>
           </div>
         </div>
       </section>

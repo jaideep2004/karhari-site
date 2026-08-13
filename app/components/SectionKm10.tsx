@@ -93,7 +93,7 @@ export default function SectionKm10() {
 						<h2>HOW IT WORKS</h2>
 						<div className='steps-row' id='km10-stepsRow'></div>
 					</div>
-					<div className='footer-bar reveal'>
+					{/* <div className='footer-bar reveal'>
 						<div className='footer-icons' id='km10-footerIcons'></div>
 						<div className='footer-logo'>
 							<div className='logo-block'>
@@ -118,7 +118,7 @@ export default function SectionKm10() {
 								YOUR CONTENT. YOUR TECHNOLOGY. LIMITLESS GROWTH.
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</section>
 		</div>

@@ -33,16 +33,7 @@
                     linear-gradient(180deg, #040711 0%, #05080f 45%, #04060c 100%);
             }
 
-            .royalty-section::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
-                background-size: 44px 44px;
-                mask-image: radial-gradient(ellipse 90% 55% at 50% 15%, black 20%, transparent 90%);
-                pointer-events: none;
-            }
+
 
             /* ===== HEADER ===== */
             .header-wrap {
@@ -55,7 +46,7 @@
             }
 
             .main-title {
-                font-size: clamp(30px, 5vw, 56px);
+                font-size: clamp(30px, 4vw, 50px);
                 font-weight: 900;
                 text-transform: uppercase;
                 letter-spacing: 1px;

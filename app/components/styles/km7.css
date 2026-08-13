@@ -1,30 +1,7 @@
 /* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */
 @scope (.km7-section) {
-
-            * {
-                box-sizing: border-box;
-            }
-
-
-            .cid-wrapper {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 28px;
-                max-width: 1350px;
-                margin: 0 auto;
-                padding: 90px 0 0;
-                background: radial-gradient(ellipse 900px 550px at 50% 20%, #0c0c14, #000 72%);
-            }
-
-            @media(max-width:1020px) {
-                .cid-wrapper {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            /* ============ THEME VARIABLES ============ */
-            .theme-red {
-                --accent: #ff3232;
+            :scope {
+                --accent: #ff2d2d;
                 --accent-bright: #ff6b6b;
                 --accent-light: #ffb0b0;
                 --accent-dark: #6e0808;
@@ -1346,6 +1323,19 @@
             }
 
             .cid-wrapper {
+                max-width: 1350px;
+                margin: 0 auto;
+                /* padding: 0 24px; */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px 24px;
                 background: transparent !important;
+            }
+
+            @media(max-width:1200px) {
+                .cid-wrapper {
+                    grid-template-columns: 1fr;
+                    max-width: 720px;
+                }
             }
         
