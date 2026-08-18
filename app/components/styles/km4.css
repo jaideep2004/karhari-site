@@ -15,6 +15,9 @@
 
             }
 
+            :scope {
+            }
+
             * {
                 box-sizing: border-box;
             }
@@ -31,7 +34,8 @@
             .cid-section {
                 position: relative;
                 width: 100%;
-                padding: 90px 0 0;
+                padding: 45px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                 background:
                     radial-gradient(ellipse 700px 500px at 50% 65%, rgba(180, 10, 25, .22), transparent 65%),
                     radial-gradient(ellipse 500px 300px at 85% 15%, rgba(120, 5, 20, .18), transparent 60%),

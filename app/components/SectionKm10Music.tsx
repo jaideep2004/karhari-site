@@ -10,7 +10,7 @@ export default function SectionKm10Music() {
   useGsapSection(runKm10Music, ref);
 
   return (
-    <div className="km10-music-section" ref={ref}>
+    <div id="music-cms" className="km10-music-section" ref={ref}>
       <section className="karhari">
         <div className="hero-backdrop">
           <span className="hb-1"></span>

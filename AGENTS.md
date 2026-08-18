@@ -13,7 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Key decisions
 - Section CSS stays as native `@scope` per-component files, NOT CSS Modules — the legacy scripts query class names directly (200+ selectors) and @scope isolates the ~34 cross-section collisions.
 - `reactStrictMode: false` (legacy scripts append DOM + infinite tweens; double effects would duplicate content).
-- `output: 'export'` — `next build` emits `./out` (pure static, no `next start`). Serve `out/` with `tools/static-server.js out <port>` for local checks.
+- Server build for **Vercel** (NOT static export anymore): the contact form POSTs to `app/api/contact`, which sends via Gmail SMTP (nodemailer). Env vars (set in `.env.local` + Vercel): `SMTP_USER` (Gmail with App Password), `SMTP_PASS`, optional `SMTP_HOST`/`SMTP_PORT`/`CONTACT_TO`. `next build` emits `.next`; `next start` works locally.
 - Source of truth = `legacy/combined.html`; `tools/phase2-extract.js` regenerates components/CSS/scripts from it. **After re-running, always re-run `tools/remove-dead-rules.js`** (the extractor restores the dead `body/html/:root` rules inside @scope blocks).
 - The extractor now applies an **event guard** to legacy scripts: `document.addEventListener('DOMContentLoaded', () => {...})` and `window.addEventListener('load', ...)` registrations are rewritten to run immediately when the event already fired (scripts run in React effects, after DCL). Scripts still say "do not hand-edit" — the guard is applied by the extractor.
 - Dev on port 3100 — **port 3000 is occupied by the user's SEUM project**.

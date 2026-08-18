@@ -30,6 +30,9 @@
         --radius-sm: 10px;
     }
 
+    :scope {
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -64,8 +67,8 @@
             radial-gradient(ellipse 800px 500px at 20% 80%, rgba(160, 107, 255, 0.12), transparent 60%),
             linear-gradient(180deg, #030408 0%, #080a14 25%, #060710 70%, #030408 100%);
         overflow: hidden;
-        padding: 60px 0 50px;
-        border: none;
+        padding: 45px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .karhari::before {

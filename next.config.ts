@@ -6,10 +6,16 @@ const nextConfig: NextConfig = {
      duplicate page content, so StrictMode stays off (matching the original
      static page's single-run behavior). */
   reactStrictMode: false,
-  /* Pure static export (the original site was a single static HTML page):
-     `next build` writes self-contained output to ./out — deployable on any
-     static host (no Node server required). `next start` is unavailable. */
-  output: "export",
+  /* Server build (Vercel). NOT static export: the contact form POSTs to
+     app/api/contact, which sends email via Gmail SMTP (nodemailer) using
+     SMTP_USER / SMTP_PASS env vars. Deploy on any Node-capable host;
+     `next start` serves the production build locally. */
+  /* The about/contact pages use next/image (including remote Unsplash
+     sources via AppImage). Serve images as-is instead of optimizing them. */
+  images: {
+    unoptimized: true,
+    qualities: [75, 85],
+  },
 };
 
 export default nextConfig;

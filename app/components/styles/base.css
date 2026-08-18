@@ -251,16 +251,17 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 36px;
+            gap: 18px;
         }
 
         .nav-links a {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
             color: var(--text-secondary);
             transition: color 0.3s;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-links a.active,
@@ -277,6 +278,77 @@
             height: 2px;
             background: var(--accent);
             border-radius: 1px;
+        }
+
+        /* Services dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: middle;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid currentColor;
+            opacity: 0.7;
+            transition: transform 0.3s;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            min-width: 230px;
+            list-style: none;
+            background: rgba(10, 10, 24, 0.97);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            border-radius: 10px;
+            padding: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-menu li {
+            border-radius: 7px;
+            transition: background 0.2s;
+        }
+
+        .nav-dropdown-menu li:hover {
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 9px 12px;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-dropdown-menu a.active::after {
+            display: none;
         }
 
         .nav-actions {
@@ -747,6 +819,7 @@
             left: 0;
             z-index: 3;
             transform-style: preserve-3d;
+            transform: rotateX(-15deg);
         }
 
         .orbit-icon {
@@ -898,7 +971,8 @@
         .all-platforms {
             position: relative;
             z-index: 1;
-            padding: 90px 0px 0px;
+            padding: 45px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .platforms-container {
@@ -1060,6 +1134,38 @@
                 bottom: 10px;
             }
 
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                background: transparent;
+                border: none;
+                border-left: 1px solid rgba(255, 215, 0, 0.15);
+                border-radius: 0;
+                box-shadow: none;
+                padding: 0 0 0 14px;
+                margin: 0 0 4px;
+            }
+
+            .nav-dropdown:hover .nav-dropdown-menu {
+                transform: none;
+            }
+
+            .nav-dropdown-menu li:hover {
+                background: transparent;
+            }
+
+            .nav-dropdown-menu a {
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                font-size: 13px;
+            }
+
+            .nav-dropdown-menu li:last-child a {
+                border-bottom: none;
+            }
+
             .hero {
                 height: auto;
                 min-height: 100svh;
@@ -1110,7 +1216,7 @@
             }
 
             .all-platforms {
-                padding: clamp(64px, 8vh, 90px) 0 0;
+                padding: 45px 0;
             }
         }
 

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="gloss" cx="35%" cy="25%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#E8000D" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="roundedClip">
+      <rect x="0" y="0" width="200" height="200" rx="44" ry="44"/>
+    </clipPath>
+  </defs>
+  <!-- Red background with rounded corners -->
+  <rect x="0" y="0" width="200" height="200" rx="44" ry="44" fill="#E8000D"/>
+  <!-- Gloss overlay -->
+  <rect x="0" y="0" width="200" height="200" rx="44" ry="44" fill="url(#gloss)"/>
+  <!-- White "g" lettermark -->
+  <text
+    x="100"
+    y="118"
+    font-family="Arial Rounded MT Bold, Arial, sans-serif"
+    font-size="96"
+    font-weight="900"
+    font-style="italic"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="auto">g</text>
+  <!-- "gaana" text below -->
+  <text
+    x="100"
+    y="168"
+    font-family="Arial Rounded MT Bold, Arial, sans-serif"
+    font-size="30"
+    font-weight="700"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="auto">gaana</text>
+</svg>

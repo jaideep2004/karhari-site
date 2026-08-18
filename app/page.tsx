@@ -1,35 +1,25 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import AllPlatforms from "./components/AllPlatforms";
-import SectionKm2 from "./components/SectionKm2";
-import SectionKm3 from "./components/SectionKm3";
-import SectionKm4 from "./components/SectionKm4";
-import SectionKm6 from "./components/SectionKm6";
-import SectionKm5 from "./components/SectionKm5";
-import SectionKm7 from "./components/SectionKm7";
-import SectionKm8 from "./components/SectionKm8";
-import SectionKm9 from "./components/SectionKm9";
+import HeroSection from "./components/rocket/HeroSection";
 import SectionKm10Music from "./components/SectionKm10Music";
+import AllPlatformsSection from "./components/distribution/AllPlatformsSection";
+import SectionKm4 from "./components/SectionKm4";
+import RoyaltyReportingSection from "./components/royalty/RoyaltyReportingSection";
 import SectionKm10Ent from "./components/SectionKm10Ent";
+import SectionKm9 from "./components/SectionKm9";
+import SectionKm7 from "./components/SectionKm7";
 import ScrollTriggerInit from "./components/ScrollTriggerInit";
 
 export default function Home() {
   return (
     <>
       <ScrollTriggerInit />
-      <Navbar />
-      <Hero />
-      <AllPlatforms />
-      <SectionKm2 />
-      <SectionKm3 />
-      <SectionKm4 />
-      <SectionKm6 />
-      <SectionKm5 />
-      <SectionKm7 />
-      <SectionKm8 />
-      <SectionKm9 />
+      <HeroSection />
       <SectionKm10Music />
+      <AllPlatformsSection />
+      <SectionKm4 />
+      <RoyaltyReportingSection />
       <SectionKm10Ent />
+      <SectionKm9 />
+      <SectionKm7 />
     </>
   );
 }

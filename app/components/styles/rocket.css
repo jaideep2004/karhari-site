@@ -1,0 +1,363 @@
+/* ─────────────────────────────────────────────────────────────
+   rocket.new — Karhari Media theme (imported from the client's
+   karharimedia project, src/styles/tailwind.css).
+
+   Adapted for this app:
+   • body-level rules (background / color / font-family) from the
+     source were scoped to .km-rocket-hero / .km-rocket-footer so
+     the legacy site's global styles are NOT changed. Everything
+     else (tokens, utilities, keyframes) is verbatim.
+   ───────────────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0d0b1e;
+  --foreground: #ffffff;
+  --primary: #00e5ff;
+  --primary-foreground: #0d0b1e;
+  --secondary: #13102a;
+  --secondary-foreground: #ffffff;
+  --accent: #a855f7;
+  --accent-foreground: #ffffff;
+  --muted: #1a1630;
+  --muted-foreground: #8892a4;
+  --card: #100e22;
+  --card-foreground: #ffffff;
+  --border: #1e1a38;
+  --input: #13102a;
+  --ring: #00e5ff;
+  --radius: 0.5rem;
+  --font-plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+  /* Source set these on body; scoped so the legacy design is untouched. */
+  .km-rocket-hero,
+  .km-rocket-footer {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  /* Vinyl spin animation */
+  .vinyl-spin {
+    animation: vinylSpin 8s linear infinite;
+  }
+
+  /* Orbit spin - platform icons rotate around the disc */
+  .orbit-spin {
+    animation: orbitSpin 18s linear infinite;
+  }
+
+  /* Counter-rotate icons so they stay upright */
+  .icon-counter-rotate {
+    animation: iconCounterRotate 18s linear infinite;
+  }
+
+  /* Glow ring pulse */
+  .glow-ring-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .glow-ring-pulse-slow {
+    animation: glowPulse 4.5s ease-in-out infinite 1.5s;
+  }
+
+  /* Floating particle */
+  .particle-float {
+    animation: particleFloat 6s ease-in-out infinite;
+  }
+
+  .particle-float-2 {
+    animation: particleFloat 8s ease-in-out infinite 2s;
+  }
+
+  .particle-float-3 {
+    animation: particleFloat 5s ease-in-out infinite 4s;
+  }
+
+  /* Eyebrow dot pulse */
+  .dot-pulse {
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+
+  /* Shimmer on primary button */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: btnShimmer 3s ease-in-out infinite 1s;
+  }
+
+  /* Text fade-in stagger */
+  .fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .fade-in-up-delay-1 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  }
+  .fade-in-up-delay-2 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  }
+  .fade-in-up-delay-3 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+  }
+  .fade-in-up-delay-4 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+  }
+  .fade-in-up-delay-5 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
+  }
+
+  .hero-right-reveal {
+    opacity: 0;
+    animation: heroRightReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+
+  /* Nav underline active */
+  .nav-active {
+    position: relative;
+  }
+  .nav-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--foreground);
+    border-radius: 1px;
+  }
+
+  /* Grain texture overlay */
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Star particle */
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+  }
+}
+
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes iconCounterRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 20px 4px rgba(168,85,247,0.3); }
+  50% { opacity: 1; box-shadow: 0 0 40px 10px rgba(168,85,247,0.6); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+  33% { transform: translateY(-12px) translateX(6px); opacity: 0.8; }
+  66% { transform: translateY(-6px) translateX(-4px); opacity: 0.6; }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+@keyframes btnShimmer {
+  0% { left: -100%; }
+  50%, 100% { left: 150%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroRightReveal {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes outerRingRotate {
+  from { transform: rotate(-15deg); }
+  to { transform: rotate(345deg); }
+}
+
+@keyframes innerRingGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+@keyframes cardPulse {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(0,229,255,0.08), 0 0 80px rgba(168,85,247,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
+    border-color: rgba(0,229,255,0.22);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(0,229,255,0.14), 0 0 100px rgba(168,85,247,0.1), inset 0 1px 0 rgba(255,255,255,0.08);
+    border-color: rgba(0,229,255,0.38);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE SECTIONS (distribution / royalty / team) — imported
+   from the client's karhari projects. Keyframes + custom utility
+   classes kept verbatim; scoped so the legacy design is untouched.
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Music distribution (karhari_media_distribution) ── */
+@keyframes platformScrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes platformScrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* ── Royalty reporting & payout (pipeline/analytics) ── */
+.km-royalty {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+@keyframes pipe-scan-h {
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(210%); }
+}
+@keyframes pipe-scan-v {
+  0%   { transform: translateY(-110%); }
+  100% { transform: translateY(210%); }
+}
+@keyframes pipe-global-scan {
+  0%   { transform: translateY(-100vh); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 0.6; }
+  100% { transform: translateY(200vh); opacity: 0; }
+}
+@keyframes pipe-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+@keyframes pipe-card-appear {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.93); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes pipe-store-pop {
+  0%   { opacity: 0; transform: scale(0.4); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes fp-draw {
+  0%   { stroke-dashoffset: 100; opacity: 0.2; }
+  50%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: -100; opacity: 0.2; }
+}
+@keyframes fp-scan {
+  0%   { top: 4px; opacity: 0.9; }
+  50%  { top: calc(100% - 6px); opacity: 1; }
+  100% { top: 4px; opacity: 0.9; }
+}
+@keyframes fp-center-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.4); }
+}
+@keyframes km-ring-cw  { to { transform: rotate(360deg); } }
+@keyframes km-ring-ccw { to { transform: rotate(-360deg); } }
+
+/* ── Hero section spacing & divider ── */
+.km-rocket-hero {
+  padding: 45px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Our Team (karhari_media_team_page) ── */
+.km-team-section {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Fraunces', serif;
+  background: linear-gradient(180deg, #050008 0%, #07000e 25%, #060010 60%, #04000c 100%);
+  padding: 45px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.km-team-section .font-display {
+  font-family: var(--font-display);
+}
+.km-team-section .spin-ring {
+  animation: spinRing 3s linear infinite;
+}
+.km-team-section .spin-ring-reverse {
+  animation: spinRingReverse 4s linear infinite;
+}
+.km-team-section .pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+.km-team-section .viz-bar-1 { animation: vizBar1 1.2s ease-in-out infinite; }
+.km-team-section .viz-bar-2 { animation: vizBar2 0.9s ease-in-out infinite; }
+.km-team-section .viz-bar-3 { animation: vizBar3 1.5s ease-in-out infinite; }
+.km-team-section .viz-bar-4 { animation: vizBar4 1.1s ease-in-out infinite; }
+.km-team-section .viz-bar-5 { animation: vizBar5 0.8s ease-in-out infinite; }
+.km-team-section .viz-bar-6 { animation: vizBar6 1.3s ease-in-out infinite; }
+.km-team-section .viz-bar-7 { animation: vizBar7 1.0s ease-in-out infinite; }
+.km-team-section .viz-bar-8 { animation: vizBar8 1.4s ease-in-out infinite; }
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spinRingReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes vizBar1 { 0%,100%{height:20%} 50%{height:80%} }
+@keyframes vizBar2 { 0%,100%{height:40%} 30%{height:90%} 70%{height:30%} }
+@keyframes vizBar3 { 0%,100%{height:60%} 40%{height:20%} 80%{height:100%} }
+@keyframes vizBar4 { 0%,100%{height:30%} 20%{height:70%} 60%{height:50%} }
+@keyframes vizBar5 { 0%,100%{height:50%} 35%{height:100%} 65%{height:25%} }
+@keyframes vizBar6 { 0%,100%{height:70%} 45%{height:30%} 75%{height:85%} }
+@keyframes vizBar7 { 0%,100%{height:25%} 55%{height:75%} }
+@keyframes vizBar8 { 0%,100%{height:55%} 25%{height:15%} 75%{height:95%} }

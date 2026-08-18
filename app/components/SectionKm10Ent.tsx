@@ -10,7 +10,7 @@ export default function SectionKm10Ent() {
   useGsapSection(runKm10Ent, ref);
 
   return (
-    <div className="km10-ent-section" ref={ref}>
+    <div id="entertainment-cms" className="km10-ent-section" ref={ref}>
       <section className="karhari">
         <div className="hero-backdrop">
           <span className="hb-1"></span>

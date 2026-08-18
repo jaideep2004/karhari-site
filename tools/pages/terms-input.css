@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.km-terms-page {
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --primary: #CCFF00;
+  --primary-foreground: #0A0A0A;
+  --secondary: #141414;
+  --secondary-foreground: #FFFFFF;
+  --accent: #1A6BFF;
+  --accent-foreground: #FFFFFF;
+  --muted: #1C1C1C;
+  --muted-foreground: #888888;
+  --card: #111111;
+  --card-foreground: #FFFFFF;
+  --border: #222222;
+  --input: #1C1C1C;
+  --ring: #CCFF00;
+  --radius: 0.75rem;
+  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
+}

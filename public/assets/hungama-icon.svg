@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Highlight -->
+    <radialGradient id="hng-bg-highlight" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#333333" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#111111" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Triangle Drop Shadow -->
+    <filter id="hng-drop-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.7" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <!-- Inner Shadow for White Fill -->
+    <filter id="hng-inner-shadow">
+      <feOffset dx="0" dy="4" />
+      <feGaussianBlur stdDeviation="5" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="#000000" flood-opacity="0.15" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+    </filter>
+
+    <!-- Text Shadow -->
+    <filter id="hng-text-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Base Rounded Triangle Path -->
+    <!-- Center: (256, 210), Side: 180, Corner Radius: 24 -->
+    <path id="hng-triangle-path" d="M 240.04 140.79 L 323.92 189.21 A 24 24 0 0 1 323.92 230.79 L 240.04 279.21 A 24 24 0 0 1 204.04 258.43 L 204.04 161.57 A 24 24 0 0 1 240.04 140.79 Z" />
+
+    <!-- Mask for the Colored Border -->
+    <mask id="hng-border-mask">
+      <use href="#hng-triangle-path" fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linejoin="round" />
+    </mask>
+
+    <!-- Gradients for the Colored Edges -->
+    <linearGradient id="hng-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42A5F5" />
+      <stop offset="100%" stop-color="#2196F3" />
+    </linearGradient>
+    
+    <linearGradient id="hng-grad-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6E40" />
+      <stop offset="100%" stop-color="#FF3D00" />
+    </linearGradient>
+    
+    <linearGradient id="hng-grad-green" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#81C784" />
+      <stop offset="100%" stop-color="#4CAF50" />
+    </linearGradient>
+
+    <!-- Glare Sweep Gradient -->
+    <linearGradient id="hng-glare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0">
+        <animate attributeName="offset" values="-0.5; 1.5" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="0.1%" stop-color="#FFFFFF" stop-opacity="0.9">
+        <animate attributeName="offset" values="-0.4; 1.6" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="0.2%" stop-color="#FFFFFF" stop-opacity="0">
+        <animate attributeName="offset" values="-0.3; 1.7" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <style><![CDATA[
+.float-anim {
+        animation: float 6s ease-in-out infinite;
+        transform-origin: 256px 210px;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      .pulse-anim {
+        animation: pulse 4s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+]]></style>
+  </defs>
+
+  <!-- Base Squircle Background -->
+  <rect width="512" height="512" rx="115" fill="#111111" />
+  
+  <!-- Radial Highlight with Pulse -->
+  <rect width="512" height="512" rx="115" fill="url(#hng-bg-highlight)" class="pulse-anim" />
+
+  <!-- Subtle Inner Border for Premium App Icon Feel -->
+  <rect width="510" height="510" x="1" y="1" rx="114" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2" />
+
+  <!-- Ambient Background Particles -->
+  <g opacity="0.6">
+    <circle cx="160" cy="380" r="2.5" fill="#2196F3" opacity="0">
+      <animate attributeName="cy" values="380; 260" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0; 0.5; 0" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="370" cy="290" r="3" fill="#FF3D00" opacity="0">
+      <animate attributeName="cy" values="290; 170" dur="10s" repeatCount="indefinite" begin="2s" />
+      <animate attributeName="opacity" values="0; 0.4; 0" dur="10s" repeatCount="indefinite" begin="2s" />
+    </circle>
+    <circle cx="330" cy="420" r="2" fill="#4CAF50" opacity="0">
+      <animate attributeName="cy" values="420; 300" dur="9s" repeatCount="indefinite" begin="4s" />
+      <animate attributeName="opacity" values="0; 0.6; 0" dur="9s" repeatCount="indefinite" begin="4s" />
+    </circle>
+  </g>
+
+  <!-- Main Floating Content Group -->
+  <g class="float-anim">
+    
+    <!-- Triangle Group with Drop Shadow -->
+    <g filter="url(#hng-drop-shadow)">
+      
+      <!-- White Inner Fill -->
+      <use href="#hng-triangle-path" fill="#FFFFFF" filter="url(#hng-inner-shadow)" />
+
+      <!-- Colored Border (Masked) -->
+      <g mask="url(#hng-border-mask)">
+        <!-- Left Side: Blue -->
+        <polygon points="256,210 100.12,-60 -100,-60 -100,500 100.12,480" fill="url(#hng-grad-blue)" stroke="url(#hng-grad-blue)" stroke-width="1" />
+        
+        <!-- Top-Right Edge: Red/Orange -->
+        <polygon points="256,210 100.12,-60 600,-60 600,210" fill="url(#hng-grad-red)" stroke="url(#hng-grad-red)" stroke-width="1" />
+        
+        <!-- Bottom-Right Edge: Green -->
+        <polygon points="256,210 600,210 600,500 100.12,480" fill="url(#hng-grad-green)" stroke="url(#hng-grad-green)" stroke-width="1" />
+        
+        <!-- Animated Light Sweep over the border -->
+        <rect x="150" y="100" width="250" height="250" fill="url(#hng-glare)" />
+      </g>
+      
+    </g>
+
+    <!-- Text: "hungama" -->
+    <text 
+      x="256" 
+      y="395" 
+      font-family="'Nunito', 'Varela Round', 'Segoe UI Rounded', 'SF Pro Rounded', system-ui, -apple-system, sans-serif" 
+      font-size="44" 
+      font-weight="800" 
+      fill="#FFFFFF" 
+      text-anchor="middle" 
+      letter-spacing="1.5"
+      filter="url(#hng-text-shadow)">
+      hungama
+    </text>
+    
+  </g>
+</svg>

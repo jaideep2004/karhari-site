@@ -1,0 +1,7 @@
+/* Music Distribution page — the pipeline visualization is fully inline-styled
+   (port of the Karhari pipeline reference). This keeps the surrounding page
+   background consistent with the section's dark theme. */
+
+body {
+  background: #020208;
+}

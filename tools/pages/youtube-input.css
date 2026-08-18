@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* YouTube Content ID page — the component carries its own inline <style>
+   block with every yt-* keyframe, so only Tailwind utilities are compiled
+   here plus a page-level background to avoid any white flash. */
+
+body {
+  background-color: #060610;
+}
