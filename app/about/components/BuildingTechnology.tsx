@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -107,7 +107,7 @@ export default function BuildingTechnology() {
         </ScrollReveal>
 
         {/* Main two-column layout */}
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-start">
 
           {/* LEFT COLUMN */}
           <ScrollReveal direction="left">

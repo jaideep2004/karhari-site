@@ -178,7 +178,7 @@ export default function RoyaltyFlowSection() {
   const activeNode = flowNodes[activeStep];
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a0a1a 0%, #0d1020 50%, #0a0a1a 100%)' }}>
+    <section ref={sectionRef} className="py-16 sm:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a0a1a 0%, #0d1020 50%, #0a0a1a 100%)' }}>
       <style>{`
         @keyframes royaltyWave {
           from { height: 8px; }
@@ -213,29 +213,29 @@ export default function RoyaltyFlowSection() {
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(24,119,242,0.08) 0%, transparent 70%)' }} />
 
       {/* Floating orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%)', animation: 'royaltyFloat 6s ease-in-out infinite' }} />
-      <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.06) 0%, transparent 70%)', animation: 'royaltyFloat 8s ease-in-out infinite 2s' }} />
+      <div className="absolute top-20 left-10 w-48 sm:w-64 h-48 sm:h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%)', animation: 'royaltyFloat 6s ease-in-out infinite' }} />
+      <div className="absolute bottom-20 right-10 w-56 sm:w-80 h-56 sm:h-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.06) 0%, transparent 70%)', animation: 'royaltyFloat 8s ease-in-out infinite 2s' }} />
 
       <div className="section-container relative z-10">
         {/* Header */}
-        <div className="text-center mb-16" style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out' }}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5" style={{ background: 'rgba(24,119,242,0.12)', border: '1px solid rgba(24,119,242,0.3)' }}>
+        <div className="text-center mb-10 sm:mb-16" style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 sm:mb-5" style={{ background: 'rgba(24,119,242,0.12)', border: '1px solid rgba(24,119,242,0.3)' }}>
             <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#1877F2', animation: 'royaltyGlow 2s ease-in-out infinite' }} />
             <span style={{ color: '#1877F2', fontSize: '12px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Royalty Payment Flow</span>
           </div>
-          <h2 className="font-black text-white mb-5" style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}>
+          <h2 className="font-black text-white mb-4 sm:mb-5" style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}>
             From stream to
             <br />
             <span style={{ background: 'linear-gradient(135deg, #1877F2, #a78bfa, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>your bank account.</span>
           </h2>
-          <p className="text-lg max-w-[560px] mx-auto" style={{ color: '#8892b0', lineHeight: '1.6' }}>
+          <p className="text-base sm:text-lg max-w-[560px] mx-auto" style={{ color: '#8892b0', lineHeight: '1.6' }}>
             A transparent, automated pipeline that turns every use of your music into real revenue — with full reporting at every step.
           </p>
         </div>
 
         {/* Active step indicator */}
-        <div className="flex justify-center mb-8" style={{ opacity: visible ? 1 : 0, transition: 'all 0.6s ease-out 0.1s' }}>
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full" style={{ background: `${activeNode.glow}`, border: `1px solid ${activeNode.color}50`, transition: 'all 0.4s ease' }}>
+        <div className="flex justify-center mb-6 sm:mb-8" style={{ opacity: visible ? 1 : 0, transition: 'all 0.6s ease-out 0.1s' }}>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: `${activeNode.glow}`, border: `1px solid ${activeNode.color}50`, transition: 'all 0.4s ease' }}>
             <div style={{ width: 8, height: 8, borderRadius: '50%', background: activeNode.color, boxShadow: `0 0 8px ${activeNode.color}`, animation: 'royaltyGlow 1s ease-in-out infinite' }} />
             <span style={{ color: activeNode.color, fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'color 0.4s ease' }}>
               Active: {activeNode.label}
@@ -243,26 +243,25 @@ export default function RoyaltyFlowSection() {
           </div>
         </div>
 
-        {/* Flow nodes — desktop */}
+        {/* Flow nodes — desktop horizontal, mobile vertical */}
         <div className="hidden lg:flex items-center justify-center gap-0 mb-16" style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(32px)', transition: 'all 0.7s ease-out 0.2s' }}>
           {flowNodes.map((node, i) => {
             const isActive = activeStep === i;
             const isPassed = activeStep > i;
             return (
               <React.Fragment key={node.id}>
-                <div className="relative flex flex-col items-center gap-3 px-5 py-5 rounded-2xl" style={{
+                <div className="relative flex flex-col items-center gap-3 px-4 py-4 rounded-2xl" style={{
                   background: isActive ? `linear-gradient(135deg, ${node.glow}, rgba(255,255,255,0.03))` : isPassed ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)',
                   border: `1px solid ${isActive ? node.color + '60' : isPassed ? node.color + '25' : 'rgba(255,255,255,0.07)'}`,
-                  minWidth: '120px',
+                  minWidth: '110px',
                   transform: isActive ? 'scale(1.08) translateY(-6px)' : 'scale(1)',
                   boxShadow: isActive ? `0 12px 40px ${node.color}30, 0 0 0 1px ${node.color}20` : 'none',
                   transition: 'all 0.4s cubic-bezier(0.34,1.56,0.64,1)',
                 }}>
-                  {/* Pulse ring on active */}
                   {isActive && (
                     <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `2px solid ${node.color}`, animation: 'royaltyPulseRing 1.2s ease-out infinite', opacity: 0 }} />
                   )}
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{
                     background: isActive ? `${node.glow}` : 'rgba(255,255,255,0.04)',
                     border: `1px solid ${isActive ? node.color + '50' : 'rgba(255,255,255,0.08)'}`,
                     color: node.color,
@@ -272,17 +271,16 @@ export default function RoyaltyFlowSection() {
                     {node.icon}
                   </div>
                   <div className="text-center">
-                    <div className="font-bold text-sm" style={{ color: isActive ? '#fff' : '#ccd6f6', letterSpacing: '-0.01em', transition: 'color 0.4s ease' }}>{node.label}</div>
+                    <div className="font-bold text-xs" style={{ color: isActive ? '#fff' : '#ccd6f6', letterSpacing: '-0.01em', transition: 'color 0.4s ease' }}>{node.label}</div>
                     <div style={{ color: isActive ? node.color : '#4a5568', fontSize: '10px', marginTop: '2px', transition: 'color 0.4s ease' }}>{node.sublabel}</div>
                   </div>
-                  {/* Step number */}
                   <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center text-xs font-black" style={{ background: isActive ? node.color : '#1a1a2e', border: `1px solid ${isActive ? node.color : 'rgba(255,255,255,0.1)'}`, color: isActive ? '#fff' : '#555', fontSize: '9px', transition: 'all 0.4s ease' }}>
                     {i + 1}
                   </div>
                 </div>
                 {i < flowNodes.length - 1 && (
-                  <div className="flex items-center justify-center w-10 flex-shrink-0">
-                    <div style={{ position: 'relative', width: '32px', height: '2px', background: activeStep > i ? `linear-gradient(90deg, ${flowNodes[i].color}, ${flowNodes[i+1].color})` : 'rgba(255,255,255,0.08)', borderRadius: '1px', transition: 'background 0.4s ease' }}>
+                  <div className="flex items-center justify-center w-8 flex-shrink-0">
+                    <div style={{ position: 'relative', width: '28px', height: '2px', background: activeStep > i ? `linear-gradient(90deg, ${flowNodes[i].color}, ${flowNodes[i+1].color})` : 'rgba(255,255,255,0.08)', borderRadius: '1px', transition: 'background 0.4s ease' }}>
                       {activeStep > i && (
                         <div style={{ position: 'absolute', top: '-3px', right: '-4px', width: '8px', height: '8px', borderRadius: '50%', background: flowNodes[i+1].color, boxShadow: `0 0 8px ${flowNodes[i+1].color}` }} />
                       )}
@@ -294,19 +292,19 @@ export default function RoyaltyFlowSection() {
           })}
         </div>
 
-        {/* Mobile flow */}
-        <div className="lg:hidden space-y-3 mb-12" style={{ opacity: visible ? 1 : 0, transition: 'all 0.7s ease-out 0.2s' }}>
+        {/* Mobile flow — vertical */}
+        <div className="lg:hidden space-y-2 mb-10" style={{ opacity: visible ? 1 : 0, transition: 'all 0.7s ease-out 0.2s' }}>
           {flowNodes.map((node, i) => {
             const isActive = activeStep === i;
             return (
               <div key={node.id}>
-                <div className="flex items-center gap-4 p-4 rounded-xl" style={{
+                <div className="flex items-center gap-3 p-3 rounded-xl" style={{
                   background: isActive ? `${node.glow}` : 'rgba(255,255,255,0.02)',
                   border: `1px solid ${isActive ? node.color + '50' : 'rgba(255,255,255,0.06)'}`,
                   transition: 'all 0.4s ease',
                   boxShadow: isActive ? `0 8px 24px ${node.color}20` : 'none',
                 }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.04)', color: node.color }}>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.04)', color: node.color }}>
                     {node.icon}
                   </div>
                   <div className="flex-1">
@@ -327,12 +325,12 @@ export default function RoyaltyFlowSection() {
           })}
         </div>
 
-        {/* Revenue breakdown cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Revenue breakdown cards — responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {revenueCards.map((card, i) => (
             <div
               key={card.title}
-              className="relative overflow-hidden rounded-2xl p-6 group"
+              className="relative overflow-hidden rounded-2xl p-5 sm:p-6 group"
               style={{
                 background: `linear-gradient(135deg, rgba(255,255,255,0.03) 0%, ${card.glow} 100%)`,
                 border: `1px solid ${card.color}30`,
@@ -342,31 +340,26 @@ export default function RoyaltyFlowSection() {
                 boxShadow: `0 4px 24px ${card.glow}`,
               }}
             >
-              {/* Animated top bar */}
               <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: `linear-gradient(90deg, transparent, ${card.color}, transparent)`, animation: 'royaltyGlow 2s ease-in-out infinite' }} />
 
-              {/* Waveform visualizer */}
-              <div className="flex items-end gap-0.5 mb-5" style={{ height: '36px' }}>
+              <div className="flex items-end gap-0.5 mb-4 sm:mb-5" style={{ height: '32px' }}>
                 {Array.from({ length: 16 }).map((_, j) => (
                   <WaveBar key={j} color={card.color} delay={j * 0.08} />
                 ))}
               </div>
 
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style={{ background: `${card.glow}`, border: `1px solid ${card.color}40`, boxShadow: `0 0 20px ${card.glow}` }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 sm:mb-4" style={{ background: `${card.glow}`, border: `1px solid ${card.color}40`, boxShadow: `0 0 20px ${card.glow}` }}>
                 {card.icon}
               </div>
 
-              <h4 className="text-white font-black text-lg mb-2" style={{ letterSpacing: '-0.02em' }}>{card.title}</h4>
-              <p className="text-sm mb-5" style={{ color: '#8892b0', lineHeight: '1.6' }}>{card.desc}</p>
+              <h4 className="text-white font-black text-base sm:text-lg mb-2" style={{ letterSpacing: '-0.02em' }}>{card.title}</h4>
+              <p className="text-sm mb-4 sm:mb-5" style={{ color: '#8892b0', lineHeight: '1.6' }}>{card.desc}</p>
 
-              {/* Stat */}
-              <div className="flex items-end gap-2 pt-4" style={{ borderTop: `1px solid ${card.color}20` }}>
-                <span className="font-black text-2xl" style={{ color: card.color, letterSpacing: '-0.03em' }}>{card.stat}</span>
+              <div className="flex items-end gap-2 pt-3 sm:pt-4" style={{ borderTop: `1px solid ${card.color}20` }}>
+                <span className="font-black text-xl sm:text-2xl" style={{ color: card.color, letterSpacing: '-0.03em' }}>{card.stat}</span>
                 <span className="text-xs mb-1" style={{ color: '#4a5568' }}>{card.statLabel}</span>
               </div>
 
-              {/* Hover glow overlay */}
               <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100" style={{ background: `radial-gradient(circle at 50% 0%, ${card.glow} 0%, transparent 60%)`, transition: 'opacity 0.4s ease' }} />
             </div>
           ))}

@@ -1,6 +1,8 @@
 'use client';
 
-// Outer ring — 8 platforms from user's list
+import { useEffect, useRef, useState } from 'react';
+
+// Outer ring — 8 platforms
 const orbitingPlatforms = [
   { name: 'Spotify',      angle: 0,   bg: '#1DB954' },
   { name: 'Apple Music',  angle: 45,  bg: '#FA243C' },
@@ -12,7 +14,7 @@ const orbitingPlatforms = [
   { name: 'TIDAL',        angle: 315, bg: '#000000' },
 ];
 
-// Inner ring — remaining 4 platforms from user's list
+// Inner ring — 4 platforms
 const innerOrbitPlatforms = [
   { name: 'SoundCloud', angle: 0,   bg: '#FF5500' },
   { name: '7digital',   angle: 90,  bg: '#1565C0' },
@@ -20,7 +22,6 @@ const innerOrbitPlatforms = [
   { name: 'Hungama',    angle: 270, bg: '#111111' },
 ];
 
-// Brand background colors
 const brandColors: Record<string, string> = {
   Spotify:       '#1DB954',
   'Apple Music': '#FA243C',
@@ -36,35 +37,21 @@ const brandColors: Record<string, string> = {
   Hungama:       '#111111',
 };
 
-// High-quality icon URLs — using SimpleIcons CDN (svg) for crisp brand icons
 const reliableIcons: Record<string, string> = {
-  // Spotify — official green icon
   Spotify:       'https://cdn.simpleicons.org/spotify/FFFFFF',
-  // Apple Music — white apple music icon
   'Apple Music': 'https://cdn.simpleicons.org/applemusic/FFFFFF',
-  // YouTube — white play icon
   YouTube:       'https://cdn.simpleicons.org/youtube/FFFFFF',
-  // Amazon Music — local uploaded asset
   'Amazon Music':'/assets/images/Stacked_Amazon_Music_CyanOnCharcoal_Circle_RGB-1786715172379.png',
-  // TikTok — white tiktok icon
   TikTok:        'https://cdn.simpleicons.org/tiktok/FFFFFF',
-  // Facebook — white facebook icon
   Facebook:      'https://cdn.simpleicons.org/facebook/FFFFFF',
-  // Deezer — white deezer icon
   Deezer:        'https://cdn.simpleicons.org/deezer/FFFFFF',
-  // TIDAL — white tidal icon
   TIDAL:         'https://cdn.simpleicons.org/tidal/FFFFFF',
-  // SoundCloud — white soundcloud icon
   SoundCloud:    'https://cdn.simpleicons.org/soundcloud/FFFFFF',
-  // 7digital — generated SVG brand icon
   '7digital':    '/assets/7digital-icon.svg',
-  // Gaana — generated SVG brand icon
   Gaana:         '/assets/gaana-icon.svg',
-  // Hungama — generated SVG brand icon
   Hungama:       '/assets/hungama-icon.svg',
 };
 
-// Initials fallback
 const platformInitials: Record<string, string> = {
   Spotify:       'SP',
   'Apple Music': 'AM',
@@ -85,18 +72,14 @@ interface PlatformIconProps {
   size: number;
 }
 
-// Platforms using full-color image logos — display on brand background
 const fullColorLogoPlatforms = new Set<string>(['7digital', 'Gaana', 'Hungama']);
 
 function PlatformIcon({ name, size }: PlatformIconProps) {
   const bg = brandColors[name] || '#333';
   const initials = platformInitials[name] || name.slice(0, 2).toUpperCase();
   const iconUrl = reliableIcons[name];
-  const fontSize = size < 40 ? 10 : 13;
+  const fontSize = size < 32 ? 8 : size < 40 ? 10 : 13;
   const isFullColor = fullColorLogoPlatforms.has(name);
-  // SVG brand icons have their own backgrounds — display at full size; others use brand bg with white icon
-  const circleBg = isFullColor ? bg : bg;
-  const glowColor = bg;
 
   return (
     <div
@@ -104,9 +87,9 @@ function PlatformIcon({ name, size }: PlatformIconProps) {
       role="img"
       aria-label={`${name} music platform`}
       style={{
-        background: circleBg,
+        background: bg,
         border: '2px solid rgba(255,255,255,0.18)',
-        boxShadow: `0 0 16px 4px ${glowColor}55, 0 4px 16px rgba(0,0,0,0.7)`
+        boxShadow: `0 0 16px 4px ${bg}55, 0 4px 16px rgba(0,0,0,0.7)`
       }}>
       {iconUrl ? (
         <img
@@ -145,118 +128,144 @@ function PlatformIcon({ name, size }: PlatformIconProps) {
 }
 
 export default function OrbitalRings() {
-  const outerRadius = 230;
-  const innerRadius = 155;
-  const iconSize = 54;
-  const innerIconSize = 46;
-  const center = 260;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState(380);
+
+  useEffect(() => {
+    const update = () => {
+      if (containerRef.current) {
+        const w = containerRef.current.offsetWidth;
+        setSize(w);
+      }
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  // Scale all measurements proportionally based on container size
+  const BASE = 520;
+  const scale = size / BASE;
+
+  const outerRadius = Math.round(230 * scale);
+  const innerRadius = Math.round(155 * scale);
+  const iconSize = Math.max(28, Math.round(54 * scale));
+  const innerIconSize = Math.max(22, Math.round(46 * scale));
+  const center = Math.round(260 * scale);
+  const midRingR = Math.round(125 * scale);
 
   return (
-    <div className="absolute inset-0" style={{ width: 520, height: 520 }}>
-      {/* ── Outer orbital ring ── */}
-      <div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          top: center - outerRadius,
-          left: center - outerRadius,
-          width: outerRadius * 2,
-          height: outerRadius * 2,
-          border: '1px solid rgba(0,220,255,0.25)',
-          boxShadow: '0 0 20px 3px rgba(0,180,255,0.12), inset 0 0 20px 3px rgba(0,180,255,0.05)'
-        }}
-      />
+    <div
+      ref={containerRef}
+      className="absolute inset-0"
+      style={{ width: '100%', height: '100%' }}
+    >
+      <div style={{ position: 'relative', width: size, height: size }}>
+        {/* ── Outer orbital ring ── */}
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            top: center - outerRadius,
+            left: center - outerRadius,
+            width: outerRadius * 2,
+            height: outerRadius * 2,
+            border: '1px solid rgba(0,220,255,0.25)',
+            boxShadow: '0 0 20px 3px rgba(0,180,255,0.12), inset 0 0 20px 3px rgba(0,180,255,0.05)'
+          }}
+        />
 
-      {/* ── Inner orbital ring ── */}
-      <div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          top: center - innerRadius,
-          left: center - innerRadius,
-          width: innerRadius * 2,
-          height: innerRadius * 2,
-          border: '1px solid rgba(160,0,255,0.25)',
-          boxShadow: '0 0 14px 2px rgba(140,0,255,0.1)'
-        }}
-      />
+        {/* ── Inner orbital ring ── */}
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            top: center - innerRadius,
+            left: center - innerRadius,
+            width: innerRadius * 2,
+            height: innerRadius * 2,
+            border: '1px solid rgba(160,0,255,0.25)',
+            boxShadow: '0 0 14px 2px rgba(140,0,255,0.1)'
+          }}
+        />
 
-      {/* ── Mid glow ring ── */}
-      <div
-        className="absolute rounded-full pointer-events-none glow-ring-pulse-slow"
-        style={{
-          top: center - 125,
-          left: center - 125,
-          width: 250,
-          height: 250,
-          border: '1.5px solid rgba(0,200,255,0.35)'
-        }}
-      />
+        {/* ── Mid glow ring ── */}
+        <div
+          className="absolute rounded-full pointer-events-none glow-ring-pulse-slow"
+          style={{
+            top: center - midRingR,
+            left: center - midRingR,
+            width: midRingR * 2,
+            height: midRingR * 2,
+            border: '1.5px solid rgba(0,200,255,0.35)'
+          }}
+        />
 
-      {/* ── Outer spinning wrapper ── */}
-      <div
-        className="absolute"
-        style={{
-          top: center - outerRadius,
-          left: center - outerRadius,
-          width: outerRadius * 2,
-          height: outerRadius * 2,
-          animation: 'orbitSpin 22s linear infinite'
-        }}
-        role="list"
-        aria-label="Music distribution platforms">
-        {orbitingPlatforms?.map((platform, i) => {
-          const angleRad = platform?.angle * Math.PI / 180;
-          const x = outerRadius + outerRadius * Math.sin(angleRad) - iconSize / 2;
-          const y = outerRadius - outerRadius * Math.cos(angleRad) - iconSize / 2;
-          return (
-            <div
-              key={`outer-${i}`}
-              className="absolute"
-              role="listitem"
-              style={{
-                left: x,
-                top: y,
-                width: iconSize,
-                height: iconSize,
-                animation: 'iconCounterRotate 22s linear infinite'
-              }}>
-              <PlatformIcon name={platform.name} size={iconSize} />
-            </div>
-          );
-        })}
-      </div>
+        {/* ── Outer spinning wrapper ── */}
+        <div
+          className="absolute"
+          style={{
+            top: center - outerRadius,
+            left: center - outerRadius,
+            width: outerRadius * 2,
+            height: outerRadius * 2,
+            animation: 'orbitSpin 22s linear infinite'
+          }}
+          role="list"
+          aria-label="Music distribution platforms">
+          {orbitingPlatforms?.map((platform, i) => {
+            const angleRad = platform?.angle * Math.PI / 180;
+            const x = outerRadius + outerRadius * Math.sin(angleRad) - iconSize / 2;
+            const y = outerRadius - outerRadius * Math.cos(angleRad) - iconSize / 2;
+            return (
+              <div
+                key={`outer-${i}`}
+                className="absolute"
+                role="listitem"
+                style={{
+                  left: x,
+                  top: y,
+                  width: iconSize,
+                  height: iconSize,
+                  animation: 'iconCounterRotate 22s linear infinite'
+                }}>
+                <PlatformIcon name={platform.name} size={iconSize} />
+              </div>
+            );
+          })}
+        </div>
 
-      {/* ── Inner spinning wrapper (counter-clockwise) ── */}
-      <div
-        className="absolute"
-        style={{
-          top: center - innerRadius,
-          left: center - innerRadius,
-          width: innerRadius * 2,
-          height: innerRadius * 2,
-          animation: 'orbitSpin 32s linear infinite reverse'
-        }}
-        role="list"
-        aria-label="Additional music streaming platforms">
-        {innerOrbitPlatforms?.map((platform, i) => {
-          const angleRad = platform?.angle * Math.PI / 180;
-          const x = innerRadius + innerRadius * Math.sin(angleRad) - innerIconSize / 2;
-          const y = innerRadius - innerRadius * Math.cos(angleRad) - innerIconSize / 2;
-          return (
-            <div
-              key={`inner-${i}`}
-              className="absolute"
-              role="listitem"
-              style={{
-                left: x,
-                top: y,
-                width: innerIconSize,
-                height: innerIconSize,
-                animation: 'iconCounterRotate 32s linear infinite'
-              }}>
-              <PlatformIcon name={platform.name} size={innerIconSize} />
-            </div>
-          );
-        })}
+        {/* ── Inner spinning wrapper (counter-clockwise) ── */}
+        <div
+          className="absolute"
+          style={{
+            top: center - innerRadius,
+            left: center - innerRadius,
+            width: innerRadius * 2,
+            height: innerRadius * 2,
+            animation: 'orbitSpin 32s linear infinite reverse'
+          }}
+          role="list"
+          aria-label="Additional music streaming platforms">
+          {innerOrbitPlatforms?.map((platform, i) => {
+            const angleRad = platform?.angle * Math.PI / 180;
+            const x = innerRadius + innerRadius * Math.sin(angleRad) - innerIconSize / 2;
+            const y = innerRadius - innerRadius * Math.cos(angleRad) - innerIconSize / 2;
+            return (
+              <div
+                key={`inner-${i}`}
+                className="absolute"
+                role="listitem"
+                style={{
+                  left: x,
+                  top: y,
+                  width: innerIconSize,
+                  height: innerIconSize,
+                  animation: 'iconCounterRotate 32s linear infinite'
+                }}>
+                <PlatformIcon name={platform.name} size={innerIconSize} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

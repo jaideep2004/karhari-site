@@ -69,11 +69,7 @@ export default function SectionKm10Ent() {
               <div className="net-card logo-card reveal">
                 <div className="logo-block">
                   <div className="logo-badge ent-logo-badge">
-                    <span>
-                      <svg viewBox="0 0 24 24" className="icon" style={{ stroke: '#fff' }}>
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeWidth="2" />
-                      </svg>
-                    </span>
+                    <img src="/karhari-media-b1.png" alt="Karhari Media" className="logo-badge-img" />
                   </div>
                   <div>
                     <div className="logo-title">KARHARI <span>MEDIA</span></div>

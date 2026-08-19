@@ -369,11 +369,8 @@ function StepCard({ step, title, subtitle, icon, color, tags, scanning, contentI
   const accentGlow = `${color}55`;
   const cardBg = `linear-gradient(135deg, ${color}18 0%, #0d0a1a 40%, ${color}0a 70%, #12081e 100%)`;
   return (
-    <div style={{
+    <div className="pipeline-card" style={{
       position: 'relative',
-      width: 220,
-      minHeight: 260,
-      maxHeight: 290,
       background: cardBg,
       border: `1.5px solid ${color}55`,
       borderRadius: 20,
@@ -543,12 +540,10 @@ function DualInputCards({ color, delay = 0, liveArtistTracks, liveLabelSongs }: 
   const artistColor = '#f59e0b';
   const labelColor = '#c084fc';
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, flexShrink: 0 }}>
+    <div className="dual-input-cards" style={{ display: 'flex', flexDirection: 'column', gap: 10, flexShrink: 0 }}>
       {/* Artist Card — amber/gold */}
-      <div style={{
+      <div className="dual-card" style={{
         position: 'relative',
-        width: 220,
-        minHeight: 120,
         background: `linear-gradient(135deg, ${artistColor}18 0%, #0d0a1a 50%, ${artistColor}0a 100%)`,
         border: `1.5px solid ${artistColor}55`,
         borderRadius: 18,
@@ -593,10 +588,8 @@ function DualInputCards({ color, delay = 0, liveArtistTracks, liveLabelSongs }: 
       </div>
 
       {/* Record Label Card — violet/purple */}
-      <div style={{
+      <div className="dual-card" style={{
         position: 'relative',
-        width: 220,
-        minHeight: 120,
         background: `linear-gradient(135deg, ${labelColor}18 0%, #0d0a1a 50%, ${labelColor}0a 100%)`,
         border: `1.5px solid ${labelColor}55`,
         borderRadius: 18,
@@ -730,7 +723,7 @@ function PhaseDivider({ label, color }: { label: string; color: string }) {
         borderRadius: 20, padding: '5px 16px',
       }}>
         <div style={{ width: 6, height: 6, borderRadius: '50%', background: color, animation: 'pipe-blink 0.8s infinite', boxShadow: `0 0 6px ${color}` }} />
-        <span style={{ fontSize: 9, color, letterSpacing: '0.2em', fontWeight: 800 }}>{label}</span>
+        <span style={{ fontSize: 'clamp(7px, 1.5vw, 9px)', color, letterSpacing: '0.15em', fontWeight: 800 }}>{label}</span>
       </div>
       <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${color}44, transparent)` }} />
     </div>
@@ -742,16 +735,15 @@ function PhaseDivider({ label, color }: { label: string; color: string }) {
 ═══════════════════════════════════════════ */
 function PipelineRow({ children, color }: { children: React.ReactNode; color: string }) {
   return (
-    <div style={{
+    <div className="pipeline-row" style={{
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
       gap: 0,
-      overflowX: 'auto',
+      flexWrap: 'wrap',
       paddingBottom: 8,
       paddingTop: 4,
-      scrollbarWidth: 'none',
       position: 'relative',
       zIndex: 6,
       width: '100%',
@@ -766,9 +758,9 @@ function PipelineRow({ children, color }: { children: React.ReactNode; color: st
 ═══════════════════════════════════════════ */
 function CounterStrip({ items }: { items: Array<{ label: string; value: number; color: string; prefix?: string; suffix?: string }> }) {
   return (
-    <div style={{
+    <div className="counter-strip" style={{
       display: 'grid',
-      gridTemplateColumns: `repeat(${items.length}, 1fr)`,
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: 10,
       marginTop: 24,
       position: 'relative', zIndex: 10,
@@ -787,11 +779,11 @@ function CounterStrip({ items }: { items: Array<{ label: string; value: number; 
             animation: 'pipe-scan-h 3s linear infinite',
           }} />
           <div style={{
-            fontSize: 20, fontWeight: 900, color: item.color,
+            fontSize: 'clamp(14px, 2.5vw, 20px)', fontWeight: 900, color: item.color,
             fontFamily: 'JetBrains Mono, monospace',
             textShadow: `0 0 12px ${item.color}`,
           }}>{item.prefix}{formatNum(item.value)}{item.suffix}</div>
-          <div style={{ fontSize: 8, color: '#555', letterSpacing: '0.1em', marginTop: 3, fontWeight: 700 }}>{item.label}</div>
+          <div style={{ fontSize: 'clamp(6px, 1.2vw, 8px)', color: '#555', letterSpacing: '0.1em', marginTop: 3, fontWeight: 700 }}>{item.label}</div>
         </div>
       ))}
     </div>
@@ -812,18 +804,19 @@ function SectionHeader({ title, subtitle, badge, badgeColor, icon }: {
         borderRadius: 20, padding: '5px 16px', marginBottom: 14,
       }}>
         <div style={{ width: 7, height: 7, borderRadius: '50%', background: badgeColor, animation: 'pipe-blink 1s infinite', boxShadow: `0 0 8px ${badgeColor}` }} />
-        <span style={{ fontSize: 10, color: badgeColor, letterSpacing: '0.22em', fontWeight: 800 }}>{badge}</span>
+        <span style={{ fontSize: 'clamp(8px, 1.5vw, 10px)', color: badgeColor, letterSpacing: '0.18em', fontWeight: 800 }}>{badge}</span>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 10, flexWrap: 'wrap' }}>
         {icon}
         <h2 style={{
-          fontSize: 'clamp(18px, 2.5vw, 32px)', fontWeight: 900, margin: 0,
+          fontSize: 'clamp(16px, 3vw, 32px)', fontWeight: 900, margin: 0,
           background: `linear-gradient(135deg, ${badgeColor} 0%, #ffffff 50%, ${badgeColor}aa 100%)`,
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           letterSpacing: '0.04em', lineHeight: 1.1,
+          textAlign: 'center',
         }}>{title}</h2>
       </div>
-      <p style={{ color: '#4a4a6a', fontSize: 10, letterSpacing: '0.12em', margin: 0, fontWeight: 600 }}>{subtitle}</p>
+      <p style={{ color: '#4a4a6a', fontSize: 'clamp(8px, 1.5vw, 10px)', letterSpacing: '0.1em', margin: '0 auto', fontWeight: 600, maxWidth: 700, lineHeight: 1.5 }}>{subtitle}</p>
     </div>
   );
 }
@@ -858,7 +851,7 @@ function MusicDistributionPipeline() {
       background: 'linear-gradient(180deg, #0a0612 0%, #0d0820 40%, #120a1e 70%, #0a0612 100%)',
       position: 'relative',
       overflow: 'hidden',
-      padding: 'clamp(36px, 5vh, 64px) clamp(24px, 4vw, 72px) 40px',
+      padding: 'clamp(28px, 5vh, 64px) clamp(12px, 4vw, 72px) 40px',
       display: 'flex',
       flexDirection: 'column',
     }}>
@@ -1008,6 +1001,7 @@ function MusicDistributionPipeline() {
         marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
         background: `${COLOR}06`, border: `1px solid ${COLOR}22`,
         borderRadius: 10, padding: '8px 20px', position: 'relative', zIndex: 10,
+        flexWrap: 'wrap', textAlign: 'center',
       }}>
         <span style={{ fontSize: 9, color: `${COLOR}88`, letterSpacing: '0.14em', fontWeight: 700 }}>
           12+ STORES CONNECTED · 50+ TERRITORIES · 100% TRANSPARENT ROYALTY PIPELINE · REAL-TIME ANALYTICS
@@ -1107,6 +1101,117 @@ export default function MusicDistributionPage() {
         }
         @keyframes km-ring-cw  { to { transform: rotate(360deg); } }
         @keyframes km-ring-ccw { to { transform: rotate(-360deg); } }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE LAYOUT RULES
+        ═══════════════════════════════════════════ */
+
+        /* Pipeline cards — fluid width */
+        .pipeline-card {
+          width: clamp(180px, 22vw, 240px);
+          min-height: 260px;
+        }
+
+        /* Dual input cards — fluid width */
+        .dual-input-cards {
+          flex-shrink: 0;
+        }
+        .dual-card {
+          width: clamp(160px, 20vw, 220px);
+          min-height: 110px;
+        }
+
+        /* Pipeline row — wrap on small screens */
+        .pipeline-row {
+          row-gap: 12px;
+          column-gap: 0;
+        }
+
+        /* Hide connectors when pipeline wraps */
+        @media (max-width: 900px) {
+          .pipe-connector {
+            display: none !important;
+          }
+          .pipeline-row {
+            gap: 12px !important;
+            justify-content: center;
+          }
+          .pipeline-card {
+            width: clamp(160px, 44vw, 220px) !important;
+          }
+          .dual-card {
+            width: clamp(150px, 44vw, 210px) !important;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .pipeline-card {
+            width: calc(100vw - 40px) !important;
+            max-width: 360px !important;
+          }
+          .dual-card {
+            width: calc(100vw - 40px) !important;
+            max-width: 360px !important;
+          }
+          .dual-input-cards {
+            width: 100%;
+          }
+        }
+
+        /* Counter strip — responsive columns */
+        .counter-strip {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        @media (min-width: 640px) {
+          .counter-strip {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+        }
+
+        /* Royalty cards grid */
+        .royalty-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 16px;
+          justify-content: center;
+          position: relative;
+          z-index: 6;
+          width: 100%;
+        }
+        .royalty-card {
+          min-height: 360px;
+        }
+
+        @media (max-width: 1200px) {
+          .royalty-cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        @media (max-width: 900px) {
+          .royalty-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+          }
+        }
+        @media (max-width: 520px) {
+          .royalty-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          .royalty-card {
+            min-height: auto;
+          }
+        }
+
+        /* Bottom counter strip */
+        .bottom-counter-strip {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        @media (min-width: 640px) {
+          .bottom-counter-strip {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+        }
       `}</style>
       <div style={{ background: '#020208', minHeight: '100vh' }}>
         <MusicDistributionPipeline />

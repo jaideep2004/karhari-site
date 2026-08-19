@@ -69,11 +69,7 @@ export default function SectionKm10Music() {
               <div className="net-card logo-card reveal">
                 <div className="logo-block">
                   <div className="logo-badge music-logo-badge">
-                    <span>
-                      <svg viewBox="0 0 24 24" className="icon" style={{ stroke: '#fff' }}>
-                        <path d="M4 12v-4M8 16V8M12 20V4M16 16V8M20 12v-4" strokeWidth="2" />
-                      </svg>
-                    </span>
+                    <img src="/karhari-media-b1.png" alt="Karhari Media" className="logo-badge-img" />
                   </div>
                   <div>
                     <div className="logo-title">KARHARI <span>MEDIA</span></div>

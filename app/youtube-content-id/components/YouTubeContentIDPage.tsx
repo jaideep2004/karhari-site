@@ -900,8 +900,8 @@ export default function YouTubeContentIDPage() {
           100% { stroke-dashoffset: 0; opacity: 0.2; }
         }
         @keyframes yt-node-pulse {
-          0%,100% { transform: scale(1); opacity: 0.8; }
-          50%      { transform: scale(1.3); opacity: 1; }
+          0%,100% { transform: scale(1) translate(-50%,-50%); opacity: 0.8; }
+          50%      { transform: scale(1.3) translate(-38%,-38%); opacity: 1; }
         }
         @keyframes yt-globe-spin {
           0%   { transform: rotate(0deg); }
@@ -948,21 +948,337 @@ export default function YouTubeContentIDPage() {
         .yt-km-center-box {
           animation: yt-box-glow-red 2s ease-in-out infinite;
         }
-      `}</style>
 
-      {/* ── YT POLICIES quick link — kept below the global navbar ── */}
-      <div className="fixed top-[88px] right-4 md:right-6 z-40">
-        <a href="/youtube-policies"
-          className="px-4 py-1.5 rounded-lg text-xs font-bold text-white transition-all duration-200 hover:scale-105 border border-red-500/50"
-          style={{ background: 'rgba(255,0,0,0.15)', boxShadow: '0 0 10px #FF000030' }}>
-          YT POLICIES
-        </a>
-      </div>
+        /* ── RESPONSIVE GEAR VISUALIZER ── */
+        .gear-visualizer {
+          width: 300px;
+          height: 300px;
+        }
+        @media (max-width: 480px) {
+          .gear-visualizer {
+            width: 220px;
+            height: 220px;
+            transform: scale(0.73);
+            transform-origin: center center;
+          }
+        }
+        @media (min-width: 481px) and (max-width: 767px) {
+          .gear-visualizer {
+            width: 260px;
+            height: 260px;
+          }
+        }
+
+        /* ── RESPONSIVE GLOBAL REVENUE VISUALIZER ── */
+        .global-viz {
+          height: 480px;
+        }
+        @media (max-width: 480px) {
+          .global-viz {
+            height: 320px;
+          }
+        }
+        @media (min-width: 481px) and (max-width: 767px) {
+          .global-viz {
+            height: 380px;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .global-viz {
+            height: 420px;
+          }
+        }
+
+        /* ── STEP 1 PIPELINE — stack on mobile ── */
+        .step1-pipeline {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+        @media (min-width: 768px) {
+          .step1-pipeline {
+            flex-direction: row;
+            justify-content: center;
+            gap: 0;
+          }
+        }
+
+        /* ── HIDE PIPES ON MOBILE ── */
+        .pipe-connector {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          .pipe-connector {
+            display: flex;
+          }
+        }
+
+        /* ── STEP 3 SCAN RINGS — wrap on small screens ── */
+        .scan-rings-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 16px;
+        }
+
+        /* ── ID CARDS ROW — scroll on mobile ── */
+        .id-cards-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+        }
+
+        /* ── STEP 6 REVENUE FLOW — stack on mobile ── */
+        .revenue-flow-row {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+        @media (min-width: 768px) {
+          .revenue-flow-row {
+            flex-direction: row;
+            justify-content: center;
+            gap: 0;
+          }
+        }
+
+        /* ── SCANNER BAR — overflow safe ── */
+        .scanner-bar-wrap {
+          overflow: hidden;
+          width: 100%;
+        }
+
+        /* ── NAVBAR SCAN TEXT — hide on very small ── */
+        @media (max-width: 360px) {
+          .nav-scan-text { display: none; }
+        }
+
+        /* ── HERO BRAND ROW — stack on mobile ── */
+        .hero-brand-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+        }
+
+        /* ── PIPELINE SUMMARY STEPS — wrap ── */
+        .pipeline-steps-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 6px;
+        }
+
+        /* ── POLICY CARDS — single col on mobile ── */
+        .policy-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        @media (min-width: 768px) {
+          .policy-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        /* ── STATS GRID — 2 col on mobile, 4 on desktop ── */
+        .stats-grid-4 {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        @media (min-width: 768px) {
+          .stats-grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
+        /* ── REVIEW GRID — 1 col mobile, 3 desktop ── */
+        .review-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        @media (min-width: 640px) {
+          .review-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        @media (min-width: 1024px) {
+          .review-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+        }
+
+        /* ── STEP 3 HEADER — stack on mobile ── */
+        .step3-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+        @media (min-width: 768px) {
+          .step3-header {
+            flex-direction: row;
+          }
+        }
+
+        /* ── GLOBAL REVENUE HEADER — stack on mobile ── */
+        .global-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          text-align: center;
+        }
+        @media (min-width: 768px) {
+          .global-header {
+            flex-direction: row;
+            flex-wrap: wrap;
+            text-align: left;
+          }
+        }
+
+        /* ── SUBMIT SECTION CARDS ── */
+        .submit-cards-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        @media (min-width: 640px) {
+          .submit-cards-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        @media (min-width: 1024px) {
+          .submit-cards-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+        }
+
+        /* ── INVALID REFS GRID ── */
+        .invalid-refs-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        @media (min-width: 768px) {
+          .invalid-refs-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+        }
+
+        /* ── CHANNEL POLICY GRID ── */
+        .channel-policy-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        @media (min-width: 768px) {
+          .channel-policy-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        /* ── CONTENT ELIGIBILITY GRID ── */
+        .eligibility-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        @media (min-width: 768px) {
+          .eligibility-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        /* ── PARTNER BANNER — stack on mobile ── */
+        .partner-banner {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+          text-align: center;
+        }
+        @media (min-width: 768px) {
+          .partner-banner {
+            flex-direction: row;
+            text-align: left;
+          }
+        }
+
+        /* ── SUBMIT CTA ROW ── */
+        .submit-cta-row {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        @media (min-width: 768px) {
+          .submit-cta-row {
+            flex-direction: row;
+            align-items: center;
+          }
+        }
+
+        /* ── REVENUE FLOW ARROWS — hide on mobile ── */
+        .revenue-arrow {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          .revenue-arrow {
+            display: flex;
+          }
+        }
+
+        /* ── REVENUE FLOW LABELS — stack ── */
+        .revenue-labels {
+          display: flex;
+          flex-direction: row;
+          gap: 12px;
+        }
+        @media (max-width: 480px) {
+          .revenue-labels {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+
+        /* ── HERO GEAR PAIR — stack on mobile ── */
+        .hero-gear-pair {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          width: 100%;
+        }
+        @media (min-width: 768px) {
+          .hero-gear-pair {
+            flex-direction: row;
+            justify-content: center;
+            gap: 24px;
+          }
+        }
+
+        /* ── GENERAL TEXT SCALING ── */
+        @media (max-width: 480px) {
+          .hero-title-text { font-size: 0.9rem !important; }
+          .hero-shimmer-text { font-size: 1rem !important; }
+          .step-label-text { font-size: 0.65rem !important; }
+        }
+
+        /* ── OVERFLOW PROTECTION ── */
+        * { box-sizing: border-box; }
+        .overflow-safe { overflow-x: hidden; max-width: 100%; }
+      `}</style>
 
       {/* ══════════════════════════════════════════════════════════════════════
           HERO — IMMERSIVE GEAR VISUALIZER
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 overflow-hidden"
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-14 overflow-hidden"
         style={{ background: 'radial-gradient(ellipse 120% 80% at 50% -10%, #1f0000 0%, #0a0010 45%, #060610 100%)' }}>
 
         {/* Animated grid background */}
@@ -983,71 +1299,71 @@ export default function YouTubeContentIDPage() {
             style={{ left: `${left}%`, height: '100%', background: `linear-gradient(180deg, transparent, ${['#FF0000','#D4F000','#00ff88','#8b00ff','#00d4ff'][i]}, transparent)`, animation: `yt-data-stream ${4 + i * 1.2}s ${i * 0.8}s linear infinite` }} />
         ))}
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 text-center">
 
           {/* ── BRAND ROW ── */}
-          <div className="flex items-center justify-center gap-6 md:gap-10 mb-8 mt-2">
+          <div className="hero-brand-row mb-6 sm:mb-8 mt-2">
             <div className="flex-shrink-0 flex flex-col items-center gap-2">
               <div style={{ filter: 'drop-shadow(0 0 18px #FF000088)' }}>
-                <YTLogo size={80} />
+                <YTLogo size={60} />
               </div>
             </div>
-            <div className="flex flex-col items-center gap-1 px-5 py-3 rounded-xl border border-red-500/40 bg-red-900/15 backdrop-blur-sm"
+            <div className="flex flex-col items-center gap-1 px-3 sm:px-5 py-2 sm:py-3 rounded-xl border border-red-500/40 bg-red-900/15 backdrop-blur-sm"
               style={{ boxShadow: '0 0 24px #FF000030' }}>
-              <span className="text-white text-sm md:text-base font-black tracking-[0.18em] uppercase whitespace-nowrap">Karhari Media YouTube Content ID</span>
+              <span className="text-white text-xs sm:text-sm md:text-base font-black tracking-[0.12em] sm:tracking-[0.18em] uppercase text-center">Karhari Media YouTube Content ID</span>
             </div>
             <div className="flex-shrink-0 flex flex-col items-center gap-2">
               <div style={{ filter: 'drop-shadow(0 0 18px #FF000066)' }}>
-                <KMLogo size={56} />
+                <KMLogo size={46} />
               </div>
             </div>
           </div>
 
           {/* ── TWO HERO TEXT BOXES + GEAR VISUALIZERS ── */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 max-w-5xl mx-auto">
+          <div className="hero-gear-pair mb-6 sm:mb-8 max-w-5xl mx-auto">
 
             {/* LEFT: KARHARI MEDIA CONTENT ID PIPELINE box + KM gear below */}
-            <div className="flex-1 flex flex-col items-center gap-3">
-              <div className="w-full px-6 py-5 rounded-2xl border border-red-500/40 bg-red-900/15 backdrop-blur-sm flex flex-col items-center justify-center gap-2 relative"
+            <div className="flex flex-col items-center gap-3 w-full sm:w-auto">
+              <div className="w-full sm:w-auto px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border border-red-500/40 bg-red-900/15 backdrop-blur-sm flex flex-col items-center justify-center gap-2 relative"
                 style={{ boxShadow: '0 0 30px #FF000025' }}>
                 <div className="absolute top-3 right-3 opacity-70">
                   <KMLogo size={18} />
                 </div>
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="w-1.5 h-8 rounded-full bg-red-500" style={{ boxShadow: '0 0 8px #FF0000' }} />
-                  <span className="text-white text-xl md:text-2xl font-black leading-tight tracking-tight">KARHARI MEDIA</span>
+                  <div className="w-1.5 h-6 sm:h-8 rounded-full bg-red-500" style={{ boxShadow: '0 0 8px #FF0000' }} />
+                  <span className="text-white text-lg sm:text-xl md:text-2xl font-black leading-tight tracking-tight hero-title-text">KARHARI MEDIA</span>
                 </div>
-                <span className="yt-shimmer-text text-lg md:text-xl font-black tracking-widest uppercase">CONTENT ID PIPELINE</span>
+                <span className="yt-shimmer-text text-base sm:text-lg md:text-xl font-black tracking-widest uppercase hero-shimmer-text">CONTENT ID PIPELINE</span>
               </div>
 
-              {/* KM Gear Visualizer — 300px, red/orange palette, KM icon center */}
-              <div className="relative flex items-center justify-center" style={{ width: 300, height: 300 }}>
-                <div className="absolute rounded-full border-2 border-red-500/30" style={{ width: 278, height: 278, animation: 'yt-spin 50s linear infinite' }} />
-                <div className="absolute rounded-full border border-orange-400/20" style={{ width: 228, height: 228, animation: 'yt-spin-r 35s linear infinite' }} />
-                <div className="absolute rounded-full border border-white/8" style={{ width: 178, height: 178, animation: 'yt-spin 22s linear infinite' }} />
-                <div className="absolute rounded-full" style={{ width: 262, height: 262, border: '3px solid transparent', backgroundImage: 'linear-gradient(#060610,#060610), conic-gradient(#FF0000, #ff6b00, #D4F000, #ff6b00, #FF0000)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', animation: 'yt-spin-r 18s linear infinite' }} />
-                <div className="absolute" style={{ top: 4, left: '50%', transform: 'translateX(-50%)' }}>
+              {/* KM Gear Visualizer */}
+              <div className="gear-visualizer relative flex items-center justify-center">
+                <div className="absolute rounded-full border-2 border-red-500/30" style={{ width: '92%', height: '92%', animation: 'yt-spin 50s linear infinite' }} />
+                <div className="absolute rounded-full border border-orange-400/20" style={{ width: '76%', height: '76%', animation: 'yt-spin-r 35s linear infinite' }} />
+                <div className="absolute rounded-full border border-white/8" style={{ width: '59%', height: '59%', animation: 'yt-spin 22s linear infinite' }} />
+                <div className="absolute rounded-full" style={{ width: '87%', height: '87%', border: '3px solid transparent', backgroundImage: 'linear-gradient(#060610,#060610), conic-gradient(#FF0000, #ff6b00, #D4F000, #ff6b00, #FF0000)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', animation: 'yt-spin-r 18s linear infinite' }} />
+                <div className="absolute" style={{ top: '1.5%', left: '50%', transform: 'translateX(-50%)' }}>
                   <Gear size={52} color="#FF0000" speed={5} reverse glow><GearRing size={52} color="#FF0000" /></Gear>
                 </div>
-                <div className="absolute" style={{ bottom: 4, left: '50%', transform: 'translateX(-50%)' }}>
+                <div className="absolute" style={{ bottom: '1.5%', left: '50%', transform: 'translateX(-50%)' }}>
                   <Gear size={52} color="#FF0000" speed={5} glow><GearRing size={52} color="#FF0000" /></Gear>
                 </div>
-                <div className="absolute" style={{ left: 4, top: '50%', transform: 'translateY(-50%)' }}>
+                <div className="absolute" style={{ left: '1.5%', top: '50%', transform: 'translateY(-50%)' }}>
                   <Gear size={44} color="#ff6b00" speed={6} reverse><GearRing size={44} color="#ff6b00" /></Gear>
                 </div>
-                <div className="absolute" style={{ right: 4, top: '50%', transform: 'translateY(-50%)' }}>
+                <div className="absolute" style={{ right: '1.5%', top: '50%', transform: 'translateY(-50%)' }}>
                   <Gear size={44} color="#ff6b00" speed={6}><GearRing size={44} color="#ff6b00" /></Gear>
                 </div>
-                <div className="absolute" style={{ top: 28, left: 28 }}>
+                <div className="absolute" style={{ top: '9%', left: '9%' }}>
                   <Gear size={36} color="#D4F000" speed={7} reverse><GearRing size={36} color="#D4F000" /></Gear>
                 </div>
-                <div className="absolute" style={{ top: 28, right: 28 }}>
+                <div className="absolute" style={{ top: '9%', right: '9%' }}>
                   <Gear size={36} color="#ff6b00" speed={7}><GearRing size={36} color="#ff6b00" /></Gear>
                 </div>
-                <div className="absolute" style={{ bottom: 28, left: 28 }}>
+                <div className="absolute" style={{ bottom: '9%', left: '9%' }}>
                   <Gear size={36} color="#ff6b00" speed={8} reverse><GearRing size={36} color="#ff6b00" /></Gear>
                 </div>
-                <div className="absolute" style={{ bottom: 28, right: 28 }}>
+                <div className="absolute" style={{ bottom: '9%', right: '9%' }}>
                   <Gear size={36} color="#D4F000" speed={8}><GearRing size={36} color="#D4F000" /></Gear>
                 </div>
                 <div className="relative z-20">
@@ -1065,49 +1381,49 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* RIGHT: Pipeline Overview box + YouTube gear below */}
-            <div className="flex-1 flex flex-col items-center gap-3">
-              <div className="w-full px-6 py-5 rounded-2xl border border-yellow-400/30 bg-yellow-900/10 backdrop-blur-sm flex flex-col items-center justify-center gap-2 relative"
+            <div className="flex flex-col items-center gap-3 w-full sm:w-auto">
+              <div className="w-full sm:w-auto px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border border-yellow-400/30 bg-yellow-900/10 backdrop-blur-sm flex flex-col items-center justify-center gap-2 relative"
                 style={{ boxShadow: '0 0 30px #D4F00015' }}>
                 <div className="absolute top-3 right-3 opacity-80">
                   <YTLogo size={22} />
                 </div>
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="w-1.5 h-8 rounded-full bg-yellow-400" style={{ boxShadow: '0 0 8px #D4F000' }} />
+                  <div className="w-1.5 h-6 sm:h-8 rounded-full bg-yellow-400" style={{ boxShadow: '0 0 8px #D4F000' }} />
                   <span className="text-[#D4F000] text-xs font-bold tracking-widest uppercase">Pipeline Overview</span>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed text-center">
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed text-center">
                   Every audio file fingerprinted, scanned, and monetized through YouTube&apos;s Content ID system — from artist submission to revenue distribution.
                 </p>
               </div>
 
-              {/* YouTube Gear Visualizer — same 300px size, red/cyan palette, YouTube icon center */}
-              <div className="relative flex items-center justify-center" style={{ width: 300, height: 300 }}>
-                <div className="absolute rounded-full border-2 border-red-500/30" style={{ width: 278, height: 278, animation: 'yt-spin 50s linear infinite' }} />
-                <div className="absolute rounded-full border border-cyan-400/20" style={{ width: 228, height: 228, animation: 'yt-spin-r 35s linear infinite' }} />
-                <div className="absolute rounded-full border border-white/8" style={{ width: 178, height: 178, animation: 'yt-spin 22s linear infinite' }} />
-                <div className="absolute rounded-full" style={{ width: 262, height: 262, border: '3px solid transparent', backgroundImage: 'linear-gradient(#060610,#060610), conic-gradient(#FF0000, #00d4ff, #ffffff, #00d4ff, #FF0000)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', animation: 'yt-spin-r 18s linear infinite' }} />
-                <div className="absolute" style={{ top: 4, left: '50%', transform: 'translateX(-50%)' }}>
+              {/* YouTube Gear Visualizer */}
+              <div className="gear-visualizer relative flex items-center justify-center">
+                <div className="absolute rounded-full border-2 border-red-500/30" style={{ width: '92%', height: '92%', animation: 'yt-spin 50s linear infinite' }} />
+                <div className="absolute rounded-full border border-cyan-400/20" style={{ width: '76%', height: '76%', animation: 'yt-spin-r 35s linear infinite' }} />
+                <div className="absolute rounded-full border border-white/8" style={{ width: '59%', height: '59%', animation: 'yt-spin 22s linear infinite' }} />
+                <div className="absolute rounded-full" style={{ width: '87%', height: '87%', border: '3px solid transparent', backgroundImage: 'linear-gradient(#060610,#060610), conic-gradient(#FF0000, #00d4ff, #ffffff, #00d4ff, #FF0000)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', animation: 'yt-spin-r 18s linear infinite' }} />
+                <div className="absolute" style={{ top: '1.5%', left: '50%', transform: 'translateX(-50%)' }}>
                   <Gear size={52} color="#FF0000" speed={5} reverse glow><GearRing size={52} color="#FF0000" /></Gear>
                 </div>
-                <div className="absolute" style={{ bottom: 4, left: '50%', transform: 'translateX(-50%)' }}>
+                <div className="absolute" style={{ bottom: '1.5%', left: '50%', transform: 'translateX(-50%)' }}>
                   <Gear size={52} color="#FF0000" speed={5} glow><GearRing size={52} color="#FF0000" /></Gear>
                 </div>
-                <div className="absolute" style={{ left: 4, top: '50%', transform: 'translateY(-50%)' }}>
+                <div className="absolute" style={{ left: '1.5%', top: '50%', transform: 'translateY(-50%)' }}>
                   <Gear size={44} color="#00d4ff" speed={6} reverse><GearRing size={44} color="#00d4ff" /></Gear>
                 </div>
-                <div className="absolute" style={{ right: 4, top: '50%', transform: 'translateY(-50%)' }}>
+                <div className="absolute" style={{ right: '1.5%', top: '50%', transform: 'translateY(-50%)' }}>
                   <Gear size={44} color="#00d4ff" speed={6}><GearRing size={44} color="#00d4ff" /></Gear>
                 </div>
-                <div className="absolute" style={{ top: 28, left: 28 }}>
+                <div className="absolute" style={{ top: '9%', left: '9%' }}>
                   <Gear size={36} color="#00d4ff" speed={7} reverse><GearRing size={36} color="#00d4ff" /></Gear>
                 </div>
-                <div className="absolute" style={{ top: 28, right: 28 }}>
+                <div className="absolute" style={{ top: '9%', right: '9%' }}>
                   <Gear size={36} color="#ffffff" speed={7}><GearRing size={36} color="#ffffff" /></Gear>
                 </div>
-                <div className="absolute" style={{ bottom: 28, left: 28 }}>
+                <div className="absolute" style={{ bottom: '9%', left: '9%' }}>
                   <Gear size={36} color="#ffffff" speed={8} reverse><GearRing size={36} color="#ffffff" /></Gear>
                 </div>
-                <div className="absolute" style={{ bottom: 28, right: 28 }}>
+                <div className="absolute" style={{ bottom: '9%', right: '9%' }}>
                   <Gear size={36} color="#00d4ff" speed={8}><GearRing size={36} color="#00d4ff" /></Gear>
                 </div>
                 <div className="relative z-20">
@@ -1127,38 +1443,38 @@ export default function YouTubeContentIDPage() {
           </div>
 
           {/* ── STATS BOXES ── */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mt-10">
-            <div className="p-4 rounded-xl border relative overflow-hidden"
+          <div className="stats-grid-4 max-w-3xl mx-auto mt-8 sm:mt-10">
+            <div className="p-3 sm:p-4 rounded-xl border relative overflow-hidden"
               style={{ borderColor: '#00ff8840', background: '#00ff880d', boxShadow: '0 0 20px #00ff8820' }}>
               <div className="absolute inset-0 opacity-30 pointer-events-none"
                 style={{ background: 'radial-gradient(circle at 30% 30%, #00ff8820, transparent 70%)' }} />
-              <div className="flex items-center justify-center mb-2"><MusicIcon size={28} color="#00ff88" /></div>
-              <div className="yt-stat-num text-xl md:text-2xl font-black" style={{ color: '#00ff88' }}>{fmtNum(tracksCount)}</div>
-              <div className="text-gray-500 text-[10px] mt-0.5 font-medium">Tracks Registered</div>
+              <div className="flex items-center justify-center mb-2"><MusicIcon size={24} color="#00ff88" /></div>
+              <div className="yt-stat-num text-lg sm:text-xl md:text-2xl font-black" style={{ color: '#00ff88' }}>{fmtNum(tracksCount)}</div>
+              <div className="text-gray-500 text-[9px] sm:text-[10px] mt-0.5 font-medium">Tracks Registered</div>
             </div>
-            <div className="p-4 rounded-xl border relative overflow-hidden"
+            <div className="p-3 sm:p-4 rounded-xl border relative overflow-hidden"
               style={{ borderColor: '#D4F00040', background: '#D4F0000d', boxShadow: '0 0 20px #D4F00020' }}>
               <div className="absolute inset-0 opacity-30 pointer-events-none"
                 style={{ background: 'radial-gradient(circle at 30% 30%, #D4F00020, transparent 70%)' }} />
-              <div className="flex items-center justify-center mb-2"><RevenueIcon size={28} color="#D4F000" /></div>
-              <div className="yt-stat-num text-xl md:text-2xl font-black" style={{ color: '#D4F000' }}>${fmtNum(revenueCount)}</div>
-              <div className="text-gray-500 text-[10px] mt-0.5 font-medium">Revenue Collected</div>
+              <div className="flex items-center justify-center mb-2"><RevenueIcon size={24} color="#D4F000" /></div>
+              <div className="yt-stat-num text-lg sm:text-xl md:text-2xl font-black" style={{ color: '#D4F000' }}>${fmtNum(revenueCount)}</div>
+              <div className="text-gray-500 text-[9px] sm:text-[10px] mt-0.5 font-medium">Revenue Collected</div>
             </div>
-            <div className="p-4 rounded-xl border relative overflow-hidden"
+            <div className="p-3 sm:p-4 rounded-xl border relative overflow-hidden"
               style={{ borderColor: '#FF000040', background: '#FF00000d', boxShadow: '0 0 20px #FF000020' }}>
               <div className="absolute inset-0 opacity-30 pointer-events-none"
                 style={{ background: 'radial-gradient(circle at 30% 30%, #FF000020, transparent 70%)' }} />
-              <div className="flex items-center justify-center mb-2"><CopyrightIcon size={28} color="#FF0000" /></div>
-              <div className="yt-stat-num text-xl md:text-2xl font-black" style={{ color: '#FF0000' }}>{fmtNum(claimsCount)}</div>
-              <div className="text-gray-500 text-[10px] mt-0.5 font-medium">Claims Processed</div>
+              <div className="flex items-center justify-center mb-2"><CopyrightIcon size={24} color="#FF0000" /></div>
+              <div className="yt-stat-num text-lg sm:text-xl md:text-2xl font-black" style={{ color: '#FF0000' }}>{fmtNum(claimsCount)}</div>
+              <div className="text-gray-500 text-[9px] sm:text-[10px] mt-0.5 font-medium">Claims Processed</div>
             </div>
-            <div className="p-4 rounded-xl border relative overflow-hidden"
+            <div className="p-3 sm:p-4 rounded-xl border relative overflow-hidden"
               style={{ borderColor: '#8b00ff40', background: '#8b00ff0d', boxShadow: '0 0 20px #8b00ff20' }}>
               <div className="absolute inset-0 opacity-30 pointer-events-none"
                 style={{ background: 'radial-gradient(circle at 30% 30%, #8b00ff20, transparent 70%)' }} />
-              <div className="flex items-center justify-center mb-2"><BlockIcon size={28} color="#8b00ff" /></div>
-              <div className="yt-stat-num text-xl md:text-2xl font-black" style={{ color: '#8b00ff' }}>{fmtNum(blockedCount)}</div>
-              <div className="text-gray-500 text-[10px] mt-0.5 font-medium">Blocked Violations</div>
+              <div className="flex items-center justify-center mb-2"><BlockIcon size={24} color="#8b00ff" /></div>
+              <div className="yt-stat-num text-lg sm:text-xl md:text-2xl font-black" style={{ color: '#8b00ff' }}>{fmtNum(blockedCount)}</div>
+              <div className="text-gray-500 text-[9px] sm:text-[10px] mt-0.5 font-medium">Blocked Violations</div>
             </div>
           </div>
         </div>
@@ -1167,44 +1483,38 @@ export default function YouTubeContentIDPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           PIPELINE SECTION
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-8 overflow-hidden" style={{ background: 'linear-gradient(180deg, #060610 0%, #0a0018 100%)' }}>
+      <section className="relative py-6 sm:py-8 overflow-hidden" style={{ background: 'linear-gradient(180deg, #060610 0%, #0a0018 100%)' }}>
 
         <div className="absolute left-0 top-0 bottom-0 w-1 opacity-60" style={{ background: 'linear-gradient(180deg, transparent, #FF0000, transparent)' }} />
         <div className="absolute right-0 top-0 bottom-0 w-1 opacity-60" style={{ background: 'linear-gradient(180deg, transparent, #D4F000, transparent)' }} />
 
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-3 sm:px-4">
 
           {/* ── STEP 1 LABEL ── */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/8 text-yellow-400 text-xs font-bold tracking-widest uppercase">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/8 text-yellow-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase step-label-text">
               STEP 1 — SUBMISSION
             </div>
           </div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              STEP 1: ARTIST + KARHARI MEDIA + RECORD LABEL
-              All three boxes: centered visualizers, proper icons, no bobbing
-          ══════════════════════════════════════════════════════════════ */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+          {/* STEP 1 PIPELINE */}
+          <div className="step1-pipeline mb-2">
 
-            {/* ── ARTIST BOX ── centered visualizer, original artist icon, no bobbing */}
-            <StageBox color="#D4F000" glow className="p-5 w-full md:w-52 flex flex-col items-center gap-3 yt-artist-box">
+            {/* ── ARTIST BOX ── */}
+            <StageBox color="#D4F000" glow className="p-4 sm:p-5 w-full sm:w-52 flex flex-col items-center gap-3 yt-artist-box">
               <LaserBorder color="#D4F000" />
-              {/* Artist icon — centered, pulse only (no bobbing/float) */}
-              <div className="w-16 h-16 rounded-full flex items-center justify-center border-2 border-yellow-400/60 bg-yellow-400/10 relative"
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center border-2 border-yellow-400/60 bg-yellow-400/10 relative"
                 style={{ boxShadow: '0 0 20px #D4F00050' }}>
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-yellow-400/30"
                   style={{ animation: 'yt-spin 8s linear infinite' }} />
-                {/* Original artist icon — centered, static (no float) */}
                 <div style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}>
-                  <ArtistIcon size={38} color="#D4F000" />
+                  <ArtistIcon size={36} color="#D4F000" />
                 </div>
               </div>
               <div className="text-center">
                 <p className="text-[#D4F000] font-black text-sm tracking-wider">ARTIST</p>
                 <p className="text-gray-400 text-xs">Independent Creator</p>
               </div>
-              {/* Centered audio visualizer */}
               <div className="flex justify-center w-full">
                 <Wave color="#D4F000" bars={12} />
               </div>
@@ -1216,10 +1526,10 @@ export default function YouTubeContentIDPage() {
             </StageBox>
 
             {/* Arrow: Artist → Karhari */}
-            <HPipe color="#D4F000" width={60} />
+            <div className="pipe-connector"><HPipe color="#D4F000" width={60} /></div>
 
             {/* Merge node */}
-            <div className="flex flex-col items-center gap-1">
+            <div className="hidden md:flex flex-col items-center gap-1">
               <div className="w-12 h-12 rounded-full border-2 border-white/20 bg-white/5 flex items-center justify-center"
                 style={{ animation: 'yt-spin 6s linear infinite' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4F000" strokeWidth="2.5"><path d="M12 5v14M5 12h14" /></svg>
@@ -1227,14 +1537,13 @@ export default function YouTubeContentIDPage() {
               <p className="text-gray-600 text-[9px] font-bold tracking-widest">MERGE</p>
             </div>
 
-            <HPipe color="#FF0000" width={60} />
+            <div className="pipe-connector"><HPipe color="#FF0000" width={60} /></div>
 
-            {/* ── KARHARI MEDIA CENTER BOX — no red strip, KM icon centered ── */}
-            <StageBox color="#FF0000" glow className="p-6 w-full md:w-64 flex flex-col items-center gap-3 yt-km-center-box">
+            {/* ── KARHARI MEDIA CENTER BOX ── */}
+            <StageBox color="#FF0000" glow className="p-4 sm:p-6 w-full sm:w-64 flex flex-col items-center gap-3 yt-km-center-box">
               <LaserBorder color="#FF0000" />
-              {/* KM icon perfectly centered — no red strip label above it */}
               <div className="flex flex-col items-center gap-2">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center border-2 border-red-500/60 bg-red-500/10 relative"
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-2 border-red-500/60 bg-red-500/10 relative"
                   style={{ boxShadow: '0 0 30px #FF000060' }}>
                   <div className="absolute inset-0 rounded-full border-2 border-dashed border-red-400/30"
                     style={{ animation: 'yt-spin 10s linear infinite' }} />
@@ -1243,7 +1552,7 @@ export default function YouTubeContentIDPage() {
                   <KMLogo size={36} />
                 </div>
                 <div className="text-center">
-                  <p className="text-red-400 font-black text-base tracking-wider">KARHARI MEDIA</p>
+                  <p className="text-red-400 font-black text-sm sm:text-base tracking-wider">KARHARI MEDIA</p>
                   <p className="text-gray-400 text-xs">Private Limited — India</p>
                 </div>
               </div>
@@ -1261,8 +1570,8 @@ export default function YouTubeContentIDPage() {
               </div>
             </StageBox>
 
-            {/* Arrow: Record Label → Karhari (flows LEFT) */}
-            <div className="flex items-center" style={{ width: 60 }}>
+            {/* Arrow: Record Label → Karhari */}
+            <div className="pipe-connector items-center" style={{ width: 60 }}>
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,6 10,0 10,12" fill="#8b00ff" opacity="0.8" /></svg>
               <div className="flex-1 h-[3px] relative overflow-hidden rounded-full" style={{ background: '#8b00ff25' }}>
                 <div className="absolute top-0 right-0 h-full rounded-full"
@@ -1271,7 +1580,7 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* Merge node 2 */}
-            <div className="flex flex-col items-center gap-1">
+            <div className="hidden md:flex flex-col items-center gap-1">
               <div className="w-12 h-12 rounded-full border-2 border-white/20 bg-white/5 flex items-center justify-center"
                 style={{ animation: 'yt-spin-r 6s linear infinite' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b00ff" strokeWidth="2.5"><path d="M12 5v14M5 12h14" /></svg>
@@ -1279,8 +1588,8 @@ export default function YouTubeContentIDPage() {
               <p className="text-gray-600 text-[9px] font-bold tracking-widest">MERGE</p>
             </div>
 
-            {/* Arrow: Record Label → merge node (flows LEFT) */}
-            <div className="flex items-center" style={{ width: 60 }}>
+            {/* Arrow: Record Label → merge node */}
+            <div className="pipe-connector items-center" style={{ width: 60 }}>
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,6 10,0 10,12" fill="#8b00ff" opacity="0.8" /></svg>
               <div className="flex-1 h-[3px] relative overflow-hidden rounded-full" style={{ background: '#8b00ff25' }}>
                 <div className="absolute top-0 right-0 h-full rounded-full"
@@ -1288,24 +1597,21 @@ export default function YouTubeContentIDPage() {
               </div>
             </div>
 
-            {/* ── RECORD LABEL BOX — centered visualizer, business/org icon, no bobbing ── */}
-            <StageBox color="#8b00ff" glow className="p-5 w-full md:w-52 flex flex-col items-center gap-3 yt-record-box">
+            {/* ── RECORD LABEL BOX ── */}
+            <StageBox color="#8b00ff" glow className="p-4 sm:p-5 w-full sm:w-52 flex flex-col items-center gap-3 yt-record-box">
               <LaserBorder color="#8b00ff" />
-              {/* Business/org icon — centered, pulse only (no bobbing) */}
-              <div className="w-16 h-16 rounded-full flex items-center justify-center border-2 border-purple-500/60 bg-purple-500/10 relative"
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center border-2 border-purple-500/60 bg-purple-500/10 relative"
                 style={{ boxShadow: '0 0 20px #8b00ff50' }}>
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-purple-400/30"
                   style={{ animation: 'yt-spin-r 8s linear infinite' }} />
-                {/* Business/Organization icon — centered, static (no float) */}
                 <div style={{ animation: 'yt-icon-pulse 2.2s ease-in-out infinite' }}>
-                  <BusinessIcon size={38} color="#8b00ff" />
+                  <BusinessIcon size={36} color="#8b00ff" />
                 </div>
               </div>
               <div className="text-center">
                 <p className="text-purple-400 font-black text-sm tracking-wider">RECORD LABEL</p>
                 <p className="text-gray-400 text-xs">Music Company</p>
               </div>
-              {/* Centered audio visualizer */}
               <div className="flex justify-center w-full">
                 <Wave color="#8b00ff" bars={12} />
               </div>
@@ -1322,37 +1628,24 @@ export default function YouTubeContentIDPage() {
 
           {/* ── STEP 2 LABEL ── */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-orange-400/30 bg-orange-400/8 text-orange-400 text-xs font-bold tracking-widest uppercase">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-orange-400/30 bg-orange-400/8 text-orange-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase step-label-text">
               STEP 2 — KARHARI MEDIA REVIEW
             </div>
           </div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              STEP 2: REVIEW OUTCOMES — proper icons, no bobbing, millions numbers, border animations
-          ══════════════════════════════════════════════════════════════ */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          {/* STEP 2 REVIEW OUTCOMES */}
+          <div className="review-grid mb-4">
 
             {/* ── APPROVED ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
-              style={{
-                borderColor: '#00ff8850',
-                background: '#00ff880d',
-                animation: 'yt-box-glow-green 2.2s ease-in-out infinite',
-              }}>
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
+              style={{ borderColor: '#00ff8850', background: '#00ff880d', animation: 'yt-box-glow-green 2.2s ease-in-out infinite' }}>
               <LaserBorder color="#00ff88" />
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 30% 20%, #00ff8818, transparent 65%)' }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 20%, #00ff8818, transparent 65%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                {/* Proper approved icon — no bobbing, pulse animation */}
-                <div style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}>
-                  <ApprovedIcon size={56} color="#00ff88" />
-                </div>
+                <div style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}><ApprovedIcon size={52} color="#00ff88" /></div>
                 <p className="text-green-400 font-black text-base">APPROVED</p>
-                {/* Always-increasing number — 2M+ */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-2xl font-black" style={{ color: '#00ff88' }}>
-                    {fmtNum(approvedCount)}
-                  </div>
+                  <div className="yt-stat-num text-xl sm:text-2xl font-black" style={{ color: '#00ff88' }}>{fmtNum(approvedCount)}</div>
                   <div className="text-green-600 text-[10px] font-bold">Approved Track File Number</div>
                 </div>
                 <p className="text-gray-400 text-xs text-center">Ownership confirmed. Audio quality passed. Forwarded to YouTube Content ID.</p>
@@ -1364,26 +1657,15 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* ── UNDER REVIEW ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
-              style={{
-                borderColor: '#ff6b0050',
-                background: '#ff6b000d',
-                animation: 'yt-box-glow-orange 2.5s ease-in-out infinite',
-              }}>
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
+              style={{ borderColor: '#ff6b0050', background: '#ff6b000d', animation: 'yt-box-glow-orange 2.5s ease-in-out infinite' }}>
               <LaserBorder color="#ff6b00" />
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 30% 20%, #ff6b0018, transparent 65%)' }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 20%, #ff6b0018, transparent 65%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                {/* Review icon — spinning (not bobbing) */}
-                <div style={{ animation: 'yt-review-spin 4s linear infinite' }}>
-                  <ReviewIcon size={56} color="#ff6b00" />
-                </div>
+                <div style={{ animation: 'yt-review-spin 4s linear infinite' }}><ReviewIcon size={52} color="#ff6b00" /></div>
                 <p className="text-orange-400 font-black text-base">UNDER REVIEW</p>
-                {/* Always-increasing number — 500K+ */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-2xl font-black" style={{ color: '#ff6b00' }}>
-                    {fmtNum(underReviewCount)}
-                  </div>
+                  <div className="yt-stat-num text-xl sm:text-2xl font-black" style={{ color: '#ff6b00' }}>{fmtNum(underReviewCount)}</div>
                   <div className="text-orange-600 text-[10px] font-bold">Under Review File Number</div>
                 </div>
                 <p className="text-gray-400 text-xs text-center">Complex cases requiring additional verification. 24–48 hour review window.</p>
@@ -1392,26 +1674,15 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* ── REJECTED ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
-              style={{
-                borderColor: '#FF000050',
-                background: '#FF00000d',
-                animation: 'yt-box-glow-red 2.8s ease-in-out infinite',
-              }}>
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
+              style={{ borderColor: '#FF000050', background: '#FF00000d', animation: 'yt-box-glow-red 2.8s ease-in-out infinite' }}>
               <LaserBorder color="#FF0000" />
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 30% 20%, #FF000018, transparent 65%)' }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 20%, #FF000018, transparent 65%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                {/* Proper rejected icon — pulse animation */}
-                <div style={{ animation: 'yt-icon-pulse 1.8s ease-in-out infinite' }}>
-                  <RejectedIcon size={56} color="#FF0000" />
-                </div>
+                <div style={{ animation: 'yt-icon-pulse 1.8s ease-in-out infinite' }}><RejectedIcon size={52} color="#FF0000" /></div>
                 <p className="text-red-400 font-black text-base">REJECTED</p>
-                {/* Always-increasing number — 1M+ */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-2xl font-black" style={{ color: '#FF0000' }}>
-                    {fmtNum(rejectedCount)}
-                  </div>
+                  <div className="yt-stat-num text-xl sm:text-2xl font-black" style={{ color: '#FF0000' }}>{fmtNum(rejectedCount)}</div>
                   <div className="text-red-600 text-[10px] font-bold">Rejected File Number</div>
                 </div>
                 <p className="text-gray-400 text-xs text-center">Incomplete docs, poor quality, or duplicate. Artist notified with reason code.</p>
@@ -1428,46 +1699,44 @@ export default function YouTubeContentIDPage() {
 
           {/* ── STEP 3 LABEL ── */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-red-500/30 bg-red-500/8 text-red-400 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-red-500/30 bg-red-500/8 text-red-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase flex items-center gap-2 step-label-text">
               <YTLogo size={14} /> STEP 3 — YOUTUBE CONTENT ID DELIVERY
             </div>
           </div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              STEP 3: YOUTUBE DELIVERY — millions stats, scanner bar, animated ID cards
-          ══════════════════════════════════════════════════════════════ */}
-          <StageBox color="#FF0000" glow className="p-8 mb-4 yt-glow-red">
+          {/* STEP 3 */}
+          <StageBox color="#FF0000" glow className="p-4 sm:p-8 mb-4 yt-glow-red">
             <LaserBorder color="#FF0000" />
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-center gap-4 sm:gap-6">
               {/* Header */}
-              <div className="flex flex-col md:flex-row items-center gap-4">
-                <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-red-500/30 bg-red-900/20">
-                  <KMLogo size={28} />
+              <div className="step3-header w-full">
+                <div className="flex items-center gap-3 px-4 py-3 rounded-xl border border-red-500/30 bg-red-900/20">
+                  <KMLogo size={24} />
                   <div>
                     <p className="text-white font-bold text-sm">Karhari Media</p>
                     <p className="text-gray-400 text-xs">Approved Audio Batch</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <HPipe color="#FF0000" width={80} />
+                  <HPipe color="#FF0000" width={60} />
                   <span className="text-red-400 text-[9px] font-bold tracking-widest">DELIVERS TO</span>
                 </div>
-                <div className="flex items-center gap-3 px-5 py-3 rounded-xl border-2 border-red-500/60 bg-red-900/25"
+                <div className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-red-500/60 bg-red-900/25"
                   style={{ boxShadow: '0 0 30px #FF000040' }}>
-                  <YTLogo size={32} />
+                  <YTLogo size={28} />
                   <div>
-                    <p className="text-red-400 font-black text-base">YouTube Content ID</p>
+                    <p className="text-red-400 font-black text-sm sm:text-base">YouTube Content ID</p>
                     <p className="text-gray-400 text-xs">Global Fingerprint Database</p>
                   </div>
                 </div>
               </div>
 
               {/* Fingerprint scanning engine */}
-              <div className="w-full p-6 rounded-2xl border border-red-500/20 bg-black/40">
-                <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+              <div className="w-full p-4 sm:p-6 rounded-2xl border border-red-500/20 bg-black/40">
+                <div className="flex items-center justify-between mb-4 sm:mb-5 flex-wrap gap-3">
                   <div className="flex items-center gap-2">
-                    <YTLogo size={22} />
-                    <p className="text-red-400 font-black text-lg">FINGERPRINT SCANNING ENGINE</p>
+                    <YTLogo size={20} />
+                    <p className="text-red-400 font-black text-base sm:text-lg">FINGERPRINT SCANNING ENGINE</p>
                   </div>
                   <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/15 border border-green-500/30">
                     <LiveDot />
@@ -1475,8 +1744,8 @@ export default function YouTubeContentIDPage() {
                   </div>
                 </div>
 
-                {/* Scan rings row — all numbers in MILLIONS, always increasing */}
-                <div className="flex items-center justify-center gap-6 md:gap-12 flex-wrap mb-5">
+                {/* Scan rings row */}
+                <div className="scan-rings-row mb-4 sm:mb-5">
                   {[
                     { label: 'Queued', count: queuedCount, color: '#00d4ff' },
                     { label: 'Scanning', count: scanningCount, color: '#D4F000' },
@@ -1484,20 +1753,22 @@ export default function YouTubeContentIDPage() {
                     { label: 'Registered', count: registeredCount, color: '#00ff88' },
                   ].map((item, i) => (
                     <div key={i} className="flex flex-col items-center gap-2">
-                      <ScanRing color={item.color} size={60} />
-                      <p className="yt-stat-num text-xl font-black" style={{ color: item.color }}>{fmtNum(item.count)}</p>
+                      <ScanRing color={item.color} size={56} />
+                      <p className="yt-stat-num text-lg sm:text-xl font-black" style={{ color: item.color }}>{fmtNum(item.count)}</p>
                       <p className="text-gray-400 text-[10px] text-center">{item.label}</p>
                     </div>
                   ))}
                 </div>
 
-                {/* Audio Fingerprint Analyzing — rapid scanner bar */}
-                <AudioScannerBar tick={fastTick} />
+                {/* Audio Fingerprint Analyzing */}
+                <div className="scanner-bar-wrap">
+                  <AudioScannerBar tick={fastTick} />
+                </div>
               </div>
 
-              {/* ID Cards row — animated with scanning movement, reduced side spacing, running numbers */}
+              {/* ID Cards row */}
               <div className="w-full">
-                <div className="flex items-start justify-center gap-4 md:gap-6 flex-wrap px-2">
+                <div className="id-cards-row px-1 sm:px-2">
                   {[
                     { label: 'AUDIO ID', color: '#FF0000' },
                     { label: 'VIDEO ID', color: '#D4F000' },
@@ -1517,45 +1788,26 @@ export default function YouTubeContentIDPage() {
 
           {/* ── STEP 4 LABEL ── */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/8 text-cyan-400 text-xs font-bold tracking-widest uppercase">
-              STEP 4 — SCAN RESULTS & OUTCOMES
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/8 text-cyan-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase step-label-text">
+              STEP 4 — SCAN RESULTS &amp; OUTCOMES
             </div>
           </div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              STEP 4: SCAN OUTCOMES — millions numbers, original icons, KM+YT corners, laser animations
-          ══════════════════════════════════════════════════════════════ */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          {/* STEP 4 SCAN OUTCOMES */}
+          <div className="review-grid mb-4">
 
-            {/* ── INVALID REFERENCE — least numbers ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
-              style={{
-                borderColor: '#FF000050',
-                background: '#FF00000d',
-                animation: 'yt-box-glow-red 2.5s ease-in-out infinite',
-              }}>
+            {/* ── INVALID REFERENCE ── */}
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
+              style={{ borderColor: '#FF000050', background: '#FF00000d', animation: 'yt-box-glow-red 2.5s ease-in-out infinite' }}>
               <LaserBorder color="#FF0000" />
-              {/* KM icon — bottom-left corner */}
-              <div className="absolute bottom-3 left-3 opacity-60 z-20">
-                <KMLogo size={14} />
-              </div>
-              {/* YT icon — bottom-right corner */}
-              <div className="absolute bottom-3 right-3 opacity-60 z-20">
-                <YTLogo size={14} />
-              </div>
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 30% 20%, #FF000018, transparent 65%)' }} />
+              <div className="absolute bottom-3 left-3 opacity-60 z-20"><KMLogo size={14} /></div>
+              <div className="absolute bottom-3 right-3 opacity-60 z-20"><YTLogo size={14} /></div>
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 20%, #FF000018, transparent 65%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                {/* Original invalid icon — pulse, no bobbing */}
-                <div style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}>
-                  <InvalidIcon size={56} color="#FF0000" />
-                </div>
+                <div style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}><InvalidIcon size={52} color="#FF0000" /></div>
                 <p className="text-red-400 font-black text-base">INVALID REFERENCE</p>
-                {/* Millions number — always increasing, least */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-2xl font-black" style={{ color: '#FF0000' }}>
-                    {fmtNum(invalidCount)}
-                  </div>
+                  <div className="yt-stat-num text-xl sm:text-2xl font-black" style={{ color: '#FF0000' }}>{fmtNum(invalidCount)}</div>
                   <div className="text-red-600 text-[10px] font-bold">Invalid Claims Detected</div>
                 </div>
                 <p className="text-gray-400 text-xs text-center">Audio matches an existing Content ID reference. Flagged as invalid claim requiring dispute resolution.</p>
@@ -1566,35 +1818,18 @@ export default function YouTubeContentIDPage() {
               </div>
             </div>
 
-            {/* ── OWNERSHIP CONFLICT — less numbers ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
-              style={{
-                borderColor: '#ff6b0050',
-                background: '#ff6b000d',
-                animation: 'yt-box-glow-orange 2.8s ease-in-out infinite',
-              }}>
+            {/* ── OWNERSHIP CONFLICT ── */}
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
+              style={{ borderColor: '#ff6b0050', background: '#ff6b000d', animation: 'yt-box-glow-orange 2.8s ease-in-out infinite' }}>
               <LaserBorder color="#ff6b00" />
-              {/* KM icon — bottom-left corner */}
-              <div className="absolute bottom-3 left-3 opacity-60 z-20">
-                <KMLogo size={14} />
-              </div>
-              {/* YT icon — bottom-right corner */}
-              <div className="absolute bottom-3 right-3 opacity-60 z-20">
-                <YTLogo size={14} />
-              </div>
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 30% 20%, #ff6b0018, transparent 65%)' }} />
+              <div className="absolute bottom-3 left-3 opacity-60 z-20"><KMLogo size={14} /></div>
+              <div className="absolute bottom-3 right-3 opacity-60 z-20"><YTLogo size={14} /></div>
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 20%, #ff6b0018, transparent 65%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                {/* Original ownership icon — pulse, no bobbing */}
-                <div style={{ animation: 'yt-icon-pulse 2.2s ease-in-out infinite' }}>
-                  <OwnershipIcon size={56} color="#ff6b00" />
-                </div>
+                <div style={{ animation: 'yt-icon-pulse 2.2s ease-in-out infinite' }}><OwnershipIcon size={52} color="#ff6b00" /></div>
                 <p className="text-orange-400 font-black text-base">OWNERSHIP CONFLICT</p>
-                {/* Millions number — always increasing, medium */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-2xl font-black" style={{ color: '#ff6b00' }}>
-                    {fmtNum(ownershipCount)}
-                  </div>
+                  <div className="yt-stat-num text-xl sm:text-2xl font-black" style={{ color: '#ff6b00' }}>{fmtNum(ownershipCount)}</div>
                   <div className="text-orange-600 text-[10px] font-bold">Ownership Disputes Active</div>
                 </div>
                 <p className="text-gray-400 text-xs text-center">Multiple parties claiming ownership. Content ID dispute process initiated between claimants.</p>
@@ -1605,35 +1840,18 @@ export default function YouTubeContentIDPage() {
               </div>
             </div>
 
-            {/* ── CLEAN & ORIGINAL — most numbers (2M+) ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
-              style={{
-                borderColor: '#00ff8850',
-                background: '#00ff880d',
-                animation: 'yt-box-glow-green 2s ease-in-out infinite',
-              }}>
+            {/* ── CLEAN & ORIGINAL ── */}
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
+              style={{ borderColor: '#00ff8850', background: '#00ff880d', animation: 'yt-box-glow-green 2s ease-in-out infinite' }}>
               <LaserBorder color="#00ff88" />
-              {/* KM icon — bottom-left corner */}
-              <div className="absolute bottom-3 left-3 opacity-60 z-20">
-                <KMLogo size={14} />
-              </div>
-              {/* YT icon — bottom-right corner */}
-              <div className="absolute bottom-3 right-3 opacity-60 z-20">
-                <YTLogo size={14} />
-              </div>
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at 30% 20%, #00ff8818, transparent 65%)' }} />
+              <div className="absolute bottom-3 left-3 opacity-60 z-20"><KMLogo size={14} /></div>
+              <div className="absolute bottom-3 right-3 opacity-60 z-20"><YTLogo size={14} /></div>
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 20%, #00ff8818, transparent 65%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                {/* Original clean icon — pulse, no bobbing */}
-                <div style={{ animation: 'yt-icon-pulse 1.8s ease-in-out infinite' }}>
-                  <OriginalIcon size={56} color="#00ff88" />
-                </div>
-                <p className="text-green-400 font-black text-base">CLEAN & ORIGINAL</p>
-                {/* Millions number — always increasing, most (2M+) */}
+                <div style={{ animation: 'yt-icon-pulse 1.8s ease-in-out infinite' }}><OriginalIcon size={52} color="#00ff88" /></div>
+                <p className="text-green-400 font-black text-base">CLEAN &amp; ORIGINAL</p>
                 <div className="text-center">
-                  <div className="yt-stat-num text-2xl font-black" style={{ color: '#00ff88' }}>
-                    {fmtNum(originalCount)}
-                  </div>
+                  <div className="yt-stat-num text-xl sm:text-2xl font-black" style={{ color: '#00ff88' }}>{fmtNum(originalCount)}</div>
                   <div className="text-green-600 text-[10px] font-bold">Original Tracks Verified</div>
                 </div>
                 <p className="text-gray-400 text-xs text-center">No conflicts found. Audio is verified original. Registered in YouTube Content ID fingerprint database.</p>
@@ -1648,33 +1866,24 @@ export default function YouTubeContentIDPage() {
           {/* Pipe down */}
           <div className="flex justify-center my-2"><VPipe color="#00ff88" height={70} /></div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              STEP 5 — FINGERPRINT REGISTRATION & MONETIZATION STATUS
-              Updated: millions numbers, proper SVG icons, YT+KM in corners,
-              nice animations, YT revenue bubbles instead of dollar rain
-          ══════════════════════════════════════════════════════════════ */}
+          {/* STEP 5 LABEL */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-purple-400/30 bg-purple-400/8 text-purple-400 text-xs font-bold tracking-widest uppercase">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-purple-400/30 bg-purple-400/8 text-purple-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase step-label-text">
               STEP 5 — FINGERPRINT REGISTRATION &amp; MONETIZATION STATUS
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="review-grid mb-4">
 
             {/* ── MONETIZED BOX ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
               style={{ borderColor: '#00ff8860', background: '#00ff880d', animation: 'yt-box-glow-green 2s ease-in-out infinite' }}>
               <LaserBorder color="#00ff88" />
-              {/* YT revenue bubbles */}
               <YTRevenueBubble count={10} />
-              {/* KM icon top-left */}
               <div className="absolute top-3 left-3 opacity-70 z-20"><KMLogo size={16} /></div>
-              {/* YT icon top-right */}
               <div className="absolute top-3 right-3 opacity-80 z-20"><YTLogo size={16} /></div>
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 30%, #00ff8820, transparent 70%)' }} />
-
               <div className="relative z-10 flex flex-col items-center gap-3 w-full mt-4">
-                {/* Proper SVG icon — static, subtle pulse glow */}
                 <div className="relative flex items-center justify-center">
                   <div className="absolute rounded-full" style={{ width: 80, height: 80, background: '#00ff8815', animation: 'yt-scan 2.5s ease-out infinite' }} />
                   <div className="w-16 h-16 rounded-full flex items-center justify-center border-2 border-green-500/60 bg-green-500/15 relative"
@@ -1683,33 +1892,22 @@ export default function YouTubeContentIDPage() {
                     <MonetizedIcon size={40} color="#00ff88" />
                   </div>
                 </div>
-
                 <p className="text-green-400 font-black text-base tracking-wider">MONETIZED</p>
-
-                {/* Millions number — 2-5M range, always running */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-3xl font-black" style={{ color: '#00ff88' }}>
-                    {fmtNum(monetizedCount)}
-                  </div>
+                  <div className="yt-stat-num text-2xl sm:text-3xl font-black" style={{ color: '#00ff88' }}>{fmtNum(monetizedCount)}</div>
                   <div className="text-green-600 text-[10px] font-bold tracking-wider">CONTENT ID ACTIVE — EARNING</div>
                 </div>
-
-                {/* Percentage bar */}
                 <div className="w-full">
                   <div className="flex justify-between mb-1">
                     <span className="text-green-400 text-[10px] font-bold">Monetization Rate</span>
-                    <span className="text-green-400 text-[10px] font-bold">
-                      {Math.min(20, 10 + Math.floor((monetizedCount % 1000000) / 100000))}%
-                    </span>
+                    <span className="text-green-400 text-[10px] font-bold">{Math.min(20, 10 + Math.floor((monetizedCount % 1000000) / 100000))}%</span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                     <div className="h-full rounded-full" style={{ width: `${Math.min(20, 10 + Math.floor((monetizedCount % 1000000) / 100000))}%`, background: 'linear-gradient(90deg, #00ff88, #00d4ff)', animation: 'yt-flow-h 2s linear infinite' }} />
                   </div>
                   <p className="text-[9px] text-gray-500 mt-1 text-center">10–20% monetization range</p>
                 </div>
-
                 <p className="text-gray-400 text-xs text-center z-10">Content ID active. YouTube ads running. Revenue being collected and tracked in real-time.</p>
-
                 <div className="w-full p-2 rounded-lg bg-green-500/10 border border-green-500/20 z-10">
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-1"><LiveDot /><span className="text-green-300 text-[10px] font-bold">EARNING LIVE</span></div>
@@ -1721,18 +1919,14 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* ── MONETIZE BLOCK BOX ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
               style={{ borderColor: '#ff005560', background: '#ff00550d', animation: 'yt-box-glow-pink 2.3s ease-in-out infinite' }}>
               <LaserBorder color="#ff0055" />
               <YTRevenueBubble count={6} />
-              {/* KM icon top-left */}
               <div className="absolute top-3 left-3 opacity-70 z-20"><KMLogo size={16} /></div>
-              {/* YT icon top-right */}
               <div className="absolute top-3 right-3 opacity-80 z-20"><YTLogo size={16} /></div>
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 30%, #ff005520, transparent 70%)' }} />
-
               <div className="relative z-10 flex flex-col items-center gap-3 w-full mt-4">
-                {/* Proper SVG blocked icon — static, no float */}
                 <div className="relative flex items-center justify-center">
                   <div className="absolute rounded-full" style={{ width: 80, height: 80, background: '#ff005515', animation: 'yt-scan 3s ease-out infinite' }} />
                   <div className="w-16 h-16 rounded-full flex items-center justify-center border-2 border-pink-500/60 bg-pink-500/15 relative"
@@ -1741,33 +1935,22 @@ export default function YouTubeContentIDPage() {
                     <BlockedIcon size={40} color="#ff0055" />
                   </div>
                 </div>
-
                 <p className="text-pink-400 font-black text-base tracking-wider">MONETIZE BLOCK</p>
-
-                {/* Millions number — large, always running */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-3xl font-black" style={{ color: '#ff0055' }}>
-                    {fmtNum(blockedStep5Count)}
-                  </div>
+                  <div className="yt-stat-num text-2xl sm:text-3xl font-black" style={{ color: '#ff0055' }}>{fmtNum(blockedStep5Count)}</div>
                   <div className="text-pink-600 text-[10px] font-bold tracking-wider">BLOCKED GLOBALLY</div>
                 </div>
-
-                {/* Percentage bar */}
                 <div className="w-full">
                   <div className="flex justify-between mb-1">
                     <span className="text-pink-400 text-[10px] font-bold">Block Rate</span>
-                    <span className="text-pink-400 text-[10px] font-bold">
-                      {Math.min(20, 10 + Math.floor((blockedStep5Count % 500000) / 50000))}%
-                    </span>
+                    <span className="text-pink-400 text-[10px] font-bold">{Math.min(20, 10 + Math.floor((blockedStep5Count % 500000) / 50000))}%</span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                     <div className="h-full rounded-full" style={{ width: `${Math.min(20, 10 + Math.floor((blockedStep5Count % 500000) / 50000))}%`, background: 'linear-gradient(90deg, #ff0055, #ff6b00)', animation: 'yt-flow-h 2.5s linear infinite' }} />
                   </div>
                   <p className="text-[9px] text-gray-500 mt-1 text-center">10–20% block range</p>
                 </div>
-
                 <p className="text-gray-400 text-xs text-center z-10">Video blocked globally or in specific regions due to Content ID match. No revenue generated.</p>
-
                 <div className="w-full p-2 rounded-lg bg-pink-500/10 border border-pink-500/20 z-10">
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-1"><LiveDot color="#ff0055" /><span className="text-pink-300 text-[10px] font-bold">CONTENT BLOCKED</span></div>
@@ -1779,18 +1962,14 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* ── UNMONETIZED BOX ── */}
-            <div className="rounded-2xl border-2 relative overflow-hidden p-5 flex flex-col items-center gap-3"
+            <div className="rounded-2xl border-2 relative overflow-hidden p-4 sm:p-5 flex flex-col items-center gap-3"
               style={{ borderColor: '#6b728060', background: '#6b72800d', animation: 'yt-box-glow-gray 2.6s ease-in-out infinite' }}>
               <LaserBorder color="#9ca3af" />
               <YTRevenueBubble count={5} />
-              {/* KM icon top-left */}
               <div className="absolute top-3 left-3 opacity-70 z-20"><KMLogo size={16} /></div>
-              {/* YT icon top-right */}
               <div className="absolute top-3 right-3 opacity-80 z-20"><YTLogo size={16} /></div>
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 30%, #6b728018, transparent 70%)' }} />
-
               <div className="relative z-10 flex flex-col items-center gap-3 w-full mt-4">
-                {/* Proper SVG unmonetized icon — static, subtle pulse */}
                 <div className="relative flex items-center justify-center">
                   <div className="absolute rounded-full" style={{ width: 80, height: 80, background: '#6b728015', animation: 'yt-scan 3.5s ease-out infinite' }} />
                   <div className="w-16 h-16 rounded-full flex items-center justify-center border-2 border-gray-500/60 bg-gray-500/15 relative"
@@ -1799,33 +1978,22 @@ export default function YouTubeContentIDPage() {
                     <UnmonetizedIcon size={40} color="#9ca3af" />
                   </div>
                 </div>
-
                 <p className="text-gray-400 font-black text-base tracking-wider">UNMONETIZED</p>
-
-                {/* Millions number — always running */}
                 <div className="text-center">
-                  <div className="yt-stat-num text-3xl font-black" style={{ color: '#9ca3af' }}>
-                    {fmtNum(unmonetizedCount)}
-                  </div>
+                  <div className="yt-stat-num text-2xl sm:text-3xl font-black" style={{ color: '#9ca3af' }}>{fmtNum(unmonetizedCount)}</div>
                   <div className="text-gray-600 text-[10px] font-bold tracking-wider">PENDING RESOLUTION</div>
                 </div>
-
-                {/* Percentage bar */}
                 <div className="w-full">
                   <div className="flex justify-between mb-1">
                     <span className="text-gray-400 text-[10px] font-bold">Unmonetized Rate</span>
-                    <span className="text-gray-400 text-[10px] font-bold">
-                      {Math.min(15, 10 + Math.floor((unmonetizedCount % 300000) / 60000))}%
-                    </span>
+                    <span className="text-gray-400 text-[10px] font-bold">{Math.min(15, 10 + Math.floor((unmonetizedCount % 300000) / 60000))}%</span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                     <div className="h-full rounded-full" style={{ width: `${Math.min(15, 10 + Math.floor((unmonetizedCount % 300000) / 60000))}%`, background: 'linear-gradient(90deg, #6b7280, #9ca3af)', animation: 'yt-flow-h 3s linear infinite' }} />
                   </div>
                   <p className="text-[9px] text-gray-500 mt-1 text-center">10–15% unmonetized range</p>
                 </div>
-
                 <p className="text-gray-400 text-xs text-center z-10">Tracked but not monetized. Dispute pending or rights not fully cleared. Under investigation.</p>
-
                 <div className="w-full p-2 rounded-lg bg-gray-500/10 border border-gray-500/20 z-10">
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-1"><LiveDot color="#6b7280" /><span className="text-gray-400 text-[10px] font-bold">PENDING RESOLUTION</span></div>
@@ -1839,13 +2007,9 @@ export default function YouTubeContentIDPage() {
 
           <div className="flex justify-center my-2"><VPipe color="#D4F000" height={70} /></div>
 
-          {/* ══════════════════════════════════════════════════════════════
-              NEW SECTION — GLOBAL YOUTUBE REVENUE COLLECTION VISUALIZER
-              Karhari Media collects revenue worldwide through YouTube's
-              global Content ID partnerships
-          ══════════════════════════════════════════════════════════════ */}
+          {/* GLOBAL REVENUE LABEL */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-red-500/40 bg-red-500/8 text-red-400 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-red-500/40 bg-red-500/8 text-red-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase flex items-center gap-2 step-label-text">
               <YTLogo size={14} /> GLOBAL YOUTUBE REVENUE COLLECTION
             </div>
           </div>
@@ -1853,44 +2017,30 @@ export default function YouTubeContentIDPage() {
           <div className="rounded-2xl border-2 relative overflow-hidden mb-4"
             style={{ borderColor: '#FF000040', background: 'linear-gradient(135deg, #0a0010 0%, #060610 50%, #0a0010 100%)', boxShadow: '0 0 60px #FF000025, 0 0 120px #FF000010' }}>
             <LaserBorder color="#FF0000" />
-
-            {/* Background grid */}
             <div className="absolute inset-0 opacity-[0.04]"
               style={{ backgroundImage: 'linear-gradient(#FF0000 1px, transparent 1px), linear-gradient(90deg, #FF0000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-
-            {/* Ambient glow */}
             <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[100px] opacity-15"
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] rounded-full blur-[100px] opacity-15"
                 style={{ background: 'radial-gradient(circle, #FF0000, transparent 70%)' }} />
-              <div className="absolute top-1/4 left-1/4 w-[200px] h-[200px] rounded-full blur-[80px] opacity-10"
-                style={{ background: 'radial-gradient(circle, #D4F000, transparent 70%)' }} />
-              <div className="absolute bottom-1/4 right-1/4 w-[200px] h-[200px] rounded-full blur-[80px] opacity-10"
-                style={{ background: 'radial-gradient(circle, #00d4ff, transparent 70%)' }} />
             </div>
 
-            <div className="relative z-10 p-6">
+            <div className="relative z-10 p-4 sm:p-6">
               {/* Header row */}
-              <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-                {/* KM icon — left */}
-                <div className="flex items-center gap-3 px-4 py-3 rounded-xl border border-red-500/30 bg-red-900/20">
-                  <KMLogo size={32} />
+              <div className="global-header mb-4 sm:mb-6">
+                <div className="flex items-center gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-red-500/30 bg-red-900/20">
+                  <KMLogo size={28} />
                   <div>
                     <p className="text-white font-black text-sm">KARHARI MEDIA</p>
                     <p className="text-gray-400 text-[10px]">Global Revenue Collector</p>
                     <div className="flex items-center gap-1 mt-0.5"><LiveDot /><span className="text-green-400 text-[9px] font-bold">COLLECTING WORLDWIDE</span></div>
                   </div>
                 </div>
-
-                <div className="text-center flex-1">
-                  <p className="text-white font-black text-xl md:text-2xl" style={{ textShadow: '0 0 30px #FF000080' }}>
-                    WORLDWIDE REVENUE NETWORK
-                  </p>
+                <div className="text-center flex-1 px-2">
+                  <p className="text-white font-black text-lg sm:text-xl md:text-2xl" style={{ textShadow: '0 0 30px #FF000080' }}>WORLDWIDE REVENUE NETWORK</p>
                   <p className="text-gray-400 text-xs mt-1">Karhari Media collects revenue worldwide through YouTube&apos;s global Content ID partnerships</p>
                 </div>
-
-                {/* YT icon — top right */}
-                <div className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-red-500/50 bg-red-900/25" style={{ boxShadow: '0 0 20px #FF000040' }}>
-                  <YTLogo size={32} />
+                <div className="flex items-center gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border-2 border-red-500/50 bg-red-900/25" style={{ boxShadow: '0 0 20px #FF000040' }}>
+                  <YTLogo size={28} />
                   <div>
                     <p className="text-red-400 font-black text-sm">YOUTUBE</p>
                     <p className="text-gray-400 text-[10px]">Content ID Partner</p>
@@ -1899,10 +2049,8 @@ export default function YouTubeContentIDPage() {
                 </div>
               </div>
 
-              {/* Main visualizer — large YT icon center + small YT icons all around connected */}
-              <div className="relative w-full" style={{ height: 480 }}>
-
-                {/* SVG connection lines between all nodes and center */}
+              {/* Main visualizer */}
+              <div className="relative w-full global-viz">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                   <defs>
                     <filter id="glow-line">
@@ -1910,32 +2058,22 @@ export default function YouTubeContentIDPage() {
                       <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
                     </filter>
                   </defs>
-                  {/* Lines from each satellite node to center */}
                   {globalNodes.slice(1).map((node, i) => {
                     const colors = ['#FF0000','#D4F000','#00ff88','#00d4ff','#8b00ff','#ff6b00','#FF0000','#D4F000','#00ff88','#00d4ff','#8b00ff','#ff6b00','#FF0000','#D4F000','#00ff88','#00d4ff','#8b00ff'];
                     const c = colors[i % colors.length];
                     return (
-                      <line key={i}
-                        x1={`${node.x}`} y1={`${node.y}`}
-                        x2="50" y2="50"
-                        stroke={c} strokeWidth="0.3" opacity="0.5"
-                        strokeDasharray="2 1"
+                      <line key={i} x1={`${node.x}`} y1={`${node.y}`} x2="50" y2="50"
+                        stroke={c} strokeWidth="0.3" opacity="0.5" strokeDasharray="2 1"
                         filter="url(#glow-line)"
-                        style={{ animation: `yt-revenue-flow ${1.5 + i * 0.2}s ${i * 0.15}s linear infinite` }}
-                      />
+                        style={{ animation: `yt-revenue-flow ${1.5 + i * 0.2}s ${i * 0.15}s linear infinite` }} />
                     );
                   })}
-                  {/* Cross-connections between nearby nodes */}
                   {globalNodes.slice(1, 8).map((node, i) => {
                     const next = globalNodes[(i + 2) % (globalNodes.length - 1) + 1];
                     return (
-                      <line key={`cross-${i}`}
-                        x1={`${node.x}`} y1={`${node.y}`}
-                        x2={`${next.x}`} y2={`${next.y}`}
-                        stroke="#FF000030" strokeWidth="0.2" opacity="0.3"
-                        strokeDasharray="1 2"
-                        style={{ animation: `yt-revenue-flow ${2 + i * 0.3}s ${i * 0.2}s linear infinite` }}
-                      />
+                      <line key={`cross-${i}`} x1={`${node.x}`} y1={`${node.y}`} x2={`${next.x}`} y2={`${next.y}`}
+                        stroke="#FF000030" strokeWidth="0.2" opacity="0.3" strokeDasharray="1 2"
+                        style={{ animation: `yt-revenue-flow ${2 + i * 0.3}s ${i * 0.2}s linear infinite` }} />
                     );
                   })}
                 </svg>
@@ -1943,22 +2081,19 @@ export default function YouTubeContentIDPage() {
                 {/* Large YouTube icon — center */}
                 <div className="absolute z-20" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
                   <div className="relative flex items-center justify-center">
-                    {/* Outer pulsing rings */}
                     {[0,1,2,3].map(i => (
                       <div key={i} className="absolute rounded-full border border-red-500/30"
                         style={{ width: 80 + i * 30, height: 80 + i * 30, animation: `yt-scan ${2 + i * 0.6}s ${i * 0.4}s ease-out infinite` }} />
                     ))}
-                    {/* Center glow */}
                     <div className="absolute w-32 h-32 rounded-full blur-2xl opacity-40" style={{ background: 'radial-gradient(circle, #FF0000, transparent 70%)' }} />
-                    {/* Main YT icon — clean, no text around it */}
-                    <div className="relative z-10 p-5 rounded-full border-2 border-red-500/50 bg-black/60 backdrop-blur-sm"
+                    <div className="relative z-10 p-3 sm:p-5 rounded-full border-2 border-red-500/50 bg-black/60 backdrop-blur-sm"
                       style={{ boxShadow: '0 0 50px #FF000090, 0 0 100px #FF000040', animation: 'yt-cid-glow 2s ease-in-out infinite' }}>
-                      <YTLogo size={80} />
+                      <YTLogo size={60} />
                     </div>
                   </div>
                 </div>
 
-                {/* Satellite YouTube icons — spread all around */}
+                {/* Satellite YouTube icons */}
                 {globalNodes.slice(1).map((node, i) => {
                   const colors = ['#FF0000','#D4F000','#00ff88','#00d4ff','#8b00ff','#ff6b00','#FF0000','#D4F000','#00ff88','#00d4ff','#8b00ff','#ff6b00','#FF0000','#D4F000','#00ff88','#00d4ff','#8b00ff'];
                   const c = colors[i % colors.length];
@@ -1966,33 +2101,27 @@ export default function YouTubeContentIDPage() {
                   return (
                     <div key={i} className="absolute z-10 flex flex-col items-center gap-0.5"
                       style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)', animation: `yt-node-pulse ${1.8 + (i % 4) * 0.4}s ${delay}s ease-in-out infinite` }}>
-                      {/* Revenue particle flowing toward center */}
                       <div className="relative">
                         <div className="absolute -inset-1 rounded-lg opacity-40 blur-sm" style={{ background: c }} />
-                        <div className="relative p-1.5 rounded-lg border"
+                        <div className="relative p-1 sm:p-1.5 rounded-lg border"
                           style={{ borderColor: `${c}60`, background: `${c}15`, boxShadow: `0 0 12px ${c}50` }}>
-                          <YTLogo size={16} />
+                          <YTLogo size={14} />
                         </div>
                       </div>
-                      <span className="text-[7px] font-black tracking-wider" style={{ color: c }}>{node.label}</span>
-                      {/* Revenue flow dot */}
+                      <span className="text-[6px] sm:text-[7px] font-black tracking-wider" style={{ color: c }}>{node.label}</span>
                       <div className="w-1 h-1 rounded-full" style={{ background: c, animation: `yt-blink ${0.8 + i * 0.1}s ease-in-out infinite`, boxShadow: `0 0 4px ${c}` }} />
                     </div>
                   );
                 })}
 
-                {/* Floating YouTube icon particles — mostly YT logos */}
+                {/* Floating particles */}
                 {Array.from({ length: 16 }).map((_, i) => {
                   const startX = 3 + i * 6;
                   const startY = 8 + (i % 6) * 15;
                   const ytSize = 8 + (i % 3) * 4;
                   return (
                     <div key={`particle-${i}`} className="absolute z-5 pointer-events-none"
-                      style={{
-                        left: `${startX}%`, top: `${startY}%`,
-                        animation: `yt-float ${1.8 + i * 0.25}s ${i * 0.2}s ease-in-out infinite`,
-                        opacity: 0.6 + (i % 3) * 0.15,
-                      }}>
+                      style={{ left: `${startX}%`, top: `${startY}%`, animation: `yt-float ${1.8 + i * 0.25}s ${i * 0.2}s ease-in-out infinite`, opacity: 0.6 + (i % 3) * 0.15 }}>
                       {i % 5 === 4
                         ? <div className="w-2 h-2 rounded-full" style={{ background: '#D4F000', boxShadow: '0 0 6px #D4F000' }} />
                         : <YTLogo size={ytSize} />
@@ -2003,19 +2132,19 @@ export default function YouTubeContentIDPage() {
               </div>
 
               {/* Bottom stats row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
+              <div className="stats-grid-4 mt-4 sm:mt-6">
                 {[
                   { label: 'Countries Collecting', value: '195+', color: '#FF0000', sub: 'Global reach' },
                   { label: 'Revenue Collected', value: `$${fmtNum(revenueCount)}`, color: '#D4F000', sub: 'All territories' },
                   { label: 'Active CID Claims', value: fmtNum(claimsCount), color: '#00ff88', sub: 'Worldwide' },
                   { label: 'YT Partner Networks', value: '50+', color: '#00d4ff', sub: 'Global MCN' },
                 ].map((s, i) => (
-                  <div key={i} className="p-3 rounded-xl border text-center relative overflow-hidden"
+                  <div key={i} className="p-2 sm:p-3 rounded-xl border text-center relative overflow-hidden"
                     style={{ borderColor: `${s.color}30`, background: `${s.color}0a` }}>
                     <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(circle at 50% 0%, ${s.color}15, transparent 70%)` }} />
                     <div className="relative z-10">
-                      <div className="yt-stat-num text-xl font-black" style={{ color: s.color }}>{s.value}</div>
-                      <div className="text-gray-400 text-[10px] mt-0.5 font-semibold">{s.label}</div>
+                      <div className="yt-stat-num text-base sm:text-xl font-black" style={{ color: s.color }}>{s.value}</div>
+                      <div className="text-gray-400 text-[9px] sm:text-[10px] mt-0.5 font-semibold">{s.label}</div>
                       <div className="text-gray-600 text-[9px]">{s.sub}</div>
                     </div>
                   </div>
@@ -2023,13 +2152,13 @@ export default function YouTubeContentIDPage() {
               </div>
 
               {/* Description strip */}
-              <div className="mt-4 p-4 rounded-xl border border-red-500/20 bg-red-900/10 flex flex-col md:flex-row items-center gap-4">
+              <div className="mt-4 p-3 sm:p-4 rounded-xl border border-red-500/20 bg-red-900/10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
                 <div className="flex items-center gap-3 flex-shrink-0">
-                  <KMLogo size={24} />
+                  <KMLogo size={22} />
                   <span className="text-white text-xs font-black">x</span>
-                  <YTLogo size={24} />
+                  <YTLogo size={22} />
                 </div>
-                <p className="text-gray-300 text-xs leading-relaxed text-center md:text-left">
+                <p className="text-gray-300 text-xs leading-relaxed text-center sm:text-left">
                   <span className="text-red-400 font-black">Karhari Media</span> collects revenue worldwide through YouTube&apos;s global Content ID partnerships. Every registered track generates revenue from all 195+ countries where YouTube operates — automatically tracked, claimed, and distributed through our certified Content ID pipeline.
                 </p>
                 <div className="flex items-center gap-2 flex-shrink-0">
@@ -2044,35 +2173,35 @@ export default function YouTubeContentIDPage() {
 
           {/* ── STEP 6 LABEL ── */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/8 text-yellow-400 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/8 text-yellow-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase flex items-center gap-2 step-label-text">
               <YTLogo size={14} /> STEP 6 — REVENUE FLOW
             </div>
           </div>
 
-          {/* ── STAGE 6: REVENUE FLOW ── */}
-          <StageBox color="#D4F000" glow className="p-8 mb-4 yt-glow-gold relative overflow-hidden">
+          {/* STEP 6 REVENUE FLOW */}
+          <StageBox color="#D4F000" glow className="p-4 sm:p-8 mb-4 yt-glow-gold relative overflow-hidden">
             <YTRevenueBubble count={14} />
             <div className="relative z-10">
-              <div className="text-center mb-6">
-                <p className="text-[#D4F000] font-black text-2xl mb-1">REVENUE DISTRIBUTION PIPELINE</p>
+              <div className="text-center mb-4 sm:mb-6">
+                <p className="text-[#D4F000] font-black text-xl sm:text-2xl mb-1">REVENUE DISTRIBUTION PIPELINE</p>
                 <p className="text-gray-400 text-sm">YouTube Content ID revenue flows through the complete chain</p>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-0">
-                <div className="flex flex-col items-center gap-2 p-4 rounded-2xl border-2 border-red-500/50 bg-red-900/20 w-44"
+              <div className="revenue-flow-row">
+                <div className="flex flex-col items-center gap-2 p-3 sm:p-4 rounded-2xl border-2 border-red-500/50 bg-red-900/20 w-full sm:w-44"
                   style={{ boxShadow: '0 0 30px #FF000040' }}>
-                  <YTLogo size={36} />
+                  <YTLogo size={32} />
                   <p className="text-red-400 font-black text-sm">YOUTUBE</p>
                   <p className="text-gray-400 text-[10px] text-center">Collects ad revenue from Content ID claims</p>
                   <div className="text-green-400 font-black text-lg">$$$</div>
                 </div>
 
-                <div className="flex flex-col items-center gap-1 mx-3">
+                <div className="revenue-arrow flex-col items-center gap-1 mx-3">
                   <HPipe color="#D4F000" width={70} />
                   <span className="text-[#D4F000] text-[9px] font-bold tracking-widest">SENDS REVENUE</span>
                 </div>
 
-                <div className="flex flex-col items-center gap-2 p-4 rounded-2xl border-2 border-yellow-400/50 bg-yellow-900/20 w-52 relative"
+                <div className="flex flex-col items-center gap-2 p-3 sm:p-4 rounded-2xl border-2 border-yellow-400/50 bg-yellow-900/20 w-full sm:w-52 relative"
                   style={{ boxShadow: '0 0 30px #D4F00040' }}>
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#D4F000] text-black text-[9px] font-black">REVENUE HUB</div>
                   <KMLogo size={32} />
@@ -2084,7 +2213,7 @@ export default function YouTubeContentIDPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center gap-3 mx-3">
+                <div className="revenue-labels mx-3">
                   <div className="flex flex-col items-center gap-1">
                     <HPipe color="#00ff88" width={50} />
                     <span className="text-green-400 text-[9px] font-bold">TO ARTISTS</span>
@@ -2095,9 +2224,9 @@ export default function YouTubeContentIDPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-3 p-3 rounded-xl border border-green-500/30 bg-green-900/15 w-44">
-                    <div className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500 flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                  <div className="flex items-center gap-3 p-3 rounded-xl border border-green-500/30 bg-green-900/15 w-full sm:w-44">
+                    <div className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500 flex items-center justify-center flex-shrink-0">
                       <ArtistIcon size={24} color="#00ff88" />
                     </div>
                     <div>
@@ -2106,8 +2235,8 @@ export default function YouTubeContentIDPage() {
                       <p className="text-green-400 font-bold text-sm">Paid</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 rounded-xl border border-purple-500/30 bg-purple-900/15 w-44">
-                    <div className="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500 flex items-center justify-center">
+                  <div className="flex items-center gap-3 p-3 rounded-xl border border-purple-500/30 bg-purple-900/15 w-full sm:w-44">
+                    <div className="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500 flex items-center justify-center flex-shrink-0">
                       <BusinessIcon size={24} color="#8b00ff" />
                     </div>
                     <div>
@@ -2119,17 +2248,17 @@ export default function YouTubeContentIDPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
+              <div className="stats-grid-4 mt-4 sm:mt-6">
                 {[
                   { label: 'Total Revenue Collected', value: `$${fmtNum(revenueCount)}`, color: '#D4F000' },
                   { label: 'Paid to Artists', value: `$${fmtNum(Math.floor(revenueCount * 0.4))}`, color: '#00ff88' },
                   { label: 'Paid to Labels', value: `$${fmtNum(Math.floor(revenueCount * 0.25))}`, color: '#8b00ff' },
                   { label: 'Active Monetized Tracks', value: fmtNum(tracksCount), color: '#FF0000' },
                 ].map((s, i) => (
-                  <div key={i} className="p-3 rounded-xl border text-center"
+                  <div key={i} className="p-2 sm:p-3 rounded-xl border text-center"
                     style={{ borderColor: `${s.color}30`, background: `${s.color}0a` }}>
-                    <div className="text-lg font-black" style={{ color: s.color }}>{s.value}</div>
-                    <div className="text-gray-500 text-[10px] mt-0.5">{s.label}</div>
+                    <div className="text-base sm:text-lg font-black" style={{ color: s.color }}>{s.value}</div>
+                    <div className="text-gray-500 text-[9px] sm:text-[10px] mt-0.5">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -2138,26 +2267,26 @@ export default function YouTubeContentIDPage() {
 
           <div className="flex justify-center my-2"><VPipe color="#00ff88" height={70} /></div>
 
-          {/* ── PIPELINE SUMMARY LABEL ── */}
+          {/* PIPELINE SUMMARY LABEL */}
           <div className="flex flex-col items-center mb-4">
-            <div className="px-5 py-1.5 rounded-full border border-green-400/30 bg-green-400/8 text-green-400 text-xs font-bold tracking-widest uppercase">
+            <div className="px-4 sm:px-5 py-1.5 rounded-full border border-green-400/30 bg-green-400/8 text-green-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase step-label-text">
               PIPELINE COMPLETE — SUMMARY
             </div>
           </div>
 
-          {/* ── PIPELINE SUMMARY ── */}
-          <StageBox color="#00ff88" glow className="p-8 mb-8">
-            <div className="text-center mb-6">
+          {/* PIPELINE SUMMARY */}
+          <StageBox color="#00ff88" glow className="p-4 sm:p-8 mb-6 sm:mb-8">
+            <div className="text-center mb-4 sm:mb-6">
               <div className="flex items-center justify-center gap-3 mb-3">
-                <KMLogo size={32} />
-                <span className="text-white text-2xl font-black">×</span>
-                <YTLogo size={32} />
+                <KMLogo size={28} />
+                <span className="text-white text-xl sm:text-2xl font-black">×</span>
+                <YTLogo size={28} />
               </div>
-              <p className="text-green-400 font-black text-xl">FULL PIPELINE OPERATIONAL</p>
+              <p className="text-green-400 font-black text-lg sm:text-xl">FULL PIPELINE OPERATIONAL</p>
               <p className="text-gray-400 text-sm mt-1">End-to-end YouTube Content ID fingerprinting system by Karhari Media</p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-2 mb-6">
+            <div className="pipeline-steps-wrap mb-4 sm:mb-6">
               {[
                 { step: '1', label: 'Artist/Label Submits', color: '#D4F000' },
                 { step: '2', label: 'Karhari Reviews', color: '#ff6b00' },
@@ -2168,79 +2297,75 @@ export default function YouTubeContentIDPage() {
                 { step: '7', label: 'Revenue Collected', color: '#D4F000' },
                 { step: '8', label: 'Paid to Artists', color: '#00ff88' },
               ].map((s, i) => (
-                <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl border"
+                <div key={i} className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border"
                   style={{ borderColor: `${s.color}40`, background: `${s.color}10` }}>
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black text-black"
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] font-black text-black flex-shrink-0"
                     style={{ background: s.color }}>{s.step}</div>
-                  <span className="text-white text-xs font-semibold">{s.label}</span>
+                  <span className="text-white text-[10px] sm:text-xs font-semibold">{s.label}</span>
                   {i < 7 && <span style={{ color: s.color }} className="text-xs">→</span>}
                 </div>
               ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="stats-grid-4">
               {[
-                { label: 'Tracks in System', value: fmtNum(tracksCount), color: '#00ff88', icon: <MusicIcon size={32} color="#00ff88" /> },
-                { label: 'Revenue Distributed', value: `$${fmtNum(revenueCount)}`, color: '#D4F000', icon: <RevenueIcon size={32} color="#D4F000" /> },
-                { label: 'Claims Processed', value: fmtNum(claimsCount), color: '#FF0000', icon: <CopyrightIcon size={32} color="#FF0000" /> },
-                { label: 'Violations Blocked', value: fmtNum(blockedCount), color: '#8b00ff', icon: <BlockIcon size={32} color="#8b00ff" /> },
+                { label: 'Tracks in System', value: fmtNum(tracksCount), color: '#00ff88', icon: <MusicIcon size={28} color="#00ff88" /> },
+                { label: 'Revenue Distributed', value: `$${fmtNum(revenueCount)}`, color: '#D4F000', icon: <RevenueIcon size={28} color="#D4F000" /> },
+                { label: 'Claims Processed', value: fmtNum(claimsCount), color: '#FF0000', icon: <CopyrightIcon size={28} color="#FF0000" /> },
+                { label: 'Violations Blocked', value: fmtNum(blockedCount), color: '#8b00ff', icon: <BlockIcon size={28} color="#8b00ff" /> },
               ].map((s, i) => (
-                <div key={i} className="p-4 rounded-xl border text-center relative overflow-hidden"
+                <div key={i} className="p-3 sm:p-4 rounded-xl border text-center relative overflow-hidden"
                   style={{ borderColor: `${s.color}40`, background: `${s.color}0d`, boxShadow: `0 0 20px ${s.color}25` }}>
                   <LaserBorder color={s.color} />
                   <div className="relative z-10">
                     <div className="flex justify-center mb-2" style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}>{s.icon}</div>
-                    <div className="yt-stat-num text-xl font-black" style={{ color: s.color }}>{s.value}</div>
-                    <div className="text-gray-500 text-[10px] mt-0.5">{s.label}</div>
+                    <div className="yt-stat-num text-base sm:text-xl font-black" style={{ color: s.color }}>{s.value}</div>
+                    <div className="text-gray-500 text-[9px] sm:text-[10px] mt-0.5">{s.label}</div>
                   </div>
                 </div>
               ))}
             </div>
           </StageBox>
 
-          {/* ══════════════════════════════════════════════════════════════
-              YOUTUBE MONETIZATION POLICY & COMPLIANCE SECTION
-              Between Pipeline Summary and Ready to Monetize CTA
-          ══════════════════════════════════════════════════════════════ */}
+          {/* YOUTUBE MONETIZATION POLICY SECTION */}
           <div className="flex justify-center my-2"><VPipe color="#FF0000" height={70} /></div>
 
-          {/* Section Header */}
-          <div className="flex flex-col items-center mb-6">
-            <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-red-500/50 bg-red-900/20 mb-3"
+          <div className="flex flex-col items-center mb-4 sm:mb-6">
+            <div className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 rounded-full border border-red-500/50 bg-red-900/20 mb-3 flex-wrap justify-center"
               style={{ boxShadow: '0 0 20px #FF000030' }}>
-              <YTLogo size={18} />
-              <span className="text-red-400 text-xs font-black tracking-widest uppercase">YouTube Monetization Policy & Compliance</span>
-              <KMLogo size={18} />
+              <YTLogo size={16} />
+              <span className="text-red-400 text-[10px] sm:text-xs font-black tracking-widest uppercase text-center">YouTube Monetization Policy &amp; Compliance</span>
+              <KMLogo size={16} />
             </div>
-            <p className="text-gray-400 text-sm text-center max-w-2xl">
+            <p className="text-gray-400 text-xs sm:text-sm text-center max-w-2xl px-2">
               Karhari Media strictly follows all YouTube partner policies. As an official YouTube Content ID partner, we enforce every regulation with full strength and zero compromise.
             </p>
           </div>
 
           {/* Partner Commitment Banner */}
-          <div className="rounded-2xl border-2 border-red-500/50 bg-gradient-to-r from-red-900/20 via-black/40 to-red-900/20 p-6 mb-6 relative overflow-hidden"
+          <div className="rounded-2xl border-2 border-red-500/50 bg-gradient-to-r from-red-900/20 via-black/40 to-red-900/20 p-4 sm:p-6 mb-4 sm:mb-6 relative overflow-hidden"
             style={{ boxShadow: '0 0 40px #FF000030' }}>
             <LaserBorder color="#FF0000" />
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
-              <div className="flex items-center gap-4 flex-shrink-0">
-                <div className="p-3 rounded-xl border-2 border-red-500/60 bg-red-900/30" style={{ boxShadow: '0 0 20px #FF000050' }}>
-                  <YTLogo size={40} />
+            <div className="partner-banner relative z-10">
+              <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <div className="p-2 sm:p-3 rounded-xl border-2 border-red-500/60 bg-red-900/30" style={{ boxShadow: '0 0 20px #FF000050' }}>
+                  <YTLogo size={36} />
                 </div>
-                <div className="w-px h-12 bg-white/20" />
-                <div className="p-3 rounded-xl border border-white/20 bg-white/5">
-                  <KMLogo size={40} />
+                <div className="w-px h-10 sm:h-12 bg-white/20" />
+                <div className="p-2 sm:p-3 rounded-xl border border-white/20 bg-white/5">
+                  <KMLogo size={36} />
                 </div>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <p className="text-white font-black text-lg mb-1" style={{ textShadow: '0 0 20px #FF000060' }}>
+              <div className="flex-1">
+                <p className="text-white font-black text-base sm:text-lg mb-1" style={{ textShadow: '0 0 20px #FF000060' }}>
                   Karhari Media — Official YouTube Content ID Partner
                 </p>
-                <p className="text-gray-300 text-sm leading-relaxed">
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                   We follow the policies of our YouTube partners very strictly and with great strength. Every artist, record label, and creator working with us must comply with all YouTube regulations. We are a certified YouTube partner and enforce all rules without exception.
                 </p>
-                <div className="flex flex-wrap gap-2 mt-3">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2 sm:mt-3">
                   {['YouTube Certified Partner', 'Content ID Licensed', 'MCN Compliant', 'CMS Managed', 'Policy Enforced'].map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 rounded-full text-[10px] font-bold border border-red-500/40 text-red-400 bg-red-900/20"
+                    <span key={i} className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold border border-red-500/40 text-red-400 bg-red-900/20"
                       style={{ animation: `yt-blink ${2 + i * 0.3}s ease-in-out infinite` }}>
                       {tag}
                     </span>
@@ -2255,36 +2380,27 @@ export default function YouTubeContentIDPage() {
           </div>
 
           {/* Policy Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div className="policy-grid mb-4 sm:mb-6">
 
             {/* 1. YouTube Monetization Policy */}
-            <div className="rounded-2xl border border-red-500/40 bg-red-900/10 p-5 relative overflow-hidden"
+            <div className="rounded-2xl border border-red-500/40 bg-red-900/10 p-4 sm:p-5 relative overflow-hidden"
               style={{ animation: 'yt-box-glow-red 3s ease-in-out infinite' }}>
               <LaserBorder color="#FF0000" />
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg border border-red-500/40 bg-red-900/30">
-                    <YTLogo size={20} />
-                  </div>
-                  <div>
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="p-2 rounded-lg border border-red-500/40 bg-red-900/30 flex-shrink-0"><YTLogo size={18} /></div>
+                  <div className="min-w-0">
                     <p className="text-red-400 font-black text-sm">YouTube Monetization Policy</p>
                     <a href="https://support.google.com/youtube/answer/72857" target="_blank" rel="noopener noreferrer"
-                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors">
+                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors break-all">
                       support.google.com/youtube/answer/72857 ↗
                     </a>
                   </div>
                 </div>
                 <ul className="space-y-2">
-                  {[
-                    'Channel must meet YouTube Partner Program (YPP) requirements',
-                    'Content must comply with YouTube Community Guidelines',
-                    'Advertiser-friendly content guidelines must be followed',
-                    'No re-uploaded or third-party content without rights',
-                    'Original content ownership must be fully documented',
-                  ].map((point, i) => (
+                  {['Channel must meet YouTube Partner Program (YPP) requirements','Content must comply with YouTube Community Guidelines','Advertiser-friendly content guidelines must be followed','No re-uploaded or third-party content without rights','Original content ownership must be fully documented'].map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-gray-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #FF0000' }} />
-                      {point}
+                      <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #FF0000' }} />{point}
                     </li>
                   ))}
                 </ul>
@@ -2296,33 +2412,24 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* 2. YouTube Content ID Policy */}
-            <div className="rounded-2xl border border-orange-500/40 bg-orange-900/10 p-5 relative overflow-hidden"
+            <div className="rounded-2xl border border-orange-500/40 bg-orange-900/10 p-4 sm:p-5 relative overflow-hidden"
               style={{ animation: 'yt-box-glow-orange 3.2s ease-in-out infinite' }}>
               <LaserBorder color="#ff6b00" />
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg border border-orange-500/40 bg-orange-900/30">
-                    <YTLogo size={20} />
-                  </div>
-                  <div>
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="p-2 rounded-lg border border-orange-500/40 bg-orange-900/30 flex-shrink-0"><YTLogo size={18} /></div>
+                  <div className="min-w-0">
                     <p className="text-orange-400 font-black text-sm">YouTube Content ID Policy</p>
                     <a href="https://support.google.com/youtube/answer/2797370" target="_blank" rel="noopener noreferrer"
-                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors">
+                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors break-all">
                       support.google.com/youtube/answer/2797370 ↗
                     </a>
                   </div>
                 </div>
                 <ul className="space-y-2">
-                  {[
-                    'Only exclusive rights holders may submit to Content ID',
-                    'Reference files must be original, owned audio/video',
-                    'Invalid references result in immediate removal from CID',
-                    'Misuse of Content ID leads to permanent partner termination',
-                    'All claims must be accurate — false claims are prohibited',
-                  ].map((point, i) => (
+                  {['Only exclusive rights holders may submit to Content ID','Reference files must be original, owned audio/video','Invalid references result in immediate removal from CID','Misuse of Content ID leads to permanent partner termination','All claims must be accurate — false claims are prohibited'].map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-gray-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #ff6b00' }} />
-                      {point}
+                      <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #ff6b00' }} />{point}
                     </li>
                   ))}
                 </ul>
@@ -2334,34 +2441,24 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* 3. YouTube MCN Policy */}
-            <div className="rounded-2xl border border-purple-500/40 bg-purple-900/10 p-5 relative overflow-hidden"
+            <div className="rounded-2xl border border-purple-500/40 bg-purple-900/10 p-4 sm:p-5 relative overflow-hidden"
               style={{ animation: 'yt-box-glow-purple 3.4s ease-in-out infinite' }}>
               <LaserBorder color="#8b00ff" />
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg border border-purple-500/40 bg-purple-900/30">
-                    <YTLogo size={20} />
-                  </div>
-                  <div>
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="p-2 rounded-lg border border-purple-500/40 bg-purple-900/30 flex-shrink-0"><YTLogo size={18} /></div>
+                  <div className="min-w-0">
                     <p className="text-purple-400 font-black text-sm">YouTube Multi-Channel Network (MCN) Policy</p>
                     <a href="https://support.google.com/youtube/answer/2737059" target="_blank" rel="noopener noreferrer"
-                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors">
+                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors break-all">
                       support.google.com/youtube/answer/2737059 ↗
                     </a>
                   </div>
                 </div>
                 <ul className="space-y-2">
-                  {[
-                    'MCN partners must comply with all YouTube Terms of Service',
-                    'Channels under MCN are managed through YouTube CMS',
-                    'MCN is responsible for all channels in its network',
-                    'Karhari Media manages Artist, Label & Creator channels in CMS',
-                    'MCN must ensure all affiliated channels follow YouTube policies',
-                    'Channels violating policies may be removed from the MCN',
-                  ].map((point, i) => (
+                  {['MCN partners must comply with all YouTube Terms of Service','Channels under MCN are managed through YouTube CMS','MCN is responsible for all channels in its network','Karhari Media manages Artist, Label & Creator channels in CMS','MCN must ensure all affiliated channels follow YouTube policies','Channels violating policies may be removed from the MCN'].map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-gray-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #8b00ff' }} />
-                      {point}
+                      <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #8b00ff' }} />{point}
                     </li>
                   ))}
                 </ul>
@@ -2373,33 +2470,24 @@ export default function YouTubeContentIDPage() {
             </div>
 
             {/* 4. YouTube CMS Channel Management */}
-            <div className="rounded-2xl border border-cyan-500/40 bg-cyan-900/10 p-5 relative overflow-hidden"
+            <div className="rounded-2xl border border-cyan-500/40 bg-cyan-900/10 p-4 sm:p-5 relative overflow-hidden"
               style={{ animation: 'yt-box-glow-green 3.6s ease-in-out infinite' }}>
               <LaserBorder color="#00d4ff" />
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg border border-cyan-500/40 bg-cyan-900/30">
-                    <KMLogo size={20} />
-                  </div>
-                  <div>
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="p-2 rounded-lg border border-cyan-500/40 bg-cyan-900/30 flex-shrink-0"><KMLogo size={18} /></div>
+                  <div className="min-w-0">
                     <p className="text-cyan-400 font-black text-sm">YouTube CMS Channel Management</p>
                     <a href="https://support.google.com/youtube/answer/6301625" target="_blank" rel="noopener noreferrer"
-                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors">
+                      className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono transition-colors break-all">
                       support.google.com/youtube/answer/6301625 ↗
                     </a>
                   </div>
                 </div>
                 <ul className="space-y-2">
-                  {[
-                    'Karhari Media manages Artist, Record Label & Creator channels in CMS',
-                    'All channel policies are enforced through YouTube Content Manager',
-                    'Revenue tracking and claims managed via YouTube CMS dashboard',
-                    'Channel ownership transfers require official YouTube verification',
-                    'All YouTube Channel Policies apply to every managed channel',
-                  ].map((point, i) => (
+                  {['Karhari Media manages Artist, Record Label & Creator channels in CMS','All channel policies are enforced through YouTube Content Manager','Revenue tracking and claims managed via YouTube CMS dashboard','Channel ownership transfers require official YouTube verification','All YouTube Channel Policies apply to every managed channel'].map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-gray-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #00d4ff' }} />
-                      {point}
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 flex-shrink-0" style={{ boxShadow: '0 0 4px #00d4ff' }} />{point}
                     </li>
                   ))}
                 </ul>
@@ -2412,32 +2500,25 @@ export default function YouTubeContentIDPage() {
           </div>
 
           {/* Content Eligibility Section */}
-          <div className="rounded-2xl border border-yellow-400/40 bg-yellow-900/10 p-6 mb-6 relative overflow-hidden"
+          <div className="rounded-2xl border border-yellow-400/40 bg-yellow-900/10 p-4 sm:p-6 mb-4 sm:mb-6 relative overflow-hidden"
             style={{ animation: 'yt-box-glow-gold 3s ease-in-out infinite' }}>
             <LaserBorder color="#D4F000" />
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <YTLogo size={22} />
-                <p className="text-yellow-400 font-black text-base">Content Eligibility for YouTube Content ID</p>
-                <KMLogo size={22} />
+              <div className="flex items-center gap-3 mb-3 sm:mb-4 flex-wrap">
+                <YTLogo size={20} />
+                <p className="text-yellow-400 font-black text-sm sm:text-base">Content Eligibility for YouTube Content ID</p>
+                <KMLogo size={20} />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Audio Files */}
-                <div className="p-4 rounded-xl border border-yellow-400/30 bg-yellow-900/15">
+              <div className="eligibility-grid">
+                <div className="p-3 sm:p-4 rounded-xl border border-yellow-400/30 bg-yellow-900/15">
                   <div className="flex items-center gap-2 mb-3">
-                    <MusicIcon size={18} color="#D4F000" />
-                    <p className="text-yellow-400 font-black text-sm">Valid Audio Files for Content ID</p>
+                    <MusicIcon size={16} color="#D4F000" />
+                    <p className="text-yellow-400 font-black text-xs sm:text-sm">Valid Audio Files for Content ID</p>
                   </div>
                   <ul className="space-y-1.5">
-                    {[
-                      { fmt: 'WAV', desc: 'Uncompressed — Preferred master format' },
-                      { fmt: 'FLAC', desc: 'Lossless — High quality reference' },
-                      { fmt: 'MP3', desc: '320kbps minimum — Standard submission' },
-                      { fmt: 'AAC', desc: '256kbps minimum — YouTube native' },
-                      { fmt: 'AIFF', desc: 'Uncompressed — Studio master' },
-                    ].map((item, i) => (
+                    {[{fmt:'WAV',desc:'Uncompressed — Preferred master format'},{fmt:'FLAC',desc:'Lossless — High quality reference'},{fmt:'MP3',desc:'320kbps minimum — Standard submission'},{fmt:'AAC',desc:'256kbps minimum — YouTube native'},{fmt:'AIFF',desc:'Uncompressed — Studio master'}].map((item, i) => (
                       <li key={i} className="flex items-center gap-2 text-xs">
-                        <span className="px-1.5 py-0.5 rounded bg-yellow-400/20 text-yellow-400 font-black text-[9px] font-mono">{item.fmt}</span>
+                        <span className="px-1.5 py-0.5 rounded bg-yellow-400/20 text-yellow-400 font-black text-[9px] font-mono flex-shrink-0">{item.fmt}</span>
                         <span className="text-gray-300">{item.desc}</span>
                       </li>
                     ))}
@@ -2446,22 +2527,15 @@ export default function YouTubeContentIDPage() {
                     <p className="text-red-300 text-[10px] font-bold">⚠ Audio must be 100% original — no samples, covers, or licensed music without clearance</p>
                   </div>
                 </div>
-                {/* Video Files */}
-                <div className="p-4 rounded-xl border border-yellow-400/30 bg-yellow-900/15">
+                <div className="p-3 sm:p-4 rounded-xl border border-yellow-400/30 bg-yellow-900/15">
                   <div className="flex items-center gap-2 mb-3">
-                    <YTLogo size={18} />
-                    <p className="text-yellow-400 font-black text-sm">Valid Video Files for Content ID</p>
+                    <YTLogo size={16} />
+                    <p className="text-yellow-400 font-black text-xs sm:text-sm">Valid Video Files for Content ID</p>
                   </div>
                   <ul className="space-y-1.5">
-                    {[
-                      { fmt: 'MP4', desc: 'H.264/H.265 — Standard YouTube format' },
-                      { fmt: 'MOV', desc: 'ProRes — High quality master' },
-                      { fmt: 'AVI', desc: 'Uncompressed — Studio reference' },
-                      { fmt: 'MKV', desc: 'H.264 — Open container format' },
-                      { fmt: 'WebM', desc: 'VP9 — YouTube optimized' },
-                    ].map((item, i) => (
+                    {[{fmt:'MP4',desc:'H.264/H.265 — Standard YouTube format'},{fmt:'MOV',desc:'ProRes — High quality master'},{fmt:'AVI',desc:'Uncompressed — Studio reference'},{fmt:'MKV',desc:'H.264 — Open container format'},{fmt:'WebM',desc:'VP9 — YouTube optimized'}].map((item, i) => (
                       <li key={i} className="flex items-center gap-2 text-xs">
-                        <span className="px-1.5 py-0.5 rounded bg-yellow-400/20 text-yellow-400 font-black text-[9px] font-mono">{item.fmt}</span>
+                        <span className="px-1.5 py-0.5 rounded bg-yellow-400/20 text-yellow-400 font-black text-[9px] font-mono flex-shrink-0">{item.fmt}</span>
                         <span className="text-gray-300">{item.desc}</span>
                       </li>
                     ))}
@@ -2471,24 +2545,16 @@ export default function YouTubeContentIDPage() {
                   </div>
                 </div>
               </div>
-              {/* Content Eras Eligibility */}
-              <div className="mt-4 p-4 rounded-xl border border-yellow-400/20 bg-black/30">
+              <div className="mt-4 p-3 sm:p-4 rounded-xl border border-yellow-400/20 bg-black/30">
                 <p className="text-yellow-400 font-black text-xs mb-2 flex items-center gap-2">
                   <YTLogo size={14} /> Which Content Eras Are Eligible for YouTube Monetization?
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { era: 'New Releases (2020–Present)', eligible: true },
-                    { era: 'Back Catalog (2000–2019)', eligible: true },
-                    { era: 'Classic Era (1990–1999)', eligible: true, note: 'With full rights docs' },
-                    { era: 'Vintage (Pre-1990)', eligible: true, note: 'Public domain check required' },
-                    { era: 'Covers / Remixes', eligible: false, note: 'Original license required' },
-                    { era: 'Samples Without Clearance', eligible: false },
-                  ].map((item, i) => (
-                    <div key={i} className={`flex items-center gap-1.5 px-2 py-1 rounded-lg border text-[10px] font-semibold ${item.eligible ? 'border-green-500/30 bg-green-900/15 text-green-400' : 'border-red-500/30 bg-red-900/15 text-red-400'}`}>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {[{era:'New Releases (2020–Present)',eligible:true},{era:'Back Catalog (2000–2019)',eligible:true},{era:'Classic Era (1990–1999)',eligible:true,note:'With full rights docs'},{era:'Vintage (Pre-1990)',eligible:true,note:'Public domain check required'},{era:'Covers / Remixes',eligible:false,note:'Original license required'},{era:'Samples Without Clearance',eligible:false}].map((item, i) => (
+                    <div key={i} className={`flex items-center gap-1.5 px-2 py-1 rounded-lg border text-[9px] sm:text-[10px] font-semibold ${item.eligible ? 'border-green-500/30 bg-green-900/15 text-green-400' : 'border-red-500/30 bg-red-900/15 text-red-400'}`}>
                       <span>{item.eligible ? '✓' : '✗'}</span>
                       <span>{item.era}</span>
-                      {item.note && <span className="text-gray-500 text-[9px]">({item.note})</span>}
+                      {item.note && <span className="text-gray-500 text-[8px] sm:text-[9px]">({item.note})</span>}
                     </div>
                   ))}
                 </div>
@@ -2497,43 +2563,27 @@ export default function YouTubeContentIDPage() {
           </div>
 
           {/* Invalid References Warning */}
-          <div className="rounded-2xl border-2 border-red-500/60 bg-red-900/15 p-6 mb-6 relative overflow-hidden"
+          <div className="rounded-2xl border-2 border-red-500/60 bg-red-900/15 p-4 sm:p-6 mb-4 sm:mb-6 relative overflow-hidden"
             style={{ boxShadow: '0 0 40px #FF000030', animation: 'yt-box-glow-red 2.5s ease-in-out infinite' }}>
             <LaserBorder color="#FF0000" />
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <InvalidIcon size={32} color="#FF0000" />
-                <div>
-                  <p className="text-red-400 font-black text-base">YouTube Content ID Invalid References — WARNING</p>
+              <div className="flex items-start gap-3 mb-3 sm:mb-4">
+                <div className="flex-shrink-0"><InvalidIcon size={28} color="#FF0000" /></div>
+                <div className="min-w-0">
+                  <p className="text-red-400 font-black text-sm sm:text-base">YouTube Content ID Invalid References — WARNING</p>
                   <a href="https://support.google.com/youtube/answer/4352063" target="_blank" rel="noopener noreferrer"
-                    className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono">
+                    className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono break-all">
                     support.google.com/youtube/answer/4352063 ↗
                   </a>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="invalid-refs-grid">
                 {[
-                  { title: 'Artists', color: '#D4F000', icon: <ArtistIcon size={28} color="#D4F000" />, warnings: [
-                    'Only submit music you 100% own',
-                    'No covers without mechanical license',
-                    'No samples without clearance',
-                    'No beats purchased non-exclusively',
-                  ]},
-                  { title: 'Record Labels', color: '#8b00ff', icon: <BusinessIcon size={28} color="#8b00ff" />, warnings: [
-                    'Only submit catalog you fully own',
-                    'Distribution deals ≠ Content ID rights',
-                    'Verify all artist contracts before submission',
-                    'Legacy catalog requires full rights audit',
-                  ]},
-                  { title: 'YouTube Creators', color: '#FF0000', icon: <YTLogo size={28} />, warnings: [
-                    'Only upload videos you created yourself',
-                    'No clips from other YouTube channels',
-                    'No copyrighted music in background',
-                    'Gaming/reaction content has restrictions',
-                  ]},
+                  { title: 'Artists', color: '#D4F000', icon: <ArtistIcon size={24} color="#D4F000" />, warnings: ['Only submit music you 100% own','No covers without mechanical license','No samples without clearance','No beats purchased non-exclusively'] },
+                  { title: 'Record Labels', color: '#8b00ff', icon: <BusinessIcon size={24} color="#8b00ff" />, warnings: ['Only submit catalog you fully own','Distribution deals ≠ Content ID rights','Verify all artist contracts before submission','Legacy catalog requires full rights audit'] },
+                  { title: 'YouTube Creators', color: '#FF0000', icon: <YTLogo size={24} />, warnings: ['Only upload videos you created yourself','No clips from other YouTube channels','No copyrighted music in background','Gaming/reaction content has restrictions'] },
                 ].map((group, i) => (
-                  <div key={i} className="p-3 rounded-xl border"
-                    style={{ borderColor: `${group.color}30`, background: `${group.color}0a` }}>
+                  <div key={i} className="p-3 rounded-xl border" style={{ borderColor: `${group.color}30`, background: `${group.color}0a` }}>
                     <div className="flex items-center gap-2 mb-2">
                       <div style={{ animation: 'yt-icon-pulse 2s ease-in-out infinite' }}>{group.icon}</div>
                       <p className="font-black text-sm" style={{ color: group.color }}>{group.title}</p>
@@ -2541,8 +2591,7 @@ export default function YouTubeContentIDPage() {
                     <ul className="space-y-1">
                       {group.warnings.map((w, j) => (
                         <li key={j} className="flex items-start gap-1.5 text-[10px] text-gray-300">
-                          <span className="text-red-400 mt-0.5 flex-shrink-0">⚠</span>
-                          {w}
+                          <span className="text-red-400 mt-0.5 flex-shrink-0">⚠</span>{w}
                         </li>
                       ))}
                     </ul>
@@ -2553,35 +2602,27 @@ export default function YouTubeContentIDPage() {
           </div>
 
           {/* Channel & Upload Policy Warning */}
-          <div className="rounded-2xl border border-orange-500/40 bg-orange-900/10 p-6 mb-6 relative overflow-hidden"
+          <div className="rounded-2xl border border-orange-500/40 bg-orange-900/10 p-4 sm:p-6 mb-4 sm:mb-6 relative overflow-hidden"
             style={{ animation: 'yt-box-glow-orange 3s ease-in-out infinite' }}>
             <LaserBorder color="#ff6b00" />
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <YTLogo size={22} />
-                <div>
-                  <p className="text-orange-400 font-black text-base">Channel & Upload Policy — CMS & MCN Members</p>
+              <div className="flex items-start gap-3 mb-3 sm:mb-4">
+                <div className="flex-shrink-0"><YTLogo size={20} /></div>
+                <div className="min-w-0">
+                  <p className="text-orange-400 font-black text-sm sm:text-base">Channel &amp; Upload Policy — CMS &amp; MCN Members</p>
                   <a href="https://support.google.com/youtube/answer/2801895" target="_blank" rel="noopener noreferrer"
-                    className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono">
+                    className="text-[10px] text-blue-400 hover:text-blue-300 underline font-mono break-all">
                     support.google.com/youtube/answer/2801895 ↗
                   </a>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="channel-policy-grid">
                 <div>
                   <p className="text-orange-400 font-bold text-xs mb-2">If your channel is in Karhari Media CMS/MCN:</p>
                   <ul className="space-y-1.5">
-                    {[
-                      'You may ONLY upload videos you fully own the rights to',
-                      'Background music must be licensed or royalty-free',
-                      'No re-uploads of other creators\' content',
-                      'No unauthorized use of copyrighted footage',
-                      'All uploads are subject to Content ID scanning',
-                      'Policy violations may result in channel removal from MCN',
-                    ].map((item, i) => (
+                    {['You may ONLY upload videos you fully own the rights to','Background music must be licensed or royalty-free','No re-uploads of other creators\' content','No unauthorized use of copyrighted footage','All uploads are subject to Content ID scanning','Policy violations may result in channel removal from MCN'].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-[10px] text-gray-300">
-                        <span className="text-orange-400 flex-shrink-0 mt-0.5">→</span>
-                        {item}
+                        <span className="text-orange-400 flex-shrink-0 mt-0.5">→</span>{item}
                       </li>
                     ))}
                   </ul>
@@ -2589,24 +2630,16 @@ export default function YouTubeContentIDPage() {
                 <div>
                   <p className="text-orange-400 font-bold text-xs mb-2">Audio Content Warning:</p>
                   <ul className="space-y-1.5">
-                    {[
-                      'Audio tracks in videos must be original or licensed',
-                      'Music used in videos must not be in Content ID database unless you own it',
-                      'Podcast/voiceover content must be original',
-                      'Live performance recordings require venue/artist clearance',
-                      'Remixes require written permission from original rights holder',
-                      'AI-generated music must disclose AI origin per YouTube policy',
-                    ].map((item, i) => (
+                    {['Audio tracks in videos must be original or licensed','Music used in videos must not be in Content ID database unless you own it','Podcast/voiceover content must be original','Live performance recordings require venue/artist clearance','Remixes require written permission from original rights holder','AI-generated music must disclose AI origin per YouTube policy'].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-[10px] text-gray-300">
-                        <span className="text-orange-400 flex-shrink-0 mt-0.5">→</span>
-                        {item}
+                        <span className="text-orange-400 flex-shrink-0 mt-0.5">→</span>{item}
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
               <div className="mt-4 p-3 rounded-xl border border-red-500/40 bg-red-900/20 flex items-start gap-3">
-                <InvalidIcon size={24} color="#FF0000" />
+                <div className="flex-shrink-0"><InvalidIcon size={22} color="#FF0000" /></div>
                 <p className="text-red-300 text-xs leading-relaxed">
                   <span className="font-black text-red-400">STRICT WARNING:</span> Karhari Media follows all YouTube partner policies with zero tolerance. Any channel or creator found violating YouTube&apos;s policies will be immediately removed from our MCN and CMS network. We report all violations to YouTube directly. Work with us as per YouTube regulations — no exceptions.
                 </p>
@@ -2614,30 +2647,30 @@ export default function YouTubeContentIDPage() {
             </div>
           </div>
 
-          {/* Submit Music to Karhari Media for Content ID */}
-          <div className="rounded-2xl border-2 border-green-500/50 bg-green-900/10 p-6 mb-6 relative overflow-hidden"
+          {/* Submit Music to Karhari Media */}
+          <div className="rounded-2xl border-2 border-green-500/50 bg-green-900/10 p-4 sm:p-6 mb-4 sm:mb-6 relative overflow-hidden"
             style={{ boxShadow: '0 0 40px #00ff8820', animation: 'yt-box-glow-green 2.5s ease-in-out infinite' }}>
             <LaserBorder color="#00ff88" />
             <YTRevenueBubble count={8} />
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <KMLogo size={28} />
-                <div>
-                  <p className="text-green-400 font-black text-lg">Submit Your Music to Karhari Media for Content ID Monetization</p>
-                  <p className="text-gray-400 text-xs">Artists, Record Labels & YouTube Music Creators</p>
+              <div className="flex items-start gap-3 mb-3 sm:mb-4 flex-wrap">
+                <KMLogo size={24} />
+                <div className="flex-1 min-w-0">
+                  <p className="text-green-400 font-black text-base sm:text-lg">Submit Your Music to Karhari Media for Content ID Monetization</p>
+                  <p className="text-gray-400 text-xs">Artists, Record Labels &amp; YouTube Music Creators</p>
                 </div>
-                <YTLogo size={28} />
+                <YTLogo size={24} />
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-4">
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                 Karhari Media accepts music submissions from <span className="text-green-400 font-bold">independent artists</span>, <span className="text-purple-400 font-bold">record labels</span>, and <span className="text-red-400 font-bold">YouTube music creators</span> for YouTube Content ID monetization. All submissions are reviewed against YouTube&apos;s Content ID policy. Only original, rights-cleared content is accepted into our pipeline.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+              <div className="submit-cards-grid mb-3 sm:mb-4">
                 {[
-                  { title: 'Independent Artists', color: '#D4F000', desc: 'Submit your original music for global Content ID protection and monetization across all YouTube territories.', icon: <ArtistIcon size={28} color="#D4F000" /> },
-                  { title: 'Record Labels', color: '#8b00ff', desc: 'Submit your full catalog for Content ID registration. We manage rights, claims, and revenue distribution for your entire roster.', icon: <BusinessIcon size={28} color="#8b00ff" /> },
-                  { title: 'YouTube Creators', color: '#FF0000', desc: 'Music creators and composers can submit original soundtracks and compositions for Content ID monetization through our certified pipeline.', icon: <YTLogo size={28} /> },
+                  { title: 'Independent Artists', color: '#D4F000', desc: 'Submit your original music for global Content ID protection and monetization across all YouTube territories.', icon: <ArtistIcon size={24} color="#D4F000" /> },
+                  { title: 'Record Labels', color: '#8b00ff', desc: 'Submit your full catalog for Content ID registration. We manage rights, claims, and revenue distribution for your entire roster.', icon: <BusinessIcon size={24} color="#8b00ff" /> },
+                  { title: 'YouTube Creators', color: '#FF0000', desc: 'Music creators and composers can submit original soundtracks and compositions for Content ID monetization through our certified pipeline.', icon: <YTLogo size={24} /> },
                 ].map((item, i) => (
-                  <div key={i} className="p-4 rounded-xl border relative overflow-hidden"
+                  <div key={i} className="p-3 sm:p-4 rounded-xl border relative overflow-hidden"
                     style={{ borderColor: `${item.color}40`, background: `${item.color}0a` }}>
                     <div className="flex items-center gap-2 mb-2">
                       {item.icon}
@@ -2651,14 +2684,14 @@ export default function YouTubeContentIDPage() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col md:flex-row items-center gap-4">
+              <div className="submit-cta-row">
                 <a href="#submit"
                   className="flex-1 py-3 rounded-xl font-black text-black text-sm tracking-wider text-center transition-all duration-200 hover:scale-105"
                   style={{ background: 'linear-gradient(135deg, #00ff88, #00d4ff)', boxShadow: '0 0 20px #00ff8840' }}>
                   SUBMIT YOUR MUSIC TO KARHARI MEDIA
                 </a>
                 <a href="/youtube-policies" target="_blank"
-                  className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-white text-sm border border-red-500/40 hover:border-red-500/80 transition-all duration-200"
+                  className="flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-xl font-bold text-white text-sm border border-red-500/40 hover:border-red-500/80 transition-all duration-200"
                   style={{ background: 'rgba(255,0,0,0.1)' }}>
                   <YTLogo size={16} />
                   View All YouTube Policies
@@ -2670,17 +2703,17 @@ export default function YouTubeContentIDPage() {
           <div className="flex justify-center my-2"><VPipe color="#00ff88" height={70} /></div>
 
           {/* ── CTA ── */}
-          <div id="submit" className="text-center py-12 px-4">
-            <div className="inline-block p-8 rounded-3xl border border-red-500/30 bg-red-900/10 max-w-xl w-full"
+          <div id="submit" className="text-center py-8 sm:py-12 px-3 sm:px-4">
+            <div className="inline-block p-5 sm:p-8 rounded-3xl border border-red-500/30 bg-red-900/10 max-w-xl w-full"
               style={{ boxShadow: '0 0 60px #FF000025' }}>
               <div className="flex items-center justify-center gap-3 mb-4">
-                <YTLogo size={28} />
-                <KMLogo size={28} />
+                <YTLogo size={24} />
+                <KMLogo size={24} />
               </div>
-              <h2 className="text-2xl font-black text-white mb-2">Ready to Connect Your YouTube Channel and Monetize Your Content and Music and Submit?</h2>
-              <p className="text-gray-400 text-sm mb-6">Submit your audio to Karhari Media and let YouTube Content ID fingerprinting protect and monetize your work globally.</p>
+              <h2 className="text-lg sm:text-2xl font-black text-white mb-2">Ready to Connect Your YouTube Channel and Monetize Your Content and Music and Submit?</h2>
+              <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6">Submit your audio to Karhari Media and let YouTube Content ID fingerprinting protect and monetize your work globally.</p>
               <button
-                className="w-full py-4 rounded-xl font-black text-black text-base tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-2xl"
+                className="w-full py-3 sm:py-4 rounded-xl font-black text-black text-sm sm:text-base tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-2xl"
                 style={{ background: 'linear-gradient(135deg, #FF0000 0%, #ff6b00 50%, #D4F000 100%)', boxShadow: '0 0 30px #FF000060' }}>
                 SUBMIT APPLICATION
               </button>
@@ -2690,20 +2723,6 @@ export default function YouTubeContentIDPage() {
 
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <footer className="border-t border-white/8 bg-black/60 py-6">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <KMLogo size={20} />
-            <span className="text-gray-500 text-xs">© 2024 Karhari Media PVT. LTD.</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <YTLogo size={16} />
-            <span className="text-gray-500 text-xs">Official YouTube Content ID Partner</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

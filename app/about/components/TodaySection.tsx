@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -98,7 +98,7 @@ export default function TodaySection() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
 
           {/* Col 1 — Today + services list */}
           <ScrollReveal direction="left">

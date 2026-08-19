@@ -3,8 +3,15 @@ import OrbitalRings from './OrbitalRings';
 
 export default function HeroVisual() {
   return (
-    <div className="hero-right-reveal flex items-center justify-center lg:justify-end -mt-6">
-      <div className="relative" style={{ width: 520, height: 520 }}>
+    <div className="hero-right-reveal flex items-center justify-center lg:justify-end mt-2 lg:mt-0">
+      {/* Responsive orbital wheel container */}
+      <div
+        className="relative"
+        style={{
+          width: 'min(88vw, 340px)',
+          height: 'min(88vw, 340px)',
+        }}
+      >
         {/* Outer atmospheric glow */}
         <div
           className="absolute inset-0 rounded-full pointer-events-none"

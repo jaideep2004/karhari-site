@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
@@ -430,7 +430,7 @@ export default function RevenueSection() {
         }
       `}</style>
 
-      <section id="revenue" ref={sectionRef} className="py-10 sm:py-16 relative overflow-hidden">
+      <section id="revenue" ref={sectionRef} className="py-8 sm:py-12 lg:py-16 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 blob-bg opacity-30 pointer-events-none" />
         <div className="absolute top-1/3 right-0 w-80 h-80 orb-blue opacity-35 pointer-events-none" />
         <div className="absolute bottom-0 left-1/3 w-72 h-72 orb-pink opacity-25 pointer-events-none" />
@@ -438,7 +438,7 @@ export default function RevenueSection() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Header */}
-          <div className="text-center mb-8 sm:mb-12 section-enter">
+          <div className="text-center mb-6 sm:mb-10 lg:mb-12 section-enter">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 block">
               Revenue Model
             </span>
@@ -450,21 +450,21 @@ export default function RevenueSection() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
             {/* Left: Revenue split visual */}
             <div className="section-enter stagger-2">
-              <div className="bento-card neon-card p-6 sm:p-10" style={{ animationDelay: '0.3s' }}>
+              <div className="bento-card neon-card p-5 sm:p-7 lg:p-10" style={{ animationDelay: '0.3s' }}>
                 {/* Revenue bars */}
-                <div className="space-y-5 mb-8">
+                <div className="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
                   {revenueRows.map((row, i) => (
                     <div key={row.label}>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2" style={{ color: row.color }}>
+                      <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                        <div className="flex items-center gap-2 min-w-0" style={{ color: row.color }}>
                           {row.icon}
-                          <span className="text-sm font-semibold text-foreground">{row.label}</span>
+                          <span className="text-xs sm:text-sm font-semibold text-foreground truncate">{row.label}</span>
                         </div>
                         <span
-                          className="text-xl sm:text-2xl font-extrabold"
+                          className="text-lg sm:text-xl lg:text-2xl font-extrabold flex-shrink-0 ml-2"
                           style={{
                             color: row.color,
                             animation: `pct-glow 2s ease-in-out ${i * 0.4}s infinite`,
@@ -490,24 +490,24 @@ export default function RevenueSection() {
                 <FlowingRevenue />
 
                 {/* Payment features */}
-                <div className="mt-6 space-y-2.5">
+                <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-2.5">
                   {paymentFeatures.map((feat, i) => (
-                    <div key={feat.label} className="flex items-center gap-3">
+                    <div key={feat.label} className="flex items-center gap-2 sm:gap-3">
                       <span
                         className="flex-shrink-0"
                         style={{ color: feat.color, animation: `partner-pop 2s ease-in-out ${i * 0.2}s infinite` }}
                       >
                         {typeof feat.icon === 'string' ? (
-                          <span className="text-lg">{feat.icon}</span>
+                          <span className="text-base sm:text-lg">{feat.icon}</span>
                         ) : (
                           feat.icon
                         )}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <span className="text-sm font-semibold text-foreground">{feat.label}</span>
-                        <span className="text-xs text-muted-foreground ml-2">{feat.sub}</span>
+                        <span className="text-xs sm:text-sm font-semibold text-foreground">{feat.label}</span>
+                        <span className="text-xs text-muted-foreground ml-1 sm:ml-2 hidden sm:inline">{feat.sub}</span>
                       </div>
-                      <CheckCircleIcon className="w-4 h-4 text-primary flex-shrink-0" />
+                      <CheckCircleIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
                     </div>
                   ))}
                 </div>

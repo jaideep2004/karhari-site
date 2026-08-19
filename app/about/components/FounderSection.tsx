@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -97,14 +97,14 @@ export default function FounderSection() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
 
-          {/* LEFT — Photo slightly left-aligned + animated boxes below */}
+          {/* LEFT — Photo + animated boxes below */}
           <ScrollReveal direction="left">
-            <div className="flex flex-col items-start pl-0 lg:pl-4">
+            <div className="flex flex-col items-center lg:items-start pl-0 lg:pl-4">
 
-              {/* Photo frame — slightly to the left */}
-              <div className="relative" style={{ width: '260px', marginLeft: '-8px' }}>
+              {/* Photo frame */}
+              <div className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0" style={{ maxWidth: '260px' }}>
                 {/* Outer glow ring */}
                 <div className="absolute -inset-3 rounded-2xl pointer-events-none" style={{
                   background: 'linear-gradient(135deg, rgba(232,25,44,0.15) 0%, rgba(124,58,237,0.15) 50%, rgba(6,182,212,0.15) 100%)',
@@ -164,7 +164,7 @@ export default function FounderSection() {
               </div>
 
               {/* Bio content box below photo */}
-              <div className="mt-5 w-full max-w-sm relative rounded-xl overflow-hidden">
+              <div className="mt-5 w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0 relative rounded-xl overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-0.5 overflow-hidden z-10">
                   <div className="h-full w-1/2" style={{ background: 'linear-gradient(to right, transparent, #e8192c, #7c3aed, transparent)', animation: 'fs-topSlide 3s linear infinite' }} />
                 </div>
@@ -195,7 +195,7 @@ export default function FounderSection() {
               </div>
 
               {/* Founder Name — animated box */}
-              <div className="mt-4 w-full max-w-sm relative rounded-xl overflow-hidden">
+              <div className="mt-4 w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0 relative rounded-xl overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-0.5 overflow-hidden z-10">
                   <div className="h-full w-1/2" style={{ background: 'linear-gradient(to right, transparent, #f59e0b, #e8192c, transparent)', animation: 'fs-topSlide 2.2s linear infinite' }} />
                 </div>

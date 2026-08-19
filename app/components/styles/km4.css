@@ -93,6 +93,17 @@
                 color: #fff;
                 box-shadow: 0 4px 16px rgba(255, 35, 56, .4);
                 transform: skewX(-6deg);
+                overflow: hidden;
+            }
+
+            .logo-mark-img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center;
+                display: block;
+                padding: 4px;
+                transform: skewX(6deg);
             }
 
             .logo-text {
@@ -187,6 +198,7 @@
                 align-items: flex-start;
                 justify-content: center;
                 opacity: 0;
+                min-width: 0;
             }
 
             .stage {
@@ -943,4 +955,65 @@
             .cid-section::before {
                 display: none !important;
             }
-        
+
+            /* ============ TABLET ============ */
+            @media (max-width: 900px) {
+                .cid-center {
+                    height: 500px;
+                }
+
+                .stage {
+                    transform: scale(0.9);
+                    transform-origin: top center;
+                }
+            }
+
+            /* ============ MOBILE ============ */
+            @media (max-width: 640px) {
+                .cid-section {
+                    padding: 32px 0;
+                }
+
+                .cid-grid {
+                    padding: 0 16px;
+                    gap: 22px;
+                }
+
+                .cid-center {
+                    height: 430px;
+                }
+
+                .stage {
+                    transform: scale(0.72);
+                    transform-origin: top center;
+                }
+
+                .cid-heading {
+                    font-size: 26px;
+                }
+
+                .info-card {
+                    padding: 14px 16px;
+                }
+
+                .rules-header,
+                .rule-row {
+                    padding: 11px 14px;
+                }
+            }
+
+            @media (max-width: 420px) {
+                .cid-center {
+                    height: 360px;
+                }
+
+                .stage {
+                    transform: scale(0.58);
+                    transform-origin: top center;
+                }
+
+                .cid-heading {
+                    font-size: 22px;
+                }
+            }
+        }

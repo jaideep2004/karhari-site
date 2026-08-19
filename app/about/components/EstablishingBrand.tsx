@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -111,7 +111,7 @@ export default function EstablishingBrand() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
 
           {/* Left — Brand showcase box with animated 4-side borders */}
           <ScrollReveal direction="left">
@@ -181,7 +181,7 @@ export default function EstablishingBrand() {
               <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
               2020 Milestone
             </div>
-            <h2 className="text-2xl font-extrabold mb-6" style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <h2 className="text-xl sm:text-2xl font-extrabold mb-6" style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Establishing the Karhari Media Brand
             </h2>
             <div className="space-y-5">

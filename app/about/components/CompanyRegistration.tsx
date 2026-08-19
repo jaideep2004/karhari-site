@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -117,7 +117,7 @@ export default function CompanyRegistration() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-center">
 
           {/* Left — Text content in animated box */}
           <ScrollReveal direction="left">
@@ -172,7 +172,7 @@ export default function CompanyRegistration() {
 
           {/* Right — Karhari Media icon showcase box with animated borders */}
           <ScrollReveal direction="right">
-            <div className="relative rounded-2xl p-8 overflow-hidden" style={{
+            <div className="relative rounded-2xl p-6 sm:p-8 overflow-hidden" style={{
               background: 'linear-gradient(135deg, rgba(5,10,15,0.98) 0%, rgba(8,14,20,0.98) 100%)',
               border: '1px solid rgba(6,182,212,0.3)',
               animation: 'regBoxGlow 3s ease-in-out infinite',

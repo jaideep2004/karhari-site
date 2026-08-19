@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -70,14 +70,14 @@ export default function OurJourneySection() {
       `}</style>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
 
           {/* Left — Founder photo with snake border animation only */}
           <ScrollReveal direction="left">
             <div className="relative flex items-center justify-center">
 
               {/* Photo frame */}
-              <div className="relative rounded-2xl overflow-hidden" style={{
+              <div className="relative rounded-2xl overflow-hidden w-full max-w-sm mx-auto lg:max-w-none" style={{
                 border: '2px solid rgba(232,25,44,0.4)',
                 boxShadow: '0 0 40px rgba(232,25,44,0.25), 0 0 80px rgba(124,58,237,0.15), inset 0 0 30px rgba(232,25,44,0.04)',
                 background: 'linear-gradient(135deg, rgba(232,25,44,0.06) 0%, rgba(124,58,237,0.06) 100%)'

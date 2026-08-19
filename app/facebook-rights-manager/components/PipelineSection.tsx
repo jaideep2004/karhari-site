@@ -87,7 +87,7 @@ const PipelineBg = () => {
       // Flowing energy lines
       for (let i = 0; i < 6; i++) {
         const phase = t + i * 1.05;
-        const x = (Math.sin(phase * 0.7 + i) * 0.5 + 0.5) * w;
+        let x = (Math.sin(phase * 0.7 + i) * 0.5 + 0.5) * w;
         const alpha = 0.04 + Math.sin(phase) * 0.02;
         const grad = ctx.createLinearGradient(x - 200, 0, x + 200, h);
         grad.addColorStop(0, 'rgba(100,60,255,0)');
@@ -101,7 +101,7 @@ const PipelineBg = () => {
       for (let i = 0; i < 5; i++) {
         const ox = (Math.sin(t * 0.3 + i * 1.3) * 0.4 + 0.5) * w;
         const oy = (Math.cos(t * 0.2 + i * 0.9) * 0.4 + 0.5) * h;
-        const r = 80 + i * 40;
+        let r = 80 + i * 40;
         const colors = ['rgba(100,60,255,0.06)', 'rgba(24,119,242,0.05)', 'rgba(232,93,38,0.04)', 'rgba(37,211,102,0.03)', 'rgba(225,48,108,0.04)'];
         const orb = ctx.createRadialGradient(ox, oy, 0, ox, oy, r);
         orb.addColorStop(0, colors[i]);
@@ -143,10 +143,10 @@ const MiniScanner = ({ active, color = '#6432ff', size = 56 }: { active: boolean
     if (!ctx) return;
 
     const draw = () => {
-      const s = size;
+      let s = size;
       ctx.clearRect(0, 0, s, s);
       tRef.current += 0.04;
-      const t = tRef.current;
+      let t = tRef.current;
       const cx = s / 2;
       const cy = s / 2;
       const maxR = s * 0.42;
@@ -260,14 +260,14 @@ const WaveViz = ({ color, active }: { color: string; active: boolean }) => {
       const h = canvas.height;
       ctx.clearRect(0, 0, w, h);
       tRef.current += 0.06;
-      const t = tRef.current;
+      let t = tRef.current;
       const bars = 16;
       const barW = (w - (bars - 1) * 2) / bars;
       for (let i = 0; i < bars; i++) {
         const amp = active ? (0.2 + Math.abs(Math.sin(t * 2.5 + i * 0.6)) * 0.8) : 0.15;
         const barH = amp * h;
-        const x = i * (barW + 2);
-        const y = (h - barH) / 2;
+        let x = i * (barW + 2);
+        let y = (h - barH) / 2;
         const grad = ctx.createLinearGradient(0, y, 0, y + barH);
         grad.addColorStop(0, `${color}40`);
         grad.addColorStop(0.5, color);
@@ -318,7 +318,9 @@ const ZigzagCard = ({
     >
       <div
         style={{
-          width: 'calc(50% - 32px)',
+          width: 'min(calc(50% - 32px), 100%)',
+          minWidth: '280px',
+          maxWidth: '100%',
           opacity: visible ? 1 : 0,
           transform: visible
             ? 'translateX(0) scale(1)'
@@ -329,7 +331,7 @@ const ZigzagCard = ({
             : 'rgba(255,255,255,0.025)',
           border: `1.5px solid ${isActive ? color + '55' : 'rgba(255,255,255,0.08)'}`,
           borderRadius: '14px',
-          padding: '18px',
+          padding: '16px',
           position: 'relative',
           overflow: 'hidden',
           boxShadow: isActive
@@ -346,7 +348,7 @@ const ZigzagCard = ({
           transition: 'all 0.4s ease',
         }} />
 
-        {/* Corner accent — side indicator */}
+        {/* Corner accent */}
         <div style={{
           position: 'absolute',
           top: 0,
@@ -360,13 +362,13 @@ const ZigzagCard = ({
         }} />
 
         {/* Step badge row */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
           <div style={{
-            width: '32px', height: '32px', borderRadius: '8px', flexShrink: 0,
+            width: '28px', height: '28px', borderRadius: '8px', flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: isActive ? color : 'rgba(255,255,255,0.06)',
             color: isActive ? '#fff' : '#555',
-            fontWeight: 900, fontSize: '13px',
+            fontWeight: 900, fontSize: '12px',
             boxShadow: isActive ? `0 4px 14px ${color}55` : 'none',
             border: `1px solid ${isActive ? color : 'rgba(255,255,255,0.08)'}`,
           }}>
@@ -375,7 +377,7 @@ const ZigzagCard = ({
 
           {/* Icon */}
           <div style={{
-            width: '44px', height: '44px', borderRadius: '10px', flexShrink: 0,
+            width: '40px', height: '40px', borderRadius: '10px', flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: isActive ? `${color}18` : 'rgba(255,255,255,0.04)',
             border: `1px solid ${isActive ? color + '35' : 'rgba(255,255,255,0.07)'}`,
@@ -383,13 +385,13 @@ const ZigzagCard = ({
             boxShadow: isActive ? `0 0 18px ${color}28` : 'none',
           }}>
             {isKarhari ? (
-              <Image src="/assets/images/1608452013412__1_-1786628988863.png" alt="Karhari Media" width={28} height={28} style={{ objectFit: 'contain' }} />
+              <Image src="/assets/images/1608452013412__1_-1786628988863.png" alt="Karhari Media" width={26} height={26} style={{ objectFit: 'contain' }} />
             ) : icon}
           </div>
 
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', marginBottom: '2px' }}>
-              <span style={{ color: '#fff', fontWeight: 800, fontSize: '13px', letterSpacing: '-0.01em' }}>{title}</span>
+              <span style={{ color: '#fff', fontWeight: 800, fontSize: '12px', letterSpacing: '-0.01em' }}>{title}</span>
               {isActive && (
                 <span style={{
                   display: 'inline-flex', alignItems: 'center', gap: '4px',
@@ -410,29 +412,29 @@ const ZigzagCard = ({
           {/* Mini scanner for Karhari/Facebook */}
           {(isKarhari || isFacebook) && (
             <div style={{ flexShrink: 0 }}>
-              <MiniScanner active={isActive} color={color} size={48} />
+              <MiniScanner active={isActive} color={color} size={44} />
             </div>
           )}
         </div>
 
         {/* Description */}
-        <p style={{ color: '#5a5a6e', fontSize: '11.5px', lineHeight: '1.55', margin: '0 0 10px', paddingLeft: '42px' }}>
+        <p style={{ color: '#5a5a6e', fontSize: '11px', lineHeight: '1.55', margin: '0 0 10px', paddingLeft: '36px' }}>
           {description}
         </p>
 
         {/* Waveform + numbers row */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingLeft: '42px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingLeft: '36px', flexWrap: 'wrap' }}>
           <WaveViz color={color} active={isActive} />
           {revenue && (
-            <div style={{ padding: '3px 9px', background: `${color}12`, border: `1px solid ${color}22`, borderRadius: '6px' }}>
+            <div style={{ padding: '3px 8px', background: `${color}12`, border: `1px solid ${color}22`, borderRadius: '6px' }}>
               <span style={{ fontSize: '9px', color: '#555', display: 'block' }}>Revenue</span>
-              <span style={{ fontSize: '12px', fontWeight: 900, color: color, fontVariantNumeric: 'tabular-nums' }}>{revenue}</span>
+              <span style={{ fontSize: '11px', fontWeight: 900, color: color, fontVariantNumeric: 'tabular-nums' }}>{revenue}</span>
             </div>
           )}
           {tracks && (
-            <div style={{ padding: '3px 9px', background: `${color}12`, border: `1px solid ${color}22`, borderRadius: '6px' }}>
+            <div style={{ padding: '3px 8px', background: `${color}12`, border: `1px solid ${color}22`, borderRadius: '6px' }}>
               <span style={{ fontSize: '9px', color: '#555', display: 'block' }}>Tracks</span>
-              <span style={{ fontSize: '12px', fontWeight: 900, color: color, fontVariantNumeric: 'tabular-nums' }}>{tracks}</span>
+              <span style={{ fontSize: '11px', fontWeight: 900, color: color, fontVariantNumeric: 'tabular-nums' }}>{tracks}</span>
             </div>
           )}
         </div>
@@ -477,7 +479,7 @@ const ZigzagConnector = ({ fromSide, active, color }: { fromSide: 'left' | 'righ
         const p = pRef.current;
 
         // Animated particle along bezier
-        const t = p;
+        let t = p;
         const bx = (1 - t) * (1 - t) * (1 - t) * startX
           + 3 * (1 - t) * (1 - t) * t * startX
           + 3 * (1 - t) * t * t * endX
@@ -593,7 +595,7 @@ const PipelineVideoLogger = ({ activeStep, visible }: { activeStep: number; visi
       const h = canvas.offsetHeight;
       ctx.clearRect(0, 0, w, h);
       tRef.current += 0.025;
-      const t = tRef.current;
+      let t = tRef.current;
 
       ctx.fillStyle = 'rgba(4,4,12,0.9)';
       ctx.fillRect(0, 0, w, h);
@@ -884,6 +886,7 @@ export default function PipelineSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const fbTracks = useIncrementingNumber(1284000, 340, 380);
   const igTracks = useIncrementingNumber(987000, 260, 420);
@@ -891,6 +894,13 @@ export default function PipelineSection() {
   const totalRevenue = useIncrementingNumber(12400000, 5200, 280);
   const artistPayout = useIncrementingNumber(9800000, 3900, 300);
   const fpCount = useIncrementingNumber(8700000, 420, 350);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -910,7 +920,6 @@ export default function PipelineSection() {
   const fmt = (n: number) => (n / 1000000).toFixed(3) + 'M';
   const fmtRev = (n: number) => '$' + (n / 1000000).toFixed(3) + 'M';
 
-  // Zigzag sides: 1=left, 2=right, 3=left, 4=right, 5=left, 6=right, 7=left
   const steps = [
     {
       id: 'artists', step: 1, title: 'Artists & Record Labels', subtitle: 'Music Submission',
@@ -954,30 +963,28 @@ export default function PipelineSection() {
   ];
 
   return (
-    <section id="pipeline" ref={sectionRef} style={{ position: 'relative', overflow: 'hidden', padding: '100px 0 120px' }}>
-      {/* Animated background */}
+    <section id="pipeline" ref={sectionRef} style={{ position: 'relative', overflow: 'hidden', padding: '60px 0 80px' }}>
       <PipelineBg />
 
-      {/* Content */}
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: '960px', margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '960px', margin: '0 auto', padding: '0 16px' }}>
 
         {/* Header */}
         <div style={{
-          textAlign: 'center', marginBottom: '64px',
+          textAlign: 'center', marginBottom: '40px',
           opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(28px)',
           transition: 'all 0.7s cubic-bezier(0.34,1.56,0.64,1)',
         }}>
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            padding: '6px 16px', borderRadius: '100px', marginBottom: '20px',
+            padding: '6px 16px', borderRadius: '100px', marginBottom: '16px',
             background: 'rgba(100,50,255,0.12)', border: '1px solid rgba(100,50,255,0.3)',
           }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#6432ff', boxShadow: '0 0 8px #6432ff', animation: 'pipelinePulse 1.2s ease-in-out infinite', display: 'inline-block' }} />
             <span style={{ fontSize: '11px', fontWeight: 700, color: '#a07aff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Distribution Pipeline</span>
           </div>
           <h2 style={{
-            fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 900, lineHeight: 1.1,
-            letterSpacing: '-0.03em', color: '#fff', margin: '0 0 16px',
+            fontSize: 'clamp(28px, 5vw, 56px)', fontWeight: 900, lineHeight: 1.1,
+            letterSpacing: '-0.03em', color: '#fff', margin: '0 0 12px',
           }}>
             From Artist to
             <br />
@@ -988,14 +995,16 @@ export default function PipelineSection() {
               Revenue Pipeline
             </span>
           </h2>
-          <p style={{ color: '#666', fontSize: '16px', lineHeight: 1.6, maxWidth: '560px', margin: '0 auto' }}>
+          <p style={{ color: '#666', fontSize: 'clamp(14px, 2vw, 16px)', lineHeight: 1.6, maxWidth: '560px', margin: '0 auto' }}>
             A complete step-by-step animated pipeline showing how Karhari Media distributes music through Facebook Rights Manager and delivers revenue to artists and record labels.
           </p>
         </div>
 
-        {/* Live counters */}
+        {/* Live counters — responsive grid */}
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '56px',
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: '10px', marginBottom: '40px',
           opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'all 0.6s ease-out 0.2s',
         }}>
@@ -1005,55 +1014,92 @@ export default function PipelineSection() {
             { label: 'WhatsApp Tracks', icon: <WhatsAppIcon size={16} />, color: '#25D366', count: fmt(waTracks) },
           ].map(p => (
             <div key={p.label} style={{
-              display: 'flex', alignItems: 'center', gap: '12px', padding: '14px 16px',
+              display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 14px',
               background: `${p.color}0a`, border: `1px solid ${p.color}25`, borderRadius: '10px',
-              boxShadow: `0 0 24px ${p.color}08`,
             }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: p.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: `0 4px 16px ${p.color}50`, color: '#fff' }}>
+              <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: p.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#fff' }}>
                 {p.icon}
               </div>
               <div>
-                <div style={{ fontSize: '16px', fontWeight: 900, color: p.color, fontVariantNumeric: 'tabular-nums' }}>{p.count}</div>
+                <div style={{ fontSize: '15px', fontWeight: 900, color: p.color, fontVariantNumeric: 'tabular-nums' }}>{p.count}</div>
                 <div style={{ fontSize: '11px', color: '#555' }}>{p.label}</div>
               </div>
-              <div style={{ marginLeft: 'auto', width: '8px', height: '8px', borderRadius: '50%', background: p.color, boxShadow: `0 0 8px ${p.color}`, animation: 'pipelinePulse 1.5s ease-in-out infinite' }} />
+              <div style={{ marginLeft: 'auto', width: '8px', height: '8px', borderRadius: '50%', background: p.color, animation: 'pipelinePulse 1.5s ease-in-out infinite' }} />
             </div>
           ))}
         </div>
 
-        {/* ── ZIGZAG Pipeline Steps ── */}
+        {/* ── ZIGZAG Pipeline Steps — full-width on mobile ── */}
         <div style={{ position: 'relative' }}>
-          {/* Center spine line */}
-          <div style={{
-            position: 'absolute', left: '50%', top: 0, bottom: 0,
-            width: '1px',
-            background: 'linear-gradient(180deg, transparent, rgba(100,50,255,0.15) 10%, rgba(100,50,255,0.15) 90%, transparent)',
-            transform: 'translateX(-50%)',
-            pointerEvents: 'none',
-          }} />
+          {/* Center spine — hidden on mobile */}
+          {!isMobile && (
+            <div style={{
+              position: 'absolute', left: '50%', top: 0, bottom: 0,
+              width: '1px',
+              background: 'linear-gradient(180deg, transparent, rgba(100,50,255,0.15) 10%, rgba(100,50,255,0.15) 90%, transparent)',
+              transform: 'translateX(-50%)',
+              pointerEvents: 'none',
+            }} />
+          )}
 
           {steps.map((s, i) => (
             <React.Fragment key={s.id}>
-              {/* Step card */}
-              <ZigzagCard
-                step={s.step}
-                title={s.title}
-                subtitle={s.subtitle}
-                description={s.description}
-                icon={s.icon}
-                color={s.color}
-                isActive={activeStep === i}
-                isKarhari={s.isKarhari}
-                isFacebook={s.isFacebook}
-                visible={visible}
-                delay={i * 0.09}
-                revenue={s.revenue}
-                tracks={s.tracks}
-                side={s.side}
-              />
+              {isMobile ? (
+                /* Mobile: full-width stacked cards */
+                <div style={{
+                  width: '100%',
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? 'translateX(0) scale(1)' : 'translateX(-20px) scale(0.97)',
+                  transition: `opacity 0.6s ease ${i * 0.09}s, transform 0.6s ease ${i * 0.09}s`,
+                  background: activeStep === i
+                    ? `linear-gradient(135deg, ${s.color}14 0%, ${s.color}07 100%)`
+                    : 'rgba(255,255,255,0.025)',
+                  border: `1.5px solid ${activeStep === i ? s.color + '55' : 'rgba(255,255,255,0.08)'}`,
+                  borderRadius: '14px',
+                  padding: '14px',
+                  marginBottom: '8px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                    <div style={{
+                      width: '26px', height: '26px', borderRadius: '7px', flexShrink: 0,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      background: activeStep === i ? s.color : 'rgba(255,255,255,0.06)',
+                      color: activeStep === i ? '#fff' : '#555',
+                      fontWeight: 900, fontSize: '11px',
+                      border: `1px solid ${activeStep === i ? s.color : 'rgba(255,255,255,0.08)'}`,
+                    }}>
+                      {s.step}
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: '12px', fontWeight: 800, color: '#fff' }}>{s.title}</div>
+                      <div style={{ fontSize: '10px', color: s.color }}>{s.subtitle}</div>
+                    </div>
+                    {activeStep === i && <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: s.color, animation: 'pipelinePulse 1.2s ease-in-out infinite' }} />}
+                  </div>
+                  <p style={{ fontSize: '11px', color: '#5a5a6e', lineHeight: 1.5, margin: 0 }}>{s.description}</p>
+                </div>
+              ) : (
+                <ZigzagCard
+                  step={s.step}
+                  title={s.title}
+                  subtitle={s.subtitle}
+                  description={s.description}
+                  icon={s.icon}
+                  color={s.color}
+                  isActive={activeStep === i}
+                  isKarhari={s.isKarhari}
+                  isFacebook={s.isFacebook}
+                  visible={visible}
+                  delay={i * 0.09}
+                  revenue={s.revenue}
+                  tracks={s.tracks}
+                  side={s.side}
+                />
+              )}
 
-              {/* Zigzag connector between steps */}
-              {i < steps.length - 1 && (
+              {i < steps.length - 1 && !isMobile && (
                 <ZigzagConnector
                   fromSide={s.side}
                   active={activeStep > i}
@@ -1065,13 +1111,15 @@ export default function PipelineSection() {
         </div>
 
         {/* Pipeline Video Logger */}
-        <div style={{ marginTop: '64px' }}>
+        <div style={{ marginTop: '48px' }}>
           <PipelineVideoLogger activeStep={activeStep} visible={visible} />
         </div>
 
-        {/* Bottom scanner boxes */}
+        {/* Bottom scanner boxes — responsive */}
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginTop: '24px',
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: '14px', marginTop: '20px',
           opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)',
           transition: 'all 0.7s ease-out 0.8s',
         }}>
@@ -1096,26 +1144,20 @@ export default function PipelineSection() {
             },
           ].map((box, bi) => (
             <div key={box.title} style={{
-              padding: '18px', background: `${box.color}08`,
+              padding: '16px', background: `${box.color}08`,
               border: `1.5px solid ${box.color}28`, borderRadius: '12px',
-              boxShadow: `0 0 24px ${box.color}08`,
             }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px' }}>
-                <div style={{ width: '38px', height: '38px', borderRadius: '8px', background: `${box.color}18`, border: `1px solid ${box.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: `0 0 16px ${box.color}20` }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '8px' }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: `${box.color}18`, border: `1px solid ${box.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {box.icon}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                    <span style={{ fontSize: '12px', fontWeight: 800, color: '#ddd' }}>{box.title}</span>
-                    <div style={{ width: '18px', height: '18px', borderRadius: '4px', background: box.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                  </div>
-                  <div style={{ fontSize: '16px', fontWeight: 900, color: box.color, fontVariantNumeric: 'tabular-nums' }}>{box.count}</div>
+                  <div style={{ fontSize: '12px', fontWeight: 800, color: '#ddd', marginBottom: '2px' }}>{box.title}</div>
+                  <div style={{ fontSize: '15px', fontWeight: 900, color: box.color, fontVariantNumeric: 'tabular-nums' }}>{box.count}</div>
                   <div style={{ fontSize: '10px', color: '#555' }}>{box.unit}</div>
                 </div>
               </div>
-              <p style={{ fontSize: '11px', color: '#555', lineHeight: 1.5, margin: '0 0 10px' }}>{box.desc}</p>
+              <p style={{ fontSize: '11px', color: '#555', lineHeight: 1.5, margin: '0 0 8px' }}>{box.desc}</p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div style={{ flex: 1, height: '3px', background: 'rgba(255,255,255,0.05)', borderRadius: '2px', overflow: 'hidden' }}>
                   <div style={{ height: '100%', background: `linear-gradient(90deg, ${box.color}60, ${box.color})`, borderRadius: '2px', animation: `scanProgress ${2 + bi * 0.3}s ease-in-out infinite` }} />

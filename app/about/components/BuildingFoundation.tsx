@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -99,7 +99,7 @@ export default function BuildingFoundation() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-start">
 
           {/* Left — Text box with animated 4-side borders */}
           <ScrollReveal direction="left">

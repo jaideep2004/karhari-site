@@ -11,16 +11,16 @@ const FacebookIcon = ({ size = 16, className = '' }: { size?: number; className?
 export default function Footer() {
   return (
     <footer id="contact" style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-12">
-        {/* Top row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-10 sm:py-12">
+        {/* Top row — responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
           {/* Brand */}
-          <div>
+          <div className="sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: 'rgba(232,93,38,0.15)', border: '1px solid rgba(232,93,38,0.3)' }}>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: 'rgba(232,93,38,0.15)', border: '1px solid rgba(232,93,38,0.3)' }}>
                 <Image src="/assets/images/1608452013412__1_-1786628988863.png" alt="Karhari Media Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
               </div>
-              <span className="font-bold text-white text-xl tracking-tight">Karhari Media</span>
+              <span className="font-bold text-white text-lg sm:text-xl tracking-tight">Karhari Media</span>
             </div>
             <p className="text-sm leading-relaxed mb-5 max-w-xs" style={{ color: '#666666' }}>
               Official Facebook Rights Manager partner. We distribute and monetize music from artists and record labels across Facebook, Instagram, and WhatsApp.
@@ -96,6 +96,18 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Bottom copyright */}
+        <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded flex items-center justify-center" style={{ background: '#1877F2' }}>
+              <FacebookIcon size={12} className="text-white" />
+            </div>
+            <p className="text-xs sm:text-sm text-center sm:text-left" style={{ color: '#333' }}>
+              © 2026 Karhari Media — Official Facebook Rights Manager Partner
+            </p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
 import {
@@ -900,7 +900,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-16 sm:py-24 border-t border-border relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-10 sm:py-16 lg:py-24 border-t border-border relative overflow-hidden">
       {/* Colorful animated orbs */}
       <div className="absolute bottom-0 right-0 w-96 h-96 blob-blue opacity-20 pointer-events-none" />
       <div className="absolute top-0 left-1/3 w-64 h-64 blob-bg opacity-20 pointer-events-none" />
@@ -910,7 +910,7 @@ export default function ContactSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16 section-enter">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 section-enter">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 block">Work With Us</span>
           <h2 className="text-section-title font-extrabold text-foreground mb-4">Ready to Partner?</h2>
           <p className="text-muted-foreground font-medium max-w-lg mx-auto text-sm sm:text-base">
@@ -918,74 +918,74 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-12">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
           {/* Left: Info panel */}
-          <div className="lg:col-span-4 flex flex-col gap-5 sm:gap-6">
+          <div className="lg:col-span-4 flex flex-col gap-4 sm:gap-5 lg:gap-6">
             {/* Brand card */}
-            <div className="section-enter stagger-1 bento-card neon-card p-6 sm:p-8" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center gap-3 mb-5">
-                <AppLogo src="/assets/images/1608452013412__1_-1786284315378.png" size={40} />
+            <div className="section-enter stagger-1 bento-card neon-card p-5 sm:p-6 lg:p-8" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center gap-3 mb-4 sm:mb-5">
+                <AppLogo src="/assets/images/1608452013412__1_-1786284315378.png" size={36} />
                 <div>
-                  <p className="font-bold text-foreground text-base">Karhari Media</p>
+                  <p className="font-bold text-foreground text-sm sm:text-base">Karhari Media</p>
                   <p className="text-xs text-muted-foreground font-medium">Pvt. Ltd. · Est. 2014</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-medium mb-5">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium mb-4 sm:mb-5">
                 India&apos;s growing digital music distribution company, trusted by thousands of artists and labels. Registered as Private Limited in 2022.
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {['Spotify Partner', 'TikTok Partner', 'Meta Partner', 'YouTube Partner'].map((tag) => (
-                  <span key={tag} className="text-xs font-semibold px-2.5 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">{tag}</span>
+                  <span key={tag} className="text-xs font-semibold px-2 sm:px-2.5 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">{tag}</span>
                 ))}
               </div>
             </div>
 
             {/* Contact details */}
-            <div className="section-enter stagger-2 bento-card neon-card p-6 sm:p-8 space-y-5" style={{ animationDelay: '0.5s' }}>
-              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">Get In Touch</h3>
+            <div className="section-enter stagger-2 bento-card neon-card p-5 sm:p-6 lg:p-8 space-y-4 sm:space-y-5" style={{ animationDelay: '0.5s' }}>
+              <h3 className="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider">Get In Touch</h3>
               {contactInfo.map((item) => {
                 const ItemIcon = item.icon;
                 return (
                   <a key={item.label} href={item.href} className="flex items-start gap-3 group">
-                    <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
-                      <ItemIcon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                      <ItemIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground font-medium mb-0.5">{item.label}</p>
-                      <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{item.value}</p>
+                      <p className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-primary transition-colors break-all">{item.value}</p>
                     </div>
                   </a>
                 );
               })}
               {/* Mumbai Address */}
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
-                  <MapPinIcon className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                  <MapPinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground font-medium mb-0.5">Mumbai Office</p>
-                  <p className="text-sm font-semibold text-foreground leading-relaxed">WeWork NESCO IT Park 10th Floor, Building 4, NESCO IT Park Western Express Highway, Goregaon (East) Mumbai – 400063, Maharashtra, India</p>
+                  <p className="text-xs sm:text-sm font-semibold text-foreground leading-relaxed">WeWork NESCO IT Park 10th Floor, Building 4, NESCO IT Park Western Express Highway, Goregaon (East) Mumbai – 400063, Maharashtra, India</p>
                 </div>
               </div>
               {/* Kolkata Address */}
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
-                  <MapPinIcon className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                  <MapPinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground font-medium mb-0.5">Kolkata Office</p>
-                  <p className="text-sm font-semibold text-foreground leading-relaxed">Shop No. 3, Market Area, Patharghata, Behind Shapoorji Complex, New Town, Action Area 3, Rajarhat, Kolkata – 700135, West Bengal, India</p>
+                  <p className="text-xs sm:text-sm font-semibold text-foreground leading-relaxed">Shop No. 3, Market Area, Patharghata, Behind Shapoorji Complex, New Town, Action Area 3, Rajarhat, Kolkata – 700135, West Bengal, India</p>
                 </div>
               </div>
             </div>
 
             {/* Quick facts */}
-            <div className="section-enter stagger-3 glass-card-lime neon-card rounded-2xl p-5 sm:p-6 border border-primary/15" style={{ animationDelay: '0.8s' }}>
+            <div className="section-enter stagger-3 glass-card-lime neon-card rounded-2xl p-4 sm:p-5 lg:p-6 border border-primary/15" style={{ animationDelay: '0.8s' }}>
               <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">What Happens Next</p>
-              <div className="space-y-2.5">
+              <div className="space-y-2 sm:space-y-2.5">
                 {['We review your application within 24 hours', 'Agreement signing and onboarding call', 'Music delivered to all platforms in 5–7 days'].map((step, i) => (
-                  <div key={step} className="flex items-start gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary flex-shrink-0 mt-0.5">{i + 1}</span>
+                  <div key={step} className="flex items-start gap-2 sm:gap-2.5">
+                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary flex-shrink-0 mt-0.5">{i + 1}</span>
                     <span className="text-xs sm:text-sm font-medium text-foreground/80">{step}</span>
                   </div>
                 ))}
@@ -995,39 +995,39 @@ export default function ContactSection() {
 
           {/* Right: Form */}
           <div className="lg:col-span-8 section-enter stagger-2">
-            <div className="bento-card neon-card p-6 sm:p-10" style={{ animationDelay: '0.4s' }}>
+            <div className="bento-card neon-card p-5 sm:p-7 lg:p-10" style={{ animationDelay: '0.4s' }}>
               {submitted ? (
-                <div className="flex flex-col items-center justify-center py-16 sm:py-20 text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center mb-5 lime-glow">
-                    <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 text-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/15 flex items-center justify-center mb-4 sm:mb-5 lime-glow">
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-foreground mb-2">Application Submitted!</h3>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-foreground mb-2">Application Submitted!</h3>
                   <p className="text-muted-foreground font-medium text-sm sm:text-base max-w-sm">
                     Thank you for reaching out. Our team will review your application and contact you within 48 hours.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                <form onSubmit={handleSubmit} noValidate className="space-y-5 sm:space-y-6">
 
                   {/* ── Section 1: I Am A ── */}
                   <div>
-                    <h3 className="text-sm font-extrabold uppercase tracking-widest text-primary mb-5 flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">1</span>
-                      <span className="text-base sm:text-lg">I Am A</span>
+                    <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-primary mb-4 sm:mb-5 flex items-center gap-2 sm:gap-3">
+                      <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs sm:text-sm">1</span>
+                      <span className="text-sm sm:text-base lg:text-lg">I Am A</span>
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-5">
                       {/* Artist */}
                       <button
                         type="button"
                         onClick={() => setFormData((prev) => ({ ...prev, iAmType: 'artist' }))}
-                        className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
+                        className={`flex flex-col items-center gap-2 p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                           formData.iAmType === 'artist' ?'border-primary bg-primary/10 shadow-lg shadow-primary/20' :'border-border bg-muted/20 hover:border-primary/40 hover:bg-primary/5'
                         }`}
                       >
-                        <ArtistIcon className={`w-8 h-8 ${formData.iAmType === 'artist' ? 'text-primary' : 'text-muted-foreground'}`} />
-                        <span className={`text-sm font-bold text-center ${formData.iAmType === 'artist' ? 'text-primary' : 'text-foreground'}`}>Artist</span>
+                        <ArtistIcon className={`w-7 h-7 sm:w-8 sm:h-8 ${formData.iAmType === 'artist' ? 'text-primary' : 'text-muted-foreground'}`} />
+                        <span className={`text-xs sm:text-sm font-bold text-center ${formData.iAmType === 'artist' ? 'text-primary' : 'text-foreground'}`}>Artist</span>
                         <span className="text-xs text-muted-foreground">Solo / Band</span>
                       </button>
 
@@ -1035,12 +1035,12 @@ export default function ContactSection() {
                       <button
                         type="button"
                         onClick={() => setFormData((prev) => ({ ...prev, iAmType: 'record-label' }))}
-                        className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
+                        className={`flex flex-col items-center gap-2 p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                           formData.iAmType === 'record-label' ?'border-blue-500 bg-blue-500/10 shadow-lg shadow-blue-500/20' :'border-border bg-muted/20 hover:border-blue-400/40 hover:bg-blue-500/5'
                         }`}
                       >
-                        <RecordLabelIcon className={`w-8 h-8 ${formData.iAmType === 'record-label' ? 'text-blue-400' : 'text-muted-foreground'}`} />
-                        <span className={`text-sm font-bold text-center ${formData.iAmType === 'record-label' ? 'text-blue-400' : 'text-foreground'}`}>Record Label</span>
+                        <RecordLabelIcon className={`w-7 h-7 sm:w-8 sm:h-8 ${formData.iAmType === 'record-label' ? 'text-blue-400' : 'text-muted-foreground'}`} />
+                        <span className={`text-xs sm:text-sm font-bold text-center ${formData.iAmType === 'record-label' ? 'text-blue-400' : 'text-foreground'}`}>Record Label</span>
                         <span className="text-xs text-muted-foreground">Label / Company</span>
                       </button>
 
@@ -1048,12 +1048,12 @@ export default function ContactSection() {
                       <button
                         type="button"
                         onClick={() => setFormData((prev) => ({ ...prev, iAmType: 'youtube-cms' }))}
-                        className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
+                        className={`flex flex-col items-center gap-2 p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                           formData.iAmType === 'youtube-cms' ?'border-red-500 bg-red-500/10 shadow-lg shadow-red-500/20' :'border-border bg-muted/20 hover:border-red-400/40 hover:bg-red-500/5'
                         }`}
                       >
-                        <YouTubeLogo className="w-8 h-8" />
-                        <span className={`text-sm font-bold text-center ${formData.iAmType === 'youtube-cms' ? 'text-red-400' : 'text-foreground'}`}>YouTube Multi Channel Network</span>
+                        <YouTubeLogo className="w-7 h-7 sm:w-8 sm:h-8" />
+                        <span className={`text-xs sm:text-sm font-bold text-center ${formData.iAmType === 'youtube-cms' ? 'text-red-400' : 'text-foreground'}`}>YouTube Multi Channel Network</span>
                         <span className="text-xs text-muted-foreground">YouTube CMS</span>
                       </button>
                     </div>
@@ -1062,17 +1062,17 @@ export default function ContactSection() {
                     {formData.iAmType === 'artist' && (
                       <div className="space-y-4 animate-fadeIn">
                         {/* Basic Information */}
-                        <div className="p-5 rounded-xl bg-primary/5 border border-primary/20 space-y-4">
-                          <div className="flex flex-col sm:flex-row sm:items-start gap-2">
-                            <p className="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-2 flex-shrink-0">
+                        <div className="p-4 sm:p-5 rounded-xl bg-primary/5 border border-primary/20 space-y-4">
+                          <div className="flex flex-col gap-2">
+                            <p className="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-2">
                               <ArtistIcon className="w-4 h-4 text-primary" />
                               Basic Information
                             </p>
-                            <p className="text-xs text-muted-foreground leading-relaxed sm:ml-2">
+                            <p className="text-xs text-muted-foreground leading-relaxed">
                               Karhari Media manages music for artists and record labels, and also manages hundreds of thousands of channels on YouTube through the YouTube Multi-Channel Network. Whatever service you require, please fill out this form and send it to us.
                             </p>
                           </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Full Name <span className="text-primary">*</span></label>
                               <input type="text" name="artistFullName" value={formData.artistFullName} onChange={handleChange} required placeholder="Your legal full name" className="form-input" />
@@ -1094,7 +1094,7 @@ export default function ContactSection() {
                                   value={formData.artistPhone}
                                   onChange={handleChange}
                                   placeholder="98765 43210"
-                                  className="flex-1 bg-transparent px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none"
+                                  className="flex-1 bg-transparent px-3 sm:px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none min-w-0"
                                 />
                               </div>
                             </div>
@@ -1104,7 +1104,7 @@ export default function ContactSection() {
                         {/* Artist Info */}
                         <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-4">
                           <p className="text-xs font-bold text-primary uppercase tracking-wider">Artist Information</p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Artist / Band Name <span className="text-primary">*</span></label>
                               <input type="text" name="artistName" value={formData.artistName} onChange={handleChange} placeholder="e.g. Rahul Beats" className="form-input" />
@@ -1119,7 +1119,7 @@ export default function ContactSection() {
                         {/* Social Media URLs */}
                         <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-4">
                           <p className="text-xs font-bold text-primary uppercase tracking-wider">Social Media &amp; Streaming URLs</p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">YouTube Channel URL</label>
                               <input type="url" name="artistYouTubeUrl" value={formData.artistYouTubeUrl} onChange={handleChange} placeholder="https://youtube.com/@yourchannel" className="form-input" />
@@ -1144,19 +1144,19 @@ export default function ContactSection() {
                         </div>
 
                         {/* Song Rights & Copyright */}
-                        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-5">
+                        <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-4 sm:space-y-5">
                           <p className="text-xs font-bold text-primary uppercase tracking-wider">Song Rights &amp; Copyright Information</p>
                           <div>
                             <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                               Do you own the rights to all your songs? <span className="text-primary">*</span>
                             </label>
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3">
                               {[{ v: 'yes', l: '✅ Yes — I own all rights' }, { v: 'no', l: '❌ No — Shared / Licensed' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, artistSongRightsOwnership: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.artistSongRightsOwnership === opt.v
                                       ? 'border-primary bg-primary/15 text-primary' :'border-border bg-muted/20 text-muted-foreground hover:border-primary/40'
                                   }`}
@@ -1171,13 +1171,13 @@ export default function ContactSection() {
                               Have you used any looped or copyrighted music in your songs? <span className="text-primary">*</span>
                             </label>
                             <p className="text-xs text-muted-foreground mb-3">This includes samples, loops, beats, or any third-party copyrighted audio material.</p>
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3">
                               {[{ v: 'yes', l: '⚠️ Yes' }, { v: 'no', l: '✅ No' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, artistUsedCopyrightedMusic: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.artistUsedCopyrightedMusic === opt.v
                                       ? 'border-primary bg-primary/15 text-primary' :'border-border bg-muted/20 text-muted-foreground hover:border-primary/40'
                                   }`}
@@ -1193,29 +1193,28 @@ export default function ContactSection() {
 
                     {/* ── Record Label Fields ── */}
                     {formData.iAmType === 'record-label' && (
-                      <div className="space-y-5 animate-fadeIn">
+                      <div className="space-y-4 sm:space-y-5 animate-fadeIn">
 
-                        {/* ── Box 1: Basic Information — Cyan/Teal glow ── */}
+                        {/* ── Box 1: Basic Information ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-4 overflow-hidden"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4 overflow-hidden"
                           style={{
                             background: 'linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(20,184,166,0.06) 100%)',
                             border: '1.5px solid rgba(6,182,212,0.35)',
                             boxShadow: '0 0 18px rgba(6,182,212,0.18), inset 0 0 30px rgba(6,182,212,0.04)',
                           }}
                         >
-                          {/* Animated shimmer line */}
                           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60 animate-pulse" />
-                          <div className="flex flex-col sm:flex-row sm:items-start gap-2">
-                            <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-2 flex-shrink-0" style={{ color: '#22d3ee' }}>
+                          <div className="flex flex-col gap-2">
+                            <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-2" style={{ color: '#22d3ee' }}>
                               <RecordLabelIcon className="w-4 h-4" style={{ color: '#22d3ee' } as React.CSSProperties} />
                               Basic Information
                             </p>
-                            <p className="text-xs text-muted-foreground leading-relaxed sm:ml-2">
+                            <p className="text-xs text-muted-foreground leading-relaxed">
                               Karhari Media manages music for artists and record labels, and also manages hundreds of thousands of channels on YouTube through the YouTube Multi-Channel Network. Whatever service you require, please fill out this form and send it to us.
                             </p>
                           </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Full Legal Name <span className="text-cyan-400">*</span></label>
                               <input
@@ -1255,16 +1254,16 @@ export default function ContactSection() {
                                   value={formData.labelPersonPhone}
                                   onChange={handleChange}
                                   placeholder="98765 43210"
-                                  className="flex-1 bg-transparent px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none"
+                                  className="flex-1 bg-transparent px-3 sm:px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none min-w-0"
                                 />
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        {/* ── Box 2: Company Details — Purple/Violet glow ── */}
+                        {/* ── Box 2: Company Details ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-4"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4"
                           style={{
                             background: 'linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(168,85,247,0.06) 100%)',
                             border: '1.5px solid rgba(139,92,246,0.35)',
@@ -1276,7 +1275,7 @@ export default function ContactSection() {
                             <RecordLabelIcon className="w-4 h-4" style={{ color: '#a78bfa' } as React.CSSProperties} />
                             Company / Label Details
                           </p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Company / Label Name <span className="text-violet-400">*</span></label>
                               <input
@@ -1329,9 +1328,9 @@ export default function ContactSection() {
                           </div>
                         </div>
 
-                        {/* ── Box 3: Country & City — Emerald/Green glow ── */}
+                        {/* ── Box 3: Country & City ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-4"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4"
                           style={{
                             background: 'linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(5,150,105,0.06) 100%)',
                             border: '1.5px solid rgba(16,185,129,0.35)',
@@ -1340,7 +1339,7 @@ export default function ContactSection() {
                         >
                           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-60 animate-pulse" style={{ animationDelay: '1s' }} />
                           <p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#34d399' }}>🌍 Country &amp; City</p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div className="sm:col-span-2">
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Country <span className="text-emerald-400">*</span></label>
                               <CountryDropdown
@@ -1363,9 +1362,9 @@ export default function ContactSection() {
                           </div>
                         </div>
 
-                        {/* ── Box 4: Catalog Size — Orange/Amber glow ── */}
+                        {/* ── Box 4: Catalog Size ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-4 overflow-hidden"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4 overflow-hidden"
                           style={{
                             background: 'linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(251,191,36,0.06) 100%)',
                             border: '1.5px solid rgba(245,158,11,0.35)',
@@ -1374,7 +1373,7 @@ export default function ContactSection() {
                         >
                           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60 animate-pulse" style={{ animationDelay: '1.5s' }} />
                           <p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#fbbf24' }}>🎵 Catalog &amp; Scale</p>
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Total Artists</label>
                               <div className="relative">
@@ -1432,9 +1431,9 @@ export default function ContactSection() {
                           </div>
                         </div>
 
-                        {/* ── Box 5: Distribution — Pink/Rose glow ── */}
+                        {/* ── Box 5: Distribution ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-4 overflow-hidden"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4 overflow-hidden"
                           style={{
                             background: 'linear-gradient(135deg, rgba(244,63,94,0.08) 0%, rgba(251,113,133,0.06) 100%)',
                             border: '1.5px solid rgba(244,63,94,0.35)',
@@ -1473,9 +1472,9 @@ export default function ContactSection() {
                           </div>
                         </div>
 
-                        {/* ── Box 6: Agreements & Revenue — Blue glow ── */}
+                        {/* ── Box 6: Agreements & Revenue ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-5 overflow-hidden"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4 sm:space-y-5 overflow-hidden"
                           style={{
                             background: 'linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(99,102,241,0.06) 100%)',
                             border: '1.5px solid rgba(59,130,246,0.35)',
@@ -1490,13 +1489,13 @@ export default function ContactSection() {
                               Does your record label hold all agreements and documentation from your artists? <span className="text-blue-400">*</span>
                             </label>
                             <p className="text-xs text-muted-foreground mb-3">This includes signed contracts, licensing agreements, and rights documentation.</p>
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3">
                               {[{ v: 'yes', l: '✅ Yes — All agreements in place' }, { v: 'no', l: '❌ No — Incomplete' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, labelHasArtistAgreements: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.labelHasArtistAgreements === opt.v
                                       ? 'border-blue-400 bg-blue-500/15 text-blue-300' :'border-border bg-muted/20 text-muted-foreground hover:border-blue-400/40'
                                   }`}
@@ -1527,9 +1526,9 @@ export default function ContactSection() {
                           </div>
                         </div>
 
-                        {/* ── Box 7: Legal Representative — Gold/Yellow glow ── */}
+                        {/* ── Box 7: Legal Representative ── */}
                         <div
-                          className="relative p-5 rounded-2xl space-y-4 overflow-hidden"
+                          className="relative p-4 sm:p-5 rounded-2xl space-y-4 overflow-hidden"
                           style={{
                             background: 'linear-gradient(135deg, rgba(234,179,8,0.08) 0%, rgba(202,138,4,0.06) 100%)',
                             border: '1.5px solid rgba(234,179,8,0.35)',
@@ -1559,25 +1558,25 @@ export default function ContactSection() {
 
                     {/* ── YouTube CMS / Multi Channel Network Fields ── */}
                     {formData.iAmType === 'youtube-cms' && (
-                      <div className="animate-fadeIn space-y-5">
+                      <div className="animate-fadeIn space-y-4 sm:space-y-5">
                         {/* CMS Header Banner */}
-                        <div className="p-5 rounded-2xl bg-gradient-to-r from-red-600/20 via-red-500/10 to-orange-500/10 border border-red-500/30">
-                          <div className="flex items-center gap-3 mb-2">
-                            <YouTubeLogo className="w-10 h-10 flex-shrink-0" />
+                        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-600/20 via-red-500/10 to-orange-500/10 border border-red-500/30">
+                          <div className="flex items-start gap-3 mb-2">
+                            <YouTubeLogo className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
                             <div>
-                              <h4 className="text-base sm:text-lg font-extrabold text-red-400">Music &amp; Entertainment CMS</h4>
+                              <h4 className="text-sm sm:text-base lg:text-lg font-extrabold text-red-400">Music &amp; Entertainment CMS</h4>
                               <p className="text-xs text-muted-foreground font-medium">YouTube Multi Channel Network — Channel Connection Application</p>
                             </div>
                           </div>
                           <p className="text-xs text-foreground/70 leading-relaxed">
                             Connect your YouTube channel to Karhari Media&apos;s CMS network. Please fill in your personal details and complete channel information below.
                           </p>
-                          <div className="mt-3 flex flex-wrap gap-3">
+                          <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
                             <a
                               href="https://support.google.com/youtube/answer/1311392"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all"
                             >
                               <YouTubeLogo className="w-3.5 h-3.5" />
                               YouTube CMS Music Content Monetization Policy →
@@ -1586,7 +1585,7 @@ export default function ContactSection() {
                               href="https://www.youtube.com/howyoutubeworks/policies/monetization-policies/"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 transition-all"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 transition-all"
                             >
                               <YouTubeLogo className="w-3.5 h-3.5" />
                               YouTube CMS Entertainment Monetization Policy →
@@ -1596,15 +1595,15 @@ export default function ContactSection() {
 
                         {/* Personal Information */}
                         <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/20 space-y-4">
-                          <div className="flex flex-col sm:flex-row sm:items-start gap-2">
-                            <p className="text-xs font-bold text-red-400 uppercase tracking-wider flex items-center gap-2 flex-shrink-0">
+                          <div className="flex flex-col gap-2">
+                            <p className="text-xs font-bold text-red-400 uppercase tracking-wider flex items-center gap-2">
                               <span>👤</span> Basic Information
                             </p>
-                            <p className="text-xs text-muted-foreground leading-relaxed sm:ml-2">
+                            <p className="text-xs text-muted-foreground leading-relaxed">
                               Karhari Media manages music for artists and record labels, and also manages hundreds of thousands of channels on YouTube through the YouTube Multi-Channel Network. Whatever service you require, please fill out this form and send it to us.
                             </p>
                           </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Full Name <span className="text-primary">*</span></label>
                               <input type="text" name="ytcmsFullName" value={formData.ytcmsFullName} onChange={handleChange} placeholder="Your legal full name" className="form-input" />
@@ -1626,7 +1625,7 @@ export default function ContactSection() {
                                   value={formData.ytcmsPhone}
                                   onChange={handleChange}
                                   placeholder="98765 43210"
-                                  className="flex-1 bg-transparent px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none"
+                                  className="flex-1 bg-transparent px-3 sm:px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none min-w-0"
                                 />
                               </div>
                               <p className="text-xs text-muted-foreground mt-1">
@@ -1660,7 +1659,7 @@ export default function ContactSection() {
                             <YouTubeLogo className="w-5 h-5" />
                             YouTube Channel Details
                           </p>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
                               <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">YouTube Channel Name <span className="text-primary">*</span></label>
                               <input type="text" name="ytcmsChannelName" value={formData.ytcmsChannelName} onChange={handleChange} placeholder="e.g. Karhari Music Official" className="form-input" />
@@ -1728,20 +1727,20 @@ export default function ContactSection() {
                         </div>
 
                         {/* Channel Status & Compliance */}
-                        <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/20 space-y-5">
+                        <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/20 space-y-4 sm:space-y-5">
                           <p className="text-xs font-bold text-yellow-400 uppercase tracking-wider flex items-center gap-2">
                             <span>⚠️</span> Channel Status &amp; Compliance
                           </p>
 
                           <div>
                             <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Is your channel monetized? <span className="text-primary">*</span></label>
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3">
                               {[{ v: 'yes', l: '✅ Yes' }, { v: 'no', l: '❌ No' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, ytcmsMonetized: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.ytcmsMonetized === opt.v
                                       ? 'border-yellow-400 bg-yellow-500/15 text-yellow-300' :'border-border bg-muted/20 text-muted-foreground hover:border-yellow-400/40'
                                   }`}
@@ -1755,13 +1754,13 @@ export default function ContactSection() {
                           <div>
                             <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">Does your channel have original content or copyrighted content? <span className="text-primary">*</span></label>
                             <p className="text-xs text-muted-foreground mb-3">Select &quot;Yes&quot; if your channel contains original content you own, or &quot;No&quot; if it uses third-party copyrighted material.</p>
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3">
                               {[{ v: 'yes', l: '✅ Yes — Original Content' }, { v: 'no', l: '❌ No — Copyrighted Content' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, ytcmsOriginalContent: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.ytcmsOriginalContent === opt.v
                                       ? 'border-yellow-400 bg-yellow-500/15 text-yellow-300' :'border-border bg-muted/20 text-muted-foreground hover:border-yellow-400/40'
                                   }`}
@@ -1785,13 +1784,13 @@ export default function ContactSection() {
                                 Learn about YouTube&apos;s Copyright Strike Policy →
                               </a>
                             </p>
-                            <div className="flex gap-3 mt-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3 mt-3">
                               {[{ v: 'yes', l: '⚠️ Yes' }, { v: 'no', l: '✅ No' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, ytcmsCopyrightStrike: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.ytcmsCopyrightStrike === opt.v
                                       ? 'border-yellow-400 bg-yellow-500/15 text-yellow-300' :'border-border bg-muted/20 text-muted-foreground hover:border-yellow-400/40'
                                   }`}
@@ -1807,7 +1806,7 @@ export default function ContactSection() {
                             <p className="text-xs text-muted-foreground mb-2">
                               This includes community guidelines violations, spam, misleading content, or any other policy breach. Please review YouTube&apos;s policies:
                             </p>
-                            <div className="flex flex-wrap gap-3 mb-3">
+                            <div className="flex flex-wrap gap-2 sm:gap-3 mb-3">
                               <a
                                 href="https://www.youtube.com/howyoutubeworks/policies/monetization-policies/"
                                 target="_blank"
@@ -1827,13 +1826,13 @@ export default function ContactSection() {
                                 YouTube Community Guidelines Policy →
                               </a>
                             </div>
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xs:flex-row gap-2 sm:gap-3">
                               {[{ v: 'yes', l: '⚠️ Yes' }, { v: 'no', l: '✅ No' }].map((opt) => (
                                 <button
                                   key={opt.v}
                                   type="button"
                                   onClick={() => setFormData((prev) => ({ ...prev, ytcmsPolicyViolation: opt.v }))}
-                                  className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold border-2 transition-all ${
+                                  className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold border-2 transition-all ${
                                     formData.ytcmsPolicyViolation === opt.v
                                       ? 'border-yellow-400 bg-yellow-500/15 text-yellow-300' :'border-border bg-muted/20 text-muted-foreground hover:border-yellow-400/40'
                                   }`}
@@ -1848,10 +1847,10 @@ export default function ContactSection() {
                     )}
                   </div>
 
-                  {/* ── Section 2: Additional Information (General) ── */}
+                  {/* ── Section 2: Additional Information ── */}
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">2</span>
+                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-primary mb-3 sm:mb-4 flex items-center gap-2">
+                      <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">2</span>
                       Additional Information
                     </h3>
                     <textarea
@@ -1962,7 +1961,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-primary text-primary-foreground font-bold text-sm sm:text-base py-4 rounded-full hover:bg-primary/90 transition-all duration-200 lime-glow disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-primary text-primary-foreground font-bold text-sm sm:text-base py-3.5 sm:py-4 rounded-full hover:bg-primary/90 transition-all duration-200 lime-glow disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       <>

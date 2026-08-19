@@ -938,4 +938,126 @@
             .bg-glow-2 {
                 display: none !important;
             }
-        
+
+            /* ============ TABLET ============ */
+            @media (max-width: 900px) {
+                .km9-hero-container {
+                    gap: 26px;
+                }
+
+                .feature-icons {
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                }
+
+                .shield-stage {
+                    height: 560px;
+                }
+
+                .bottom-panels {
+                    gap: 18px;
+                    margin: 32px auto 0;
+                }
+            }
+
+            /* ============ MOBILE ============ */
+            @media (max-width: 640px) {
+                .km9-hero {
+                    padding: 32px 0;
+                }
+
+                .km9-hero-container {
+                    gap: 22px;
+                    padding: 0 16px;
+                }
+
+                .col-left .logo-text {
+                    font-size: 1.9rem;
+                }
+
+                .headline {
+                    font-size: 1.55rem;
+                    margin: 16px 0 12px;
+                }
+
+                .desc {
+                    font-size: 0.85rem;
+                    margin-bottom: 20px;
+                }
+
+                .feature-icons {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 12px;
+                }
+
+                .node-desc {
+                    display: none;
+                }
+
+                .feature-item {
+                    padding: 14px 10px;
+                }
+
+                .icon-circle {
+                    width: 44px;
+                    height: 44px;
+                    font-size: 1.2rem;
+                }
+
+                .shield-stage {
+                    height: 440px;
+                }
+
+                .platform-node {
+                    transform: translate(-50%, -50%) scale(0.8);
+                }
+
+                .platform-logos {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+
+                .logo-item {
+                    padding: 12px 6px;
+                }
+
+                .glass-panel {
+                    padding: 16px;
+                }
+
+                .why-item {
+                    gap: 10px;
+                    margin-bottom: 13px;
+                }
+
+                .bottom-panels {
+                    gap: 14px;
+                    margin: 26px auto 0;
+                }
+
+                .bottom-bar {
+                    margin: 24px auto 0;
+                    padding: 13px 14px;
+                    gap: 10px;
+                }
+            }
+
+            @media (max-width: 400px) {
+                .feature-icons {
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                }
+
+                .platform-node {
+                    transform: translate(-50%, -50%) scale(0.7);
+                }
+
+                .shield-stage {
+                    height: 400px;
+                }
+
+                .platform-logos {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 8px;
+                }
+            }
+        }

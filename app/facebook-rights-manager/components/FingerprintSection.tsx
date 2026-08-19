@@ -21,10 +21,15 @@ const WhatsAppIcon = ({ size = 20 }: { size?: number }) => (
 
 function useIncrementingNumber(base: number, increment: number, interval: number) {
   const [value, setValue] = useState(base);
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    setMounted(true);
+  }, []);
+  useEffect(() => {
+    if (!mounted) return;
     const timer = setInterval(() => setValue(v => v + increment), interval);
     return () => clearInterval(timer);
-  }, [increment, interval]);
+  }, [mounted, increment, interval]);
   return value;
 }
 
@@ -132,7 +137,7 @@ const AdvancedScannerCanvas = () => {
           const hy = row * hexS * 1.5;
           ctx.beginPath();
           for (let i = 0; i < 6; i++) {
-            const angle = (Math.PI / 3) * i - Math.PI / 6;
+            let angle = (Math.PI / 3) * i - Math.PI / 6;
             const px = hx + hexS * 0.85 * Math.cos(angle);
             const py = hy + hexS * 0.85 * Math.sin(angle);
             if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
@@ -634,12 +639,16 @@ interface AudioQueueItemProps {
 
 const AudioQueueItem = ({ name, type, color, delay }: AudioQueueItemProps) => {
   const [active, setActive] = useState(false);
-  const [scanPct, setScanPct] = useState(Math.random() * 60);
+  const [scanPct, setScanPct] = useState(0);
 
   useEffect(() => {
     const t = setTimeout(() => setActive(true), delay);
     return () => clearTimeout(t);
   }, [delay]);
+
+  useEffect(() => {
+    setScanPct(Math.random() * 60);
+  }, []);
 
   useEffect(() => {
     if (!active) return;
@@ -703,8 +712,8 @@ const PlatformDeliveryCard = ({ name, icon, color, deliveries, tracks, index }: 
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), index * 200 + 300);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setVisible(true), index * 200 + 300);
+    return () => clearTimeout(timer);
   }, [index]);
 
   return (
@@ -763,11 +772,15 @@ const PlatformDeliveryCard = ({ name, icon, color, deliveries, tracks, index }: 
       <div className="space-y-3 relative">
         <div className="flex items-center justify-between">
           <span style={{ color: '#555', fontSize: '11px' }}>Total Deliveries</span>
-          <span className="font-black tabular-nums" style={{ color: color, fontSize: '13px' }}>{formatNum(deliveries)}</span>
+          <span className="font-black tabular-nums" style={{ color: color, fontSize: '13px' }} suppressHydrationWarning>
+            {formatNum(deliveries)}
+          </span>
         </div>
         <div className="flex items-center justify-between">
           <span style={{ color: '#555', fontSize: '11px' }}>Active Tracks</span>
-          <span className="font-black tabular-nums" style={{ color: color, fontSize: '13px' }}>{formatNum(tracks)}</span>
+          <span className="font-black tabular-nums" style={{ color: color, fontSize: '13px' }} suppressHydrationWarning>
+            {formatNum(tracks)}
+          </span>
         </div>
 
         {/* Animated progress bar */}
@@ -808,6 +821,7 @@ const PlatformDeliveryCard = ({ name, icon, color, deliveries, tracks, index }: 
 export default function FingerprintSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const fbDeliveries = useIncrementingNumber(1847293, 230, 500);
   const igDeliveries = useIncrementingNumber(1234567, 180, 600);
@@ -818,6 +832,7 @@ export default function FingerprintSection() {
   const totalScanned = useIncrementingNumber(5847293, 450, 300);
 
   useEffect(() => {
+    setMounted(true);
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
       { threshold: 0.05 }
@@ -841,7 +856,7 @@ export default function FingerprintSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="fingerprint" className="py-20 lg:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0d0d0d 0%, #060a18 50%, #0d0d0d 100%)' }}>
+    <section ref={sectionRef} id="fingerprint" className="py-16 lg:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0d0d0d 0%, #060a18 50%, #0d0d0d 100%)' }}>
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute" style={{ top: '10%', left: '50%', transform: 'translateX(-50%)', width: '900px', height: '700px', background: 'radial-gradient(ellipse, rgba(24,119,242,0.07) 0%, transparent 65%)', borderRadius: '50%' }} />
@@ -852,23 +867,21 @@ export default function FingerprintSection() {
       <div className="section-container relative">
         {/* Section header */}
         <div
-          className="text-center mb-10"
+          className="text-center mb-8 sm:mb-10"
           style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out' }}
         >
           <div className="section-label mb-4">Live Audio Fingerprinting</div>
-          <h2 className="font-black text-white mb-4" style={{ fontSize: 'clamp(28px, 4vw, 52px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}>
+          <h2 className="font-black text-white mb-4" style={{ fontSize: 'clamp(24px, 4vw, 52px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}>
             Every audio file.
             <br />
             <span className="gradient-text">Scanned. Identified. Delivered.</span>
           </h2>
-          <p className="text-base max-w-2xl mx-auto" style={{ color: '#a8a39c', lineHeight: '1.7' }}>
+          <p className="text-sm sm:text-base max-w-2xl mx-auto" style={{ color: '#a8a39c', lineHeight: '1.7' }}>
             Our high-tech fingerprint scanner processes thousands of audio files per second — from Artists, Record Labels, and Music Producers — delivering rights-protected content to Facebook, Instagram, and WhatsApp in real time.
           </p>
         </div>
 
-        {/* ============================================================
-            MAIN 3-PANEL HIGH-TECH BOX
-        ============================================================ */}
+        {/* MAIN 3-PANEL HIGH-TECH BOX */}
         <div
           className="relative rounded-24 overflow-hidden"
           style={{
@@ -882,46 +895,42 @@ export default function FingerprintSection() {
         >
           {/* Top status bar */}
           <div
-            className="flex items-center justify-between px-6 py-3.5"
+            className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3"
             style={{ borderBottom: '1px solid rgba(24,119,242,0.15)', background: 'rgba(24,119,242,0.06)' }}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <div className="dot-pulse" style={{ background: '#1877F2', boxShadow: '0 0 0 0 rgba(24,119,242,0.4)' }} />
-              <span style={{ color: '#4da6ff', fontSize: '11px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              <span style={{ color: '#4da6ff', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 Live Audio Fingerprint Asset Scanner
               </span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-8" style={{ background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.2)' }}>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-8" style={{ background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.2)' }}>
                 <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#25D366', animation: 'pulse 1s ease-in-out infinite' }} />
-                <span style={{ color: '#25D366', fontSize: '10px', fontWeight: 700 }}>SCANNING LIVE</span>
+                <span style={{ color: '#25D366', fontSize: '9px', fontWeight: 700 }}>SCANNING LIVE</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-8" style={{ background: 'rgba(232,93,38,0.1)', border: '1px solid rgba(232,93,38,0.2)' }}>
-                <span style={{ color: '#ff8c42', fontSize: '10px', fontWeight: 700 }}>TOTAL: {formatM(totalScanned)}</span>
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-8" style={{ background: 'rgba(232,93,38,0.1)', border: '1px solid rgba(232,93,38,0.2)' }}>
+                <span style={{ color: '#ff8c42', fontSize: '9px', fontWeight: 700 }} suppressHydrationWarning>TOTAL: {mounted ? formatM(totalScanned) : formatM(5847293)}</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-8" style={{ background: 'rgba(24,119,242,0.1)', border: '1px solid rgba(24,119,242,0.2)' }}>
-                <span style={{ color: '#4da6ff', fontSize: '10px', fontWeight: 700 }}>99.8% ACCURACY</span>
+              <div className="hidden sm:flex items-center gap-1.5 px-2 py-1 rounded-8" style={{ background: 'rgba(24,119,242,0.1)', border: '1px solid rgba(24,119,242,0.2)' }}>
+                <span style={{ color: '#4da6ff', fontSize: '9px', fontWeight: 700 }}>99.8% ACCURACY</span>
               </div>
             </div>
           </div>
 
-          {/* 3-panel layout — top to bottom flow */}
-          <div className="grid grid-cols-12" style={{ minHeight: '640px' }}>
+          {/* 3-panel layout — stacks on mobile */}
+          <div className="flex flex-col lg:grid lg:grid-cols-12" style={{ minHeight: '400px' }}>
 
-            {/* ============================
-                LEFT PANEL — Audio Sources
-            ============================ */}
+            {/* LEFT PANEL — Audio Sources (hidden on small mobile, shown on md+) */}
             <div
-              className="col-span-3 flex flex-col gap-3 p-5"
+              className="hidden md:flex flex-col gap-3 p-4 lg:p-5 lg:col-span-3"
               style={{ borderRight: '1px solid rgba(24,119,242,0.1)', background: 'rgba(232,93,38,0.015)' }}
             >
-              {/* Panel header */}
               <div className="text-center pb-2" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
                 <div className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color: '#e85d26' }}>Audio Sources</div>
                 <div style={{ color: '#3a3a3a', fontSize: '10px' }}>Submitting to scanner →</div>
               </div>
 
-              {/* Source entity cards */}
               <SourceEntityCard
                 title="Artist"
                 subtitle="Independent Musicians"
@@ -934,7 +943,6 @@ export default function FingerprintSection() {
                   </svg>
                 }
               />
-
               <SourceEntityCard
                 title="Record Label"
                 subtitle="Major & Indie Labels"
@@ -947,7 +955,6 @@ export default function FingerprintSection() {
                   </svg>
                 }
               />
-
               <SourceEntityCard
                 title="Music Producer"
                 subtitle="Studio Productions"
@@ -962,43 +969,36 @@ export default function FingerprintSection() {
                 }
               />
 
-              {/* Audio queue */}
               <div className="flex-1">
                 <div className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#333' }}>Audio Queue</div>
                 <div className="space-y-1.5">
-                  {audioQueue.map(f => (
+                  {audioQueue.slice(0, 6).map(f => (
                     <AudioQueueItem key={f.name} {...f} />
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* ============================
-                CENTER PANEL — Scanner
-            ============================ */}
-            <div className="col-span-6 relative flex flex-col">
-              {/* Scanner canvas — takes full height */}
-              <div className="flex-1 relative" style={{ minHeight: '580px' }}>
+            {/* CENTER PANEL — Scanner */}
+            <div className="flex flex-col lg:col-span-6 relative" style={{ minHeight: '360px' }}>
+              <div className="flex-1 relative" style={{ minHeight: '360px' }}>
                 <AdvancedScannerCanvas />
 
-                {/* Overlay: scanner status badge */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 pointer-events-none">
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 pointer-events-none">
                   <div
-                    className="flex items-center gap-2 px-4 py-2 rounded-full"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full"
                     style={{
                       background: 'rgba(24,119,242,0.18)',
                       border: '1px solid rgba(24,119,242,0.4)',
                       backdropFilter: 'blur(12px)',
-                      boxShadow: '0 0 20px rgba(24,119,242,0.2)',
                     }}
                   >
-                    <div className="w-2 h-2 rounded-full" style={{ background: '#1877F2', animation: 'pulse 1s ease-in-out infinite', boxShadow: '0 0 8px #1877F2' }} />
-                    <span style={{ color: '#4da6ff', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em' }}>FINGERPRINT SCANNER ACTIVE</span>
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#1877F2', animation: 'pulse 1s ease-in-out infinite' }} />
+                    <span style={{ color: '#4da6ff', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em' }}>FINGERPRINT SCANNER ACTIVE</span>
                   </div>
                 </div>
 
-                {/* Bottom stats overlay */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-center gap-3 pointer-events-none">
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center gap-2 pointer-events-none flex-wrap">
                   {[
                     { label: 'Files/sec', value: '2,847', color: '#1877F2' },
                     { label: 'Match Rate', value: '99.8%', color: '#25D366' },
@@ -1007,75 +1007,70 @@ export default function FingerprintSection() {
                   ].map(s => (
                     <div
                       key={s.label}
-                      className="flex flex-col items-center px-3 py-2 rounded-12"
+                      className="flex flex-col items-center px-2 py-1.5 rounded-10"
                       style={{
                         background: 'rgba(0,0,0,0.75)',
                         border: `1px solid ${s.color}25`,
                         backdropFilter: 'blur(10px)',
                       }}
                     >
-                      <span className="font-black tabular-nums text-sm" style={{ color: s.color }}>{s.value}</span>
-                      <span style={{ color: '#444', fontSize: '9px' }}>{s.label}</span>
+                      <span className="font-black tabular-nums text-xs" style={{ color: s.color }}>{s.value}</span>
+                      <span style={{ color: '#444', fontSize: '8px' }}>{s.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* ============================
-                RIGHT PANEL — Delivery
-            ============================ */}
+            {/* RIGHT PANEL — Delivery */}
             <div
-              className="col-span-3 flex flex-col gap-3 p-5"
-              style={{ borderLeft: '1px solid rgba(24,119,242,0.1)', background: 'rgba(24,119,242,0.015)' }}
+              className="flex flex-col gap-3 p-4 lg:p-5 lg:col-span-3"
+              style={{ borderTop: '1px solid rgba(24,119,242,0.1)', borderLeft: '0px', background: 'rgba(24,119,242,0.015)' }}
             >
-              {/* Panel header */}
               <div className="text-center pb-2" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
                 <div className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color: '#4da6ff' }}>Delivery Targets</div>
                 <div style={{ color: '#3a3a3a', fontSize: '10px' }}>← Receiving fingerprinted audio</div>
               </div>
 
-              {/* Platform delivery cards — stacked top to bottom */}
-              <PlatformDeliveryCard
-                name="Facebook"
-                icon={<FacebookIcon size={24} />}
-                color="#1877F2"
-                deliveries={fbDeliveries}
-                tracks={fbTracks}
-                index={0}
-              />
+              {/* On mobile: horizontal row; on lg: stacked */}
+              <div className="flex flex-row lg:flex-col gap-3">
+                <PlatformDeliveryCard
+                  name="Facebook"
+                  icon={<FacebookIcon size={22} />}
+                  color="#1877F2"
+                  deliveries={fbDeliveries}
+                  tracks={fbTracks}
+                  index={0}
+                />
+                <PlatformDeliveryCard
+                  name="Instagram"
+                  icon={<InstagramIcon size={22} />}
+                  color="#E1306C"
+                  deliveries={igDeliveries}
+                  tracks={igTracks}
+                  index={1}
+                />
+                <PlatformDeliveryCard
+                  name="WhatsApp"
+                  icon={<WhatsAppIcon size={22} />}
+                  color="#25D366"
+                  deliveries={waDeliveries}
+                  tracks={waTracks}
+                  index={2}
+                />
+              </div>
 
-              <PlatformDeliveryCard
-                name="Instagram"
-                icon={<InstagramIcon size={24} />}
-                color="#E1306C"
-                deliveries={igDeliveries}
-                tracks={igTracks}
-                index={1}
-              />
-
-              <PlatformDeliveryCard
-                name="WhatsApp"
-                icon={<WhatsAppIcon size={24} />}
-                color="#25D366"
-                deliveries={waDeliveries}
-                tracks={waTracks}
-                index={2}
-              />
-
-              {/* Total summary box */}
               <div
-                className="p-4 rounded-16 mt-auto"
+                className="p-3 rounded-16 mt-auto"
                 style={{
                   background: 'rgba(24,119,242,0.08)',
                   border: '1px solid rgba(24,119,242,0.2)',
-                  boxShadow: 'inset 0 1px 0 rgba(24,119,242,0.15)',
                 }}
               >
                 <div className="text-center">
                   <div style={{ color: '#444', fontSize: '10px', marginBottom: '4px', letterSpacing: '0.08em' }}>TOTAL DELIVERIES</div>
-                  <div className="font-black tabular-nums" style={{ color: '#4da6ff', fontSize: '20px', letterSpacing: '-0.02em' }}>
-                    {formatM(fbDeliveries + igDeliveries + waDeliveries)}
+                  <div className="font-black tabular-nums" style={{ color: '#4da6ff', fontSize: '18px', letterSpacing: '-0.02em' }} suppressHydrationWarning>
+                    {mounted ? formatM(fbDeliveries + igDeliveries + waDeliveries) : formatM(1847293 + 1234567 + 892341)}
                   </div>
                   <div style={{ color: '#333', fontSize: '9px', marginTop: '2px' }}>across all platforms</div>
                 </div>
@@ -1085,7 +1080,14 @@ export default function FingerprintSection() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
+        @media (min-width: 1024px) {
+          .lg\\:col-span-3 { grid-column: span 3 / span 3; }
+          .lg\\:col-span-6 { grid-column: span 6 / span 6; }
+          .lg\\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+          .lg\\:flex-col { flex-direction: column; }
+          .lg\\:p-5 { padding: 20px; }
+        }
         @keyframes borderFlow {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 1; }

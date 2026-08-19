@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 
@@ -31,12 +31,12 @@ export default function PlatformsSection() {
   }, []);
 
   return (
-    <section id="platforms" ref={sectionRef} className="py-16 sm:py-24 border-y border-border bg-secondary/30 relative overflow-hidden">
+    <section id="platforms" ref={sectionRef} className="py-10 sm:py-16 lg:py-24 border-y border-border bg-secondary/30 relative overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 blob-bg opacity-20 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16 section-enter">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 section-enter">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 block">
             Distribution Network
           </span>
@@ -49,7 +49,7 @@ export default function PlatformsSection() {
         </div>
 
         {/* Platform pills — responsive wrap grid */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 section-enter stagger-2">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:gap-3 section-enter stagger-2">
           {platforms?.map((platform, i) => (
             <span
               key={platform}
@@ -65,10 +65,10 @@ export default function PlatformsSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-10 sm:mt-12 section-enter stagger-3">
+        <div className="text-center mt-8 sm:mt-10 lg:mt-12 section-enter stagger-3">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 rounded-full hover:bg-primary/90 transition-all duration-200 lime-glow group"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-primary/90 transition-all duration-200 lime-glow group"
           >
             Get Distributed Today
             <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

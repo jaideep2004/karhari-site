@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 const col1 = [
   { src: 'https://cms.karharimedia.com/images/dsp/spotify.png', alt: 'Spotify' },
-  { src: '/assets/images/Karhari_Media_Distribution__1_-1786796406212.png', alt: 'YouTube' },
+  { src: '/assets/images/Purani_Yaden_Sadabahar_LoFi-1787108172810.png', alt: 'YouTube' },
   { src: 'https://cms.karharimedia.com/images/dsp/jiosaavan.png', alt: 'JioSaavn' },
   { src: 'https://cms.karharimedia.com/images/dsp/deezer.png', alt: 'Deezer' },
   { src: 'https://cms.karharimedia.com/images/dsp/soundcloud.png', alt: 'SoundCloud' },
@@ -651,7 +651,6 @@ export default function AllPlatformsSection() {
 
   return (
     <section
-      id="all-platforms"
       className="all-platforms"
       style={{
         position: 'relative',
@@ -672,18 +671,13 @@ export default function AllPlatformsSection() {
         }}
       />
 
-      <div className="platforms-container" style={{ padding: '0 40px', position: 'relative', zIndex: 1 }}>
+      <div className="platforms-container" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* Left Content — two redesigned cards moved upward */}
         <div
           className="platforms-content"
           style={{
             opacity: 1,
-            transform: 'translateY(-40px)',
-            position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0',
           }}
         >
           {/* Card 1: Platform Card */}
@@ -703,7 +697,7 @@ export default function AllPlatformsSection() {
         </div>
 
         {/* Right Scrolling Columns */}
-        <div className="platforms-scroll-wrapper" style={{ opacity: 1, transform: 'none', marginTop: '80px' }}>
+        <div className="platforms-scroll-wrapper" style={{ opacity: 1 }}>
           <div className="scroll-fade-top"></div>
           <div className="platforms-scroll" id="platformsScroll">
             <ScrollColumn items={col1} direction="up" />

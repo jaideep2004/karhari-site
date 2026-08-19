@@ -54,7 +54,7 @@ export default function HeroBackground() {
         ctx.lineTo(laser.x2 * W, (laser.y2 - sweep * 0.5) * H);
         ctx.strokeStyle = laser.color;
         ctx.lineWidth = laser.width;
-        ctx.shadowColor = laser.color.replace(/[\d.]+[)]$/, '0.9)');
+        ctx.shadowColor = laser.color.replace(/[\d.]+\)$/, '0.9)');
         ctx.shadowBlur = 22;
         ctx.stroke();
         ctx.restore();
@@ -177,34 +177,10 @@ function FingerprintScanner() {
       </div>
 
       {/* Status text — top-left HUD */}
-      <div
-        className="absolute top-6 left-16 pointer-events-none font-mono text-xs tracking-widest"
-        style={{ color: 'rgba(0,229,255,0.55)', zIndex: 2, letterSpacing: '0.2em' }}
-      >
-        SCANNING · SECURE
-      </div>
       {/* Status text — top-right HUD */}
-      <div
-        className="absolute top-6 right-16 pointer-events-none font-mono text-xs tracking-widest text-right"
-        style={{ color: 'rgba(0,229,255,0.55)', zIndex: 2, letterSpacing: '0.2em' }}
-      >
-        PROTECTED · ACTIVE
-      </div>
 
       {/* Bottom-left HUD data */}
-      <div
-        className="absolute bottom-6 left-16 pointer-events-none font-mono text-xs"
-        style={{ color: 'rgba(0,229,255,0.4)', zIndex: 2, letterSpacing: '0.15em' }}
-      >
-        SYS · VERIFIED
-      </div>
       {/* Bottom-right HUD data */}
-      <div
-        className="absolute bottom-6 right-16 pointer-events-none font-mono text-xs text-right"
-        style={{ color: 'rgba(0,229,255,0.4)', zIndex: 2, letterSpacing: '0.15em' }}
-      >
-        ENCRYPTED · 256-BIT
-      </div>
 
       {/* Fingerprint scanner centered in hero */}
       <div

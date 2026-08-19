@@ -50,11 +50,11 @@ export default function PlatformBadges() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-3" role="list" aria-label="Available music platforms">
+      <div className="flex flex-wrap gap-2 sm:gap-3" role="list" aria-label="Available music platforms">
         {platforms?.map((p, idx) => (
           <div
             key={p?.name}
-            className="relative flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer overflow-hidden"
+            className="relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg cursor-pointer overflow-hidden"
             role="listitem"
             aria-label={`${p?.name} music platform`}
             style={{
@@ -72,7 +72,6 @@ export default function PlatformBadges() {
             onMouseEnter={() => setHovered(p.name)}
             onMouseLeave={() => setHovered(null)}
           >
-            {/* Shimmer sweep on hover */}
             <span
               className="absolute inset-0 pointer-events-none"
               aria-hidden="true"
@@ -83,7 +82,6 @@ export default function PlatformBadges() {
                 transition: 'opacity 0.3s',
               }}
             />
-            {/* Top edge glow line */}
             <span
               className="absolute top-0 left-2 right-2 h-px pointer-events-none"
               aria-hidden="true"
@@ -93,9 +91,8 @@ export default function PlatformBadges() {
                 transition: 'opacity 0.3s',
               }}
             />
-            {/* Idle floating animation on icon container */}
             <div
-              className="relative w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 overflow-hidden"
+              className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-md flex items-center justify-center flex-shrink-0 overflow-hidden"
               style={{
                 backgroundColor: p?.bg,
                 boxShadow: hovered === p.name ? `0 0 14px ${p.glow}, 0 0 28px ${p.glowSoft}` : `0 0 6px ${p.glowSoft}`,
@@ -104,7 +101,6 @@ export default function PlatformBadges() {
                 animationDelay: `${idx * 0.25}s`,
               }}
             >
-              {/* Spinning ring overlay on hover */}
               <span
                 className="absolute inset-0 rounded-md pointer-events-none"
                 aria-hidden="true"
@@ -149,11 +145,11 @@ export default function PlatformBadges() {
                 color: hovered === p.name ? '#ffffff' : 'rgba(220,230,245,0.85)',
                 textShadow: hovered === p.name ? `0 0 10px ${p.glow}` : 'none',
                 transition: 'color 0.3s, text-shadow 0.3s',
+                fontSize: 'clamp(9px, 2vw, 12px)',
               }}
             >
               {p?.name?.length > 10 ? p?.name?.slice(0, 9) + '…' : p?.name}
             </span>
-            {/* Ping dot on hover */}
             {hovered === p.name && (
               <span className="relative flex-shrink-0" style={{ width: 6, height: 6 }}>
                 <span style={{ display: 'block', width: 6, height: 6, borderRadius: '50%', background: p.bg, boxShadow: `0 0 6px ${p.glow}` }} />

@@ -194,7 +194,7 @@ const row2Members: TeamMember[] = [
 function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringColors: string[] }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
-  const progressRef = useRef<number>(Math.random()); // random start position
+  const progressRef = useRef<number>(Math.random());
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -202,27 +202,25 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const SNAKE_LENGTH = 0.28; // fraction of perimeter
+    const SNAKE_LENGTH = 0.28;
     const SPEED = 0.0018;
     const TRAIL_SEGMENTS = 60;
 
     const colors = [glowColor, ringColors[0], ringColors[1], ringColors[2], glowColor];
 
     const getPerimeterPoint = (t: number, w: number, h: number, r: number) => {
-      // t in [0,1] travels around the rounded rect
       const perim = 2 * (w + h) - 8 * r + 2 * Math.PI * r;
       const dist = ((t % 1) + 1) % 1 * perim;
 
-      // Segments: top, top-right corner, right, bottom-right, bottom, bottom-left, left, top-left
       const seg = [
-        w - 2 * r,           // top straight
-        Math.PI / 2 * r,     // top-right corner
-        h - 2 * r,           // right straight
-        Math.PI / 2 * r,     // bottom-right corner
-        w - 2 * r,           // bottom straight
-        Math.PI / 2 * r,     // bottom-left corner
-        h - 2 * r,           // left straight
-        Math.PI / 2 * r,     // top-left corner
+        w - 2 * r,
+        Math.PI / 2 * r,
+        h - 2 * r,
+        Math.PI / 2 * r,
+        w - 2 * r,
+        Math.PI / 2 * r,
+        h - 2 * r,
+        Math.PI / 2 * r,
       ];
 
       let acc = 0;
@@ -260,24 +258,21 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
     const draw = () => {
       const w = canvas.width;
       const h = canvas.height;
-      const r = 16; // border-radius matching card
+      const r = 16;
 
       ctx.clearRect(0, 0, w, h);
 
       progressRef.current = (progressRef.current + SPEED) % 1;
       const head = progressRef.current;
 
-      // Draw trail from tail to head
       for (let i = 0; i < TRAIL_SEGMENTS; i++) {
         const frac = i / TRAIL_SEGMENTS;
         const t = ((head - SNAKE_LENGTH * frac) + 2) % 1;
         const pt = getPerimeterPoint(t, w, h, r);
 
-        // Color cycles through ringColors
         const colorIdx = Math.floor(frac * colors.length);
         const color = colors[Math.min(colorIdx, colors.length - 1)];
 
-        // Opacity: bright at head, fades at tail
         const alpha = frac * 0.9 + 0.05;
         const lineWidth = (1 - frac) * 3.5 + 0.5;
 
@@ -285,7 +280,6 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
           const prevT = ((head - SNAKE_LENGTH * ((i - 1) / TRAIL_SEGMENTS)) + 2) % 1;
           const prevPt = getPerimeterPoint(prevT, w, h, r);
 
-          // Glow layer
           ctx.beginPath();
           ctx.moveTo(prevPt.x, prevPt.y);
           ctx.lineTo(pt.x, pt.y);
@@ -295,7 +289,6 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
           ctx.lineCap = 'round';
           ctx.stroke();
 
-          // Core line
           ctx.beginPath();
           ctx.moveTo(prevPt.x, prevPt.y);
           ctx.lineTo(pt.x, pt.y);
@@ -307,7 +300,6 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
         }
       }
 
-      // Bright head spark
       const headPt = getPerimeterPoint(head, w, h, r);
       ctx.globalAlpha = 1;
       const spark = ctx.createRadialGradient(headPt.x, headPt.y, 0, headPt.x, headPt.y, 7);
@@ -332,7 +324,7 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
       ref={canvasRef}
       width={224}
       height={420}
-      className="absolute inset-0 pointer-events-none rounded-2xl"
+      className="absolute inset-0 pointer-events-none rounded-2xl w-full h-full"
       style={{ zIndex: 5 }}
       aria-hidden="true"
     />
@@ -340,16 +332,15 @@ function SnakeBorderCanvas({ glowColor, ringColors }: { glowColor: string; ringC
 }
 
 /* Spinning logo badge for each card */
-function SpinningLogoBadge({ ringColors }: {ringColors: string[];}) {
+function SpinningLogoBadge({ ringColors }: { ringColors: string[] }) {
   return (
-    <div className="absolute bottom-3 right-3 z-20" style={{ width: 44, height: 44 }}>
+    <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-20" style={{ width: 36, height: 36 }}>
       <div
         className="absolute inset-0 rounded-full spin-ring"
         style={{
           background: `conic-gradient(${ringColors[0]}, ${ringColors[1]}, ${ringColors[2]}, ${ringColors[0]})`,
           padding: 2
         }}>
-        
         <div className="w-full h-full rounded-full" style={{ background: '#080818' }} />
       </div>
       <div
@@ -359,35 +350,32 @@ function SpinningLogoBadge({ ringColors }: {ringColors: string[];}) {
           background: `conic-gradient(transparent 30%, ${ringColors[2]}80 50%, transparent 70%)`,
           borderRadius: '50%'
         }} />
-      
       <div
         className="absolute rounded-full overflow-hidden"
-        style={{ inset: 5, background: '#080818' }}>
-        
+        style={{ inset: 4, background: '#080818' }}>
         <Image
           src="/assets/images/1608452013412__1_-1786345250703.png"
           alt="Karhari Media Logo"
-          width={34}
-          height={34}
+          width={28}
+          height={28}
           className="w-full h-full object-cover rounded-full"
           unoptimized />
-        
       </div>
-    </div>);
-
+    </div>
+  );
 }
 
-function TeamCard({ member }: {member: TeamMember;}) {
+function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div
-      className="team-card flex-shrink-0 mx-3 rounded-2xl overflow-hidden relative group"
+      className="team-card flex-shrink-0 rounded-2xl overflow-hidden relative group"
       style={{
-        width: '224px',
+        width: 'clamp(160px, 44vw, 224px)',
         background: member.cardGradient,
         border: `1px solid ${member.glowColor}30`,
         boxShadow: `0 4px 30px rgba(0,0,0,0.8), 0 0 0 1px ${member.glowColor}18`
       }}>
-      
+
       {/* Snake border visualizer */}
       <SnakeBorderCanvas glowColor={member.glowColor} ringColors={member.ringColors} />
 
@@ -396,69 +384,66 @@ function TeamCard({ member }: {member: TeamMember;}) {
         className="absolute top-0 left-4 right-4 h-px pulse-glow"
         style={{ background: `linear-gradient(to right, transparent, ${member.glowColor}90, transparent)` }}
         aria-hidden="true" />
-      
 
       {/* Photo */}
-      <div className="relative w-full overflow-hidden" style={{ height: '220px' }}>
+      <div className="relative w-full overflow-hidden" style={{ height: 'clamp(140px, 28vw, 220px)' }}>
         <img
           src={member.photo}
           alt={member.alt}
           className="w-full h-full object-cover object-top"
           style={{ filter: 'brightness(0.9) contrast(1.08) saturate(1.15)' }} />
-        
         <div
           className="absolute inset-0"
           style={{
             background: `linear-gradient(to top, ${member.cardGradient.match(/#[0-9A-Fa-f]{6}/)?.[0] ?? '#080818'} 0%, rgba(8,8,24,0.5) 40%, transparent 70%)`
           }}
           aria-hidden="true" />
-        
         <div
-          className="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[9px] font-bold tracking-widest uppercase"
+          className="absolute top-2 left-2 sm:top-3 sm:left-3 px-1.5 py-0.5 rounded-full text-[7px] sm:text-[9px] font-bold tracking-widest uppercase"
           style={{
             background: 'rgba(8,8,24,0.88)',
             color: member.glowColor,
-            border: `1px solid ${member.glowColor}50`
+            border: `1px solid ${member.glowColor}50`,
+            maxWidth: 'calc(100% - 16px)',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap'
           }}>
-          
           {member.department}
         </div>
       </div>
 
       {/* Info below photo */}
-      <div className="px-4 pt-3 pb-5 relative z-10">
+      <div className="px-3 sm:px-4 pt-2 sm:pt-3 pb-4 sm:pb-5 relative z-10">
         <h3
-          className="text-base font-bold leading-tight mb-0.5"
+          className="text-sm sm:text-base font-bold leading-tight mb-0.5"
           style={{ color: '#EEF0FF', fontFamily: 'var(--font-sans)' }}>
-          
           {member.name}
         </h3>
         <p
-          className="text-xs font-semibold mb-2"
+          className="text-[10px] sm:text-xs font-semibold mb-1.5 sm:mb-2"
           style={{ color: member.glowColor, letterSpacing: '0.02em' }}>
-          
           {member.role}
         </p>
         <p
-          className="text-xs leading-relaxed"
+          className="text-[10px] sm:text-xs leading-relaxed"
           style={{ color: 'rgba(220,220,255,0.45)', fontFamily: 'var(--font-sans)' }}>
-          
           {member.description}
         </p>
       </div>
 
       <SpinningLogoBadge ringColors={member.ringColors} />
-    </div>);
-
+    </div>
+  );
 }
 
-/* Static row — no scrolling */
-function InfiniteScrollRow({ members }: {members: TeamMember[];direction: 'left' | 'right';}) {
+/* Responsive row — horizontal scroll on all devices */
+function TeamRow({ members }: { members: TeamMember[]; direction: 'left' | 'right' }) {
   return (
-    <div className="relative overflow-x-auto">
-      <div className="flex gap-4 px-4">
+    <div className="relative w-full overflow-x-auto pb-2" style={{ WebkitOverflowScrolling: 'touch' }}>
+      <div className="flex gap-3 sm:gap-4 px-3 sm:px-6 lg:px-8" style={{ width: 'max-content', minWidth: '100%' }}>
         {members.map((member) =>
-        <TeamCard key={member.id} member={member} />
+          <TeamCard key={member.id} member={member} />
         )}
       </div>
     </div>
@@ -466,33 +451,33 @@ function InfiniteScrollRow({ members }: {members: TeamMember[];direction: 'left'
 }
 
 /* Visualizer component */
-function AudioVisualizer({ color }: {color: string;}) {
+function AudioVisualizer({ color }: { color: string }) {
   const bars = [
-  { cls: 'viz-bar-1', h: '60%' },
-  { cls: 'viz-bar-2', h: '80%' },
-  { cls: 'viz-bar-3', h: '40%' },
-  { cls: 'viz-bar-4', h: '90%' },
-  { cls: 'viz-bar-5', h: '55%' },
-  { cls: 'viz-bar-6', h: '70%' },
-  { cls: 'viz-bar-7', h: '45%' },
-  { cls: 'viz-bar-8', h: '85%' }];
+    { cls: 'viz-bar-1', h: '60%' },
+    { cls: 'viz-bar-2', h: '80%' },
+    { cls: 'viz-bar-3', h: '40%' },
+    { cls: 'viz-bar-4', h: '90%' },
+    { cls: 'viz-bar-5', h: '55%' },
+    { cls: 'viz-bar-6', h: '70%' },
+    { cls: 'viz-bar-7', h: '45%' },
+    { cls: 'viz-bar-8', h: '85%' }
+  ];
 
   return (
-    <div className="flex items-end gap-0.5" style={{ height: 28 }}>
+    <div className="hidden sm:flex items-end gap-0.5" style={{ height: 28 }}>
       {bars.map((b, i) =>
-      <div
-        key={i}
-        className={`${b.cls} rounded-full`}
-        style={{
-          width: 3,
-          height: b.h,
-          background: color,
-          opacity: 0.8
-        }} />
-
+        <div
+          key={i}
+          className={`${b.cls} rounded-full`}
+          style={{
+            width: 3,
+            height: b.h,
+            background: color,
+            opacity: 0.8
+          }} />
       )}
-    </div>);
-
+    </div>
+  );
 }
 
 export default function TeamShowcase() {
@@ -515,38 +500,39 @@ export default function TeamShowcase() {
   }, []);
 
   return (
-    <section className="km-team-section relative min-h-screen overflow-hidden">
+    <section className="km-team-section relative min-h-screen py-10 sm:py-16 overflow-hidden">
 
       {/* Header */}
-      <div ref={headerRef} className="text-center mb-14 px-4">
+      <div ref={headerRef} className="text-center mb-8 sm:mb-14 px-3 sm:px-4">
 
-        <div className="header-anim flex items-center justify-between w-full max-w-4xl mx-auto mb-4 px-4">
+        {/* Logo + Title row — stacks on mobile, side-by-side on sm+ */}
+        <div className="header-anim flex flex-col sm:flex-row items-center justify-between w-full max-w-4xl mx-auto mb-4 gap-4 sm:gap-0 px-2 sm:px-4">
 
           {/* LEFT — Karhari Media logo icon with spinning ring */}
-          <div className="relative flex-shrink-0" style={{ width: 96, height: 96 }}>
+          <div className="relative flex-shrink-0" style={{ width: 72, height: 72 }}>
             <div
               className="absolute inset-0 rounded-full spin-ring"
               style={{
                 background: 'conic-gradient(#8B5CF6, #38BDF8, #34D399, #FBBF24, #F472B6, #8B5CF6)',
-                padding: 4
+                padding: 3
               }}>
               <div className="w-full h-full rounded-full" style={{ background: '#080818' }} />
             </div>
             <div
               className="absolute rounded-full spin-ring-reverse"
               style={{
-                inset: 5,
+                inset: 4,
                 background: 'conic-gradient(transparent 25%, rgba(139,92,246,0.8) 50%, transparent 75%)',
                 borderRadius: '50%'
               }} />
             <div
               className="absolute rounded-full overflow-hidden"
-              style={{ inset: 9, background: '#080818' }}>
+              style={{ inset: 7, background: '#080818' }}>
               <Image
                 src="/assets/images/1608452013412__1_-1786345250703.png"
                 alt="Karhari Media Logo"
-                width={78}
-                height={78}
+                width={58}
+                height={58}
                 className="w-full h-full object-cover rounded-full"
                 unoptimized
                 priority />
@@ -554,10 +540,10 @@ export default function TeamShowcase() {
           </div>
 
           {/* CENTER — Title + visualizers */}
-          <div className="flex items-center gap-4 flex-1 justify-center">
+          <div className="flex items-center gap-2 sm:gap-4 flex-1 justify-center">
             <AudioVisualizer color="#8B5CF6" />
             <h2
-              className="font-display text-5xl sm:text-6xl md:text-7xl font-bold text-[rgba(255,252,240,1)]"
+              className="font-display text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
               style={{
                 background: 'linear-gradient(135deg, #EEF0FF 0%, #C4B5FD 50%, #93C5FD 100%)',
                 WebkitBackgroundClip: 'text',
@@ -572,26 +558,26 @@ export default function TeamShowcase() {
           </div>
 
           {/* RIGHT — YouTube icon with spinning ring */}
-          <div className="relative flex-shrink-0" style={{ width: 96, height: 96 }}>
+          <div className="relative flex-shrink-0" style={{ width: 72, height: 72 }}>
             <div
               className="absolute inset-0 rounded-full spin-ring"
               style={{
                 background: 'conic-gradient(#FF0000, #FF4444, #FF8888, #FF0000, #CC0000, #FF0000)',
-                padding: 4
+                padding: 3
               }}>
               <div className="w-full h-full rounded-full" style={{ background: '#080818' }} />
             </div>
             <div
               className="absolute rounded-full spin-ring-reverse"
               style={{
-                inset: 5,
+                inset: 4,
                 background: 'conic-gradient(transparent 25%, rgba(255,0,0,0.8) 50%, transparent 75%)',
                 borderRadius: '50%'
               }} />
             <div
               className="absolute rounded-full overflow-hidden flex items-center justify-center"
-              style={{ inset: 9, background: '#080818' }}>
-              <svg viewBox="0 0 24 24" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              style={{ inset: 7, background: '#080818' }}>
+              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
                   fill="#FF0000" />
@@ -603,29 +589,28 @@ export default function TeamShowcase() {
         </div>
 
         <p
-          className="header-anim text-sm sm:text-base max-w-md mx-auto"
+          className="header-anim text-xs sm:text-sm md:text-base max-w-xs sm:max-w-md mx-auto px-4"
           style={{ color: 'rgba(200,210,255,0.5)', fontFamily: 'var(--font-sans)', lineHeight: '1.7' }}>
-          
           The people behind Karhari Media — creators, strategists, and advocates building the future of music.
         </p>
 
-        <div className="header-anim flex items-center justify-center gap-4 mt-8">
-          <div className="h-px w-24" style={{ background: 'linear-gradient(to right, transparent, rgba(139,92,246,0.6))' }} />
+        <div className="header-anim flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+          <div className="h-px w-16 sm:w-24" style={{ background: 'linear-gradient(to right, transparent, rgba(139,92,246,0.6))' }} />
           <div className="w-2 h-2 rounded-full pulse-glow" style={{ background: '#8B5CF6' }} />
-          <div className="h-px w-24" style={{ background: 'linear-gradient(to left, transparent, rgba(56,189,248,0.6))' }} />
+          <div className="h-px w-16 sm:w-24" style={{ background: 'linear-gradient(to left, transparent, rgba(56,189,248,0.6))' }} />
         </div>
       </div>
 
-      {/* Row 1 — scrolls left to right */}
-      <div className="mb-6">
-        <InfiniteScrollRow members={row1Members} direction="right" />
+      {/* Row 1 */}
+      <div className="mb-4 sm:mb-6">
+        <TeamRow members={row1Members} direction="right" />
       </div>
 
-      {/* Row 2 — scrolls right to left */}
+      {/* Row 2 */}
       <div>
-        <InfiniteScrollRow members={row2Members} direction="left" />
+        <TeamRow members={row2Members} direction="left" />
       </div>
 
-    </section>);
-
+    </section>
+  );
 }

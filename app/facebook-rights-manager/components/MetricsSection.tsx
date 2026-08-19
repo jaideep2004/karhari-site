@@ -357,7 +357,7 @@ function ColorfulBgVisualizer() {
       colors.forEach((color, i) => {
         const x = canvas.width * ((i + 0.5) / colors.length) + Math.sin(t + i) * 80;
         const y = canvas.height * 0.5 + Math.cos(t * 0.7 + i * 1.2) * 100;
-        const r = 180 + Math.sin(t + i * 0.8) * 60;
+        let r = 180 + Math.sin(t + i * 0.8) * 60;
         const grd = ctx.createRadialGradient(x, y, 0, x, y, r);
         grd.addColorStop(0, color + '18');
         grd.addColorStop(0.5, color + '08');
@@ -417,7 +417,7 @@ export default function MetricsSection() {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden" style={{ minHeight: '100vh' }}>
+    <section className="py-16 sm:py-24 lg:py-32 relative overflow-hidden">
       <ColorfulBgVisualizer />
 
       <style>{`
@@ -437,7 +437,7 @@ export default function MetricsSection() {
       <div className="section-container relative z-10">
         <div
           ref={headerRef}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           style={{
             opacity: headerVisible ? 1 : 0,
             transform: headerVisible ? 'translateY(0)' : 'translateY(24px)',
@@ -446,19 +446,19 @@ export default function MetricsSection() {
         >
           <div className="section-label mb-4">By the Numbers</div>
           <h2
-            className="font-black text-white mb-5"
-            style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
+            className="font-black text-white mb-4 sm:mb-5"
+            style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
           >
             The scale of
             <br />
             <span className="gradient-text">music rights protection.</span>
           </h2>
-          <p className="text-base max-w-[500px] mx-auto" style={{ color: '#888', lineHeight: '1.6' }}>
+          <p className="text-sm sm:text-base max-w-[500px] mx-auto" style={{ color: '#888', lineHeight: '1.6' }}>
             Track Monitor · Matching · Video · All in Millions & Billions. Numbers always live — increasing and decreasing in real time.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {metrics.map((metric, i) => (
             <MetricCard key={metric.label} metric={metric} index={i} />
           ))}
@@ -466,7 +466,7 @@ export default function MetricsSection() {
 
         {/* Transparent Report Banner */}
         <div
-          className="mt-10 rounded-2xl overflow-hidden relative"
+          className="mt-8 sm:mt-10 rounded-2xl overflow-hidden relative"
           style={{
             background: 'linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(24,119,242,0.08) 50%, rgba(6,182,212,0.08) 100%)',
             border: '1px solid rgba(6,182,212,0.25)',
@@ -476,13 +476,13 @@ export default function MetricsSection() {
           }}
         >
           <div className="absolute top-0 inset-x-0 h-0.5" style={{ background: 'linear-gradient(90deg, transparent, #06b6d4, #1877F2, transparent)' }} />
-          <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
+          <div className="p-4 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(6,182,212,0.15)', border: '1px solid rgba(6,182,212,0.3)', color: '#06b6d4' }}
               >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                   <polyline points="14 2 14 8 20 8"/>
                   <line x1="16" y1="13" x2="8" y2="13"/>
@@ -490,18 +490,18 @@ export default function MetricsSection() {
                 </svg>
               </div>
               <div>
-                <div className="text-white font-bold text-lg mb-1">100% Transparent Reporting</div>
-                <div style={{ color: '#888', fontSize: '14px' }}>Full breakdown per track, platform, and content type — every month, no hidden fees</div>
+                <div className="text-white font-bold text-base sm:text-lg mb-1">100% Transparent Reporting</div>
+                <div style={{ color: '#888', fontSize: '13px' }}>Full breakdown per track, platform, and content type — every month, no hidden fees</div>
               </div>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
               {[
                 { label: 'Per Track', value: '✓' },
                 { label: 'Per Platform', value: '✓' },
                 { label: 'Per Month', value: '✓' },
               ].map(item => (
                 <div key={item.label} className="text-center">
-                  <div className="font-black text-2xl mb-0.5" style={{ color: '#06b6d4' }}>{item.value}</div>
+                  <div className="font-black text-xl sm:text-2xl mb-0.5" style={{ color: '#06b6d4' }}>{item.value}</div>
                   <div className="text-xs" style={{ color: '#666' }}>{item.label}</div>
                 </div>
               ))}

@@ -11,6 +11,7 @@ import RoyaltyFlowSection from "./components/RoyaltyFlowSection";
 import PolicySection from "./components/PolicySection";
 import FAQSection from "./components/FAQSection";
 import CTASection from "./components/CTASection";
+import Footer from "./components/Footer";
 
 import "../components/styles/facebook-page.css";
 
@@ -35,6 +36,7 @@ export default function FacebookRightsManager() {
       <PolicySection />
       <FAQSection />
       <CTASection />
+      <Footer />
     </main>
   );
 }

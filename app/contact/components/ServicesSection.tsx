@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
@@ -417,15 +417,15 @@ export default function ServicesSection() {
         }
       `}</style>
 
-      <section id="services" ref={sectionRef} className="py-10 sm:py-16 relative">
+      <section id="services" ref={sectionRef} className="py-8 sm:py-12 lg:py-16 relative">
         <div className="absolute top-0 left-0 w-80 h-80 orb-teal opacity-40 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-80 h-80 orb-pink opacity-30 pointer-events-none" />
         <div className="absolute top-1/2 right-0 w-96 h-96 blob-blue opacity-20 pointer-events-none -translate-y-1/2" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Header */}
-          <div className="mb-8 sm:mb-12 section-enter">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div className="mb-6 sm:mb-10 lg:mb-12 section-enter">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-4">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 block">
                   What We Do
@@ -444,40 +444,40 @@ export default function ServicesSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
 
             {/* ── Card 1: Global Music Distribution ── */}
-            <div className="section-enter stagger-1 bento-card neon-card md:col-span-2 p-6 sm:p-8 flex flex-col justify-between min-h-[280px] border-primary/20"
+            <div className="section-enter stagger-1 bento-card neon-card md:col-span-2 p-5 sm:p-6 lg:p-8 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] border-primary/20"
               style={{ animationDelay: '0s' }}>
               <div>
-                <div className="flex items-start justify-between mb-4 sm:mb-5">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-start justify-between mb-3 sm:mb-5">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <RotatingGlobe />
                     <div className="flex flex-col gap-1">
-                      <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary">
+                      <span className="text-xs font-semibold uppercase tracking-wider px-2 sm:px-2.5 py-1 rounded-full bg-primary/10 text-primary">
                         Core Service
                       </span>
                       <KharhariSmallBadge />
                     </div>
                   </div>
-                  <CheckCircleIcon className="w-6 h-6 text-primary flex-shrink-0" />
+                  <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 leading-tight">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-2 leading-tight">
                   Global Music Distribution
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-medium mb-1">
+                <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed font-medium mb-1">
                   Get your music delivered to <strong className="text-primary">35+ digital stores</strong> worldwide. We handle metadata, artwork, ISRC codes, and platform delivery end-to-end.
                 </p>
-                <p className="text-xs text-muted-foreground mb-3">
+                <p className="text-xs text-muted-foreground mb-3 hidden sm:block">
                   Spotify · Apple Music · YouTube Music · Amazon Music · Tidal · Deezer · Gaana · JioSaavn · Wynk · Boomplay · Audiomack · Anghami · Resso · NetEase · QQ Music · Melon · Bugs · Genie · Yandex Music · Beatport · Pandora · iHeartRadio · Napster · Shazam · Bandcamp · Claro Música · and more…
                 </p>
                 {/* Scrolling music store ticker */}
                 <MusicStoreTicker />
               </div>
-              <div className="mt-5 pt-4 border-t border-border flex items-center justify-between">
+              <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-border flex items-center justify-between">
                 <div>
-                  <span className="text-2xl sm:text-3xl font-extrabold text-primary">35+</span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary">35+</span>
                   <p className="text-xs text-muted-foreground font-medium mt-0.5">Worldwide Platforms</p>
                 </div>
-                <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center">
-                  <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-border flex items-center justify-center">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -485,39 +485,37 @@ export default function ServicesSection() {
             </div>
 
             {/* ── Card 2: YouTube CMS & Channel Management ── */}
-            <div className="section-enter stagger-2 bento-card neon-card md:col-span-1 md:row-span-2 p-6 sm:p-8 flex flex-col justify-between md:min-h-[560px]"
+            <div className="section-enter stagger-2 bento-card neon-card md:col-span-1 md:row-span-2 p-5 sm:p-6 lg:p-8 flex flex-col justify-between"
               style={{ animationDelay: '0.3s' }}>
               <div>
-                {/* Dual brand icons — real Karhari logo (bigger) + YouTube */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2.5">
-                    {/* Karhari Media real logo — larger than YouTube */}
-                    <KharhariLogo size={52} />
+                {/* Dual brand icons */}
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-2">
+                    <KharhariLogo size={44} />
                     <span className="text-xs text-muted-foreground font-medium">×</span>
-                    {/* YouTube icon — slightly smaller */}
-                    <YouTubeIcon size={36} />
+                    <YouTubeIcon size={30} />
                   </div>
-                  <CheckCircleIcon className="w-6 h-6 text-primary flex-shrink-0" />
+                  <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
                 </div>
 
                 {/* Animated play button + MCN tag */}
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-3 flex-wrap">
                   <AnimatedPlayButton />
-                  <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">
+                  <span className="text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">
                     YouTube MCN
                   </span>
                   <KharhariSmallBadge />
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 leading-tight">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-2 leading-tight">
                   YouTube CMS &amp; Channel Management
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-medium mb-3">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium mb-3">
                   Full YouTube Multi-Channel Network (MCN) access. We manage Content ID, Music CMS, Entertainment CMS, channel growth, metadata optimization, and copyright claims across all content types.
                 </p>
 
                 {/* Animated CMS type badges */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
                   {CMS_TYPES.map((cms, i) => (
                     <AnimatedCMSBadge
                       key={cms.label}
@@ -530,7 +528,7 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Rich content list */}
-                <div className="space-y-2 text-xs text-muted-foreground">
+                <div className="space-y-1.5 sm:space-y-2 text-xs text-muted-foreground">
                   <div className="flex items-start gap-2">
                     <CheckCircleIcon className="w-3.5 h-3.5 text-red-400 mt-0.5 flex-shrink-0" />
                     <span><strong className="text-foreground/80">YouTube Music CMS</strong> — Full music catalog management, Content ID claims, royalty collection</span>
@@ -562,13 +560,13 @@ export default function ServicesSection() {
                 </div>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-border flex items-center justify-between">
+              <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-border flex items-center justify-between">
                 <div>
-                  <span className="text-2xl sm:text-3xl font-extrabold text-foreground">800+</span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground">800+</span>
                   <p className="text-xs text-muted-foreground font-medium mt-0.5">Channels Managed</p>
                 </div>
-                <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center">
-                  <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-border flex items-center justify-center">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -576,15 +574,15 @@ export default function ServicesSection() {
             </div>
 
             {/* ── Card 3: Music Rights Management ── */}
-            <div className="section-enter stagger-3 bento-card neon-card md:col-span-1 p-6 sm:p-8 flex flex-col justify-between min-h-[260px]"
+            <div className="section-enter stagger-3 bento-card neon-card md:col-span-1 p-5 sm:p-6 lg:p-8 flex flex-col justify-between min-h-[240px] sm:min-h-[260px]"
               style={{ animationDelay: '0.6s' }}>
               <div>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <AnimatedCopyrightIcon />
                     <div className="flex flex-col gap-1">
                       <span
-                        className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30"
+                        className="text-xs font-bold uppercase tracking-wider px-2 sm:px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30"
                         style={{
                           background: 'linear-gradient(90deg, rgba(96,165,250,0.15) 0%, rgba(204,255,0,0.1) 50%, rgba(96,165,250,0.15) 100%)',
                           backgroundSize: '200% auto',
@@ -596,29 +594,29 @@ export default function ServicesSection() {
                       <KharhariSmallBadge />
                     </div>
                   </div>
-                  <CheckCircleIcon className="w-6 h-6 text-primary flex-shrink-0" />
+                  <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 leading-tight">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-2 leading-tight">
                   Music Rights Management
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-medium mb-2">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium mb-2">
                   Comprehensive copyright protection via Content ID &amp; Fingerprint scanning. We monitor, claim, and enforce your rights across all platforms every second.
                 </p>
                 {/* Fingerprint scan animation */}
                 <FingerprintScan />
               </div>
-              <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+              <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-border flex items-center justify-between">
                 <div>
                   <span
-                    className="text-2xl sm:text-3xl font-extrabold text-blue-400"
+                    className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-blue-400"
                     style={{ animation: 'pct-pop 0.6s ease-out forwards, copyright-pulse 2s ease-in-out 0.6s infinite' }}
                   >
                     100%
                   </span>
                   <p className="text-xs text-muted-foreground font-medium mt-0.5">Rights Protected</p>
                 </div>
-                <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center">
-                  <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-border flex items-center justify-center">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -627,16 +625,16 @@ export default function ServicesSection() {
 
             {/* ── Card 4: Content Monetization ── */}
             <div
-              className="section-enter stagger-4 bento-card neon-card md:col-span-1 p-6 sm:p-8 flex flex-col justify-between min-h-[260px]"
+              className="section-enter stagger-4 bento-card neon-card md:col-span-1 p-5 sm:p-6 lg:p-8 flex flex-col justify-between min-h-[240px] sm:min-h-[260px]"
               style={{ animation: 'monetize-glow 3s ease-in-out 0.9s infinite' }}
             >
               <div>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <AnimatedDollarIcon />
                     <div className="flex flex-col gap-1">
                       <span
-                        className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-400"
+                        className="text-xs font-bold uppercase tracking-wider px-2 sm:px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-400"
                         style={{
                           background: 'linear-gradient(90deg, rgba(96,165,250,0.15) 0%, rgba(204,255,0,0.1) 50%, rgba(96,165,250,0.15) 100%)',
                           backgroundSize: '200% auto',
@@ -648,10 +646,10 @@ export default function ServicesSection() {
                       <KharhariSmallBadge />
                     </div>
                   </div>
-                  <CheckCircleIcon className="w-6 h-6 text-primary flex-shrink-0" />
+                  <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
                 </div>
                 <h3
-                  className="text-lg sm:text-xl font-bold mb-2 leading-tight"
+                  className="text-base sm:text-lg lg:text-xl font-bold mb-2 leading-tight"
                   style={{
                     background: 'linear-gradient(90deg, #60A5FA 0%, #CCFF00 50%, #60A5FA 100%)',
                     backgroundSize: '200% auto',
@@ -662,12 +660,12 @@ export default function ServicesSection() {
                 >
                   Content Monetization
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-medium mb-1">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium mb-1">
                   Turn every stream, view, and play into income. We handle royalty collection, income reporting, and transparent payouts with detailed analytics.
                 </p>
                 {/* Flowing dollars animation */}
                 <FlowingDollars />
-                <div className="flex flex-wrap gap-1.5 mt-2">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2">
                   {[
                     { label: 'YouTube MCN', color: '#FF0000' },
                     { label: 'Streaming', color: '#1DB954' },
@@ -677,7 +675,7 @@ export default function ServicesSection() {
                   ].map((tag, i) => (
                     <span
                       key={tag.label}
-                      className="text-xs px-2 py-0.5 rounded-full border font-semibold"
+                      className="text-xs px-1.5 sm:px-2 py-0.5 rounded-full border font-semibold"
                       style={{
                         borderColor: tag.color,
                         color: tag.color,
@@ -690,18 +688,18 @@ export default function ServicesSection() {
                   ))}
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+              <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-border flex items-center justify-between">
                 <div>
                   <span
-                    className="text-2xl sm:text-3xl font-extrabold text-blue-400"
+                    className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-blue-400"
                     style={{ animation: 'dollar-bounce 1.5s ease-in-out infinite' }}
                   >
                     80%
                   </span>
                   <p className="text-xs text-muted-foreground font-medium mt-0.5">Revenue to You</p>
                 </div>
-                <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center">
-                  <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-border flex items-center justify-center">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>

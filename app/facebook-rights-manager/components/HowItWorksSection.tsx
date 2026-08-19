@@ -414,7 +414,7 @@ function BgVisualizer() {
         ctx.strokeStyle = color + '30';
         ctx.lineWidth = 1.5;
         for (let x = 0; x < canvas.width; x += 3) {
-          const y = canvas.height * (0.2 + ci * 0.15) + Math.sin(x * 0.02 + t + ci) * 20;
+          let y = canvas.height * (0.2 + ci * 0.15) + Math.sin(x * 0.02 + t + ci) * 20;
           if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.stroke();
@@ -446,10 +446,9 @@ export default function HowItWorksSection() {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden" style={{ minHeight: '100vh' }}>
+    <section className="py-16 sm:py-24 lg:py-32 relative overflow-hidden">
       <BgVisualizer />
 
-      {/* Color overlays */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(24,119,242,0.06) 0%, transparent 70%)' }} />
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 50% 40% at 80% 20%, rgba(232,93,38,0.05) 0%, transparent 60%)' }} />
 
@@ -470,7 +469,7 @@ export default function HowItWorksSection() {
       <div className="section-container relative z-10">
         <div
           ref={headerRef}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           style={{
             opacity: headerVisible ? 1 : 0,
             transform: headerVisible ? 'translateY(0)' : 'translateY(24px)',
@@ -479,25 +478,25 @@ export default function HowItWorksSection() {
         >
           <div className="section-label mb-4">The Process</div>
           <h2
-            className="font-black text-white mb-5"
-            style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
+            className="font-black text-white mb-4 sm:mb-5"
+            style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
           >
             How Karhari Media
             <br />
             <span className="gradient-text">distributes your music.</span>
           </h2>
-          <p className="text-lg max-w-[560px] mx-auto" style={{ color: '#888', lineHeight: '1.6' }}>
+          <p className="text-base sm:text-lg max-w-[560px] mx-auto" style={{ color: '#888', lineHeight: '1.6' }}>
             From catalog registration to royalty payout — a fully automated pipeline built on Facebook Rights Manager technology. All numbers in millions, always live.
           </p>
         </div>
 
-        {/* Steps grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Steps grid — responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {steps.slice(0, 3).map((step, i) => (
             <StepCard key={step.number} step={step} index={i} />
           ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 max-w-[840px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mt-4 sm:mt-5 max-w-full lg:max-w-[840px] mx-auto">
           {steps.slice(3).map((step, i) => (
             <StepCard key={step.number} step={step} index={i + 3} />
           ))}

@@ -209,7 +209,7 @@ export default function PartnershipSection() {
   const accuracy = useLiveCounter(9980, 10, 3000);
 
   return (
-    <section id="partnership" className="py-24 lg:py-32 relative overflow-hidden" style={{ minHeight: '100vh' }}>
+    <section id="partnership" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* Video Visualizer Background */}
       <VideoVisualizerCanvas />
 
@@ -256,30 +256,30 @@ export default function PartnershipSection() {
         {/* Header */}
         <div
           ref={headerRef}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           style={{
             opacity: headerVisible ? 1 : 0,
             transform: headerVisible ? 'translateY(0)' : 'translateY(24px)',
             transition: 'all 0.7s ease-out',
           }}
         >
-          <div className="section-label mb-5">The Partnership</div>
+          <div className="section-label mb-4 sm:mb-5">The Partnership</div>
           <h2
-            className="font-black text-white mb-5"
-            style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
+            className="font-black text-white mb-4 sm:mb-5"
+            style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
           >
             Content.
             <br />
             <span className="gradient-text">Karhari Media × Facebook Rights Manager</span>
           </h2>
-          <p className="text-lg max-w-[600px] mx-auto" style={{ color: '#888888', lineHeight: '1.6' }}>
+          <p className="text-base sm:text-lg max-w-[600px] mx-auto" style={{ color: '#888888', lineHeight: '1.6' }}>
             As an official Facebook Rights Manager partner, Karhari Media manages and monetizes music catalogs for artists and record labels across all Meta platforms.
           </p>
         </div>
 
-        {/* MAIN PARTNERSHIP BOX — both brands in one animated container */}
+        {/* MAIN PARTNERSHIP BOX */}
         <div
-          className="relative rounded-3xl overflow-hidden mb-12"
+          className="relative rounded-3xl overflow-hidden mb-8 sm:mb-12"
           style={{
             background: 'linear-gradient(135deg, rgba(13,13,13,0.92) 0%, rgba(15,20,40,0.92) 50%, rgba(13,13,13,0.92) 100%)',
             border: '1px solid rgba(24,119,242,0.3)',
@@ -290,11 +290,9 @@ export default function PartnershipSection() {
             transition: 'opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s',
           }}
         >
-          {/* Inner glow top */}
           <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(24,119,242,0.8), rgba(232,93,38,0.8), transparent)' }} />
           <div className="absolute bottom-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(232,93,38,0.5), rgba(24,119,242,0.5), transparent)' }} />
 
-          {/* Animated background inside box */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div
               className="absolute inset-0"
@@ -306,13 +304,13 @@ export default function PartnershipSection() {
             />
           </div>
 
-          <div className="relative z-10 p-8 md:p-12">
-            {/* Logos row */}
-            <div className="flex items-center justify-center gap-6 md:gap-12 mb-10">
+          <div className="relative z-10 p-5 sm:p-8 md:p-12">
+            {/* Logos row — responsive sizing */}
+            <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-12 mb-6 sm:mb-10">
               {/* Karhari Media */}
-              <div className="flex flex-col items-center gap-3" style={{ animation: 'floatUp 3s ease-in-out infinite' }}>
+              <div className="flex flex-col items-center gap-2 sm:gap-3" style={{ animation: 'floatUp 3s ease-in-out infinite' }}>
                 <div
-                  className="w-24 h-24 rounded-2xl overflow-hidden flex items-center justify-center"
+                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden flex items-center justify-center"
                   style={{
                     background: 'rgba(232,93,38,0.15)',
                     border: '2px solid rgba(232,93,38,0.5)',
@@ -321,14 +319,14 @@ export default function PartnershipSection() {
                 >
                   <Image src="/assets/images/1608452013412__1_-1786628988863.png" alt="Karhari Media Logo" width={80} height={80} className="object-contain" />
                 </div>
-                <span className="text-white font-bold text-sm tracking-wide">Karhari Media</span>
-                <span className="text-xs px-3 py-1 rounded-full font-semibold" style={{ background: 'rgba(232,93,38,0.15)', color: '#e85d26', border: '1px solid rgba(232,93,38,0.3)' }}>Music Distributor</span>
+                <span className="text-white font-bold text-xs sm:text-sm tracking-wide">Karhari Media</span>
+                <span className="text-xs px-2 sm:px-3 py-1 rounded-full font-semibold" style={{ background: 'rgba(232,93,38,0.15)', color: '#e85d26', border: '1px solid rgba(232,93,38,0.3)' }}>Music Distributor</span>
               </div>
 
               {/* X connector */}
               <div className="flex flex-col items-center gap-2">
                 <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center font-black text-2xl"
+                  className="w-9 h-9 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-black text-xl sm:text-2xl"
                   style={{
                     background: 'linear-gradient(135deg, rgba(232,93,38,0.2), rgba(24,119,242,0.2))',
                     border: '1px solid rgba(255,255,255,0.1)',
@@ -338,37 +336,38 @@ export default function PartnershipSection() {
                 >
                   ×
                 </div>
-                <span className="text-xs uppercase tracking-widest font-semibold" style={{ color: '#555' }}>Official Partner</span>
+                <span className="text-xs uppercase tracking-widest font-semibold hidden sm:block" style={{ color: '#555' }}>Official Partner</span>
               </div>
 
               {/* Facebook */}
-              <div className="flex flex-col items-center gap-3" style={{ animation: 'floatUp 3s ease-in-out infinite 1.5s' }}>
+              <div className="flex flex-col items-center gap-2 sm:gap-3" style={{ animation: 'floatUp 3s ease-in-out infinite 1.5s' }}>
                 <div
-                  className="w-24 h-24 rounded-2xl flex items-center justify-center"
+                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center"
                   style={{
                     background: '#1877F2',
                     animation: 'partnerPulse 2.5s ease-in-out infinite',
                   }}
                 >
-                  <FacebookIcon size={48} className="text-white" />
+                  <FacebookIcon size={36} className="text-white" />
                 </div>
-                <span className="text-white font-bold text-sm tracking-wide">Facebook</span>
-                <span className="text-xs px-3 py-1 rounded-full font-semibold" style={{ background: 'rgba(24,119,242,0.15)', color: '#1877F2', border: '1px solid rgba(24,119,242,0.3)' }}>Rights Manager</span>
+                <span className="text-white font-bold text-xs sm:text-sm tracking-wide">Facebook</span>
+                <span className="text-xs px-2 sm:px-3 py-1 rounded-full font-semibold" style={{ background: 'rgba(24,119,242,0.15)', color: '#1877F2', border: '1px solid rgba(24,119,242,0.3)' }}>Rights Manager</span>
               </div>
             </div>
 
             {/* 3B+ users live counter */}
-            <div className="text-center mb-10">
+            <div className="text-center mb-6 sm:mb-10">
               <div
-                className="inline-flex flex-col items-center px-8 py-4 rounded-2xl"
+                className="inline-flex flex-col items-center px-5 sm:px-8 py-3 sm:py-4 rounded-2xl"
                 style={{
                   background: 'linear-gradient(135deg, rgba(24,119,242,0.1), rgba(232,93,38,0.1))',
                   border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
                 <div
-                  className="font-black text-5xl mb-1"
+                  className="font-black mb-1"
                   style={{
+                    fontSize: 'clamp(28px, 5vw, 48px)',
                     background: 'linear-gradient(135deg, #1877F2, #e85d26)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -378,12 +377,12 @@ export default function PartnershipSection() {
                 >
                   {(users3B / 1000000000).toFixed(2)}B+
                 </div>
-                <div className="text-sm font-semibold" style={{ color: '#888' }}>Combined Meta Platform Users</div>
+                <div className="text-xs sm:text-sm font-semibold" style={{ color: '#888' }}>Combined Meta Platform Users</div>
               </div>
             </div>
 
-            {/* 4 feature stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* 4 feature stats — responsive */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               <AnimatedStat
                 label="Music Distribution"
                 base={2400000}
@@ -420,9 +419,9 @@ export default function PartnershipSection() {
           </div>
         </div>
 
-        {/* Stats row */}
+        {/* Stats row — responsive */}
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
           style={{
             opacity: headerVisible ? 1 : 0,
             transform: headerVisible ? 'translateY(0)' : 'translateY(24px)',
@@ -437,7 +436,7 @@ export default function PartnershipSection() {
           ].map(stat => (
             <div
               key={stat.label}
-              className="glass-card p-6 text-center relative overflow-hidden"
+              className="glass-card p-4 sm:p-6 text-center relative overflow-hidden"
               style={{ border: `1px solid ${stat.color}20` }}
             >
               <div
@@ -447,7 +446,7 @@ export default function PartnershipSection() {
               <div
                 className="font-black text-white mb-1"
                 style={{
-                  fontSize: '28px',
+                  fontSize: 'clamp(18px, 3vw, 28px)',
                   letterSpacing: '-0.04em',
                   color: stat.color,
                   textShadow: `0 0 20px ${stat.color}60`,
@@ -455,7 +454,7 @@ export default function PartnershipSection() {
               >
                 {stat.value}
               </div>
-              <div className="text-sm" style={{ color: '#666' }}>{stat.label}</div>
+              <div className="text-xs sm:text-sm" style={{ color: '#666' }}>{stat.label}</div>
             </div>
           ))}
         </div>

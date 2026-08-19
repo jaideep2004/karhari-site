@@ -146,12 +146,11 @@ export default function FAQSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Split into left (even indices) and right (odd indices) for zigzag
   const leftItems = faqs.filter((_, i) => i % 2 === 0);
   const rightItems = faqs.filter((_, i) => i % 2 === 1);
 
   return (
-    <section id="faq" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #080818 0%, #050510 100%)' }}>
+    <section id="faq" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #080818 0%, #050510 100%)' }}>
       <style>{`
         @keyframes faqGlow {
           0%, 100% { opacity: 0.4; }
@@ -159,16 +158,16 @@ export default function FAQSection() {
         }
       `}</style>
 
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(24,119,242,0.04) 0%, transparent 70%)', transform: 'translateY(-50%)' }} />
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.04) 0%, transparent 70%)', transform: 'translateY(-50%)' }} />
+      <div className="absolute top-1/2 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(24,119,242,0.04) 0%, transparent 70%)', transform: 'translateY(-50%)' }} />
+      <div className="absolute top-1/2 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.04) 0%, transparent 70%)', transform: 'translateY(-50%)' }} />
 
       <div className="section-container relative z-10">
         <div
           ref={headerRef}
-          className="text-center mb-14"
+          className="text-center mb-10 sm:mb-14"
           style={{ opacity: headerVisible ? 1 : 0, transform: headerVisible ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out' }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5" style={{ background: 'rgba(24,119,242,0.12)', border: '1px solid rgba(24,119,242,0.3)' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 sm:mb-5" style={{ background: 'rgba(24,119,242,0.12)', border: '1px solid rgba(24,119,242,0.3)' }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1877F2" strokeWidth="2">
               <circle cx="12" cy="12" r="10"/>
               <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -176,19 +175,19 @@ export default function FAQSection() {
             </svg>
             <span style={{ color: '#1877F2', fontSize: '12px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>FAQ</span>
           </div>
-          <h2 className="font-black text-white mb-5" style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}>
+          <h2 className="font-black text-white mb-4 sm:mb-5" style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}>
             Everything you need
             <br />
             <span style={{ background: 'linear-gradient(135deg, #1877F2, #a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>to know.</span>
           </h2>
-          <p className="text-lg max-w-[560px] mx-auto" style={{ color: '#8892b0', lineHeight: '1.6' }}>
+          <p className="text-base sm:text-lg max-w-[560px] mx-auto" style={{ color: '#8892b0', lineHeight: '1.6' }}>
             Common questions about Karhari Media, Facebook Rights Manager, and how music monetization works across Meta platforms.
           </p>
         </div>
 
-        {/* Single outer box containing all FAQs in two-column zigzag */}
+        {/* Single outer box containing all FAQs */}
         <div
-          className="rounded-3xl p-6 lg:p-8"
+          className="rounded-3xl p-4 sm:p-6 lg:p-8"
           style={{
             background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(24,119,242,0.04) 100%)',
             border: '1px solid rgba(24,119,242,0.15)',
@@ -196,15 +195,13 @@ export default function FAQSection() {
             transition: 'all 0.6s ease-out 0.2s',
           }}
         >
-          {/* Two-column zigzag layout */}
+          {/* Two-column zigzag layout on desktop */}
           <div className="hidden lg:grid grid-cols-2 gap-4">
-            {/* Left column */}
             <div className="space-y-4">
               {leftItems.map((item, i) => (
                 <FAQCard key={item.q} item={item} index={i * 2} side="left" />
               ))}
             </div>
-            {/* Right column */}
             <div className="space-y-4 mt-8">
               {rightItems.map((item, i) => (
                 <FAQCard key={item.q} item={item} index={i * 2 + 1} side="right" />
@@ -212,15 +209,15 @@ export default function FAQSection() {
             </div>
           </div>
 
-          {/* Mobile: single column */}
-          <div className="lg:hidden space-y-4">
+          {/* Mobile/tablet: single column */}
+          <div className="lg:hidden space-y-3">
             {faqs.map((item, i) => (
               <FAQCard key={item.q} item={item} index={i} side="left" />
             ))}
           </div>
 
           {/* Bottom policy links */}
-          <div className="mt-8 pt-6 flex flex-wrap items-center justify-center gap-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
             <span style={{ color: '#4a5568', fontSize: '12px' }}>Official Facebook Policies:</span>
             {[
               { label: 'Music Guidelines', url: 'https://www.facebook.com/legal/music_guidelines' },

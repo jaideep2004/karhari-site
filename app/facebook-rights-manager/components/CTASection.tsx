@@ -152,7 +152,7 @@ export default function CTASection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #050510 0%, #080808 100%)' }}>
+    <section ref={sectionRef} className="py-16 sm:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #050510 0%, #080808 100%)' }}>
       <style>{`
         @keyframes ctaPulse {
           0%, 100% { opacity: 0.5; transform: scale(1); }
@@ -181,32 +181,32 @@ export default function CTASection() {
           style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(32px)', transition: 'all 0.7s ease-out' }}
         >
           {/* Wave visualizer */}
-          <div className="relative rounded-2xl overflow-hidden mb-12 mx-auto" style={{ height: '120px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', maxWidth: '600px' }}>
+          <div className="relative rounded-2xl overflow-hidden mb-8 sm:mb-12 mx-auto" style={{ height: '100px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', maxWidth: '600px' }}>
             <CTAWaveVisualizer />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#1877F2', animation: 'ctaPulse 2s ease-in-out infinite' }} />
-                <span style={{ color: '#1877F2', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Your music is being monitored right now</span>
+                <span style={{ color: '#1877F2', fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Your music is being monitored right now</span>
               </div>
             </div>
           </div>
 
           {/* Headline */}
-          <h2 className="font-black text-white mb-6" style={{ fontSize: 'clamp(32px, 5vw, 60px)', lineHeight: '1.05', letterSpacing: '-0.04em' }}>
+          <h2 className="font-black text-white mb-5 sm:mb-6" style={{ fontSize: 'clamp(28px, 5vw, 60px)', lineHeight: '1.05', letterSpacing: '-0.04em' }}>
             Your music deserves
             <br />
             <span style={{ background: 'linear-gradient(135deg, #1877F2, #a78bfa, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>every dollar it earns.</span>
           </h2>
 
-          <p className="text-lg mb-10 max-w-[520px] mx-auto" style={{ color: '#8892b0', lineHeight: '1.6' }}>
+          <p className="text-base sm:text-lg mb-8 sm:mb-10 max-w-[520px] mx-auto" style={{ color: '#8892b0', lineHeight: '1.6' }}>
             Register your catalog with Karhari Media today and let Facebook Rights Manager handle everything — from fingerprinting to monthly royalty payouts.
           </p>
 
-          {/* CTA buttons — highlighted and prominent */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14">
             {/* Primary: Submit Application */}
             <button
-              className="relative overflow-hidden flex items-center gap-3 px-8 py-4 rounded-xl font-black text-white text-base"
+              className="relative overflow-hidden flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-white text-sm sm:text-base w-full sm:w-auto justify-center"
               onMouseEnter={() => setHoverPrimary(true)}
               onMouseLeave={() => setHoverPrimary(false)}
               style={{
@@ -222,12 +222,11 @@ export default function CTASection() {
                 letterSpacing: '-0.01em',
               }}
             >
-              {/* Shimmer effect */}
               {hoverPrimary && (
                 <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)', animation: 'ctaShimmer 0.8s ease-in-out' }} />
               )}
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.15)' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.15)' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="17 8 12 3 7 8"/>
                   <line x1="12" y1="3" x2="12" y2="15"/>
@@ -238,7 +237,7 @@ export default function CTASection() {
 
             {/* Secondary: Talk to Our Team */}
             <button
-              className="relative overflow-hidden flex items-center gap-3 px-8 py-4 rounded-xl font-black text-white text-base"
+              className="relative overflow-hidden flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-white text-sm sm:text-base w-full sm:w-auto justify-center"
               onMouseEnter={() => setHoverSecondary(true)}
               onMouseLeave={() => setHoverSecondary(false)}
               style={{
@@ -252,24 +251,24 @@ export default function CTASection() {
                 letterSpacing: '-0.01em',
               }}
             >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: hoverSecondary ? 'rgba(167,139,250,0.2)' : 'rgba(255,255,255,0.08)', transition: 'background 0.3s ease' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={hoverSecondary ? '#a78bfa' : 'currentColor'} strokeWidth="2" style={{ transition: 'stroke 0.3s ease' }}>
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center" style={{ background: hoverSecondary ? 'rgba(167,139,250,0.2)' : 'rgba(255,255,255,0.08)', transition: 'background 0.3s ease' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={hoverSecondary ? '#a78bfa' : 'currentColor'} strokeWidth="2" style={{ transition: 'stroke 0.3s ease' }}>
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                 </svg>
               </div>
               <span style={{ color: hoverSecondary ? '#a78bfa' : '#fff', transition: 'color 0.3s ease' }}>Talk to Our Team</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={hoverSecondary ? '#a78bfa' : 'currentColor'} strokeWidth="2" style={{ transition: 'stroke 0.3s ease, transform 0.3s ease', transform: hoverSecondary ? 'translateX(3px)' : 'translateX(0)' }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={hoverSecondary ? '#a78bfa' : 'currentColor'} strokeWidth="2" style={{ transition: 'stroke 0.3s ease, transform 0.3s ease', transform: hoverSecondary ? 'translateX(3px)' : 'translateX(0)' }}>
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
           </div>
 
-          {/* Trust indicators with original icons and animations */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          {/* Trust indicators — responsive wrap */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
             {trustItems.map((item, i) => (
               <div
                 key={item.text}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl"
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl"
                 style={{
                   background: `${item.glow}`,
                   border: `1px solid ${item.color}30`,
@@ -283,7 +282,7 @@ export default function CTASection() {
                 >
                   {item.icon}
                 </div>
-                <span style={{ color: '#ccd6f6', fontSize: '13px', fontWeight: 600, letterSpacing: '-0.01em' }}>{item.text}</span>
+                <span style={{ color: '#ccd6f6', fontSize: '12px', fontWeight: 600, letterSpacing: '-0.01em' }}>{item.text}</span>
               </div>
             ))}
           </div>

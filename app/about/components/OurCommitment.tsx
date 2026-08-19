@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
@@ -88,7 +88,7 @@ export default function OurCommitment() {
         </ScrollReveal>
 
         {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
 
           {/* LEFT BOX */}
           <ScrollReveal direction="left">

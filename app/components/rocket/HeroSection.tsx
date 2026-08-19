@@ -14,8 +14,8 @@ export default function HeroSection() {
       <HeroBackground />
       <Navbar />
       {/* Main hero body — pt clears the fixed navbar */}
-      <div className="relative z-10 flex-1 flex items-start max-w-[1400px] mx-auto w-full px-6 lg:px-12 pt-24 lg:pt-28 pb-10">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div className="relative z-10 flex-1 flex items-center max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-10 xl:px-16 pt-24 lg:pt-28 pb-10">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 xl:gap-16 items-center">
           <HeroContent />
           <HeroVisual />
         </div>

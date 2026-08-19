@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 
@@ -264,19 +264,19 @@ export default function JourneyTimeline() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section wrapper — no snake border, just subtle styling */}
-        <div className="relative rounded-3xl p-8" style={{
+        <div className="relative rounded-2xl sm:rounded-3xl p-4 sm:p-8" style={{
           background: 'rgba(10,10,20,0.6)',
           border: '1px solid rgba(124,58,237,0.15)',
           boxShadow: '0 0 60px rgba(37,99,235,0.08), 0 0 120px rgba(124,58,237,0.05)',
         }}>
 
           {/* Section header */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 text-xs font-semibold tracking-widest uppercase" style={{ background: 'rgba(37,99,235,0.12)', border: '1px solid rgba(37,99,235,0.4)', color: '#60a5fa' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
               Milestones
             </div>
-            <h2 className="text-3xl font-extrabold text-white">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
               Our Journey{' '}
               <span style={{ background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #e8192c 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 Timeline
@@ -285,7 +285,7 @@ export default function JourneyTimeline() {
           </div>
 
           {/* Desktop horizontal timeline — 6 equal-size cards */}
-          <div className="hidden md:block relative" ref={containerRef}>
+          <div className="hidden lg:block relative" ref={containerRef}>
             {/* Animated connecting line */}
             <div className="absolute top-8 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(to right, #e8192c, #f97316, #7c3aed, #2563eb, #06b6d4, #10b981)', boxShadow: '0 0 16px rgba(124,58,237,0.6)', animation: 'borderGlow 2s ease-in-out infinite' }} />
 
@@ -350,6 +350,53 @@ export default function JourneyTimeline() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Tablet grid timeline — 3 columns */}
+          <div className="hidden md:grid lg:hidden grid-cols-3 gap-5">
+            {timelineEvents.map((event, i) => (
+              <div
+                key={event.year}
+                className="timeline-card flex flex-col items-center text-center"
+                data-idx={i}
+              >
+                <div
+                  className="relative z-10 w-4 h-4 rounded-full border-2 mb-3 flex-shrink-0"
+                  style={{
+                    background: event.color,
+                    borderColor: '#0a0a0f',
+                    boxShadow: `0 0 0 3px ${event.color}30, 0 0 16px ${event.glow}`,
+                    animation: `dotPulse 2s ease-in-out infinite ${event.borderAnim}`,
+                  }}
+                />
+                <div
+                  className="timeline-card-inner rounded-xl p-3 w-full"
+                  style={{
+                    '--card-color': event.color,
+                    '--card-glow': event.glow,
+                    background: event.bg,
+                    border: `1px solid ${event.color}40`,
+                    boxShadow: `0 4px 20px ${event.glow}20`,
+                    minHeight: '120px',
+                  } as React.CSSProperties}
+                >
+                  <svg className="card-snake-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <rect x="1.5" y="1.5" width="97" height="97" rx="8"
+                      stroke={event.color}
+                      style={{ strokeDashoffset: 0, animation: `cardSnake 8s linear infinite ${event.snakeDelay}` }}
+                    />
+                    <rect x="1.5" y="1.5" width="97" height="97" rx="8"
+                      stroke={event.color}
+                      strokeOpacity="0.4"
+                      style={{ strokeDashoffset: -150, animation: `cardSnake2 8s linear infinite ${event.snakeDelay}` }}
+                    />
+                  </svg>
+                  <div className="text-xs font-bold mb-1" style={{ color: event.color }}>{event.year}</div>
+                  <div className="text-xs font-bold text-white mb-1">{event.title}</div>
+                  <div className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>{event.description}</div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Mobile vertical timeline */}

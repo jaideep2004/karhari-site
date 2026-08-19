@@ -729,7 +729,7 @@ export default function RoyaltyReportingSection() {
       background: 'linear-gradient(180deg, #020208 0%, #04020f 50%, #020208 100%)',
       position: 'relative',
       overflow: 'hidden',
-      padding: '45px clamp(24px, 4vw, 72px) 45px',
+      padding: 'clamp(28px, 5vh, 64px) clamp(12px, 4vw, 72px) 60px',
       borderBottom: '1px solid rgba(255,255,255,0.08)',
       display: 'flex',
       flexDirection: 'column',
@@ -752,13 +752,13 @@ export default function RoyaltyReportingSection() {
           borderRadius: 20, padding: '5px 18px', marginBottom: 18,
         }}>
           <div style={{ width: 7, height: 7, borderRadius: '50%', background: GOLD, animation: 'pipe-blink 1s infinite', boxShadow: `0 0 8px ${GOLD}` }} />
-          <span style={{ fontSize: 10, color: GOLD, letterSpacing: '0.22em', fontWeight: 800 }}>ROYALTY MANAGEMENT SYSTEM</span>
+          <span style={{ fontSize: 'clamp(8px, 1.5vw, 10px)', color: GOLD, letterSpacing: '0.18em', fontWeight: 800 }}>ROYALTY MANAGEMENT SYSTEM</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 14, flexWrap: 'wrap' }}>
           <KMIcon size={48} glow="#ffd700" />
           <h2 style={{
-            fontSize: 'clamp(22px, 3.5vw, 48px)', fontWeight: 900, margin: 0,
+            fontSize: 'clamp(20px, 4vw, 48px)', fontWeight: 900, margin: 0,
             background: `linear-gradient(135deg, ${GOLD} 0%, #ffffff 40%, ${ACCENT} 70%, ${GOLD}aa 100%)`,
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             letterSpacing: '0.04em', lineHeight: 1.1,
@@ -767,7 +767,7 @@ export default function RoyaltyReportingSection() {
         </div>
 
         <p style={{
-          color: '#6a6a8a', fontSize: 12, letterSpacing: '0.1em', margin: '0 auto',
+          color: '#6a6a8a', fontSize: 'clamp(10px, 1.8vw, 12px)', letterSpacing: '0.1em', margin: '0 auto',
           fontWeight: 600, maxWidth: 700, lineHeight: 1.6,
         }}>
           End-to-end royalty pipeline — from artist creation to transparent payout. Every stream tracked, every dollar validated, every payment delivered on time.
@@ -775,20 +775,16 @@ export default function RoyaltyReportingSection() {
       </div>
 
       {/* ── 8 CARDS GRID — 4 per row ── */}
-      <div style={{
+      <div className="royalty-cards-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 240px)',
-        gap: 20,
         justifyContent: 'center',
         position: 'relative',
         zIndex: 6,
-        margin: '0 auto',
+        width: '100%',
       }}>
         {cards.map((card, idx) => (
-          <div key={idx} style={{
+          <div key={idx} className="royalty-card" style={{
             position: 'relative',
-            width: 240,
-            minHeight: 360,
             background: `linear-gradient(145deg, ${card.color}10 0%, #06060f 55%, ${card.color}06 100%)`,
             border: `1px solid ${card.color}44`,
             borderRadius: 16,
@@ -893,13 +889,9 @@ export default function RoyaltyReportingSection() {
       </div>
 
       {/* ── BOTTOM COUNTER STRIP ── */}
-      <div style={{
+      <div className="bottom-counter-strip" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
         gap: 12,
-        marginTop: 36,
-        maxWidth: 960,
-        margin: '36px auto 0',
         width: '100%',
         position: 'relative', zIndex: 10,
       }}>
@@ -922,11 +914,11 @@ export default function RoyaltyReportingSection() {
               animation: 'pipe-scan-h 3s linear infinite',
             }} />
             <div style={{
-              fontSize: 20, fontWeight: 900, color: item.color,
+              fontSize: 'clamp(14px, 2.5vw, 20px)', fontWeight: 900, color: item.color,
               fontFamily: 'JetBrains Mono, monospace',
               textShadow: `0 0 12px ${item.color}`,
             }}>{item.prefix}{formatMillions(item.value)}</div>
-            <div style={{ fontSize: 8, color: '#555', letterSpacing: '0.1em', marginTop: 3, fontWeight: 700 }}>{item.label}</div>
+            <div style={{ fontSize: 'clamp(6px, 1.2vw, 8px)', color: '#555', letterSpacing: '0.1em', marginTop: 3, fontWeight: 700 }}>{item.label}</div>
           </div>
         ))}
       </div>
@@ -936,10 +928,10 @@ export default function RoyaltyReportingSection() {
         marginTop: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
         background: `${GOLD}06`, border: `1px solid ${GOLD}18`,
         borderRadius: 8, padding: '10px 24px', position: 'relative', zIndex: 10,
-        maxWidth: 960, margin: '20px auto 0', width: '100%',
+        width: '100%', flexWrap: 'wrap', textAlign: 'center',
       }}>
         <KMIcon size={20} glow="#ffd700" />
-        <span style={{ fontSize: 9, color: `${GOLD}77`, letterSpacing: '0.14em', fontWeight: 700 }}>
+        <span style={{ fontSize: 'clamp(7px, 1.5vw, 9px)', color: `${GOLD}77`, letterSpacing: '0.14em', fontWeight: 700 }}>
           KARHARI MEDIA · 150+ STORES · 100% TRANSPARENT ROYALTY REPORTING · REAL-TIME PAYOUT DASHBOARD
         </span>
         <KMIcon size={20} glow="#00f5ff" />

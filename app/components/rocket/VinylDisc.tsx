@@ -8,8 +8,8 @@ export default function VinylDisc() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 240,
-        height: 240,
+        width: 'min(46%, 240px)',
+        height: 'min(46%, 240px)',
         zIndex: 10,
       }}
     >
@@ -46,15 +46,15 @@ export default function VinylDisc() {
           />
         ))}
 
-        {/* Center label — BLACK circle with logo for full visibility */}
+        {/* Center label */}
         <div
           className="absolute rounded-full flex items-center justify-center overflow-hidden"
           style={{
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 100,
-            height: 100,
+            width: '42%',
+            height: '42%',
             background: 'radial-gradient(circle at 40% 35%, #1a1a1a 0%, #000000 60%, #0a0a0a 100%)',
             boxShadow: '0 0 20px rgba(200,134,10,0.5), inset 0 0 10px rgba(0,0,0,0.8)',
             border: '2px solid rgba(200,134,10,0.6)',
@@ -65,7 +65,7 @@ export default function VinylDisc() {
             alt="Karhari Media logo centered on vinyl disc label"
             width={88}
             height={88}
-            className="object-contain w-[88px] h-[88px]"
+            className="object-contain w-full h-full"
             priority
           />
         </div>

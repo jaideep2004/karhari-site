@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -141,7 +141,7 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-10 sm:py-14 border-b border-border relative overflow-hidden">
+    <section ref={sectionRef} className="py-8 sm:py-12 lg:py-14 border-b border-border relative overflow-hidden">
       {/* Colorful orbs */}
       <div className="absolute inset-0 blob-bg opacity-30 pointer-events-none" />
       <div className="absolute top-0 right-0 w-72 h-72 orb-blue opacity-30 pointer-events-none" />
@@ -149,7 +149,7 @@ export default function StatsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-8 section-enter">
+        <div className="text-center mb-6 sm:mb-8 section-enter">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 block">
             By The Numbers
           </span>
@@ -159,11 +159,11 @@ export default function StatsSection() {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`section-enter stagger-${i + 1} bento-card neon-card p-5 sm:p-8 flex flex-col`}
+              className={`section-enter stagger-${i + 1} bento-card neon-card p-4 sm:p-6 lg:p-8 flex flex-col`}
               style={{ animationDelay: `${i * 0.7}s` }}
             >
               <AnimatedCounter
@@ -172,20 +172,20 @@ export default function StatsSection() {
                 duration={4500}
                 liveIncrement={stat.liveIncrement}
               />
-              <p className="text-base sm:text-lg font-bold text-foreground mt-2 mb-1">{stat.label}</p>
-              <p className="text-xs sm:text-sm text-muted-foreground font-medium leading-relaxed">{stat.sublabel}</p>
+              <p className="text-sm sm:text-base font-bold text-foreground mt-2 mb-1 leading-tight">{stat.label}</p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground font-medium leading-relaxed">{stat.sublabel}</p>
             </div>
           ))}
         </div>
 
         {/* Established badge */}
-        <div className="mt-8 flex justify-center section-enter stagger-5">
-          <div className="glass-card-lime rounded-full px-5 sm:px-6 py-2.5 inline-flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-sm font-semibold text-primary">
+        <div className="mt-6 sm:mt-8 flex justify-center section-enter stagger-5">
+          <div className="glass-card-lime rounded-full px-4 sm:px-6 py-2 sm:py-2.5 inline-flex items-center gap-2 sm:gap-3 text-center">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary flex-shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold text-primary">
               Trusted partner for independent artists and record labels since 2014
             </span>
-            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary flex-shrink-0" />
           </div>
         </div>
       </div>

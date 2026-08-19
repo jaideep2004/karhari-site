@@ -382,7 +382,7 @@ function BgVideoTheme() {
       colors.forEach((color, i) => {
         const x = canvas.width * (0.2 + i * 0.3);
         const y = canvas.height * 0.5 + Math.sin(t + i * 2) * 50;
-        const r = 200 + Math.sin(t * 0.5 + i) * 50;
+        let r = 200 + Math.sin(t * 0.5 + i) * 50;
         const grd = ctx.createRadialGradient(x, y, 0, x, y, r);
         grd.addColorStop(0, color + '15');
         grd.addColorStop(1, 'transparent');
@@ -428,7 +428,7 @@ export default function PlatformsSection() {
   }, []);
 
   return (
-    <section id="platforms" className="py-24 lg:py-32 relative overflow-hidden" style={{ minHeight: '100vh' }}>
+    <section id="platforms" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden">
       <BgVideoTheme />
 
       <style>{`
@@ -447,28 +447,28 @@ export default function PlatformsSection() {
       <div className="section-container relative z-10">
         <div
           ref={headerRef}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           style={{
             opacity: headerVisible ? 1 : 0,
             transform: headerVisible ? 'translateY(0)' : 'translateY(24px)',
             transition: 'all 0.7s ease-out',
           }}
         >
-          <div className="section-label mb-5">Meta Platforms</div>
+          <div className="section-label mb-4 sm:mb-5">Meta Platforms</div>
           <h2
-            className="font-black text-white mb-5"
-            style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
+            className="font-black text-white mb-4 sm:mb-5"
+            style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
           >
             Your music, everywhere
             <br />
             <span className="gradient-text">on Meta.</span>
           </h2>
-          <p className="text-lg max-w-[560px] mx-auto" style={{ color: '#888', lineHeight: '1.6' }}>
+          <p className="text-base sm:text-lg max-w-[560px] mx-auto" style={{ color: '#888', lineHeight: '1.6' }}>
             Karhari Media manages your music rights across all three Meta platforms — ensuring every use is tracked, claimed, and monetized. Live user counts always increasing.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {platforms.map((platform, i) => (
             <PlatformCard key={platform.name} platform={platform} index={i} />
           ))}

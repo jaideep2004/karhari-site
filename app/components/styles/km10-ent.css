@@ -767,14 +767,15 @@
         padding: 2px;
     }
 
-    .ent-logo-badge span {
+    .ent-logo-badge .logo-badge-img {
         width: 100%;
         height: 100%;
         border-radius: 50%;
         background: #08090f;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        object-fit: contain;
+        object-position: center;
+        padding: 5px;
+        display: block;
     }
 
     .logo-title {
@@ -855,5 +856,123 @@
         .top-grid { grid-template-columns: 1fr; }
         .steps-row { flex-wrap: wrap; gap: 10px; }
         .step-arrow { display: none; }
+    }
+
+    /* Tablet */
+    @media (max-width: 900px) {
+        .network-stats,
+        .grow-row {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .orbit-wrap {
+            max-width: 460px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+        .karhari {
+            padding: 30px 0;
+        }
+
+        .container {
+            padding: 0 16px;
+        }
+
+        .hero-backdrop,
+        .hb-figs {
+            display: none;
+        }
+
+        .solutions-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .features-col {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .solutions-col {
+            padding: 16px;
+        }
+
+        .stat-row {
+            padding: 10px 14px;
+            gap: 10px;
+        }
+
+        .orbit-wrap {
+            max-width: 340px;
+        }
+
+        .orbit-center {
+            width: 96px;
+            height: 96px;
+        }
+
+        .orbit-center::before {
+            inset: -10%;
+        }
+
+        .orbit-play {
+            width: 56px;
+            height: 38px;
+        }
+
+        .orbit-node {
+            transform: translate(-50%, -50%) scale(0.85);
+            padding: 4px 10px 4px 6px;
+            gap: 5px;
+        }
+
+        .orbit-node .n-ic {
+            width: 22px;
+            height: 22px;
+        }
+
+        .orbit-node .n-title {
+            font-size: 9px;
+        }
+
+        .orbit-node .n-sub {
+            font-size: 8px;
+        }
+
+        .how-section {
+            padding: 12px 10px 14px;
+        }
+
+        .steps-row {
+            gap: 6px;
+        }
+
+        .step-ic {
+            width: 32px;
+            height: 32px;
+        }
+
+        .step-num {
+            font-size: 8.5px;
+        }
+
+        .main-grid {
+            padding: 6px 0 16px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .network-stats,
+        .grow-row {
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .brand-label {
+            margin-bottom: 12px;
+        }
     }
 }

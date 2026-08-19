@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 
@@ -162,8 +162,8 @@ export default function AboutHero() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left */}
           <div style={{ animation: 'fadeInLeft 0.9s cubic-bezier(0.22,1,0.36,1) both' }}>
             {/* Badge */}
@@ -179,7 +179,7 @@ export default function AboutHero() {
 
             <h1
               className="font-extrabold text-white mb-6"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1.1 }}
             >
               About{' '}
               <span
@@ -196,7 +196,7 @@ export default function AboutHero() {
               </span>
             </h1>
 
-            <p className="text-base leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <p className="text-sm sm:text-base leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.65)' }}>
               Welcome to Karhari Media. We appreciate your interest in learning about our company, our journey, and the
               vision that has shaped us into the organization we are today. Every successful company has a story, and
               ours is built on passion, dedication, continuous learning, and years of hard work.
@@ -215,7 +215,7 @@ export default function AboutHero() {
             </div>
           </div>
 
-          {/* Right — Brand logo — shifted slightly left via negative margin/padding */}
+          {/* Right — Brand logo */}
           <div
             className="flex flex-col items-center lg:items-center gap-6"
             style={{
@@ -225,7 +225,7 @@ export default function AboutHero() {
             <div className="relative flex items-center justify-center">
               {/* Outer ambient glow */}
               <div
-                className="absolute w-72 h-72 rounded-full pointer-events-none"
+                className="absolute w-48 h-48 sm:w-72 sm:h-72 rounded-full pointer-events-none"
                 style={{
                   background: 'radial-gradient(circle, rgba(232,25,44,0.18) 0%, rgba(124,58,237,0.10) 50%, transparent 70%)',
                   animation: 'pulse 3s ease-in-out infinite',
@@ -234,7 +234,7 @@ export default function AboutHero() {
 
               {/* Spinning ring 1 — inner bangle */}
               <div
-                className="absolute w-48 h-48 rounded-full"
+                className="absolute w-36 h-36 sm:w-48 sm:h-48 rounded-full"
                 style={{
                   border: '2.5px solid transparent',
                   borderTopColor: '#e8192c',
@@ -248,7 +248,7 @@ export default function AboutHero() {
 
               {/* Spinning ring 2 — outer bangle */}
               <div
-                className="absolute w-64 h-64 rounded-full"
+                className="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full"
                 style={{
                   border: '2px solid transparent',
                   borderTopColor: 'rgba(124,58,237,0.9)',
@@ -262,7 +262,7 @@ export default function AboutHero() {
 
               {/* Logo box */}
               <div
-                className="relative z-10 p-5 rounded-2xl"
+                className="relative z-10 p-3 sm:p-5 rounded-2xl"
                 style={{
                   background: 'rgba(255,255,255,0.04)',
                   border: '1px solid rgba(232,25,44,0.3)',
@@ -273,7 +273,7 @@ export default function AboutHero() {
                 <img
                   src="/assets/images/1608452013412__1_-1786276249256.png"
                   alt="Karhari Media company logo"
-                  className="w-56 h-auto object-contain"
+                  className="w-32 sm:w-56 h-auto object-contain"
                   style={{
                     filter:
                       'drop-shadow(0 0 32px rgba(232,25,44,0.6)) drop-shadow(0 0 70px rgba(124,58,237,0.30))',
