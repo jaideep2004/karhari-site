@@ -1,7 +1,7 @@
 /* Music CMS & MCN section — scoped styles */
 @scope (.km10-music-section) {
 
-    .km10-music-section {
+    :scope {
         --bg-0: #060612;
         --bg-1: #080a14;
         --bg-2: #0b0e1c;
@@ -892,6 +892,11 @@
 
         .steps-row {
             gap: 6px;
+        }
+
+        .steps-row .step-item {
+            flex: 1 1 calc(33.333% - 6px);
+            min-width: 0;
         }
 
         .step-ic {

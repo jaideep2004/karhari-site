@@ -8,7 +8,7 @@
                 box-sizing: border-box;
             }
 
-            .km9-section {
+            :scope {
                 --purple: #a855f7;
                 --blue: #3b82f6;
                 --pink: #ec4899;

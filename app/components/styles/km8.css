@@ -1,7 +1,7 @@
 /* Extracted verbatim from combined.html by tools/phase2-extract.js - do not hand-edit. */
 @scope (.km8-section) {
 
-            .km8-section {
+            :scope {
                 --bg-deep: #060612;
                 --purple: #a855f7;
                 --blue: #3b82f6;

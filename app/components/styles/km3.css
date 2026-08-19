@@ -1,7 +1,7 @@
 /* SectionKm3 - Scoped Styles */
 @scope (.km3-section) {
 
-    .km3-section {
+    :scope {
         --bg: #060612;
         --green-1: #39ffb0;
         --green-2: #00c2ff;

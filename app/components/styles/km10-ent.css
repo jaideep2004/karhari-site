@@ -1,7 +1,7 @@
 /* Entertainment CMS & MCN section — scoped styles */
 @scope (.km10-ent-section) {
 
-    .km10-ent-section {
+    :scope {
         --bg-0: #060612;
         --bg-1: #080a14;
         --bg-2: #0b0e1c;
