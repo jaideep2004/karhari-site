@@ -6,12 +6,10 @@ import PipelineSection from "./components/PipelineSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import PlatformsSection from "./components/PlatformsSection";
 import MetricsSection from "./components/MetricsSection";
-import FingerprintSection from "./components/FingerprintSection";
 import RoyaltyFlowSection from "./components/RoyaltyFlowSection";
 import PolicySection from "./components/PolicySection";
 import FAQSection from "./components/FAQSection";
 import CTASection from "./components/CTASection";
-import Footer from "./components/Footer";
 
 import "../components/styles/facebook-page.css";
 
@@ -31,12 +29,10 @@ export default function FacebookRightsManager() {
       <HowItWorksSection />
       <PlatformsSection />
       <MetricsSection />
-      <FingerprintSection />
       <RoyaltyFlowSection />
       <PolicySection />
       <FAQSection />
       <CTASection />
-      <Footer />
     </main>
   );
 }

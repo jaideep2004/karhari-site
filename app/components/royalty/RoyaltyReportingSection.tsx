@@ -744,6 +744,8 @@ export default function RoyaltyReportingSection() {
       <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,215,0,0.025) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent, #ffd70088, transparent)', animation: 'pipe-global-scan 7s linear infinite', boxShadow: '0 0 16px #ffd700', pointerEvents: 'none', zIndex: 1 }} />
 
+      <div style={{ width: '100%', maxWidth: 1350, margin: '0 auto', position: 'relative', zIndex: 2 }}>
+
       {/* ── SECTION HEADER ── */}
       <div style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 10 }}>
         <div style={{
@@ -936,6 +938,7 @@ export default function RoyaltyReportingSection() {
         </span>
         <KMIcon size={20} glow="#00f5ff" />
       </div>
+          </div>
     </section>
   );
 }

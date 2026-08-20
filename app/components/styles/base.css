@@ -982,7 +982,7 @@
             display: grid;
             grid-template-columns: 1fr 1.4fr;
             gap: 60px;
-            align-items: start;
+            align-items: center;
         }
 
         .platforms-content {

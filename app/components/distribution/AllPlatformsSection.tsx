@@ -488,7 +488,6 @@ function ServiceTickerBar() {
       >
         {TICKER_ITEMS[tickerIndex]}
       </span>
-      <span style={{ color: 'rgba(160,80,255,0.5)', fontSize: '9px', flexShrink: 0 }}>▶▶</span>
     </div>
   );
 }

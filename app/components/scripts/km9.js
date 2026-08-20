@@ -91,12 +91,6 @@ export function runKm9(gsap, ScrollTrigger, MotionPathPlugin) {
                 gsap.to('.km9-section .shield-core', {
                     y: -8, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
                 });
-                gsap.to('.km9-section .lock-badge', {
-                    y: -6, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut'
-                });
-                gsap.to('.km9-section .light-beam', {
-                    opacity: 0.55, scaleY: 1.05, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut'
-                });
 
                 /* =========================================================
                    5. ROTATING HALO RINGS

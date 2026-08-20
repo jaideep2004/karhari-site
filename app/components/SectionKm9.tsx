@@ -119,7 +119,7 @@ export default function SectionKm9() {
 							<div className='platform-node node-youtube'>
 								<div className='node-circle yt'>
 									<img
-										src='/assets/images/Karhari_Media_Distribution__1_-1786796406212.png'
+										src='/youtubeu.png'
 										alt='YouTube'
 									/>
 								</div>
@@ -185,178 +185,12 @@ export default function SectionKm9() {
 								<div className='ring ring-2'></div>
 								<div className='ring ring-3'></div>
 								<div className='particles-float' id='km9-shieldParticles'></div>
-								<div className='lock-badge'>
-									<span>🔒</span>
-								</div>
 								<div className='shield-core'>
 									<div className='shield-glow'></div>
-									<div className='light-beam'></div>
 									<svg
 										className='shield-svg'
 										viewBox='0 0 100 112'
 										xmlns='http://www.w3.org/2000/svg'>
-										<defs>
-											<linearGradient
-												id='km9-shieldGrad'
-												x1='0%'
-												y1='50%'
-												x2='100%'
-												y2='50%'>
-												<stop offset='0%' stopColor='#ec4899' />
-												<stop offset='14%' stopColor='#c026d3' />
-												<stop offset='34%' stopColor='#9333ea' />
-												<stop offset='58%' stopColor='#6d5bf5' />
-												<stop offset='80%' stopColor='#4f6cf7' />
-												<stop offset='100%' stopColor='#3b82f6' />
-											</linearGradient>
-											<linearGradient
-												id='km9-shieldShine'
-												x1='0%'
-												y1='0%'
-												x2='100%'
-												y2='0%'>
-												<stop offset='0%' stopColor='#ffffff' stopOpacity='0' />
-												<stop
-													offset='20%'
-													stopColor='#ffffff'
-													stopOpacity='0'
-												/>
-												<stop
-													offset='30%'
-													stopColor='#ffffff'
-													stopOpacity='0.15'
-												/>
-												<stop
-													offset='37%'
-													stopColor='#ffffff'
-													stopOpacity='0.75'
-												/>
-												<stop
-													offset='44%'
-													stopColor='#ffffff'
-													stopOpacity='0.15'
-												/>
-												<stop
-													offset='55%'
-													stopColor='#ffffff'
-													stopOpacity='0'
-												/>
-												<stop
-													offset='100%'
-													stopColor='#ffffff'
-													stopOpacity='0'
-												/>
-											</linearGradient>
-											<linearGradient
-												id='km9-topGloss'
-												x1='0%'
-												y1='0%'
-												x2='0%'
-												y2='100%'>
-												<stop
-													offset='0%'
-													stopColor='#ffffff'
-													stopOpacity='0.5'
-												/>
-												<stop
-													offset='100%'
-													stopColor='#ffffff'
-													stopOpacity='0'
-												/>
-											</linearGradient>
-											<radialGradient
-												id='km9-emblemGlow'
-												cx='50%'
-												cy='45%'
-												r='60%'>
-												<stop
-													offset='0%'
-													stopColor='#ffffff'
-													stopOpacity='0.85'
-												/>
-												<stop
-													offset='100%'
-													stopColor='#ffffff'
-													stopOpacity='0'
-												/>
-											</radialGradient>
-											<clipPath id='km9-shieldClip'>
-												<path
-													d='M20,8
-                                                       Q50,3 80,8
-                                                       C89,11 92,17 92,26
-                                                       L92,42
-                                                       C92,72 75,91 50,108
-                                                       C25,91 8,72 8,42
-                                                       L8,26
-                                                       C8,17 11,11 20,8 Z'
-												/>
-											</clipPath>
-										</defs>
-										<path
-											id='km9-shieldPath'
-											d='M20,8
-                                             Q50,3 80,8
-                                             C89,11 92,17 92,26
-                                             L92,42
-                                             C92,72 75,91 50,108
-                                             C25,91 8,72 8,42
-                                             L8,26
-                                             C8,17 11,11 20,8 Z'
-											fill='url(#km9-shieldGrad)'
-											stroke='#141034'
-											strokeWidth='2.4'
-											strokeLinejoin='round'
-										/>
-										<rect
-											x='8'
-											y='3'
-											width='84'
-											height='105'
-											fill='url(#km9-shieldShine)'
-											clipPath='url(#km9-shieldClip)'
-										/>
-										<path
-											d='M20,8 Q50,3 80,8 C89,11 92,17 92,26 L92,34 C74,25 26,25 8,34 L8,26 C8,17 11,11 20,8 Z'
-											fill='url(#km9-topGloss)'
-											clipPath='url(#km9-shieldClip)'
-											opacity='0.85'
-										/>
-										<path
-											d='M26,15
-                                               Q50,11 74,15
-                                               C81,17.5 84,22 84,29
-                                               L84,42
-                                               C84,64 71,80 50,95
-                                               C29,80 16,64 16,42
-                                               L16,29
-                                               C16,22 19,17.5 26,15 Z'
-											fill='none'
-											stroke='#ffffff'
-											strokeOpacity='0.35'
-											strokeWidth='1'
-										/>
-										<path
-											d='M20,8
-                                               Q50,3 80,8
-                                               C89,11 92,17 92,26
-                                               L92,42
-                                               C92,72 75,91 50,108
-                                               C25,91 8,72 8,42
-                                               L8,26
-                                               C8,17 11,11 20,8 Z'
-											fill='none'
-											stroke='#ffffff'
-											strokeOpacity='0.5'
-											strokeWidth='1'
-										/>
-										<circle
-											cx='50'
-											cy='54'
-											r='23'
-											fill='url(#km9-emblemGlow)'
-											opacity='0.5'
-										/>
 										<circle
 											cx='50'
 											cy='54'
