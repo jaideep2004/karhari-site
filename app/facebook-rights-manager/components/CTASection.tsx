@@ -207,6 +207,7 @@ export default function CTASection() {
             {/* Primary: Submit Application */}
             <button
               className="relative overflow-hidden flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-white text-sm sm:text-base w-full sm:w-auto justify-center"
+              onClick={() => { window.location.href = '/contact'; }}
               onMouseEnter={() => setHoverPrimary(true)}
               onMouseLeave={() => setHoverPrimary(false)}
               style={{
@@ -238,6 +239,7 @@ export default function CTASection() {
             {/* Secondary: Talk to Our Team */}
             <button
               className="relative overflow-hidden flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-white text-sm sm:text-base w-full sm:w-auto justify-center"
+              onClick={() => { window.location.href = '/contact'; }}
               onMouseEnter={() => setHoverSecondary(true)}
               onMouseLeave={() => setHoverSecondary(false)}
               style={{

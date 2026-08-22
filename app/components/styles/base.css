@@ -258,7 +258,7 @@
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            color: var(--text-secondary);
+            color: #ffffff;
             transition: color 0.3s;
             position: relative;
             white-space: nowrap;
@@ -266,7 +266,7 @@
 
         .nav-links a.active,
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: #ffffff;
         }
 
         .nav-links a.active::after {
@@ -1142,6 +1142,7 @@
                 transform: none;
                 opacity: 1;
                 visibility: visible;
+                display: none;
                 background: transparent;
                 border: none;
                 border-left: 1px solid rgba(255, 215, 0, 0.15);
@@ -1150,8 +1151,8 @@
                 padding: 0 0 0 14px;
                 margin: 0 0 4px;
             }
-            .nav-links:not(.open) .nav-dropdown-menu {
-                visibility: hidden;
+            .nav-dropdown.open .nav-dropdown-menu {
+                display: block;
             }
 
             .nav-dropdown:hover .nav-dropdown-menu {

@@ -6,6 +6,7 @@ import PipelineSection from "./components/PipelineSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import PlatformsSection from "./components/PlatformsSection";
 import MetricsSection from "./components/MetricsSection";
+import FingerprintSection from "./components/FingerprintSection";
 import RoyaltyFlowSection from "./components/RoyaltyFlowSection";
 import PolicySection from "./components/PolicySection";
 import FAQSection from "./components/FAQSection";
@@ -29,6 +30,7 @@ export default function FacebookRightsManager() {
       <HowItWorksSection />
       <PlatformsSection />
       <MetricsSection />
+      <FingerprintSection />
       <RoyaltyFlowSection />
       <PolicySection />
       <FAQSection />

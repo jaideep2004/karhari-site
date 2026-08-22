@@ -24,13 +24,30 @@ export function runKm1Nav(gsap, ScrollTrigger, MotionPathPlugin) {
             navToggle.setAttribute('aria-expanded', isOpen);
         });
 
-        navLinks.querySelectorAll('a').forEach(link => {
+        navLinks.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
                 navToggle.classList.remove('open');
                 navToggle.setAttribute('aria-expanded', 'false');
             });
         });
+
+        // ============================================
+        // SERVICES DROPDOWN TOGGLE (mobile: closed by default)
+        // ============================================
+        const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+        const navDropdown = document.querySelector('.nav-dropdown');
+        if (dropdownToggle && navDropdown) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                navDropdown.classList.toggle('open');
+            });
+            navDropdown.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navDropdown.classList.remove('open');
+                });
+            });
+        }
 
         // ============================================
 }

@@ -403,7 +403,7 @@ export default function YouTubePoliciesPage() {
               Submit your music to our YouTube Content ID pipeline. We enforce all YouTube policies strictly — protecting your rights and maximizing your revenue globally.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/youtube-content-id#submit"
+              <Link href="/contact"
                 className="px-8 py-3 rounded-xl font-black text-black text-sm tracking-wider transition-all hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #FF0000, #ff6b00)', boxShadow: '0 0 20px #FF000050' }}>
                 SUBMIT YOUR MUSIC

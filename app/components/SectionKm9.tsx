@@ -119,7 +119,7 @@ export default function SectionKm9() {
 							<div className='platform-node node-youtube'>
 								<div className='node-circle yt'>
 									<img
-										src='/youtubeu.png'
+										src='/ytcopy.png'
 										alt='YouTube'
 									/>
 								</div>
@@ -135,7 +135,7 @@ export default function SectionKm9() {
 							<div className='platform-node node-facebook'>
 								<div className='node-circle fb'>
 									<img
-										src='https://cms.karharimedia.com/images/dsp/facebook.png'
+										src='/fbcopy.png'
 										alt='Facebook'
 									/>
 								</div>
@@ -191,7 +191,7 @@ export default function SectionKm9() {
 										className='shield-svg'
 										viewBox='0 0 100 112'
 										xmlns='http://www.w3.org/2000/svg'>
-										<circle
+<circle
 											cx='50'
 											cy='54'
 											r='21.5'
@@ -204,7 +204,7 @@ export default function SectionKm9() {
 											y='65'
 											textAnchor='middle'
 											fontFamily='Arial, Helvetica, sans-serif'
-											fontSize='28'
+											fontSize='35'
 											fontWeight='900'
 											fill='#ffffff'>
 											C

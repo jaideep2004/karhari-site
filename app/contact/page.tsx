@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import TitleBanner from "./components/TitleBanner";
 import StatsSection from "./components/StatsSection";
 import ServicesSection from "./components/ServicesSection";
-import PlatformsSection from "./components/PlatformsSection";
 import RevenueSection from "./components/RevenueSection";
 import ContactSection from "./components/ContactSection";
 
@@ -33,7 +32,6 @@ export default function ContactPage() {
         <TitleBanner />
         <StatsSection />
         <ServicesSection />
-        <PlatformsSection />
         <RevenueSection />
         <ContactSection />
       </div>

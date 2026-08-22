@@ -2685,7 +2685,7 @@ export default function YouTubeContentIDPage() {
                 ))}
               </div>
               <div className="submit-cta-row">
-                <a href="#submit"
+                <a href="/contact"
                   className="flex-1 py-3 rounded-xl font-black text-black text-sm tracking-wider text-center transition-all duration-200 hover:scale-105"
                   style={{ background: 'linear-gradient(135deg, #00ff88, #00d4ff)', boxShadow: '0 0 20px #00ff8840' }}>
                   SUBMIT YOUR MUSIC TO KARHARI MEDIA

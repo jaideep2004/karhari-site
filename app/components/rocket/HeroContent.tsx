@@ -329,6 +329,7 @@ export default function HeroContent() {
         <button
           className="group relative overflow-hidden font-bold text-xs sm:text-sm tracking-widest px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl focus:outline-none w-full xs:w-auto"
           aria-label="Start music distribution across 150+ platforms"
+          onClick={() => { window.location.href = '/contact'; }}
           style={{
             background: 'linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(245,158,11,0.1) 100%)',
             border: '1.5px solid rgba(124,58,237,0.6)',
@@ -375,6 +376,7 @@ export default function HeroContent() {
         <button
           className="group relative overflow-hidden font-bold text-xs sm:text-sm tracking-widest px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl transition-all duration-300 focus:outline-none w-full xs:w-auto"
           aria-label="Book a consultation with our music distribution team"
+          onClick={() => { window.location.href = '/contact'; }}
           style={{
             background: 'linear-gradient(135deg, rgba(16,185,129,0.14) 0%, rgba(6,182,212,0.09) 100%)',
             border: '1.5px solid rgba(16,185,129,0.5)',

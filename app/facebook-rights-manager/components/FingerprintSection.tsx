@@ -856,7 +856,7 @@ export default function FingerprintSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="fingerprint" className="py-16 lg:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0d0d0d 0%, #060a18 50%, #0d0d0d 100%)' }}>
+    <section ref={sectionRef} id="fingerprint" className="hidden lg:block py-16 lg:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0d0d0d 0%, #060a18 50%, #0d0d0d 100%)' }}>
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute" style={{ top: '10%', left: '50%', transform: 'translateX(-50%)', width: '900px', height: '700px', background: 'radial-gradient(ellipse, rgba(24,119,242,0.07) 0%, transparent 65%)', borderRadius: '50%' }} />

@@ -61,8 +61,8 @@ export default function Navbar() {
           </li>
         </ul>
         <div className="nav-actions">
-          <a href="#" className="nav-login">LOGIN</a>
-          <a href="#" className="nav-cta">SIGN UP</a>
+          <a href="https://cms.karharimedia.com/login" className="nav-login">LOGIN</a>
+          <a href="https://cms.karharimedia.com/signup" className="nav-cta">SIGN UP</a>
         </div>
         <button className="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
