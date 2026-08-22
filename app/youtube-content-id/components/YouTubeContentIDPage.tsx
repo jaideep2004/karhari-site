@@ -2713,6 +2713,7 @@ export default function YouTubeContentIDPage() {
               <h2 className="text-lg sm:text-2xl font-black text-white mb-2">Ready to Connect Your YouTube Channel and Monetize Your Content and Music and Submit?</h2>
               <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6">Submit your audio to Karhari Media and let YouTube Content ID fingerprinting protect and monetize your work globally.</p>
               <button
+                onClick={() => { window.location.href = '/contact'; }}
                 className="w-full py-3 sm:py-4 rounded-xl font-black text-black text-sm sm:text-base tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-2xl"
                 style={{ background: 'linear-gradient(135deg, #FF0000 0%, #ff6b00 50%, #D4F000 100%)', boxShadow: '0 0 30px #FF000060' }}>
                 SUBMIT APPLICATION
